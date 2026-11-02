@@ -1,5 +1,12 @@
 # arrayprobe
 
+[![tests](https://github.com/sgupta92/arrayprobe/actions/workflows/tests.yml/badge.svg?branch=main)](https://github.com/sgupta92/arrayprobe/actions/workflows/tests.yml)
+[![PyPI](https://img.shields.io/pypi/v/arrayprobe)](https://pypi.org/project/arrayprobe/)
+[![docs](https://github.com/sgupta92/arrayprobe/actions/workflows/pages.yml/badge.svg?branch=main)](https://sgupta92.github.io/arrayprobe/)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23574623.svg)](https://doi.org/10.5281/zenodo.23574623)
+
+**Documentation:** https://sgupta92.github.io/arrayprobe/
+
 `arrayprobe` processes the raw data recorded by airborne optical array probes (OAPs), the
 instruments that image cloud and precipitation particles as they pass through a laser beam. It reads
 the probe's raw binary files (SPEC, DMT, PMS and SEA record formats: 2D-S, HVPS, CIP, PIP, 2DC, 2DP
