@@ -1,0 +1,10 @@
+{
+ "builder": "arrayprobe.tools.make_demo_flight.build_feature_demo_flight",
+ "seed": 20260915,
+ "tas_mps": 130.0,
+ "raw_size_bytes": 148104,
+ "raw_sha256": "0560bd746548262e9199975eaa209455cebc9585b65b066acd40dacba84a4a82",
+ "n_particles_designed": 131,
+ "n_particles_decoded_by_the_port": 127,
+ "written": "2026-09-15"
+}

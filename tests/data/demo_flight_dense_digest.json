@@ -1,0 +1,19 @@
+{
+ "_measured": "2026-09-13, this machine, via arrayprobe.tools.make_demo_flight.build_dense_demo_flight through run_flight's own stage2/stage3 and a direct arrayprobe.sizedist.run call (R3, tests/test_demo_flight_thresholds.py). Every count below is a printed measurement, not a derivation -- see that test module's docstring for the exact calls.",
+ "seed": 20260913,
+ "n_seconds": 20,
+ "particles_per_second": 12,
+ "tas_mps": 130.0,
+ "raw_size_bytes": 164560,
+ "n_particles": 240,
+ "n_bars": 40,
+ "iat_rejected": 92.0,
+ "rings_rejected_at_0_5": 15.0,
+ "bars_rejected_at_4": 38.0,
+ "used_bin_sum_with_iat": 60.0,
+ "used_bin_sum_without_iat": 152.0,
+ "used_bin_sum_oracles_reject": 60.0,
+ "used_bin_sum_stock_reject": 75.0,
+ "used_bin_sum_max_comp_img_ar_4": 75.0,
+ "used_bin_sum_max_comp_img_ar_5": 113.0
+}

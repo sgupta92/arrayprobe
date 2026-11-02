@@ -1,0 +1,64 @@
+:root{--bg:#fbfbfc;--surface:#fff;--sidebar:#f4f5f7;--ink:#1c2126;--muted:#5b646d;
+--line:#dde1e6;--accent:#1e6f68;--accent-soft:#e6f1f0;--code-bg:#eef1f3;--code-ink:#28303a;
+--warn:#8a6d1f;--warn-bg:#fbf4e0;}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#14181b;--surface:#1a1f23;
+--sidebar:#171c1f;--ink:#e6eaed;--muted:#98a2ab;--line:#2f383e;--accent:#48b2a5;
+--accent-soft:#1b2c2a;--code-bg:#212930;--code-ink:#d6dce1;--warn:#d8b866;--warn-bg:#2b2617;}}
+:root[data-theme="dark"]{--bg:#14181b;--surface:#1a1f23;--sidebar:#171c1f;--ink:#e6eaed;
+--muted:#98a2ab;--line:#2f383e;--accent:#48b2a5;--accent-soft:#1b2c2a;--code-bg:#212930;
+--code-ink:#d6dce1;--warn:#d8b866;--warn-bg:#2b2617;}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 -apple-system,"Segoe UI",
+system-ui,Roboto,sans-serif;}
+a{color:var(--accent)}
+.layout{display:grid;grid-template-columns:270px minmax(0,1fr);min-height:100vh}
+nav.side{background:var(--sidebar);border-right:1px solid var(--line);padding:1.4rem 1rem 3rem;
+position:sticky;top:0;height:100vh;overflow-y:auto}
+nav.side .brand{font-weight:700;font-size:1.05rem;letter-spacing:-.01em;display:block;
+text-decoration:none;color:var(--ink)}
+nav.side .brand small{display:block;font-weight:400;font-size:.75rem;color:var(--muted);
+margin-top:.2rem;letter-spacing:.02em}
+nav.side input{width:100%;margin:1rem 0 .6rem;padding:.45rem .6rem;border:1px solid var(--line);
+border-radius:6px;background:var(--surface);color:var(--ink);font:inherit;font-size:.85rem}
+nav.side ul{list-style:none;margin:0;padding:0}
+nav.side li a{display:block;padding:.34rem .55rem;border-radius:6px;text-decoration:none;
+color:var(--ink);font-size:.9rem}
+nav.side li a:hover{background:var(--accent-soft)}
+nav.side li a.active{background:var(--accent-soft);color:var(--accent);font-weight:600}
+nav.side .sub{margin-left:.6rem;border-left:1px solid var(--line);padding-left:.4rem}
+nav.side .sub a{font-size:.82rem;color:var(--muted);padding:.2rem .5rem}
+main{padding:2.4rem 2.4rem 6rem;max-width:900px}
+main h1{font-size:2rem;letter-spacing:-.02em;margin:0 0 .3rem;text-wrap:balance}
+main .standfirst{color:var(--muted);font-size:1.05rem;margin:0 0 2rem}
+main h2{font-size:1.35rem;margin:2.6rem 0 .7rem;padding-bottom:.35rem;
+border-bottom:1px solid var(--line);text-wrap:balance}
+main h3{font-size:1.05rem;margin:1.8rem 0 .5rem}
+main h4{font-size:.95rem;margin:1.4rem 0 .4rem;color:var(--muted);text-transform:uppercase;
+letter-spacing:.06em}
+p,li{max-width:72ch}
+code{background:var(--code-bg);color:var(--code-ink);padding:.1em .35em;border-radius:4px;
+font:.87em/1.5 "Cascadia Code",Consolas,monospace}
+pre{background:var(--code-bg);color:var(--code-ink);border:1px solid var(--line);
+border-radius:8px;padding:.9rem 1.1rem;overflow-x:auto}
+pre code{background:none;padding:0;font-size:.83rem}
+blockquote{margin:1.2rem 0;padding:.7rem 1rem;background:var(--warn-bg);color:var(--ink);
+border-left:3px solid var(--warn);border-radius:0 6px 6px 0}
+blockquote p{margin:0}
+.tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:8px;margin:1.1rem 0;
+background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-size:.87rem}
+th,td{text-align:left;padding:.5rem .75rem;border-bottom:1px solid var(--line);
+vertical-align:top}
+th{background:var(--bg);font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;
+color:var(--muted)}
+tr:last-child td{border-bottom:none}
+hr{border:none;border-top:1px solid var(--line);margin:2.4rem 0}
+footer{margin-top:4rem;padding-top:1.2rem;border-top:1px solid var(--line);color:var(--muted);
+font-size:.83rem}
+#results{margin:.2rem 0 .8rem;font-size:.83rem}
+#results a{display:block;padding:.25rem .5rem;border-radius:6px;text-decoration:none}
+#results a:hover{background:var(--accent-soft)}
+#results .ctx{color:var(--muted);font-size:.75rem;display:block}
+@media(max-width:860px){.layout{grid-template-columns:1fr}
+nav.side{position:static;height:auto;border-right:none;border-bottom:1px solid var(--line)}
+main{padding:1.6rem 1.1rem 4rem}}

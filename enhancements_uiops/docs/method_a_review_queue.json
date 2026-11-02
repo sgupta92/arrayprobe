@@ -1,0 +1,26 @@
+{
+  "method_a_2026-08-27": [
+    {"flight": "base160906064403", "particle_index": 1, "note": "old label: real (correctly accepted)"},
+    {"flight": "base160906064403", "particle_index": 5404, "note": "old label: real (correctly accepted)"},
+    {"flight": "base160906064403", "particle_index": 40860, "note": "old label: real_reject (correctly rejected, disconnected specks) -- FLAGGED 2026-08-27: user found this is actually mixed (one real droplet + a stuck diode + other artifacts), not a clean single-mechanism case"},
+    {"flight": "base160910102201", "particle_index": 292254, "note": "old label: real (correctly accepted)"},
+    {"flight": "base160914093925", "particle_index": 965074, "note": "old label: real (correctly accepted) -- Method A false positive at threshold 0.90 (max_col_occ=0.95)"},
+    {"flight": "base160906064403", "particle_index": 7319, "note": "old label: real (correctly accepted, dendrite fragment)"},
+    {"flight": "base160910124240", "particle_index": 5716830, "note": "old label: merge_A14 (two real particles merged, different mechanism from stuck-diode)"},
+    {"flight": "base160914124937", "particle_index": 320959, "note": "old label: artifact (stuck-diode merge, cleanest instance found)"},
+    {"flight": "base160910102201", "particle_index": 1047966, "note": "old label: artifact (via Particle Triage, max_col_occ=1.000)"},
+    {"flight": "base160910102201", "particle_index": 1974577, "note": "old label: artifact (via Particle Triage, max_col_occ=1.000)"},
+    {"flight": "base160914093925", "particle_index": 737247, "note": "old label: artifact (via Particle Triage, max_col_occ=1.000)"},
+    {"flight": "base160920135030", "particle_index": 2741517, "note": "old label: artifact (via Particle Triage, max_col_occ=1.000)"},
+    {"flight": "base160920135030", "particle_index": 2615049, "note": "old label: artifact (via Particle Triage, max_col_occ=1.000)"},
+    {"flight": "base160920135030", "particle_index": 2886543, "note": "old label: artifact (via Particle Triage, max_col_occ=1.000, largest confirmed)"},
+    {"flight": "base160914093925", "particle_index": 697667, "note": "old label: artifact (via Particle Triage, max_col_occ=0.941)"},
+    {"flight": "base160920135030", "particle_index": 3340354, "note": "old label: artifact (via Particle Triage, max_col_occ=0.933)"},
+    {"flight": "base160914093925", "particle_index": 737894, "note": "old label: artifact (via Particle Triage, max_col_occ=0.750) -- Method A's known miss at threshold 0.90"},
+    {"flight": "base160910124240", "particle_index": 5718294, "note": "old label: unsure (max_col_occ=0.800)"},
+    {"flight": "base160910124240", "particle_index": 5715466, "note": "old label: unsure (max_col_occ=0.773)"},
+    {"flight": "base160914124937", "particle_index": 2109304, "note": "old label: unsure (max_col_occ=0.800)"},
+    {"flight": "base160914093925", "particle_index": 982873, "note": "old label: artifact (stuck-diode merge, second instance found)"},
+    {"flight": "base160910102201", "particle_index": 2598801, "note": "old label: artifact (stuck-diode merge, first instance found)"}
+  ]
+}

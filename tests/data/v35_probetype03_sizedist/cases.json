@@ -1,0 +1,62 @@
+{
+ "2dc_main": {
+  "probe": "2DC",
+  "project": "GPM",
+  "ia_thresh_type": 0,
+  "status": "OK",
+  "message": ""
+ },
+ "2dc_sea": {
+  "probe": "2DC",
+  "project": "GPM",
+  "ia_thresh_type": 0,
+  "status": "OK",
+  "message": ""
+ },
+ "2dc_type2": {
+  "probe": "2DC",
+  "project": "GPM",
+  "ia_thresh_type": 2,
+  "status": "ERROR",
+  "message": "'int_arr2' undefined near line 1311, column 16"
+ },
+ "f2dc_socrates": {
+  "probe": "Fast2DC",
+  "project": "SOCRATES",
+  "ia_thresh_type": 0,
+  "status": "OK",
+  "message": ""
+ },
+ "f2dc_otherwise": {
+  "probe": "F2DC",
+  "project": "TEST",
+  "ia_thresh_type": 0,
+  "status": "OK",
+  "message": ""
+ },
+ "_inputs": {
+  "times": [
+   60655.0,
+   60656.0,
+   60657.0,
+   60658.0,
+   60659.0,
+   60700.0,
+   60701.0
+  ],
+  "tas": [
+   100.0,
+   100.0,
+   100.0,
+   100.0,
+   100.0,
+   100.0,
+   100.0
+  ],
+  "pres": 900000.0,
+  "temp": -10.0,
+  "ddate": "20170101 060657",
+  "d_choice": 6,
+  "sa_method": 0
+ }
+}

@@ -1,0 +1,118 @@
+{
+ "gpm_cip": {
+  "probe": "CIP",
+  "project": "GPM",
+  "ia_thresh_type": 0,
+  "input": "tests/data/s7a_pip_octave_golden.nc",
+  "status": "OK",
+  "message": ""
+ },
+ "socrates_pip": {
+  "probe": "PIP",
+  "project": "SOCRATES",
+  "ia_thresh_type": 0,
+  "input": "tests/data/s7a_pip_octave_golden.nc",
+  "status": "OK",
+  "message": ""
+ },
+ "test_cip": {
+  "probe": "CIP",
+  "project": "TEST",
+  "ia_thresh_type": 0,
+  "input": "tests/data/s7a_pip_octave_golden.nc",
+  "status": "OK",
+  "message": ""
+ },
+ "test_pip": {
+  "probe": "PIP",
+  "project": "TEST",
+  "ia_thresh_type": 0,
+  "input": "tests/data/s7a_pip_octave_golden.nc",
+  "status": "OK",
+  "message": ""
+ },
+ "test_pip_ia1": {
+  "probe": "PIP",
+  "project": "TEST",
+  "ia_thresh_type": 1,
+  "input": "tests/data/s7a_pip_octave_golden.nc",
+  "status": "OK",
+  "message": ""
+ },
+ "gpm_cip_short_ia": {
+  "probe": "CIP",
+  "project": "GPM",
+  "ia_thresh_type": 0,
+  "input": "tests/data/v35_probetype1_sizedist/short_ia_input.nc",
+  "status": "OK",
+  "message": "",
+  "differs_from_twin": {}
+ },
+ "socrates_pip_short_ia": {
+  "probe": "PIP",
+  "project": "SOCRATES",
+  "ia_thresh_type": 0,
+  "input": "tests/data/v35_probetype1_sizedist/short_ia_input.nc",
+  "status": "OK",
+  "message": "",
+  "differs_from_twin": {}
+ },
+ "test_cip_short_ia": {
+  "probe": "CIP",
+  "project": "TEST",
+  "ia_thresh_type": 0,
+  "input": "tests/data/v35_probetype1_sizedist/short_ia_input.nc",
+  "status": "OK",
+  "message": "",
+  "differs_from_twin": {}
+ },
+ "test_pip_short_ia": {
+  "probe": "PIP",
+  "project": "TEST",
+  "ia_thresh_type": 0,
+  "input": "tests/data/v35_probetype1_sizedist/short_ia_input.nc",
+  "status": "OK",
+  "message": "",
+  "differs_from_twin": {}
+ },
+ "_inputs": {
+  "input": "tests/data/s7a_pip_octave_golden.nc",
+  "times": [
+   25959.0,
+   30000.0,
+   30001.0,
+   30002.0,
+   30003.0,
+   30004.0,
+   30005.0,
+   30006.0,
+   30007.0,
+   30008.0,
+   30009.0,
+   30010.0,
+   30011.0,
+   30012.0
+  ],
+  "tas": [
+   95.0,
+   95.0,
+   95.0,
+   95.0,
+   95.0,
+   95.0,
+   95.0,
+   95.0,
+   95.0,
+   95.0,
+   95.0,
+   95.0,
+   95.0,
+   95.0
+  ],
+  "pres": 900000.0,
+  "temp": -10.0,
+  "ddate": "20150620 005009",
+  "d_choice": 6,
+  "sa_method": 0
+ }
+}

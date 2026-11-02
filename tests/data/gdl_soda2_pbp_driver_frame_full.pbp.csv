@@ -1,0 +1,56 @@
+Source: SODA-2 OAP Processing Software
+Flight Date (mm/dd/yyyy): 09/06/2016
+Date Processed: Mon Sep 14 12:42:28 2026
+Variable Descriptions: 
+      1. time: UTC time [seconds]
+      2. probetime: Unadjusted probe particle time [seconds]
+      3. buffertime: Buffer time [seconds]
+      4. rawtime: Raw time [slices or seconds]
+      5. reftime: Reference time for buffer matching [seconds]
+      6. inttime: Interarrival time from previous particle [seconds]
+      7. diam: Particle diameter from circle fit. No Poisson spot size corrections applied [microns]
+      8. xsize: X-size (across array). No Poisson spot size corrections applied [microns]
+      9. ysize: Y-size (along airflow). No Poisson spot size corrections applied [microns]
+     10. xextent: Maximum x-size (across array) for a single slice. No Poisson spot size corrections applied [microns]
+     11. oned: 1-D emulation size. Number of latched pixels. No Poisson spot size corrections applied [microns]
+     12. twod: 2-D emulation size. Maximum number of shaded pixels on a single slice. No Poisson spot size corrections applied [microns]
+     13. areasize: Equivalent area size. No Poisson spot size corrections applied [microns]
+     14. arearatio: Area ratio [unitless]
+     15. arearatiofilled: Area ratio with particle voids filled [unitless]
+     16. aspectratio: Aspect ratio [unitless]
+     17. area: Number of shaded pixels [pixels]
+     18. areafilled: Number of shaded pixels including voids [pixels]
+     19. perimeterarea: Number of shaded pixels on particle perimeter [pixels]
+     20. area75: Number of shaded pixels at the 75% (or grey level-3) shading [pixels]
+     21. xpos: X-position of particle center (across array) [pixels]
+     22. ypos: Y-position of particle center (along airflow) [pixels]
+     23. allin: All-in flag (1=all-in) [unitless]
+     24. centerin: Center-in flag (1=center-in) [unitless]
+     25. dofflag: Depth of field flag from probe, if available (1=accepted) [unitless]
+     26. edgetouch: Edge touch (1=left 2=right 3=both) [unitless]
+     27. sizecorrection: Size correction factor from Korolev 2007 (D_edge/D0). Use to adjust sizes in this file if necessary [unitless]
+     28. zd: Z position from Korolev correction [microns]
+     29. missed: Missed particle count [number]
+     30. probetas: True air speed for probe clock [m/s]
+     31. aircrafttas: True air speed for aircraft (if available) [m/s]
+     32. overloadflag: Overload flag [boolean]
+     33. particlecounter: Particle counter [number]
+     34. orientation: Particle orientation relative to array axis [degrees]
+     35. rejectionflag: Particle rejection code (see soda2_reject.pro for codes) [unitless]
+     36. numregions: Number of connected regions (blobs) in the particle image, if the KEEP_LARGEST option is enabled [count]
+     37. diodegaps: Number of unshaded diodes between the first and last shaded diodes [count]
+-------------------------------------------
+time,probetime,buffertime,rawtime,reftime,inttime,diam,xsize,ysize,xextent,oned,twod,areasize,arearatio,arearatiofilled,aspectratio,area,areafilled,perimeterarea,area75,xpos,ypos,allin,centerin,dofflag,edgetouch,sizecorrection,zd,missed,probetas,aircrafttas,overloadflag,particlecounter,orientation,rejectionflag,numregions,diodegaps
+24243.25000,24243.18396,24243.25000,65536.00000,24243.25000,5.08031e-03,210.0,210.0,10.0,210.0,180.0,180.0,47.9,0.05,0.05,0.05,18,18,18,0,15.00,1.00,1,1,1,0,1.00,0.00,0,129.00,0.00,0,7,0.00,1,0,3
+24243.25000,24243.19412,24243.25000,196618.00000,24243.25000,1.01614e-02,210.0,210.0,10.0,210.0,180.0,180.0,47.9,0.05,0.05,0.05,18,18,18,0,15.00,1.00,1,1,1,0,1.00,0.00,0,129.00,0.00,0,9,0.00,1,0,3
+24243.25000,24243.19920,24243.25000,262144.00000,24243.25000,5.07953e-03,210.0,210.0,10.0,210.0,180.0,180.0,47.9,0.05,0.05,0.05,18,18,18,0,15.00,1.00,1,1,1,0,1.00,0.00,0,129.00,0.00,1,10,0.00,1,0,3
+24243.25000,24243.20428,24243.25000,327680.00000,24243.25000,5.08031e-03,210.0,210.0,10.0,210.0,180.0,180.0,47.9,0.05,0.05,0.05,18,18,18,0,15.00,1.00,1,1,1,0,1.00,0.00,0,129.00,0.00,0,11,0.00,1,0,3
+24243.25000,24243.25000,24243.25000,917505.00000,24243.25000,4.57228e-02,450.1,450.0,20.0,400.0,400.0,350.0,82.1,0.03,0.03,0.05,53,53,53,0,27.00,1.50,1,1,1,0,1.00,0.00,0,129.00,0.00,0,14,1.30,1,0,5
+24244.25000,24244.08743,24244.25000,524291.00000,24244.25000,3.32913e+02,450.1,450.0,20.0,400.0,400.0,350.0,82.1,0.03,0.03,0.05,53,53,53,0,27.00,1.50,1,1,1,0,1.00,0.00,0,129.00,0.00,0,15,1.30,1,0,5
+24244.25000,24244.08743,24244.25000,524291.00000,24244.25000,0.00000e+00,400.0,400.0,10.0,400.0,350.0,350.0,66.8,0.03,0.03,0.03,35,35,35,0,29.50,1.00,1,1,1,0,1.00,0.00,0,129.00,0.00,0,17,0.00,1,0,5
+24244.25000,24244.16363,24244.25000,1507337.00000,24244.25000,7.62051e-02,480.1,480.0,30.0,400.0,430.0,350.0,89.6,0.03,0.03,0.07,63,63,61,0,25.50,2.50,1,1,1,0,1.00,0.00,0,129.00,0.00,0,18,1.22,1,0,5
+24244.25000,24244.16871,24244.25000,1572864.00000,24244.25000,5.07961e-03,480.1,480.0,30.0,400.0,430.0,350.0,89.6,0.03,0.03,0.07,63,63,61,0,25.50,1.50,1,1,1,0,1.00,0.00,0,129.00,0.00,0,19,1.22,1,0,5
+24244.25000,24244.16871,24244.25000,1572864.00000,24244.25000,0.00000e+00,450.1,450.0,20.0,400.0,400.0,350.0,82.1,0.03,0.03,0.05,53,53,53,0,27.00,1.50,1,1,1,0,1.00,0.00,0,129.00,0.00,0,20,-1.30,1,0,5
+24244.25000,24244.16871,24244.25000,1572864.00000,24244.25000,0.00000e+00,210.0,210.0,10.0,210.0,180.0,180.0,47.9,0.05,0.05,0.05,18,18,18,0,15.00,1.00,1,1,1,0,1.00,0.00,0,129.00,0.00,0,21,0.00,1,0,3
+24244.25000,24244.20428,24244.25000,2031715.00000,24244.25000,3.55698e-02,210.0,210.0,10.0,210.0,180.0,180.0,47.9,0.05,0.05,0.05,18,18,18,0,15.00,1.00,1,1,1,0,1.00,0.00,0,129.00,0.00,0,22,0.00,1,0,3
+24244.25000,24244.25000,24244.25000,2621481.00000,24244.25000,4.57183e-02,210.0,210.0,10.0,210.0,180.0,180.0,47.9,0.05,0.05,0.05,18,18,18,0,15.00,1.00,1,1,1,0,1.00,0.00,0,129.00,0.00,0,15,0.00,1,0,3

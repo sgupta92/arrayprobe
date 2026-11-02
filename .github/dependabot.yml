@@ -1,0 +1,33 @@
+version: 2
+# One grouped PR per ecosystem, so Dependabot opens at most one branch per ecosystem at a time
+# (the repository keeps one branch). ruff is held at its pin: newer releases report findings
+# over the lint scope that the pinned version does not, and
+# the pin must move together with .pre-commit-config.yaml's `rev` (test_precommit_config.py), so
+# a ruff upgrade is a deliberate lint pass, not a routine bump.
+updates:
+  - package-ecosystem: "pip"
+    directory: "/"
+    schedule:
+      interval: "monthly"
+    open-pull-requests-limit: 1
+    ignore:
+      - dependency-name: "ruff"
+    groups:
+      python-port:
+        patterns: ["*"]
+  - package-ecosystem: "pip"
+    directory: "/enhancements_uiops"
+    schedule:
+      interval: "monthly"
+    open-pull-requests-limit: 1
+    groups:
+      enhancements:
+        patterns: ["*"]
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "monthly"
+    open-pull-requests-limit: 1
+    groups:
+      actions:
+        patterns: ["*"]

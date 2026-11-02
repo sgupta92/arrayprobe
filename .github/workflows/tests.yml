@@ -1,0 +1,447 @@
+name: tests
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+  workflow_dispatch:
+    inputs:
+      full:
+        description: "Run the full installed matrix even on a private repository (billed at 2x Windows, 10x macOS)"
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+defaults:
+  run:
+    shell: bash
+
+# Every test leg sets ARRAYPROBE_SLOW=1 (the slow-gated tests, tests/_slow.py) and
+# ARRAYPROBE_HYGIENE=1 (the document and repository checks, tests/_hygiene.py), and runs
+# all three suites: the port's tests/, enhancements_uiops/tests and enhancements_soda2/tests.
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: pyproject.toml
+      - name: Lint
+        run: |
+          python -m pip install --upgrade pip
+          pip install -e ".[pinned]"
+          python -m ruff check src tests scripts enhancements_uiops enhancements_soda2
+
+  dist:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+      - name: Build the sdist and wheel of all three distributions
+        run: |
+          python -m pip install build==1.6.1 twine==7.0.0
+          python -m build --outdir dist/core .
+          python -m build --outdir dist/uiops enhancements_uiops
+          python -m build --outdir dist/soda2 enhancements_soda2
+          twine check dist/*/*
+      - uses: actions/upload-artifact@v7
+        with:
+          name: dist
+          path: dist
+
+  # The full hygiene set needs the repository (MANIFEST.in keeps the document checks out
+  # of the sdist), so one leg runs from a checkout with editable installs and exact pins.
+  checkout-suite:
+    name: checkout suite (ubuntu-latest, py3.12, pinned)
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    env:
+      ARRAYPROBE_SLOW: "1"
+      ARRAYPROBE_HYGIENE: "1"
+      PYTHONUNBUFFERED: "1"
+      PYTHON_COLORS: "0"
+      PYTHONUTF8: "1"
+      PY: python
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: pyproject.toml
+      - name: Install the package, both enhancement packages and the pins
+        run: |
+          python -m pip install --upgrade pip
+          pip install -e ".[pinned]" -e enhancements_uiops -e enhancements_soda2
+          pip list
+      - name: Port suite
+        run: |
+          set -o pipefail
+          python -m unittest discover -s tests -p "test_*.py" -v 2>&1 | tee "$GITHUB_WORKSPACE/suite_port.log"
+      - name: UIOPS enhancements suite
+        run: |
+          set -o pipefail
+          cd enhancements_uiops
+          python -m unittest discover -s tests -p "test_*.py" -v 2>&1 | tee "$GITHUB_WORKSPACE/suite_uiops.log"
+      - name: SODA-2 enhancements suite
+        run: |
+          set -o pipefail
+          cd enhancements_soda2
+          python -m unittest discover -s tests -p "test_*.py" -v 2>&1 | tee "$GITHUB_WORKSPACE/suite_soda2.log"
+      - name: Account for skips and the speed paths
+        if: always()
+        run: |
+          "$PY" - <<'PY'
+          import re, sys
+          bad = False
+          # Skips by the named distribution gates (tests/_repo.py) are counted and reported,
+          # not held against the share: a test of the v3.1.4 engine, of a repository file or
+          # of src/ skips by design where those are absent. The 15 % limit applies to the rest,
+          # so a suite that skips for any other reason still fails as mostly-skipping.
+          DESIGNED = (
+              "V3.1.4 validation engine, which is not part of the public distribution",
+              "reads a repository file the sdist does not carry",
+              "reads the package source under src/, which the installed-package run moves away",
+              "runs git on the repository checkout, which an unpacked sdist is not",
+          )
+          for log in ("suite_port.log", "suite_uiops.log", "suite_soda2.log"):
+              try:
+                  t = open(log, encoding="utf-8", errors="replace").read()
+              except FileNotFoundError:
+                  print(log, "MISSING"); bad = True; continue
+              # The LAST "Ran N tests" line is the suite's own summary (a test that runs
+              # unittest in a subprocess may echo a nested one earlier), and the skip
+              # count is read from the final OK / FAILED line, which belongs to it.
+              runs = re.findall(r"^Ran (\d+) tests?", t, re.M)
+              ends = re.findall(r"^(?:OK|FAILED)(?: \(([^)]*)\))?\s*$", t, re.M)
+              if not runs or not ends:
+                  print(log, "has no final 'Ran N tests' and OK/FAILED summary"); bad = True; continue
+              ran = int(runs[-1])
+              sk = re.search(r"skipped=(\d+)", ends[-1])
+              k = int(sk.group(1)) if sk else 0
+              designed = min(sum(t.count("skipped '" + r) for r in DESIGNED), k)
+              share = 100.0 * (k - designed) / max(ran - designed, 1)
+              print(f"{log}: ran {ran}, skipped {k}, {designed} of them by the distribution "
+                    f"gates; the other {k - designed} are {share:.2f} % of the rest")
+              if share > 15.0:
+                  print("  skipped share above 15 %: a mostly-skipping suite is a failure")
+                  bad = True
+          try:
+              t = open("suite_port.log", encoding="utf-8", errors="replace").read()
+          except FileNotFoundError:
+              t = ""
+          # Per-test outcomes from the -v log. A test line is "name (module.Class.name)"
+          # (or "name (module.Class)" before Python 3.11); its status ("... ok",
+          # "... skipped '...'", FAIL, ERROR) ends that line, or the next one when the
+          # test has a docstring, or a later one when the test wrote to stderr.
+          head = re.compile(r"^(test\w*) \(([\w.]+)\)")
+          stat = re.compile(r"(?:^|\.\.\. )(ok|FAIL|ERROR|skipped\b.*|expected failure"
+                            r"|unexpected success)\s*$")
+          lines = t.splitlines()
+          outcome = {}
+          for i, ln in enumerate(lines):
+              m = head.match(ln)
+              if not m:
+                  continue
+              meth, where = m.groups()
+              tid = where if where.endswith("." + meth) else f"{where}.{meth}"
+              res = "no status line"
+              for j in range(i, min(i + 200, len(lines))):
+                  if j > i and head.match(lines[j]):
+                      break
+                  s = stat.search(lines[j])
+                  if s:
+                      res = s.group(1); break
+              outcome.setdefault(tid, []).append(res)
+          # The byte-identity tests of the opt-in speed paths (--jit, --chunks,
+          # --s2-jobs), named one by one: each must report "ok", so a skip, a failure
+          # or a rename fails this step. Each runs on a tracked fixture or a synthetic
+          # input, so it can run in an install that never sees a checkout.
+          # test_v35_imgproc_jit_identity is deliberately absent: its two identity
+          # classes (JitIsByteIdentical, TheIdentityCheckFires) skip unless the
+          # gitignored _decoded/cip160906/sea_s1.CIP.cdf exists, so on every runner they
+          # skip, and that module has no identity test on a synthetic input to name.
+          REQUIRED = {
+              "test_v35_imgproc_merge_chunks": (
+                  "TestCipChunkedEqualsSerial.test_two_chunks_match_single_chunk",
+                  "TestCipChunkedEqualsSerial.test_every_variable_matches_at_the_raw_byte_level",
+                  "TestChunkedStage3UnderEngine35.test_chunked_stage3_is_byte_identical_to_a_single_chunk",
+              ),
+              "test_v35_spec_parallel": (
+                  "SyntheticMultiWindow.test_in_process_split_is_byte_identical",
+                  "Delegation.test_one_job_is_byte_identical_to_serial",
+                  "SyntheticMultiWindowThroughAPool.test_pool_decode_is_byte_identical",
+              ),
+              "test_soda2_jit_product_identity": (
+                  "JitProductIdenticalSpec.test_the_product_is_identical_with_the_kernel_on",
+                  "JitProductIdenticalCip.test_the_product_is_identical_with_the_kernel_on",
+              ),
+          }
+          for mod, names in REQUIRED.items():
+              for name in names:
+                  want = f"{mod}.{name}"
+                  got = [r for tid, rs in outcome.items()
+                         if tid == want or tid.endswith("." + want) for r in rs]
+                  ok = bool(got) and all(r == "ok" for r in got)
+                  print(want, "ok" if ok else f"NOT RUN OK ({', '.join(got) or 'absent'})")
+                  bad |= not ok
+          sys.exit(1 if bad else 0)
+          PY
+
+  # Chooses the installed matrix. A job-level `if:` cannot see matrix values, so this
+  # small job emits the matrix as JSON (an explicit `include` list, which replaces the
+  # former os x python x versions x source product and its `exclude` entries).
+  #   public repository                      -> the full matrix, 24 legs, unchanged
+  #   private repository, workflow_dispatch with full=true -> the full matrix
+  #   private repository otherwise           -> one leg: ubuntu-latest, 3.12, latest, wheel
+  # Private repositories bill Windows minutes at 2x and macOS at 10x, which the full
+  # matrix cannot afford on a metered account.
+  plan:
+    name: choose the installed matrix
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    outputs:
+      matrix: ${{ steps.pick.outputs.matrix }}
+    env:
+      REPO_PRIVATE: ${{ github.event.repository.private }}
+      FULL_REQUESTED: ${{ inputs.full }}
+    steps:
+      - id: pick
+        run: |
+          python3 - <<'PY'
+          import itertools, json, os
+          private = os.environ.get("REPO_PRIVATE", "").lower() == "true"
+          full = os.environ.get("FULL_REQUESTED", "").lower() == "true"
+          if private and not full:
+              legs = [{"os": "ubuntu-latest", "python": "3.12", "versions": "latest", "source": "wheel"}]
+          else:
+              # The declared floor numpy>=2.0 has no cp313 or cp314 wheel, so the lowest
+              # point is not installable on 3.13 or 3.14 without a numpy source build.
+              # Remove this condition once pyproject.toml declares per-Python numpy floors.
+              legs = [
+                  {"os": o, "python": p, "versions": v, "source": src}
+                  for o, p, v, src in itertools.product(
+                      ["ubuntu-latest", "windows-latest", "macos-latest"],
+                      ["3.12", "3.13", "3.14"],
+                      ["latest", "lowest"],
+                      ["wheel", "sdist"],
+                  )
+                  if not (v == "lowest" and p in ("3.13", "3.14"))
+              ]
+          matrix = json.dumps({"include": legs}, separators=(",", ":"))
+          print("private=%s full=%s legs=%d" % (private, full, len(legs)))
+          print(matrix)
+          with open(os.environ["GITHUB_OUTPUT"], "a") as fh:
+              fh.write("matrix=" + matrix + chr(10))
+          PY
+
+  # Installed from the built wheel or sdist into a fresh environment that never sees a
+  # checkout, at the latest and at the lowest declared dependency versions.
+  installed:
+    name: ${{ matrix.os }} py${{ matrix.python }} ${{ matrix.versions }} from ${{ matrix.source }}
+    needs: [dist, plan]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 120
+    strategy:
+      fail-fast: false
+      matrix: ${{ fromJSON(needs.plan.outputs.matrix) }}
+    env:
+      ARRAYPROBE_SLOW: "1"
+      ARRAYPROBE_HYGIENE: "1"
+      PYTHONUNBUFFERED: "1"
+      PYTHON_COLORS: "0"
+      PYTHONUTF8: "1"
+    steps:
+      # No checkout: the environment must not be able to see the repository.
+      - uses: actions/download-artifact@v8
+        with:
+          name: dist
+          path: dist
+      - uses: actions/setup-python@v7
+        with:
+          python-version: ${{ matrix.python }}
+
+      - name: Unpack the three sdists (the tests travel in them)
+        run: |
+          mkdir work
+          tar -xzf dist/core/*.tar.gz -C work
+          tar -xzf dist/uiops/*.tar.gz -C work
+          tar -xzf dist/soda2/*.tar.gz -C work
+          ls work
+
+      - name: Lowest-direct constraints from the declared >= bounds
+        if: matrix.versions == 'lowest'
+        run: |
+          python - <<'PY'
+          import glob, re, tomllib
+          pins = {}
+          for f in glob.glob("work/*/pyproject.toml"):
+              p = tomllib.load(open(f, "rb"))["project"]
+              reqs = list(p.get("dependencies", []))
+              for extra, items in p.get("optional-dependencies", {}).items():
+                  if extra not in ("dev", "pinned"):
+                      reqs += items
+              for r in reqs:
+                  m = re.match(r"^([A-Za-z0-9_.\-]+)\s*>=\s*([^,;\s]+)", r)
+                  if m:
+                      pins[m.group(1).lower()] = m.group(2)
+          lines = sorted(f"{k}=={v}" for k, v in pins.items())
+          open("lowest.txt", "w").write("\n".join(lines) + "\n")
+          print("\n".join(lines))
+          PY
+
+      - name: Fresh virtual environment
+        run: |
+          python -m venv "$RUNNER_TEMP/venv"
+          if [ "$RUNNER_OS" = Windows ]; then PY="$RUNNER_TEMP/venv/Scripts/python.exe"; else PY="$RUNNER_TEMP/venv/bin/python"; fi
+          echo "PY=$PY" >> "$GITHUB_ENV"
+          "$PY" -m pip install --upgrade pip
+
+      - name: Install the three distributions
+        run: |
+          set -e
+          if [ "${{ matrix.source }}" = wheel ]; then EXT='*.whl'; else EXT='*.tar.gz'; fi
+          CORE=$(ls dist/core/$EXT); UI=$(ls dist/uiops/$EXT); SO=$(ls dist/soda2/$EXT)
+          CON=""
+          if [ "${{ matrix.versions }}" = lowest ]; then CON="-c lowest.txt"; fi
+          "$PY" -m pip install --only-binary=numpy,netCDF4,scipy,matplotlib,numba,pyarrow,psutil \
+            $CON "${CORE}[extra,zarr,parquet,jit]" "$UI" "$SO"
+          "$PY" -m pip list
+
+      - name: Make the suite import the installed package, not a source tree
+        run: |
+          set -e
+          for d in work/*/; do if [ -d "$d/src" ]; then mv "$d/src" "$d/src_moved_away"; fi; done
+          cd work/arrayprobe-*/
+          "$PY" -I -c "import arrayprobe; print(arrayprobe.__file__); assert 'site-packages' in arrayprobe.__file__"
+
+      - name: Port suite (tests/ of the unpacked sdist)
+        run: |
+          set -o pipefail
+          cd work/arrayprobe-*/
+          "$PY" -m unittest discover -s tests -p "test_*.py" -v 2>&1 | tee "$GITHUB_WORKSPACE/suite_port.log"
+
+      - name: UIOPS enhancements suite
+        run: |
+          set -o pipefail
+          cd work/arrayprobe_uiops_enhancements-*/
+          "$PY" -m unittest discover -s tests -p "test_*.py" -v 2>&1 | tee "$GITHUB_WORKSPACE/suite_uiops.log"
+
+      - name: SODA-2 enhancements suite
+        run: |
+          set -o pipefail
+          cd work/arrayprobe_soda2_enhancements-*/
+          "$PY" -m unittest discover -s tests -p "test_*.py" -v 2>&1 | tee "$GITHUB_WORKSPACE/suite_soda2.log"
+
+      - name: Account for skips and the speed paths
+        if: always()
+        run: |
+          "$PY" - <<'PY'
+          import re, sys
+          bad = False
+          # Skips by the named distribution gates (tests/_repo.py) are counted and reported,
+          # not held against the share: a test of the v3.1.4 engine, of a repository file or
+          # of src/ skips by design where those are absent. The 15 % limit applies to the rest,
+          # so a suite that skips for any other reason still fails as mostly-skipping.
+          DESIGNED = (
+              "V3.1.4 validation engine, which is not part of the public distribution",
+              "reads a repository file the sdist does not carry",
+              "reads the package source under src/, which the installed-package run moves away",
+              "runs git on the repository checkout, which an unpacked sdist is not",
+          )
+          for log in ("suite_port.log", "suite_uiops.log", "suite_soda2.log"):
+              try:
+                  t = open(log, encoding="utf-8", errors="replace").read()
+              except FileNotFoundError:
+                  print(log, "MISSING"); bad = True; continue
+              # The LAST "Ran N tests" line is the suite's own summary (a test that runs
+              # unittest in a subprocess may echo a nested one earlier), and the skip
+              # count is read from the final OK / FAILED line, which belongs to it.
+              runs = re.findall(r"^Ran (\d+) tests?", t, re.M)
+              ends = re.findall(r"^(?:OK|FAILED)(?: \(([^)]*)\))?\s*$", t, re.M)
+              if not runs or not ends:
+                  print(log, "has no final 'Ran N tests' and OK/FAILED summary"); bad = True; continue
+              ran = int(runs[-1])
+              sk = re.search(r"skipped=(\d+)", ends[-1])
+              k = int(sk.group(1)) if sk else 0
+              designed = min(sum(t.count("skipped '" + r) for r in DESIGNED), k)
+              share = 100.0 * (k - designed) / max(ran - designed, 1)
+              print(f"{log}: ran {ran}, skipped {k}, {designed} of them by the distribution "
+                    f"gates; the other {k - designed} are {share:.2f} % of the rest")
+              if share > 15.0:
+                  print("  skipped share above 15 %: a mostly-skipping suite is a failure")
+                  bad = True
+          try:
+              t = open("suite_port.log", encoding="utf-8", errors="replace").read()
+          except FileNotFoundError:
+              t = ""
+          # Per-test outcomes from the -v log. A test line is "name (module.Class.name)"
+          # (or "name (module.Class)" before Python 3.11); its status ("... ok",
+          # "... skipped '...'", FAIL, ERROR) ends that line, or the next one when the
+          # test has a docstring, or a later one when the test wrote to stderr.
+          head = re.compile(r"^(test\w*) \(([\w.]+)\)")
+          stat = re.compile(r"(?:^|\.\.\. )(ok|FAIL|ERROR|skipped\b.*|expected failure"
+                            r"|unexpected success)\s*$")
+          lines = t.splitlines()
+          outcome = {}
+          for i, ln in enumerate(lines):
+              m = head.match(ln)
+              if not m:
+                  continue
+              meth, where = m.groups()
+              tid = where if where.endswith("." + meth) else f"{where}.{meth}"
+              res = "no status line"
+              for j in range(i, min(i + 200, len(lines))):
+                  if j > i and head.match(lines[j]):
+                      break
+                  s = stat.search(lines[j])
+                  if s:
+                      res = s.group(1); break
+              outcome.setdefault(tid, []).append(res)
+          # The byte-identity tests of the opt-in speed paths (--jit, --chunks,
+          # --s2-jobs), named one by one: each must report "ok", so a skip, a failure
+          # or a rename fails this step. Each runs on a tracked fixture or a synthetic
+          # input, so it can run in an install that never sees a checkout.
+          # test_v35_imgproc_jit_identity is deliberately absent: its two identity
+          # classes (JitIsByteIdentical, TheIdentityCheckFires) skip unless the
+          # gitignored _decoded/cip160906/sea_s1.CIP.cdf exists, so on every runner they
+          # skip, and that module has no identity test on a synthetic input to name.
+          REQUIRED = {
+              "test_v35_imgproc_merge_chunks": (
+                  "TestCipChunkedEqualsSerial.test_two_chunks_match_single_chunk",
+                  "TestCipChunkedEqualsSerial.test_every_variable_matches_at_the_raw_byte_level",
+                  "TestChunkedStage3UnderEngine35.test_chunked_stage3_is_byte_identical_to_a_single_chunk",
+              ),
+              "test_v35_spec_parallel": (
+                  "SyntheticMultiWindow.test_in_process_split_is_byte_identical",
+                  "Delegation.test_one_job_is_byte_identical_to_serial",
+                  "SyntheticMultiWindowThroughAPool.test_pool_decode_is_byte_identical",
+              ),
+              "test_soda2_jit_product_identity": (
+                  "JitProductIdenticalSpec.test_the_product_is_identical_with_the_kernel_on",
+                  "JitProductIdenticalCip.test_the_product_is_identical_with_the_kernel_on",
+              ),
+          }
+          for mod, names in REQUIRED.items():
+              for name in names:
+                  want = f"{mod}.{name}"
+                  got = [r for tid, rs in outcome.items()
+                         if tid == want or tid.endswith("." + want) for r in rs]
+                  ok = bool(got) and all(r == "ok" for r in got)
+                  print(want, "ok" if ok else f"NOT RUN OK ({', '.join(got) or 'absent'})")
+                  bad |= not ok
+          sys.exit(1 if bad else 0)
+          PY

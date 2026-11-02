@@ -1,0 +1,75 @@
+name: Bug report
+description: Something in the package crashes, errors, or behaves unexpectedly
+labels: ["bug"]
+body:
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened
+      description: Include the exact error message or traceback if there is one.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What you expected instead
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: How to reproduce
+      description: The exact command line or Python call, and what input it needs.
+    validations:
+      required: true
+  - type: dropdown
+    id: engine
+    attributes:
+      label: Which engine
+      description: >-
+        `arrayprobe_uiops` (UIOOPS v3.5, the default), `arrayprobe_soda2`, or the `uiops.engine()`
+        selector. If unsure, `uiops.VERSIONS` or the `arrayprobe engines` CLI command names it.
+      options:
+        - arrayprobe_uiops
+        - arrayprobe_soda2
+        - uiops.engine() selector
+        - not applicable / not sure
+    validations:
+      required: true
+  - type: input
+    id: profile-preset
+    attributes:
+      label: FidelityProfile and/or campaign preset used
+      description: >-
+        e.g. the `profile` or `preset` line from your configuration file — see
+        `docs/06-configuration.md`. Say "none" if the call passed neither.
+    validations:
+      required: false
+  - type: textarea
+    id: call-stamp
+    attributes:
+      label: .call sidecar of the product involved, if one exists
+      description: >-
+        Every processing stage stamps its configuration into a `<output>.call` sidecar next to
+        the file it wrote. Paste its contents here if the bug involves a file the pipeline
+        produced — it is the only record of which engine, profile and preset made it.
+    validations:
+      required: false
+  - type: input
+    id: version
+    attributes:
+      label: arrayprobe version and Python version
+      description: "`arrayprobe --version`-equivalent (pip show arrayprobe) and `python --version`"
+    validations:
+      required: true
+  - type: dropdown
+    id: os
+    attributes:
+      label: Operating system
+      options:
+        - Windows
+        - macOS
+        - Linux
+        - Other
+    validations:
+      required: true

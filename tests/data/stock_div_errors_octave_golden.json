@@ -1,0 +1,10 @@
+{
+  "iamissing/stock": {
+    "status": "ERROR",
+    "message": "No such file or directory"
+  },
+  "tasgap/stock": {
+    "status": "ERROR",
+    "message": "starttime(3): out of bound 2 (dimensions are 2x1)"
+  }
+}

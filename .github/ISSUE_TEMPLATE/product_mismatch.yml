@@ -1,0 +1,82 @@
+name: My product doesn't match my archived UIOOPS product
+description: >-
+  You already have a product this package wrote and a product a real UIOOPS (or SODA-2) run
+  wrote for the same input, and they disagree.
+labels: ["fidelity"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        This is different from a general "fidelity report": you already hold both files, so the
+        most useful first step is `arrayprobe validate`, which is read-only and compares files
+        the pipeline already wrote without recomputing anything. See
+        `docs/07-findings.md` for the standard this project holds its own
+        findings to, and the fidelity-report template if you have a live MATLAB/UIOOPS run rather
+        than an already-archived product.
+  - type: textarea
+    id: validate-output
+    attributes:
+      label: "`arrayprobe validate` output"
+      description: >-
+        Run the check that applies, e.g.
+        `arrayprobe validate by-condition <our combined product> --product <archived product>`
+        or `arrayprobe validate timing-closure <decoded> <proc>`, and paste the output here in
+        full. If neither check applies to your mismatch, say so and describe what you compared
+        instead (e.g. a specific bin, second, or particle count).
+    validations:
+      required: true
+  - type: dropdown
+    id: engine
+    attributes:
+      label: Which engine produced our product
+      options:
+        - arrayprobe_uiops
+        - arrayprobe_soda2
+        - not sure
+    validations:
+      required: true
+  - type: input
+    id: profile-preset
+    attributes:
+      label: FidelityProfile and/or campaign preset used
+      description: >-
+        e.g. the `profile` or `preset` line from your configuration file. If you have the
+        `.call` sidecar next to our output file, paste it in full below instead of retyping this.
+    validations:
+      required: false
+  - type: textarea
+    id: call-stamp
+    attributes:
+      label: .call sidecar of our product
+      description: >-
+        The `<output>.call` file next to the product our pipeline wrote — the record of exactly
+        which engine, profile and preset made it.
+    validations:
+      required: false
+  - type: input
+    id: archived-product-origin
+    attributes:
+      label: Where the archived UIOOPS/SODA-2 product came from
+      description: >-
+        Which release/version processed it, and under what configuration, if known — e.g. "UIOOPS
+        v3.5, a campaign's own threshold edits" or "SODA-2, stock config".
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: How to reproduce with arrayprobe
+      description: The exact command line or Python call that produced our product.
+    validations:
+      required: true
+  - type: textarea
+    id: input-file
+    attributes:
+      label: Input file
+      description: >-
+        A minimal raw file that reproduces the disagreement, or a description of how to obtain
+        one. If you cannot share the raw data, say so — the report is still useful, and you may
+        want the "Contribute a reference pair" template instead if this input isn't yet part of
+        the project's validation set.
+    validations:
+      required: false

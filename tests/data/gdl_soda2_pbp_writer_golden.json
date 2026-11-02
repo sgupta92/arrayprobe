@@ -1,0 +1,3175 @@
+[
+  {
+    "format_probes": {
+      "P1": "ok stdout='1\\n           1'",
+      "P2": "ok stdout='0.50000'",
+      "P3": "ok stdout='1.00000e-02\\n-1.00000e-03'",
+      "P4": "ok stdout='a,b,c'",
+      "P5": "ok stdout='2\\n2'",
+      "P6": "ok (file write with trailing $ succeeded, no error)",
+      "P7": "ok stdout='1\\n           1'"
+    },
+    "header_int_width": 7
+  },
+  {
+    "name": "one_buffer_3p",
+    "status": "OK",
+    "note": "control; upper-case attribute names, attribute dtypes, and the other writer quirks",
+    "particlefile": 1,
+    "ncdfparticlefile": 1,
+    "buffers": [
+      [
+        {},
+        {
+          "buffertime": 1.5,
+          "missed": 2.0
+        },
+        {
+          "buffertime": 2.5
+        }
+      ]
+    ],
+    "FN_CSV": "<tmp>/r8b_pgrzn4_1/20160906_000000_2DS_H.pbp.csv",
+    "FN_NCDF": "<tmp>/r8b_pgrzn4_1/20160906_000000_2DS_H.pbp.nc",
+    "EXISTS_CSV": "1",
+    "EXISTS_NCDF": "1",
+    "csv_tracked": "gdl_soda2_pbp_one_buffer_3p.pbp.csv",
+    "nc_tracked": "gdl_soda2_pbp_one_buffer_3p.pbp.nc",
+    "nc_digest": {
+      "dimensions": {
+        "Time": null
+      },
+      "variables": {
+        "time": {
+          "dtype": "float64",
+          "longname": "UTC time",
+          "units": "seconds",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "000000000000e03f000000000000f83f0000000000000440"
+        },
+        "probetime": {
+          "dtype": "float64",
+          "longname": "Unadjusted probe particle time",
+          "units": "seconds",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "000000000000000000000000000000000000000000000000"
+        },
+        "buffertime": {
+          "dtype": "float64",
+          "longname": "Buffer time",
+          "units": "seconds",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "000000000000e03f000000000000f83f0000000000000440"
+        },
+        "rawtime": {
+          "dtype": "float64",
+          "longname": "Raw time",
+          "units": "slices or seconds",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "000000000000000000000000000000000000000000000000"
+        },
+        "reftime": {
+          "dtype": "float64",
+          "longname": "Reference time for buffer matching",
+          "units": "seconds",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "000000000000000000000000000000000000000000000000"
+        },
+        "inttime": {
+          "dtype": "float32",
+          "longname": "Interarrival time from previous particle",
+          "units": "seconds",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0ad7233c0ad7233c0ad7233c"
+        },
+        "diam": {
+          "dtype": "float32",
+          "longname": "Particle diameter",
+          "units": "microns",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0000f0420000f0420000f042"
+        },
+        "xsize": {
+          "dtype": "float32",
+          "longname": "X-size",
+          "units": "microns",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "000000000000000000000000"
+        },
+        "ysize": {
+          "dtype": "float32",
+          "longname": "Y-size",
+          "units": "microns",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "000000000000000000000000"
+        },
+        "xextent": {
+          "dtype": "float32",
+          "longname": "Maximum x-size",
+          "units": "microns",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "000000000000000000000000"
+        },
+        "oned": {
+          "dtype": "float32",
+          "longname": "1-D emulation size",
+          "units": "microns",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "000000000000000000000000"
+        },
+        "twod": {
+          "dtype": "float32",
+          "longname": "2-D emulation size",
+          "units": "microns",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "000000000000000000000000"
+        },
+        "areasize": {
+          "dtype": "float32",
+          "longname": "Equivalent area size",
+          "units": "microns",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "000000000000000000000000"
+        },
+        "arearatio": {
+          "dtype": "float32",
+          "longname": "Area ratio",
+          "units": "unitless",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "cdcc4c3fcdcc4c3fcdcc4c3f"
+        },
+        "arearatiofilled": {
+          "dtype": "float32",
+          "longname": "Area ratio filled",
+          "units": "unitless",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "cdcc4c3fcdcc4c3fcdcc4c3f"
+        },
+        "aspectratio": {
+          "dtype": "float32",
+          "longname": "Aspect ratio",
+          "units": "unitless",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "cdcc4c3fcdcc4c3fcdcc4c3f"
+        },
+        "area": {
+          "dtype": "int16",
+          "longname": "Number of shaded pixels",
+          "units": "pixels",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "640064006400"
+        },
+        "areafilled": {
+          "dtype": "int16",
+          "longname": "Number of shaded pixels filled",
+          "units": "pixels",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "640064006400"
+        },
+        "perimeterarea": {
+          "dtype": "int16",
+          "longname": "Number of perimeter pixels",
+          "units": "pixels",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "320032003200"
+        },
+        "area75": {
+          "dtype": "int16",
+          "longname": "Number of shaded pixels at 75%",
+          "units": "pixels",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "500050005000"
+        },
+        "xpos": {
+          "dtype": "float32",
+          "longname": "X-position",
+          "units": "pixels",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "000000000000000000000000"
+        },
+        "ypos": {
+          "dtype": "float32",
+          "longname": "Y-position",
+          "units": "pixels",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "000000000000000000000000"
+        },
+        "allin": {
+          "dtype": "int8",
+          "longname": "All-in flag",
+          "units": "unitless",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "010101"
+        },
+        "centerin": {
+          "dtype": "int8",
+          "longname": "Center-in flag",
+          "units": "unitless",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "010101"
+        },
+        "dofflag": {
+          "dtype": "int8",
+          "longname": "Depth of field flag",
+          "units": "unitless",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "010101"
+        },
+        "edgetouch": {
+          "dtype": "int8",
+          "longname": "Edge touch",
+          "units": "unitless",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "000000"
+        },
+        "sizecorrection": {
+          "dtype": "float32",
+          "longname": "Size correction factor",
+          "units": "unitless",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "000000000000000000000000"
+        },
+        "zd": {
+          "dtype": "float32",
+          "longname": "Z position",
+          "units": "microns",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "000000000000000000000000"
+        },
+        "missed": {
+          "dtype": "float32",
+          "longname": "Missed particle count",
+          "units": "number",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "000000000000004000000000"
+        },
+        "probetas": {
+          "dtype": "float32",
+          "longname": "True air speed for probe clock",
+          "units": "m/s",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "000048420000484200004842"
+        },
+        "aircrafttas": {
+          "dtype": "float32",
+          "longname": "True air speed for aircraft",
+          "units": "m/s",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "000000000000000000000000"
+        },
+        "overloadflag": {
+          "dtype": "int8",
+          "longname": "Overload flag",
+          "units": "boolean",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "000000"
+        },
+        "particlecounter": {
+          "dtype": "int32",
+          "longname": "Particle counter",
+          "units": "number",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "000000000000000000000000"
+        },
+        "orientation": {
+          "dtype": "float32",
+          "longname": "Particle orientation",
+          "units": "degrees",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "000000000000000000000000"
+        },
+        "rejectionflag": {
+          "dtype": "int8",
+          "longname": "Particle rejection code",
+          "units": "unitless",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "000000"
+        },
+        "numregions": {
+          "dtype": "int8",
+          "longname": "Number of connected regions",
+          "units": "count",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "000000"
+        },
+        "diodegaps": {
+          "dtype": "int16",
+          "longname": "Number of unshaded diodes",
+          "units": "count",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "000000000000"
+        }
+      },
+      "global_attrs": {
+        "Source": {
+          "dtype": "str",
+          "value": "SODA-2 OAP Processing Software"
+        },
+        "FlightDate": {
+          "dtype": "str",
+          "value": "09/06/2016"
+        },
+        "TimeInterval": {
+          "dtype": "str",
+          "value": "x"
+        },
+        "FORMAT": {
+          "dtype": "str",
+          "value": "SPEC"
+        },
+        "PROBETYPE": {
+          "dtype": "str",
+          "value": "2DS"
+        },
+        "PROBEID": {
+          "dtype": "str",
+          "value": "H"
+        },
+        "SHORTNAME": {
+          "dtype": "str",
+          "value": "2DS"
+        },
+        "DATE": {
+          "dtype": "str",
+          "value": "20160906"
+        },
+        "STARTTIME": {
+          "dtype": "float64",
+          "value": 0.0
+        },
+        "STOPTIME": {
+          "dtype": "float64",
+          "value": 4.0
+        },
+        "RATE": {
+          "dtype": "float32",
+          "value": "1.0"
+        },
+        "OUTDIR": {
+          "dtype": "str",
+          "value": "<tmp>/r8b_pgrzn4_1/"
+        },
+        "FILETAG": {
+          "dtype": "str",
+          "value": "none"
+        },
+        "CLUSTERTHRESH": {
+          "dtype": "float32",
+          "value": "0.0"
+        },
+        "INTTIME_REJECT": {
+          "dtype": "int16",
+          "value": "0"
+        },
+        "SMETHOD": {
+          "dtype": "str",
+          "value": "diam"
+        },
+        "APPLY_PSC": {
+          "dtype": "int16",
+          "value": "0"
+        },
+        "APPLY_PSC_SIZELIMIT": {
+          "dtype": "float32",
+          "value": "0.0"
+        },
+        "WATER": {
+          "dtype": "int16",
+          "value": "0"
+        },
+        "ENDBINS": {
+          "dtype": "int16",
+          "value": [
+            10,
+            50,
+            100,
+            200,
+            500
+          ]
+        },
+        "ARENDBINS": {
+          "dtype": "float32",
+          "value": [
+            0.0,
+            0.5,
+            1.0
+          ]
+        },
+        "EAWMETHOD": {
+          "dtype": "str",
+          "value": "allin"
+        },
+        "RES": {
+          "dtype": "float32",
+          "value": "10.0"
+        },
+        "DOFREJECT": {
+          "dtype": "int16",
+          "value": "1"
+        },
+        "NCDFPARTICLEFILE": {
+          "dtype": "int16",
+          "value": "1"
+        },
+        "PARTICLEFILE": {
+          "dtype": "int16",
+          "value": "1"
+        }
+      }
+    }
+  },
+  {
+    "name": "two_buffers_offset",
+    "status": "OK",
+    "note": ":569 offset continuity, 3 then 2 particles",
+    "particlefile": 1,
+    "ncdfparticlefile": 1,
+    "buffers": [
+      [
+        {},
+        {
+          "buffertime": 1.5
+        },
+        {
+          "buffertime": 2.5
+        }
+      ],
+      [
+        {
+          "buffertime": 3.1
+        },
+        {
+          "buffertime": 3.5
+        }
+      ]
+    ],
+    "FN_CSV": "<tmp>/r8b_n6t6pbed/20160906_000000_2DS_H.pbp.csv",
+    "FN_NCDF": "<tmp>/r8b_n6t6pbed/20160906_000000_2DS_H.pbp.nc",
+    "EXISTS_CSV": "1",
+    "EXISTS_NCDF": "1",
+    "csv_tracked": "gdl_soda2_pbp_two_buffers_offset.pbp.csv",
+    "nc_tracked": "gdl_soda2_pbp_two_buffers_offset.pbp.nc",
+    "nc_digest": {
+      "dimensions": {
+        "Time": null
+      },
+      "variables": {
+        "time": {
+          "dtype": "float64",
+          "longname": "UTC time",
+          "units": "seconds",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "000000000000e03f000000000000f83f0000000000000440cdcccccccccc08400000000000000c40"
+        },
+        "probetime": {
+          "dtype": "float64",
+          "longname": "Unadjusted probe particle time",
+          "units": "seconds",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "00000000000000000000000000000000000000000000000000000000000000000000000000000000"
+        },
+        "buffertime": {
+          "dtype": "float64",
+          "longname": "Buffer time",
+          "units": "seconds",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "000000000000e03f000000000000f83f0000000000000440cdcccccccccc08400000000000000c40"
+        },
+        "rawtime": {
+          "dtype": "float64",
+          "longname": "Raw time",
+          "units": "slices or seconds",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "00000000000000000000000000000000000000000000000000000000000000000000000000000000"
+        },
+        "reftime": {
+          "dtype": "float64",
+          "longname": "Reference time for buffer matching",
+          "units": "seconds",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "00000000000000000000000000000000000000000000000000000000000000000000000000000000"
+        },
+        "inttime": {
+          "dtype": "float32",
+          "longname": "Interarrival time from previous particle",
+          "units": "seconds",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0ad7233c0ad7233c0ad7233c0ad7233c0ad7233c"
+        },
+        "diam": {
+          "dtype": "float32",
+          "longname": "Particle diameter",
+          "units": "microns",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0000f0420000f0420000f0420000f0420000f042"
+        },
+        "xsize": {
+          "dtype": "float32",
+          "longname": "X-size",
+          "units": "microns",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0000000000000000000000000000000000000000"
+        },
+        "ysize": {
+          "dtype": "float32",
+          "longname": "Y-size",
+          "units": "microns",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0000000000000000000000000000000000000000"
+        },
+        "xextent": {
+          "dtype": "float32",
+          "longname": "Maximum x-size",
+          "units": "microns",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0000000000000000000000000000000000000000"
+        },
+        "oned": {
+          "dtype": "float32",
+          "longname": "1-D emulation size",
+          "units": "microns",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0000000000000000000000000000000000000000"
+        },
+        "twod": {
+          "dtype": "float32",
+          "longname": "2-D emulation size",
+          "units": "microns",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0000000000000000000000000000000000000000"
+        },
+        "areasize": {
+          "dtype": "float32",
+          "longname": "Equivalent area size",
+          "units": "microns",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0000000000000000000000000000000000000000"
+        },
+        "arearatio": {
+          "dtype": "float32",
+          "longname": "Area ratio",
+          "units": "unitless",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "cdcc4c3fcdcc4c3fcdcc4c3fcdcc4c3fcdcc4c3f"
+        },
+        "arearatiofilled": {
+          "dtype": "float32",
+          "longname": "Area ratio filled",
+          "units": "unitless",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "cdcc4c3fcdcc4c3fcdcc4c3fcdcc4c3fcdcc4c3f"
+        },
+        "aspectratio": {
+          "dtype": "float32",
+          "longname": "Aspect ratio",
+          "units": "unitless",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "cdcc4c3fcdcc4c3fcdcc4c3fcdcc4c3fcdcc4c3f"
+        },
+        "area": {
+          "dtype": "int16",
+          "longname": "Number of shaded pixels",
+          "units": "pixels",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "64006400640064006400"
+        },
+        "areafilled": {
+          "dtype": "int16",
+          "longname": "Number of shaded pixels filled",
+          "units": "pixels",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "64006400640064006400"
+        },
+        "perimeterarea": {
+          "dtype": "int16",
+          "longname": "Number of perimeter pixels",
+          "units": "pixels",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "32003200320032003200"
+        },
+        "area75": {
+          "dtype": "int16",
+          "longname": "Number of shaded pixels at 75%",
+          "units": "pixels",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "50005000500050005000"
+        },
+        "xpos": {
+          "dtype": "float32",
+          "longname": "X-position",
+          "units": "pixels",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0000000000000000000000000000000000000000"
+        },
+        "ypos": {
+          "dtype": "float32",
+          "longname": "Y-position",
+          "units": "pixels",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0000000000000000000000000000000000000000"
+        },
+        "allin": {
+          "dtype": "int8",
+          "longname": "All-in flag",
+          "units": "unitless",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0101010101"
+        },
+        "centerin": {
+          "dtype": "int8",
+          "longname": "Center-in flag",
+          "units": "unitless",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0101010101"
+        },
+        "dofflag": {
+          "dtype": "int8",
+          "longname": "Depth of field flag",
+          "units": "unitless",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0101010101"
+        },
+        "edgetouch": {
+          "dtype": "int8",
+          "longname": "Edge touch",
+          "units": "unitless",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0000000000"
+        },
+        "sizecorrection": {
+          "dtype": "float32",
+          "longname": "Size correction factor",
+          "units": "unitless",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0000000000000000000000000000000000000000"
+        },
+        "zd": {
+          "dtype": "float32",
+          "longname": "Z position",
+          "units": "microns",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0000000000000000000000000000000000000000"
+        },
+        "missed": {
+          "dtype": "float32",
+          "longname": "Missed particle count",
+          "units": "number",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0000000000000000000000000000000000000000"
+        },
+        "probetas": {
+          "dtype": "float32",
+          "longname": "True air speed for probe clock",
+          "units": "m/s",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0000484200004842000048420000484200004842"
+        },
+        "aircrafttas": {
+          "dtype": "float32",
+          "longname": "True air speed for aircraft",
+          "units": "m/s",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0000000000000000000000000000000000000000"
+        },
+        "overloadflag": {
+          "dtype": "int8",
+          "longname": "Overload flag",
+          "units": "boolean",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0000000000"
+        },
+        "particlecounter": {
+          "dtype": "int32",
+          "longname": "Particle counter",
+          "units": "number",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0000000000000000000000000000000000000000"
+        },
+        "orientation": {
+          "dtype": "float32",
+          "longname": "Particle orientation",
+          "units": "degrees",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0000000000000000000000000000000000000000"
+        },
+        "rejectionflag": {
+          "dtype": "int8",
+          "longname": "Particle rejection code",
+          "units": "unitless",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0000000000"
+        },
+        "numregions": {
+          "dtype": "int8",
+          "longname": "Number of connected regions",
+          "units": "count",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0000000000"
+        },
+        "diodegaps": {
+          "dtype": "int16",
+          "longname": "Number of unshaded diodes",
+          "units": "count",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "00000000000000000000"
+        }
+      },
+      "global_attrs": {
+        "Source": {
+          "dtype": "str",
+          "value": "SODA-2 OAP Processing Software"
+        },
+        "FlightDate": {
+          "dtype": "str",
+          "value": "09/06/2016"
+        },
+        "TimeInterval": {
+          "dtype": "str",
+          "value": "x"
+        },
+        "FORMAT": {
+          "dtype": "str",
+          "value": "SPEC"
+        },
+        "PROBETYPE": {
+          "dtype": "str",
+          "value": "2DS"
+        },
+        "PROBEID": {
+          "dtype": "str",
+          "value": "H"
+        },
+        "SHORTNAME": {
+          "dtype": "str",
+          "value": "2DS"
+        },
+        "DATE": {
+          "dtype": "str",
+          "value": "20160906"
+        },
+        "STARTTIME": {
+          "dtype": "float64",
+          "value": 0.0
+        },
+        "STOPTIME": {
+          "dtype": "float64",
+          "value": 4.0
+        },
+        "RATE": {
+          "dtype": "float32",
+          "value": "1.0"
+        },
+        "OUTDIR": {
+          "dtype": "str",
+          "value": "<tmp>/r8b_n6t6pbed/"
+        },
+        "FILETAG": {
+          "dtype": "str",
+          "value": "none"
+        },
+        "CLUSTERTHRESH": {
+          "dtype": "float32",
+          "value": "0.0"
+        },
+        "INTTIME_REJECT": {
+          "dtype": "int16",
+          "value": "0"
+        },
+        "SMETHOD": {
+          "dtype": "str",
+          "value": "diam"
+        },
+        "APPLY_PSC": {
+          "dtype": "int16",
+          "value": "0"
+        },
+        "APPLY_PSC_SIZELIMIT": {
+          "dtype": "float32",
+          "value": "0.0"
+        },
+        "WATER": {
+          "dtype": "int16",
+          "value": "0"
+        },
+        "ENDBINS": {
+          "dtype": "int16",
+          "value": [
+            10,
+            50,
+            100,
+            200,
+            500
+          ]
+        },
+        "ARENDBINS": {
+          "dtype": "float32",
+          "value": [
+            0.0,
+            0.5,
+            1.0
+          ]
+        },
+        "EAWMETHOD": {
+          "dtype": "str",
+          "value": "allin"
+        },
+        "RES": {
+          "dtype": "float32",
+          "value": "10.0"
+        },
+        "DOFREJECT": {
+          "dtype": "int16",
+          "value": "1"
+        },
+        "NCDFPARTICLEFILE": {
+          "dtype": "int16",
+          "value": "1"
+        },
+        "PARTICLEFILE": {
+          "dtype": "int16",
+          "value": "1"
+        }
+      }
+    }
+  },
+  {
+    "name": "negative_inttime",
+    "status": "OK",
+    "note": "S6-i: inttime variable clamped to 0 in netCDF while CSV prints raw negative",
+    "particlefile": 1,
+    "ncdfparticlefile": 1,
+    "buffers": [
+      [
+        {
+          "inttime": -0.5
+        },
+        {
+          "buffertime": 999.5
+        }
+      ]
+    ],
+    "FN_CSV": "<tmp>/r8b_3ttklctu/20160906_000000_2DS_H.pbp.csv",
+    "FN_NCDF": "<tmp>/r8b_3ttklctu/20160906_000000_2DS_H.pbp.nc",
+    "EXISTS_CSV": "1",
+    "EXISTS_NCDF": "1",
+    "csv_tracked": "gdl_soda2_pbp_negative_inttime.pbp.csv",
+    "nc_tracked": "gdl_soda2_pbp_negative_inttime.pbp.nc",
+    "nc_digest": {
+      "dimensions": {
+        "Time": null
+      },
+      "variables": {
+        "time": {
+          "dtype": "float64",
+          "longname": "UTC time",
+          "units": "seconds",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "000000000000e03f00000000003c8f40"
+        },
+        "probetime": {
+          "dtype": "float64",
+          "longname": "Unadjusted probe particle time",
+          "units": "seconds",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "00000000000000000000000000000000"
+        },
+        "buffertime": {
+          "dtype": "float64",
+          "longname": "Buffer time",
+          "units": "seconds",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "000000000000e03f00000000003c8f40"
+        },
+        "rawtime": {
+          "dtype": "float64",
+          "longname": "Raw time",
+          "units": "slices or seconds",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "00000000000000000000000000000000"
+        },
+        "reftime": {
+          "dtype": "float64",
+          "longname": "Reference time for buffer matching",
+          "units": "seconds",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "00000000000000000000000000000000"
+        },
+        "inttime": {
+          "dtype": "float32",
+          "longname": "Interarrival time from previous particle",
+          "units": "seconds",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "000000000ad7233c"
+        },
+        "diam": {
+          "dtype": "float32",
+          "longname": "Particle diameter",
+          "units": "microns",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0000f0420000f042"
+        },
+        "xsize": {
+          "dtype": "float32",
+          "longname": "X-size",
+          "units": "microns",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0000000000000000"
+        },
+        "ysize": {
+          "dtype": "float32",
+          "longname": "Y-size",
+          "units": "microns",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0000000000000000"
+        },
+        "xextent": {
+          "dtype": "float32",
+          "longname": "Maximum x-size",
+          "units": "microns",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0000000000000000"
+        },
+        "oned": {
+          "dtype": "float32",
+          "longname": "1-D emulation size",
+          "units": "microns",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0000000000000000"
+        },
+        "twod": {
+          "dtype": "float32",
+          "longname": "2-D emulation size",
+          "units": "microns",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0000000000000000"
+        },
+        "areasize": {
+          "dtype": "float32",
+          "longname": "Equivalent area size",
+          "units": "microns",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0000000000000000"
+        },
+        "arearatio": {
+          "dtype": "float32",
+          "longname": "Area ratio",
+          "units": "unitless",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "cdcc4c3fcdcc4c3f"
+        },
+        "arearatiofilled": {
+          "dtype": "float32",
+          "longname": "Area ratio filled",
+          "units": "unitless",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "cdcc4c3fcdcc4c3f"
+        },
+        "aspectratio": {
+          "dtype": "float32",
+          "longname": "Aspect ratio",
+          "units": "unitless",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "cdcc4c3fcdcc4c3f"
+        },
+        "area": {
+          "dtype": "int16",
+          "longname": "Number of shaded pixels",
+          "units": "pixels",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "64006400"
+        },
+        "areafilled": {
+          "dtype": "int16",
+          "longname": "Number of shaded pixels filled",
+          "units": "pixels",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "64006400"
+        },
+        "perimeterarea": {
+          "dtype": "int16",
+          "longname": "Number of perimeter pixels",
+          "units": "pixels",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "32003200"
+        },
+        "area75": {
+          "dtype": "int16",
+          "longname": "Number of shaded pixels at 75%",
+          "units": "pixels",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "50005000"
+        },
+        "xpos": {
+          "dtype": "float32",
+          "longname": "X-position",
+          "units": "pixels",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0000000000000000"
+        },
+        "ypos": {
+          "dtype": "float32",
+          "longname": "Y-position",
+          "units": "pixels",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0000000000000000"
+        },
+        "allin": {
+          "dtype": "int8",
+          "longname": "All-in flag",
+          "units": "unitless",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0101"
+        },
+        "centerin": {
+          "dtype": "int8",
+          "longname": "Center-in flag",
+          "units": "unitless",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0101"
+        },
+        "dofflag": {
+          "dtype": "int8",
+          "longname": "Depth of field flag",
+          "units": "unitless",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0101"
+        },
+        "edgetouch": {
+          "dtype": "int8",
+          "longname": "Edge touch",
+          "units": "unitless",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0000"
+        },
+        "sizecorrection": {
+          "dtype": "float32",
+          "longname": "Size correction factor",
+          "units": "unitless",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0000000000000000"
+        },
+        "zd": {
+          "dtype": "float32",
+          "longname": "Z position",
+          "units": "microns",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0000000000000000"
+        },
+        "missed": {
+          "dtype": "float32",
+          "longname": "Missed particle count",
+          "units": "number",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0000000000000000"
+        },
+        "probetas": {
+          "dtype": "float32",
+          "longname": "True air speed for probe clock",
+          "units": "m/s",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0000484200004842"
+        },
+        "aircrafttas": {
+          "dtype": "float32",
+          "longname": "True air speed for aircraft",
+          "units": "m/s",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0000000000000000"
+        },
+        "overloadflag": {
+          "dtype": "int8",
+          "longname": "Overload flag",
+          "units": "boolean",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0000"
+        },
+        "particlecounter": {
+          "dtype": "int32",
+          "longname": "Particle counter",
+          "units": "number",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0000000000000000"
+        },
+        "orientation": {
+          "dtype": "float32",
+          "longname": "Particle orientation",
+          "units": "degrees",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0000000000000000"
+        },
+        "rejectionflag": {
+          "dtype": "int8",
+          "longname": "Particle rejection code",
+          "units": "unitless",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0000"
+        },
+        "numregions": {
+          "dtype": "int8",
+          "longname": "Number of connected regions",
+          "units": "count",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0000"
+        },
+        "diodegaps": {
+          "dtype": "int16",
+          "longname": "Number of unshaded diodes",
+          "units": "count",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "00000000"
+        }
+      },
+      "global_attrs": {
+        "Source": {
+          "dtype": "str",
+          "value": "SODA-2 OAP Processing Software"
+        },
+        "FlightDate": {
+          "dtype": "str",
+          "value": "09/06/2016"
+        },
+        "TimeInterval": {
+          "dtype": "str",
+          "value": "x"
+        },
+        "FORMAT": {
+          "dtype": "str",
+          "value": "SPEC"
+        },
+        "PROBETYPE": {
+          "dtype": "str",
+          "value": "2DS"
+        },
+        "PROBEID": {
+          "dtype": "str",
+          "value": "H"
+        },
+        "SHORTNAME": {
+          "dtype": "str",
+          "value": "2DS"
+        },
+        "DATE": {
+          "dtype": "str",
+          "value": "20160906"
+        },
+        "STARTTIME": {
+          "dtype": "float64",
+          "value": 0.0
+        },
+        "STOPTIME": {
+          "dtype": "float64",
+          "value": 4.0
+        },
+        "RATE": {
+          "dtype": "float32",
+          "value": "1.0"
+        },
+        "OUTDIR": {
+          "dtype": "str",
+          "value": "<tmp>/r8b_3ttklctu/"
+        },
+        "FILETAG": {
+          "dtype": "str",
+          "value": "none"
+        },
+        "CLUSTERTHRESH": {
+          "dtype": "float32",
+          "value": "0.0"
+        },
+        "INTTIME_REJECT": {
+          "dtype": "int16",
+          "value": "0"
+        },
+        "SMETHOD": {
+          "dtype": "str",
+          "value": "diam"
+        },
+        "APPLY_PSC": {
+          "dtype": "int16",
+          "value": "0"
+        },
+        "APPLY_PSC_SIZELIMIT": {
+          "dtype": "float32",
+          "value": "0.0"
+        },
+        "WATER": {
+          "dtype": "int16",
+          "value": "0"
+        },
+        "ENDBINS": {
+          "dtype": "int16",
+          "value": [
+            10,
+            50,
+            100,
+            200,
+            500
+          ]
+        },
+        "ARENDBINS": {
+          "dtype": "float32",
+          "value": [
+            0.0,
+            0.5,
+            1.0
+          ]
+        },
+        "EAWMETHOD": {
+          "dtype": "str",
+          "value": "allin"
+        },
+        "RES": {
+          "dtype": "float32",
+          "value": "10.0"
+        },
+        "DOFREJECT": {
+          "dtype": "int16",
+          "value": "1"
+        },
+        "NCDFPARTICLEFILE": {
+          "dtype": "int16",
+          "value": "1"
+        },
+        "PARTICLEFILE": {
+          "dtype": "int16",
+          "value": "1"
+        }
+      }
+    }
+  },
+  {
+    "name": "reject_128",
+    "status": "OK",
+    "note": "S6-k: CSV prints 128 (dofflag=0,dofreject=1), netCDF rejectionflag int8 reads -128",
+    "particlefile": 1,
+    "ncdfparticlefile": 1,
+    "buffers": [
+      [
+        {
+          "dofflag": 0
+        },
+        {
+          "buffertime": 999.5
+        }
+      ]
+    ],
+    "FN_CSV": "<tmp>/r8b_s11gzf0v/20160906_000000_2DS_H.pbp.csv",
+    "FN_NCDF": "<tmp>/r8b_s11gzf0v/20160906_000000_2DS_H.pbp.nc",
+    "EXISTS_CSV": "1",
+    "EXISTS_NCDF": "1",
+    "csv_tracked": "gdl_soda2_pbp_reject_128.pbp.csv",
+    "nc_tracked": "gdl_soda2_pbp_reject_128.pbp.nc",
+    "nc_digest": {
+      "dimensions": {
+        "Time": null
+      },
+      "variables": {
+        "time": {
+          "dtype": "float64",
+          "longname": "UTC time",
+          "units": "seconds",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "000000000000e03f00000000003c8f40"
+        },
+        "probetime": {
+          "dtype": "float64",
+          "longname": "Unadjusted probe particle time",
+          "units": "seconds",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "00000000000000000000000000000000"
+        },
+        "buffertime": {
+          "dtype": "float64",
+          "longname": "Buffer time",
+          "units": "seconds",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "000000000000e03f00000000003c8f40"
+        },
+        "rawtime": {
+          "dtype": "float64",
+          "longname": "Raw time",
+          "units": "slices or seconds",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "00000000000000000000000000000000"
+        },
+        "reftime": {
+          "dtype": "float64",
+          "longname": "Reference time for buffer matching",
+          "units": "seconds",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "00000000000000000000000000000000"
+        },
+        "inttime": {
+          "dtype": "float32",
+          "longname": "Interarrival time from previous particle",
+          "units": "seconds",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0ad7233c0ad7233c"
+        },
+        "diam": {
+          "dtype": "float32",
+          "longname": "Particle diameter",
+          "units": "microns",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0000f0420000f042"
+        },
+        "xsize": {
+          "dtype": "float32",
+          "longname": "X-size",
+          "units": "microns",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0000000000000000"
+        },
+        "ysize": {
+          "dtype": "float32",
+          "longname": "Y-size",
+          "units": "microns",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0000000000000000"
+        },
+        "xextent": {
+          "dtype": "float32",
+          "longname": "Maximum x-size",
+          "units": "microns",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0000000000000000"
+        },
+        "oned": {
+          "dtype": "float32",
+          "longname": "1-D emulation size",
+          "units": "microns",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0000000000000000"
+        },
+        "twod": {
+          "dtype": "float32",
+          "longname": "2-D emulation size",
+          "units": "microns",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0000000000000000"
+        },
+        "areasize": {
+          "dtype": "float32",
+          "longname": "Equivalent area size",
+          "units": "microns",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0000000000000000"
+        },
+        "arearatio": {
+          "dtype": "float32",
+          "longname": "Area ratio",
+          "units": "unitless",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "cdcc4c3fcdcc4c3f"
+        },
+        "arearatiofilled": {
+          "dtype": "float32",
+          "longname": "Area ratio filled",
+          "units": "unitless",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "cdcc4c3fcdcc4c3f"
+        },
+        "aspectratio": {
+          "dtype": "float32",
+          "longname": "Aspect ratio",
+          "units": "unitless",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "cdcc4c3fcdcc4c3f"
+        },
+        "area": {
+          "dtype": "int16",
+          "longname": "Number of shaded pixels",
+          "units": "pixels",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "64006400"
+        },
+        "areafilled": {
+          "dtype": "int16",
+          "longname": "Number of shaded pixels filled",
+          "units": "pixels",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "64006400"
+        },
+        "perimeterarea": {
+          "dtype": "int16",
+          "longname": "Number of perimeter pixels",
+          "units": "pixels",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "32003200"
+        },
+        "area75": {
+          "dtype": "int16",
+          "longname": "Number of shaded pixels at 75%",
+          "units": "pixels",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "50005000"
+        },
+        "xpos": {
+          "dtype": "float32",
+          "longname": "X-position",
+          "units": "pixels",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0000000000000000"
+        },
+        "ypos": {
+          "dtype": "float32",
+          "longname": "Y-position",
+          "units": "pixels",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0000000000000000"
+        },
+        "allin": {
+          "dtype": "int8",
+          "longname": "All-in flag",
+          "units": "unitless",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0101"
+        },
+        "centerin": {
+          "dtype": "int8",
+          "longname": "Center-in flag",
+          "units": "unitless",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0101"
+        },
+        "dofflag": {
+          "dtype": "int8",
+          "longname": "Depth of field flag",
+          "units": "unitless",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0001"
+        },
+        "edgetouch": {
+          "dtype": "int8",
+          "longname": "Edge touch",
+          "units": "unitless",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0000"
+        },
+        "sizecorrection": {
+          "dtype": "float32",
+          "longname": "Size correction factor",
+          "units": "unitless",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0000000000000000"
+        },
+        "zd": {
+          "dtype": "float32",
+          "longname": "Z position",
+          "units": "microns",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0000000000000000"
+        },
+        "missed": {
+          "dtype": "float32",
+          "longname": "Missed particle count",
+          "units": "number",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0000000000000000"
+        },
+        "probetas": {
+          "dtype": "float32",
+          "longname": "True air speed for probe clock",
+          "units": "m/s",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0000484200004842"
+        },
+        "aircrafttas": {
+          "dtype": "float32",
+          "longname": "True air speed for aircraft",
+          "units": "m/s",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0000000000000000"
+        },
+        "overloadflag": {
+          "dtype": "int8",
+          "longname": "Overload flag",
+          "units": "boolean",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0000"
+        },
+        "particlecounter": {
+          "dtype": "int32",
+          "longname": "Particle counter",
+          "units": "number",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0000000000000000"
+        },
+        "orientation": {
+          "dtype": "float32",
+          "longname": "Particle orientation",
+          "units": "degrees",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0000000000000000"
+        },
+        "rejectionflag": {
+          "dtype": "int8",
+          "longname": "Particle rejection code",
+          "units": "unitless",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "8000"
+        },
+        "numregions": {
+          "dtype": "int8",
+          "longname": "Number of connected regions",
+          "units": "count",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0000"
+        },
+        "diodegaps": {
+          "dtype": "int16",
+          "longname": "Number of unshaded diodes",
+          "units": "count",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "00000000"
+        }
+      },
+      "global_attrs": {
+        "Source": {
+          "dtype": "str",
+          "value": "SODA-2 OAP Processing Software"
+        },
+        "FlightDate": {
+          "dtype": "str",
+          "value": "09/06/2016"
+        },
+        "TimeInterval": {
+          "dtype": "str",
+          "value": "x"
+        },
+        "FORMAT": {
+          "dtype": "str",
+          "value": "SPEC"
+        },
+        "PROBETYPE": {
+          "dtype": "str",
+          "value": "2DS"
+        },
+        "PROBEID": {
+          "dtype": "str",
+          "value": "H"
+        },
+        "SHORTNAME": {
+          "dtype": "str",
+          "value": "2DS"
+        },
+        "DATE": {
+          "dtype": "str",
+          "value": "20160906"
+        },
+        "STARTTIME": {
+          "dtype": "float64",
+          "value": 0.0
+        },
+        "STOPTIME": {
+          "dtype": "float64",
+          "value": 4.0
+        },
+        "RATE": {
+          "dtype": "float32",
+          "value": "1.0"
+        },
+        "OUTDIR": {
+          "dtype": "str",
+          "value": "<tmp>/r8b_s11gzf0v/"
+        },
+        "FILETAG": {
+          "dtype": "str",
+          "value": "none"
+        },
+        "CLUSTERTHRESH": {
+          "dtype": "float32",
+          "value": "0.0"
+        },
+        "INTTIME_REJECT": {
+          "dtype": "int16",
+          "value": "0"
+        },
+        "SMETHOD": {
+          "dtype": "str",
+          "value": "diam"
+        },
+        "APPLY_PSC": {
+          "dtype": "int16",
+          "value": "0"
+        },
+        "APPLY_PSC_SIZELIMIT": {
+          "dtype": "float32",
+          "value": "0.0"
+        },
+        "WATER": {
+          "dtype": "int16",
+          "value": "0"
+        },
+        "ENDBINS": {
+          "dtype": "int16",
+          "value": [
+            10,
+            50,
+            100,
+            200,
+            500
+          ]
+        },
+        "ARENDBINS": {
+          "dtype": "float32",
+          "value": [
+            0.0,
+            0.5,
+            1.0
+          ]
+        },
+        "EAWMETHOD": {
+          "dtype": "str",
+          "value": "allin"
+        },
+        "RES": {
+          "dtype": "float32",
+          "value": "10.0"
+        },
+        "DOFREJECT": {
+          "dtype": "int16",
+          "value": "1"
+        },
+        "NCDFPARTICLEFILE": {
+          "dtype": "int16",
+          "value": "1"
+        },
+        "PARTICLEFILE": {
+          "dtype": "int16",
+          "value": "1"
+        }
+      }
+    }
+  },
+  {
+    "name": "float_to_int_columns",
+    "status": "OK",
+    "note": "CSV (i0) format applied to a float and netCDF short columns: both TRUNCATE",
+    "particlefile": 1,
+    "ncdfparticlefile": 1,
+    "buffers": [
+      [
+        {
+          "missed": 2.7,
+          "area": 2.5,
+          "areafilled": 3.5,
+          "area75": 0.4999
+        },
+        {
+          "buffertime": 999.5
+        }
+      ]
+    ],
+    "FN_CSV": "<tmp>/r8b__irs9uci/20160906_000000_2DS_H.pbp.csv",
+    "FN_NCDF": "<tmp>/r8b__irs9uci/20160906_000000_2DS_H.pbp.nc",
+    "EXISTS_CSV": "1",
+    "EXISTS_NCDF": "1",
+    "csv_tracked": "gdl_soda2_pbp_float_to_int_columns.pbp.csv",
+    "nc_tracked": "gdl_soda2_pbp_float_to_int_columns.pbp.nc",
+    "nc_digest": {
+      "dimensions": {
+        "Time": null
+      },
+      "variables": {
+        "time": {
+          "dtype": "float64",
+          "longname": "UTC time",
+          "units": "seconds",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "000000000000e03f00000000003c8f40"
+        },
+        "probetime": {
+          "dtype": "float64",
+          "longname": "Unadjusted probe particle time",
+          "units": "seconds",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "00000000000000000000000000000000"
+        },
+        "buffertime": {
+          "dtype": "float64",
+          "longname": "Buffer time",
+          "units": "seconds",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "000000000000e03f00000000003c8f40"
+        },
+        "rawtime": {
+          "dtype": "float64",
+          "longname": "Raw time",
+          "units": "slices or seconds",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "00000000000000000000000000000000"
+        },
+        "reftime": {
+          "dtype": "float64",
+          "longname": "Reference time for buffer matching",
+          "units": "seconds",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "00000000000000000000000000000000"
+        },
+        "inttime": {
+          "dtype": "float32",
+          "longname": "Interarrival time from previous particle",
+          "units": "seconds",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0ad7233c0ad7233c"
+        },
+        "diam": {
+          "dtype": "float32",
+          "longname": "Particle diameter",
+          "units": "microns",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0000f0420000f042"
+        },
+        "xsize": {
+          "dtype": "float32",
+          "longname": "X-size",
+          "units": "microns",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0000000000000000"
+        },
+        "ysize": {
+          "dtype": "float32",
+          "longname": "Y-size",
+          "units": "microns",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0000000000000000"
+        },
+        "xextent": {
+          "dtype": "float32",
+          "longname": "Maximum x-size",
+          "units": "microns",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0000000000000000"
+        },
+        "oned": {
+          "dtype": "float32",
+          "longname": "1-D emulation size",
+          "units": "microns",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0000000000000000"
+        },
+        "twod": {
+          "dtype": "float32",
+          "longname": "2-D emulation size",
+          "units": "microns",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0000000000000000"
+        },
+        "areasize": {
+          "dtype": "float32",
+          "longname": "Equivalent area size",
+          "units": "microns",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0000000000000000"
+        },
+        "arearatio": {
+          "dtype": "float32",
+          "longname": "Area ratio",
+          "units": "unitless",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "cdcc4c3fcdcc4c3f"
+        },
+        "arearatiofilled": {
+          "dtype": "float32",
+          "longname": "Area ratio filled",
+          "units": "unitless",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "cdcc4c3fcdcc4c3f"
+        },
+        "aspectratio": {
+          "dtype": "float32",
+          "longname": "Aspect ratio",
+          "units": "unitless",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "cdcc4c3fcdcc4c3f"
+        },
+        "area": {
+          "dtype": "int16",
+          "longname": "Number of shaded pixels",
+          "units": "pixels",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "02006400"
+        },
+        "areafilled": {
+          "dtype": "int16",
+          "longname": "Number of shaded pixels filled",
+          "units": "pixels",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "03006400"
+        },
+        "perimeterarea": {
+          "dtype": "int16",
+          "longname": "Number of perimeter pixels",
+          "units": "pixels",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "32003200"
+        },
+        "area75": {
+          "dtype": "int16",
+          "longname": "Number of shaded pixels at 75%",
+          "units": "pixels",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "00005000"
+        },
+        "xpos": {
+          "dtype": "float32",
+          "longname": "X-position",
+          "units": "pixels",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0000000000000000"
+        },
+        "ypos": {
+          "dtype": "float32",
+          "longname": "Y-position",
+          "units": "pixels",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0000000000000000"
+        },
+        "allin": {
+          "dtype": "int8",
+          "longname": "All-in flag",
+          "units": "unitless",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0101"
+        },
+        "centerin": {
+          "dtype": "int8",
+          "longname": "Center-in flag",
+          "units": "unitless",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0101"
+        },
+        "dofflag": {
+          "dtype": "int8",
+          "longname": "Depth of field flag",
+          "units": "unitless",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0101"
+        },
+        "edgetouch": {
+          "dtype": "int8",
+          "longname": "Edge touch",
+          "units": "unitless",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0000"
+        },
+        "sizecorrection": {
+          "dtype": "float32",
+          "longname": "Size correction factor",
+          "units": "unitless",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0000000000000000"
+        },
+        "zd": {
+          "dtype": "float32",
+          "longname": "Z position",
+          "units": "microns",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0000000000000000"
+        },
+        "missed": {
+          "dtype": "float32",
+          "longname": "Missed particle count",
+          "units": "number",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "cdcc2c4000000000"
+        },
+        "probetas": {
+          "dtype": "float32",
+          "longname": "True air speed for probe clock",
+          "units": "m/s",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0000484200004842"
+        },
+        "aircrafttas": {
+          "dtype": "float32",
+          "longname": "True air speed for aircraft",
+          "units": "m/s",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0000000000000000"
+        },
+        "overloadflag": {
+          "dtype": "int8",
+          "longname": "Overload flag",
+          "units": "boolean",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0000"
+        },
+        "particlecounter": {
+          "dtype": "int32",
+          "longname": "Particle counter",
+          "units": "number",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0000000000000000"
+        },
+        "orientation": {
+          "dtype": "float32",
+          "longname": "Particle orientation",
+          "units": "degrees",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0000000000000000"
+        },
+        "rejectionflag": {
+          "dtype": "int8",
+          "longname": "Particle rejection code",
+          "units": "unitless",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0000"
+        },
+        "numregions": {
+          "dtype": "int8",
+          "longname": "Number of connected regions",
+          "units": "count",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0000"
+        },
+        "diodegaps": {
+          "dtype": "int16",
+          "longname": "Number of unshaded diodes",
+          "units": "count",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "00000000"
+        }
+      },
+      "global_attrs": {
+        "Source": {
+          "dtype": "str",
+          "value": "SODA-2 OAP Processing Software"
+        },
+        "FlightDate": {
+          "dtype": "str",
+          "value": "09/06/2016"
+        },
+        "TimeInterval": {
+          "dtype": "str",
+          "value": "x"
+        },
+        "FORMAT": {
+          "dtype": "str",
+          "value": "SPEC"
+        },
+        "PROBETYPE": {
+          "dtype": "str",
+          "value": "2DS"
+        },
+        "PROBEID": {
+          "dtype": "str",
+          "value": "H"
+        },
+        "SHORTNAME": {
+          "dtype": "str",
+          "value": "2DS"
+        },
+        "DATE": {
+          "dtype": "str",
+          "value": "20160906"
+        },
+        "STARTTIME": {
+          "dtype": "float64",
+          "value": 0.0
+        },
+        "STOPTIME": {
+          "dtype": "float64",
+          "value": 4.0
+        },
+        "RATE": {
+          "dtype": "float32",
+          "value": "1.0"
+        },
+        "OUTDIR": {
+          "dtype": "str",
+          "value": "<tmp>/r8b__irs9uci/"
+        },
+        "FILETAG": {
+          "dtype": "str",
+          "value": "none"
+        },
+        "CLUSTERTHRESH": {
+          "dtype": "float32",
+          "value": "0.0"
+        },
+        "INTTIME_REJECT": {
+          "dtype": "int16",
+          "value": "0"
+        },
+        "SMETHOD": {
+          "dtype": "str",
+          "value": "diam"
+        },
+        "APPLY_PSC": {
+          "dtype": "int16",
+          "value": "0"
+        },
+        "APPLY_PSC_SIZELIMIT": {
+          "dtype": "float32",
+          "value": "0.0"
+        },
+        "WATER": {
+          "dtype": "int16",
+          "value": "0"
+        },
+        "ENDBINS": {
+          "dtype": "int16",
+          "value": [
+            10,
+            50,
+            100,
+            200,
+            500
+          ]
+        },
+        "ARENDBINS": {
+          "dtype": "float32",
+          "value": [
+            0.0,
+            0.5,
+            1.0
+          ]
+        },
+        "EAWMETHOD": {
+          "dtype": "str",
+          "value": "allin"
+        },
+        "RES": {
+          "dtype": "float32",
+          "value": "10.0"
+        },
+        "DOFREJECT": {
+          "dtype": "int16",
+          "value": "1"
+        },
+        "NCDFPARTICLEFILE": {
+          "dtype": "int16",
+          "value": "1"
+        },
+        "PARTICLEFILE": {
+          "dtype": "int16",
+          "value": "1"
+        }
+      }
+    }
+  },
+  {
+    "name": "tiny_inttime",
+    "status": "OK",
+    "note": "(e0.5) format on a 3-digit exponent in CSV; netCDF float32 inttime underflow",
+    "particlefile": 1,
+    "ncdfparticlefile": 1,
+    "buffers": [
+      [
+        {
+          "inttime": 1e-120
+        },
+        {
+          "buffertime": 999.5
+        }
+      ]
+    ],
+    "FN_CSV": "<tmp>/r8b_c3unq8m4/20160906_000000_2DS_H.pbp.csv",
+    "FN_NCDF": "<tmp>/r8b_c3unq8m4/20160906_000000_2DS_H.pbp.nc",
+    "EXISTS_CSV": "1",
+    "EXISTS_NCDF": "1",
+    "csv_tracked": "gdl_soda2_pbp_tiny_inttime.pbp.csv",
+    "nc_tracked": "gdl_soda2_pbp_tiny_inttime.pbp.nc",
+    "nc_digest": {
+      "dimensions": {
+        "Time": null
+      },
+      "variables": {
+        "time": {
+          "dtype": "float64",
+          "longname": "UTC time",
+          "units": "seconds",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "000000000000e03f00000000003c8f40"
+        },
+        "probetime": {
+          "dtype": "float64",
+          "longname": "Unadjusted probe particle time",
+          "units": "seconds",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "00000000000000000000000000000000"
+        },
+        "buffertime": {
+          "dtype": "float64",
+          "longname": "Buffer time",
+          "units": "seconds",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "000000000000e03f00000000003c8f40"
+        },
+        "rawtime": {
+          "dtype": "float64",
+          "longname": "Raw time",
+          "units": "slices or seconds",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "00000000000000000000000000000000"
+        },
+        "reftime": {
+          "dtype": "float64",
+          "longname": "Reference time for buffer matching",
+          "units": "seconds",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "00000000000000000000000000000000"
+        },
+        "inttime": {
+          "dtype": "float32",
+          "longname": "Interarrival time from previous particle",
+          "units": "seconds",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "000000000ad7233c"
+        },
+        "diam": {
+          "dtype": "float32",
+          "longname": "Particle diameter",
+          "units": "microns",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0000f0420000f042"
+        },
+        "xsize": {
+          "dtype": "float32",
+          "longname": "X-size",
+          "units": "microns",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0000000000000000"
+        },
+        "ysize": {
+          "dtype": "float32",
+          "longname": "Y-size",
+          "units": "microns",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0000000000000000"
+        },
+        "xextent": {
+          "dtype": "float32",
+          "longname": "Maximum x-size",
+          "units": "microns",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0000000000000000"
+        },
+        "oned": {
+          "dtype": "float32",
+          "longname": "1-D emulation size",
+          "units": "microns",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0000000000000000"
+        },
+        "twod": {
+          "dtype": "float32",
+          "longname": "2-D emulation size",
+          "units": "microns",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0000000000000000"
+        },
+        "areasize": {
+          "dtype": "float32",
+          "longname": "Equivalent area size",
+          "units": "microns",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0000000000000000"
+        },
+        "arearatio": {
+          "dtype": "float32",
+          "longname": "Area ratio",
+          "units": "unitless",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "cdcc4c3fcdcc4c3f"
+        },
+        "arearatiofilled": {
+          "dtype": "float32",
+          "longname": "Area ratio filled",
+          "units": "unitless",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "cdcc4c3fcdcc4c3f"
+        },
+        "aspectratio": {
+          "dtype": "float32",
+          "longname": "Aspect ratio",
+          "units": "unitless",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "cdcc4c3fcdcc4c3f"
+        },
+        "area": {
+          "dtype": "int16",
+          "longname": "Number of shaded pixels",
+          "units": "pixels",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "64006400"
+        },
+        "areafilled": {
+          "dtype": "int16",
+          "longname": "Number of shaded pixels filled",
+          "units": "pixels",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "64006400"
+        },
+        "perimeterarea": {
+          "dtype": "int16",
+          "longname": "Number of perimeter pixels",
+          "units": "pixels",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "32003200"
+        },
+        "area75": {
+          "dtype": "int16",
+          "longname": "Number of shaded pixels at 75%",
+          "units": "pixels",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "50005000"
+        },
+        "xpos": {
+          "dtype": "float32",
+          "longname": "X-position",
+          "units": "pixels",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0000000000000000"
+        },
+        "ypos": {
+          "dtype": "float32",
+          "longname": "Y-position",
+          "units": "pixels",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0000000000000000"
+        },
+        "allin": {
+          "dtype": "int8",
+          "longname": "All-in flag",
+          "units": "unitless",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0101"
+        },
+        "centerin": {
+          "dtype": "int8",
+          "longname": "Center-in flag",
+          "units": "unitless",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0101"
+        },
+        "dofflag": {
+          "dtype": "int8",
+          "longname": "Depth of field flag",
+          "units": "unitless",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0101"
+        },
+        "edgetouch": {
+          "dtype": "int8",
+          "longname": "Edge touch",
+          "units": "unitless",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0000"
+        },
+        "sizecorrection": {
+          "dtype": "float32",
+          "longname": "Size correction factor",
+          "units": "unitless",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0000000000000000"
+        },
+        "zd": {
+          "dtype": "float32",
+          "longname": "Z position",
+          "units": "microns",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0000000000000000"
+        },
+        "missed": {
+          "dtype": "float32",
+          "longname": "Missed particle count",
+          "units": "number",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0000000000000000"
+        },
+        "probetas": {
+          "dtype": "float32",
+          "longname": "True air speed for probe clock",
+          "units": "m/s",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0000484200004842"
+        },
+        "aircrafttas": {
+          "dtype": "float32",
+          "longname": "True air speed for aircraft",
+          "units": "m/s",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0000000000000000"
+        },
+        "overloadflag": {
+          "dtype": "int8",
+          "longname": "Overload flag",
+          "units": "boolean",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0000"
+        },
+        "particlecounter": {
+          "dtype": "int32",
+          "longname": "Particle counter",
+          "units": "number",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0000000000000000"
+        },
+        "orientation": {
+          "dtype": "float32",
+          "longname": "Particle orientation",
+          "units": "degrees",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0000000000000000"
+        },
+        "rejectionflag": {
+          "dtype": "int8",
+          "longname": "Particle rejection code",
+          "units": "unitless",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0000"
+        },
+        "numregions": {
+          "dtype": "int8",
+          "longname": "Number of connected regions",
+          "units": "count",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0000"
+        },
+        "diodegaps": {
+          "dtype": "int16",
+          "longname": "Number of unshaded diodes",
+          "units": "count",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "00000000"
+        }
+      },
+      "global_attrs": {
+        "Source": {
+          "dtype": "str",
+          "value": "SODA-2 OAP Processing Software"
+        },
+        "FlightDate": {
+          "dtype": "str",
+          "value": "09/06/2016"
+        },
+        "TimeInterval": {
+          "dtype": "str",
+          "value": "x"
+        },
+        "FORMAT": {
+          "dtype": "str",
+          "value": "SPEC"
+        },
+        "PROBETYPE": {
+          "dtype": "str",
+          "value": "2DS"
+        },
+        "PROBEID": {
+          "dtype": "str",
+          "value": "H"
+        },
+        "SHORTNAME": {
+          "dtype": "str",
+          "value": "2DS"
+        },
+        "DATE": {
+          "dtype": "str",
+          "value": "20160906"
+        },
+        "STARTTIME": {
+          "dtype": "float64",
+          "value": 0.0
+        },
+        "STOPTIME": {
+          "dtype": "float64",
+          "value": 4.0
+        },
+        "RATE": {
+          "dtype": "float32",
+          "value": "1.0"
+        },
+        "OUTDIR": {
+          "dtype": "str",
+          "value": "<tmp>/r8b_c3unq8m4/"
+        },
+        "FILETAG": {
+          "dtype": "str",
+          "value": "none"
+        },
+        "CLUSTERTHRESH": {
+          "dtype": "float32",
+          "value": "0.0"
+        },
+        "INTTIME_REJECT": {
+          "dtype": "int16",
+          "value": "0"
+        },
+        "SMETHOD": {
+          "dtype": "str",
+          "value": "diam"
+        },
+        "APPLY_PSC": {
+          "dtype": "int16",
+          "value": "0"
+        },
+        "APPLY_PSC_SIZELIMIT": {
+          "dtype": "float32",
+          "value": "0.0"
+        },
+        "WATER": {
+          "dtype": "int16",
+          "value": "0"
+        },
+        "ENDBINS": {
+          "dtype": "int16",
+          "value": [
+            10,
+            50,
+            100,
+            200,
+            500
+          ]
+        },
+        "ARENDBINS": {
+          "dtype": "float32",
+          "value": [
+            0.0,
+            0.5,
+            1.0
+          ]
+        },
+        "EAWMETHOD": {
+          "dtype": "str",
+          "value": "allin"
+        },
+        "RES": {
+          "dtype": "float32",
+          "value": "10.0"
+        },
+        "DOFREJECT": {
+          "dtype": "int16",
+          "value": "1"
+        },
+        "NCDFPARTICLEFILE": {
+          "dtype": "int16",
+          "value": "1"
+        },
+        "PARTICLEFILE": {
+          "dtype": "int16",
+          "value": "1"
+        }
+      }
+    }
+  },
+  {
+    "name": "pthdat_extrap",
+    "status": "OK",
+    "note": "INTERPOL onto particle times outside pthdat.time (extrapolate vs clamp)",
+    "particlefile": 1,
+    "ncdfparticlefile": 1,
+    "buffers": [
+      [
+        {
+          "buffertime": 0.5
+        },
+        {
+          "buffertime": 2.5
+        }
+      ]
+    ],
+    "FN_CSV": "<tmp>/r8b_v7zqtvc2/20160906_000000_2DS_H.pbp.csv",
+    "FN_NCDF": "<tmp>/r8b_v7zqtvc2/20160906_000000_2DS_H.pbp.nc",
+    "EXISTS_CSV": "1",
+    "EXISTS_NCDF": "1",
+    "pthdat": {
+      "time": [
+        1.0,
+        2.0
+      ],
+      "lat": [
+        10.0,
+        20.0
+      ],
+      "lon": [
+        100.0,
+        200.0
+      ]
+    },
+    "csv_tracked": "gdl_soda2_pbp_pthdat_extrap.pbp.csv",
+    "nc_tracked": "gdl_soda2_pbp_pthdat_extrap.pbp.nc",
+    "nc_digest": {
+      "dimensions": {
+        "Time": null
+      },
+      "variables": {
+        "time": {
+          "dtype": "float64",
+          "longname": "UTC time",
+          "units": "seconds",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "000000000000e03f0000000000000440"
+        },
+        "probetime": {
+          "dtype": "float64",
+          "longname": "Unadjusted probe particle time",
+          "units": "seconds",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "00000000000000000000000000000000"
+        },
+        "buffertime": {
+          "dtype": "float64",
+          "longname": "Buffer time",
+          "units": "seconds",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "000000000000e03f0000000000000440"
+        },
+        "rawtime": {
+          "dtype": "float64",
+          "longname": "Raw time",
+          "units": "slices or seconds",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "00000000000000000000000000000000"
+        },
+        "reftime": {
+          "dtype": "float64",
+          "longname": "Reference time for buffer matching",
+          "units": "seconds",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "00000000000000000000000000000000"
+        },
+        "inttime": {
+          "dtype": "float32",
+          "longname": "Interarrival time from previous particle",
+          "units": "seconds",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0ad7233c0ad7233c"
+        },
+        "diam": {
+          "dtype": "float32",
+          "longname": "Particle diameter",
+          "units": "microns",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0000f0420000f042"
+        },
+        "xsize": {
+          "dtype": "float32",
+          "longname": "X-size",
+          "units": "microns",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0000000000000000"
+        },
+        "ysize": {
+          "dtype": "float32",
+          "longname": "Y-size",
+          "units": "microns",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0000000000000000"
+        },
+        "xextent": {
+          "dtype": "float32",
+          "longname": "Maximum x-size",
+          "units": "microns",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0000000000000000"
+        },
+        "oned": {
+          "dtype": "float32",
+          "longname": "1-D emulation size",
+          "units": "microns",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0000000000000000"
+        },
+        "twod": {
+          "dtype": "float32",
+          "longname": "2-D emulation size",
+          "units": "microns",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0000000000000000"
+        },
+        "areasize": {
+          "dtype": "float32",
+          "longname": "Equivalent area size",
+          "units": "microns",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0000000000000000"
+        },
+        "arearatio": {
+          "dtype": "float32",
+          "longname": "Area ratio",
+          "units": "unitless",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "cdcc4c3fcdcc4c3f"
+        },
+        "arearatiofilled": {
+          "dtype": "float32",
+          "longname": "Area ratio filled",
+          "units": "unitless",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "cdcc4c3fcdcc4c3f"
+        },
+        "aspectratio": {
+          "dtype": "float32",
+          "longname": "Aspect ratio",
+          "units": "unitless",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "cdcc4c3fcdcc4c3f"
+        },
+        "area": {
+          "dtype": "int16",
+          "longname": "Number of shaded pixels",
+          "units": "pixels",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "64006400"
+        },
+        "areafilled": {
+          "dtype": "int16",
+          "longname": "Number of shaded pixels filled",
+          "units": "pixels",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "64006400"
+        },
+        "perimeterarea": {
+          "dtype": "int16",
+          "longname": "Number of perimeter pixels",
+          "units": "pixels",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "32003200"
+        },
+        "area75": {
+          "dtype": "int16",
+          "longname": "Number of shaded pixels at 75%",
+          "units": "pixels",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "50005000"
+        },
+        "xpos": {
+          "dtype": "float32",
+          "longname": "X-position",
+          "units": "pixels",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0000000000000000"
+        },
+        "ypos": {
+          "dtype": "float32",
+          "longname": "Y-position",
+          "units": "pixels",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0000000000000000"
+        },
+        "allin": {
+          "dtype": "int8",
+          "longname": "All-in flag",
+          "units": "unitless",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0101"
+        },
+        "centerin": {
+          "dtype": "int8",
+          "longname": "Center-in flag",
+          "units": "unitless",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0101"
+        },
+        "dofflag": {
+          "dtype": "int8",
+          "longname": "Depth of field flag",
+          "units": "unitless",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0101"
+        },
+        "edgetouch": {
+          "dtype": "int8",
+          "longname": "Edge touch",
+          "units": "unitless",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0000"
+        },
+        "sizecorrection": {
+          "dtype": "float32",
+          "longname": "Size correction factor",
+          "units": "unitless",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0000000000000000"
+        },
+        "zd": {
+          "dtype": "float32",
+          "longname": "Z position",
+          "units": "microns",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0000000000000000"
+        },
+        "missed": {
+          "dtype": "float32",
+          "longname": "Missed particle count",
+          "units": "number",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0000000000000000"
+        },
+        "probetas": {
+          "dtype": "float32",
+          "longname": "True air speed for probe clock",
+          "units": "m/s",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0000484200004842"
+        },
+        "aircrafttas": {
+          "dtype": "float32",
+          "longname": "True air speed for aircraft",
+          "units": "m/s",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0000000000000000"
+        },
+        "overloadflag": {
+          "dtype": "int8",
+          "longname": "Overload flag",
+          "units": "boolean",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0000"
+        },
+        "particlecounter": {
+          "dtype": "int32",
+          "longname": "Particle counter",
+          "units": "number",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0000000000000000"
+        },
+        "orientation": {
+          "dtype": "float32",
+          "longname": "Particle orientation",
+          "units": "degrees",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0000000000000000"
+        },
+        "rejectionflag": {
+          "dtype": "int8",
+          "longname": "Particle rejection code",
+          "units": "unitless",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0000"
+        },
+        "numregions": {
+          "dtype": "int8",
+          "longname": "Number of connected regions",
+          "units": "count",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0000"
+        },
+        "diodegaps": {
+          "dtype": "int16",
+          "longname": "Number of unshaded diodes",
+          "units": "count",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "00000000"
+        },
+        "lat": {
+          "dtype": "float64",
+          "longname": "Latitude",
+          "units": "degrees",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "00000000000014400000000000003940"
+        },
+        "lon": {
+          "dtype": "float64",
+          "longname": "Longitude",
+          "units": "degrees",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "00000000000049400000000000406f40"
+        }
+      },
+      "global_attrs": {
+        "Source": {
+          "dtype": "str",
+          "value": "SODA-2 OAP Processing Software"
+        },
+        "FlightDate": {
+          "dtype": "str",
+          "value": "09/06/2016"
+        },
+        "TimeInterval": {
+          "dtype": "str",
+          "value": "x"
+        },
+        "FORMAT": {
+          "dtype": "str",
+          "value": "SPEC"
+        },
+        "PROBETYPE": {
+          "dtype": "str",
+          "value": "2DS"
+        },
+        "PROBEID": {
+          "dtype": "str",
+          "value": "H"
+        },
+        "SHORTNAME": {
+          "dtype": "str",
+          "value": "2DS"
+        },
+        "DATE": {
+          "dtype": "str",
+          "value": "20160906"
+        },
+        "STARTTIME": {
+          "dtype": "float64",
+          "value": 0.0
+        },
+        "STOPTIME": {
+          "dtype": "float64",
+          "value": 4.0
+        },
+        "RATE": {
+          "dtype": "float32",
+          "value": "1.0"
+        },
+        "OUTDIR": {
+          "dtype": "str",
+          "value": "<tmp>/r8b_v7zqtvc2/"
+        },
+        "FILETAG": {
+          "dtype": "str",
+          "value": "none"
+        },
+        "CLUSTERTHRESH": {
+          "dtype": "float32",
+          "value": "0.0"
+        },
+        "INTTIME_REJECT": {
+          "dtype": "int16",
+          "value": "0"
+        },
+        "SMETHOD": {
+          "dtype": "str",
+          "value": "diam"
+        },
+        "APPLY_PSC": {
+          "dtype": "int16",
+          "value": "0"
+        },
+        "APPLY_PSC_SIZELIMIT": {
+          "dtype": "float32",
+          "value": "0.0"
+        },
+        "WATER": {
+          "dtype": "int16",
+          "value": "0"
+        },
+        "ENDBINS": {
+          "dtype": "int16",
+          "value": [
+            10,
+            50,
+            100,
+            200,
+            500
+          ]
+        },
+        "ARENDBINS": {
+          "dtype": "float32",
+          "value": [
+            0.0,
+            0.5,
+            1.0
+          ]
+        },
+        "EAWMETHOD": {
+          "dtype": "str",
+          "value": "allin"
+        },
+        "RES": {
+          "dtype": "float32",
+          "value": "10.0"
+        },
+        "DOFREJECT": {
+          "dtype": "int16",
+          "value": "1"
+        },
+        "NCDFPARTICLEFILE": {
+          "dtype": "int16",
+          "value": "1"
+        },
+        "PARTICLEFILE": {
+          "dtype": "int16",
+          "value": "1"
+        }
+      }
+    }
+  },
+  {
+    "name": "csv_only",
+    "status": "OK",
+    "note": "particlefile:1, ncdfparticlefile:0 -- CSV written, no .pbp.nc",
+    "particlefile": 1,
+    "ncdfparticlefile": 0,
+    "buffers": [
+      [
+        {},
+        {
+          "buffertime": 1.5
+        },
+        {
+          "buffertime": 2.5
+        }
+      ]
+    ],
+    "FN_CSV": "<tmp>/r8b_llud_qnp/20160906_000000_2DS_H.pbp.csv",
+    "FN_NCDF": "<tmp>/r8b_llud_qnp/20160906_000000_2DS_H.pbp.nc",
+    "EXISTS_CSV": "1",
+    "EXISTS_NCDF": "0",
+    "csv_tracked": "gdl_soda2_pbp_csv_only.pbp.csv"
+  }
+]

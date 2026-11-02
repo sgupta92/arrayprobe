@@ -1,0 +1,170 @@
+{
+ "call_sidecars": {
+  "combined": "engine=3.5 combine=borrowed-oracles-fork:combine_sizedist.m opt_in=borrowed_combine=True\ninputs=sd.base160101000000.H.nc\ninputs_built_with=(engine=3.5 iat_file=<none> profile=stock-v3.5 reject=(rej_zero_area=True,rej_split=True,rej_hollow=True,shadowed_area=25,max_edge_img_ar=6,max_comp_img_ar=5) shadow_diode=none tas_file=demo_flight_v35_aircraft.cdf call=(iRectEllipse=0,iCalcAllDiodeStats=0,iQC=0,iNewHabit=0,tas_ratio=off) software=UIOOPS_v3.5 stray_pixel=on:g8,n2,m9 sizedist=(iaThreshType=0,iCreateAspectRatio=0,iCreateBad=0,iSaveIntArrSV=0) bins=2ds-ladder(V11-fix) time_sv_fix=on)\n",
+  "image": "engine=3.5 profile=stock-v3.5 software=UIOOPS_v3.5 tas_ratio=off channels=H inventory_empty=0 inventory_truncated=0 raw_sha256=eb4b212c9ae757133dd687d39310d87f0c0acfb652775deb2376e507b88a8502\n",
+  "proc": "engine=3.5 profile=stock-v3.5 reject=(rej_zero_area=True,rej_split=True,rej_hollow=True,shadowed_area=25,max_edge_img_ar=6,max_comp_img_ar=5) shadow_diode=none tas_file=demo_flight_v35_aircraft.cdf call=(iRectEllipse=0,iCalcAllDiodeStats=0,iQC=0,iNewHabit=0,tas_ratio=off) software=UIOOPS_v3.5 stray_pixel=on:g8,n2,m9\n",
+  "sd": "engine=3.5 iat_file=<none> profile=stock-v3.5 reject=(rej_zero_area=True,rej_split=True,rej_hollow=True,shadowed_area=25,max_edge_img_ar=6,max_comp_img_ar=5) shadow_diode=none tas_file=demo_flight_v35_aircraft.cdf call=(iRectEllipse=0,iCalcAllDiodeStats=0,iQC=0,iNewHabit=0,tas_ratio=off) software=UIOOPS_v3.5 stray_pixel=on:g8,n2,m9 sizedist=(iaThreshType=0,iCreateAspectRatio=0,iCreateBad=0,iSaveIntArrSV=0) bins=2ds-ladder(V11-fix) time_sv_fix=on zero_sv_seconds=0 time_grid_fix=0 time_grid_unresolved=0 plausibility=(sec=4,pos=1.0000,nonfinite=0,dup=0,bins=128,accepted=5,ok)\n"
+ },
+ "combined": {
+  "Bin Maximum": {
+   "dtype": "float64",
+   "sha256": "3ce9cd8f48be5309d0e99ca3948804424d214f47f1d501671ba22b103129c33c",
+   "shape": [
+    128
+   ]
+  },
+  "Bin Midpoints": {
+   "dtype": "float64",
+   "sha256": "945450dcabcc46cc4d91e2bb3178afe6e41b76ed892c6c6b444d9a1be7f1432e",
+   "shape": [
+    128
+   ]
+  },
+  "Bin Minimum": {
+   "dtype": "float64",
+   "sha256": "2b78238aefb6337fb92f411f3062420b05812072cbe8e391d6800bf16f65c343",
+   "shape": [
+    128
+   ]
+  },
+  "Bin Width": {
+   "dtype": "float64",
+   "sha256": "22e186a113d9b9c32db383dfd05a0ec2e4a79e9d2d194a448d1ec7977c2e0048",
+   "shape": [
+    128
+   ]
+  },
+  "Counts": {
+   "dtype": "float64",
+   "sha256": "739e4d5f6f7f4ef14a43b80a6c5bb63c69a96f02297483963c9722a9fb2fe0dd",
+   "shape": [
+    128,
+    22004
+   ]
+  },
+  "Mean Area Ratio": {
+   "dtype": "float64",
+   "sha256": "41bdf2407aff60b8f628ef04a46a66b07f7bc7b2876311c4c48dbe60793954b5",
+   "shape": [
+    128,
+    22004
+   ]
+  },
+  "Number Concentration cm-3": {
+   "dtype": "float64",
+   "sha256": "8276c3ba93c46ac0bbbf1f6fb19bfe0377a5d02b1eeec83a8db752d9b9f3167c",
+   "shape": [
+    22004
+   ]
+  },
+  "Reject Ratio": {
+   "dtype": "float64",
+   "sha256": "2c43b7905f64be4751364bee76c1356222ffca05ae2871755a78c1b274147716",
+   "shape": [
+    22004
+   ]
+  },
+  "Size Distribution cm-3": {
+   "dtype": "float64",
+   "sha256": "a0c7a6749d527a78cbd58a1c812080692f74365035a60695f22e8d2ae2fbb06d",
+   "shape": [
+    128,
+    22004
+   ]
+  },
+  "Time Vector": {
+   "dtype": "float64",
+   "sha256": "f5bd67c9a0b80f808833fdecaf1a23d25a4ee137521350d5655e37246f273ce7",
+   "shape": [
+    22004
+   ]
+  }
+ },
+ "engine": "3.5",
+ "image": {
+  "data": {
+   "dtype": "int32",
+   "sha256": "31b56d8368fd764c7abb27c028c704b679a807b9effc3f7dfa6c8e67e0e8552f",
+   "shape": [
+    5,
+    1700,
+    8
+   ]
+  },
+  "day": {
+   "dtype": "int8",
+   "sha256": "d8b0954dbff07d3bb65f8ef42c093f5a6cff8c0f206da1b2e3dde58672ee9c3a",
+   "shape": [
+    5
+   ]
+  },
+  "hour": {
+   "dtype": "int8",
+   "sha256": "d8b0954dbff07d3bb65f8ef42c093f5a6cff8c0f206da1b2e3dde58672ee9c3a",
+   "shape": [
+    5
+   ]
+  },
+  "millisec": {
+   "dtype": "int16",
+   "sha256": "9619198f74c3b910cabebe84b6ea68585cc11f3857f604544d260be28300f1ed",
+   "shape": [
+    5
+   ]
+  },
+  "minute": {
+   "dtype": "int8",
+   "sha256": "d8b0954dbff07d3bb65f8ef42c093f5a6cff8c0f206da1b2e3dde58672ee9c3a",
+   "shape": [
+    5
+   ]
+  },
+  "month": {
+   "dtype": "int8",
+   "sha256": "e69e434f5fc3b1b17648f5e5b96e60fc4430cb16773f3bf4cebb7f3007600944",
+   "shape": [
+    5
+   ]
+  },
+  "second": {
+   "dtype": "int8",
+   "sha256": "0ef87bb1e2260800dc4de079f463aab6d80654f18218fa4dc3a03d89d562e051",
+   "shape": [
+    5
+   ]
+  },
+  "tas": {
+   "dtype": "float64",
+   "sha256": "6b8d958566647e9bed388c56dac13a0e9f4e4de9ecbf0236aea34d5a22e72f4a",
+   "shape": [
+    5
+   ]
+  },
+  "tasRatio": {
+   "dtype": "float64",
+   "sha256": "e249449207249629945b5f0c0763603062a00f4482f0e847bb4a6f5164ff14b3",
+   "shape": [
+    5
+   ]
+  },
+  "wkday": {
+   "dtype": "int8",
+   "sha256": "7dfd2b6c5b422920757984cf2cbce642dca9a05207c57af24ad995b2d90fb4e9",
+   "shape": [
+    5
+   ]
+  },
+  "year": {
+   "dtype": "int16",
+   "sha256": "185d34f05640cf475cdb25d5fb478180198faf9656655edbb9dd0ad81ca93309",
+   "shape": [
+    5
+   ]
+  }
+ },
+ "n_accepted": 5,
+ "n_particles": 5,
+ "n_seconds": 4,
+ "raw_sha256": "eb4b212c9ae757133dd687d39310d87f0c0acfb652775deb2376e507b88a8502",
+ "used_bin_count_sum": 0.0
+}

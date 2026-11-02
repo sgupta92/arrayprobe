@@ -1,0 +1,11 @@
+# PEP 561 marker.
+#
+# This package is fully annotated and `mypy src` is clean, but without this
+# file a type checker in a DOWNSTREAM project ignores every annotation --
+# PEP 561 says an installed package's types are invisible unless it says so.
+# Nothing in this repository would ever have noticed: `mypy src` runs against
+# the source tree, where the marker is irrelevant.
+#
+# Added 2026-09-12 in a release-readiness pass. `tests/test_py_typed.py`
+# asserts one exists per shipped package and that setuptools is told to
+# include it, because a marker that is not packaged is the same as no marker.

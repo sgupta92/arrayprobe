@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 380" width="100%" role="img" aria-labelledby="t d" font-family="system-ui, -apple-system, Segoe UI, Roboto, sans-serif">
+  <!-- source: docs/27-choosing-an-engine.md (hand-drawn; no generator) -->
+  <title id="t">The two engines behind one selector</title>
+  <desc id="d">A raw flight file (2D-S, CIP or HVPS) goes to arrayprobe.engine(), which dispatches and computes nothing. Inside the package it reaches two engines on equal footing: arrayprobe_uiops, reproducing UIOPS v3.5 and validated at layer 2 by Octave on v3.5's own sources, and arrayprobe_soda2, reproducing SODA-2 and validated at layer 2 by GDL on its own sources. Outside the package sits the UIOPS v3.1.4 port, the ORACLES port-validation anchor, validated at layer 1 against the archived 2016 product bit for bit; this distribution does not carry it, and arrayprobe.engine("3.1.4") raises V314EngineAbsent.</desc>
+  <rect id="figure-background" x="0" y="0" width="960" height="380" fill="#ffffff"/>
+  <defs>
+    <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#5B6B7C"/>
+    </marker>
+  </defs>
+
+  <!-- raw file -->
+  <rect x="16" y="76" width="160" height="74" rx="6" fill="#E8EEF7" stroke="#4A6FA5" stroke-width="1.5"/>
+  <text x="96" y="108" text-anchor="middle" font-size="15" font-weight="600" fill="#1F2D3D">raw flight file</text>
+  <text x="96" y="130" text-anchor="middle" font-size="13" fill="#1F2D3D">2D-S · CIP · HVPS</text>
+
+  <!-- package boundary -->
+  <rect x="200" y="8" width="752" height="210" rx="8" fill="none" stroke="#5B6B7C" stroke-width="1" stroke-dasharray="4 4"/>
+  <text x="214" y="30" font-size="13" font-weight="600" fill="#5B6B7C">the arrayprobe package</text>
+
+  <!-- selector -->
+  <rect x="216" y="76" width="220" height="74" rx="6" fill="#E8EEF7" stroke="#4A6FA5" stroke-width="1.5"/>
+  <text x="326" y="106" text-anchor="middle" font-size="15" font-weight="600" fill="#1F2D3D" font-family="ui-monospace, SFMono-Regular, Consolas, monospace">arrayprobe.engine()</text>
+  <text x="326" y="130" text-anchor="middle" font-size="13" font-style="italic" fill="#1F2D3D">dispatches; computes nothing</text>
+
+  <!-- the two engines, equal footing -->
+  <rect x="490" y="24" width="446" height="80" rx="6" fill="#E8EEF7" stroke="#4A6FA5" stroke-width="1.5"/>
+  <text x="508" y="50" font-size="15" font-weight="700" fill="#1F2D3D">arrayprobe_uiops</text>
+  <text x="508" y="70" font-size="13" fill="#1F2D3D">reproduces UIOPS v3.5 (MATLAB)</text>
+  <text x="508" y="88" font-size="13" fill="#1F2D3D">layer 2: Octave on v3.5's own sources</text>
+
+  <rect x="490" y="122" width="446" height="80" rx="6" fill="#E8EEF7" stroke="#4A6FA5" stroke-width="1.5"/>
+  <text x="508" y="148" font-size="15" font-weight="700" fill="#1F2D3D">arrayprobe_soda2</text>
+  <text x="508" y="168" font-size="13" fill="#1F2D3D">reproduces SODA-2 (IDL)</text>
+  <text x="508" y="186" font-size="13" fill="#1F2D3D">layer 2: GDL on SODA-2's own sources</text>
+
+  <!-- arrows -->
+  <line x1="176" y1="113" x2="214" y2="113" stroke="#5B6B7C" stroke-width="1.5" marker-end="url(#ah)"/>
+  <line x1="436" y1="113" x2="488" y2="64" stroke="#5B6B7C" stroke-width="1.5" marker-end="url(#ah)"/>
+  <line x1="436" y1="113" x2="488" y2="162" stroke="#5B6B7C" stroke-width="1.5" marker-end="url(#ah)"/>
+
+  <!-- outside the package: the v3.1.4 anchor -->
+  <rect x="490" y="236" width="446" height="80" rx="6" fill="#F3E9D8" stroke="#A5764A" stroke-width="1.5" stroke-dasharray="6 4"/>
+  <text x="508" y="262" font-size="15" font-weight="700" fill="#1F2D3D">UIOPS v3.1.4 port — ORACLES validation anchor</text>
+  <text x="508" y="282" font-size="13" fill="#1F2D3D">reproduces the archived 2016 product, bit for bit</text>
+  <text x="508" y="300" font-size="13" fill="#1F2D3D">validates the port; not part of this package</text>
+  <text x="326" y="270" text-anchor="middle" font-size="13" font-style="italic" fill="#5B6B7C">outside the package:</text>
+  <text x="326" y="288" text-anchor="middle" font-size="13" font-style="italic" fill="#5B6B7C" font-family="ui-monospace, SFMono-Regular, Consolas, monospace">engine("3.1.4")</text>
+  <text x="326" y="306" text-anchor="middle" font-size="13" font-style="italic" fill="#5B6B7C">raises V314EngineAbsent</text>
+
+  <!-- footer -->
+  <line x1="16" y1="334" x2="944" y2="334" stroke="#5B6B7C" stroke-width="0.75" stroke-opacity="0.5"/>
+  <text x="480" y="362" text-anchor="middle" font-size="13" fill="#5B6B7C">Two engines, UIOPS v3.5 and SODA-2; v3.1.4 is used only to validate the port against ORACLES.</text>
+</svg>

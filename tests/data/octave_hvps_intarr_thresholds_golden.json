@@ -1,0 +1,47 @@
+{
+  "description": "Per-block inter-arrival thresholds (s) written by the unmodified ORACLES-tree IntArrAnalysis_time.m under GNU Octave, beside the port's intarr-threshold --blocks 5 output for the same proc file. Block = ceil(n/5) particles.",
+  "octave": {
+    "version": "GNU Octave 11.3.0",
+    "command": "octave-cli --no-gui, pkg load statistics optim netcdf, shim directory added to the path after the packages; driver run_iat_octave.sh, a development record",
+    "source": "<ORACLES variant tree>/IntArrAnalysis_time.m, unmodified",
+    "shims": {
+      "+netcdf/open.m": "supplies NC_NOWRITE when called with one argument (MATLAB's default; Octave's netcdf 1.0.20 requires the mode)",
+      "histcounts.m": "MATLAB edge semantics on histc, last edge inclusive (histcounts is not in Octave 11.3)",
+      "plot and figure calls": "no-op shims for bar, boxplot, colorbar, colormap, contourf, datetick, figure, gca, gcf, hold, legend, plot, print, set, title, xlabel, ylabel, ylim; none reaches threshhold_ak"
+    },
+    "oracle_caveat": "Octave's statset ignores the Robust and FunValCheck options, so Octave's nlinfit is a non-robust fit; agreement is agreement of two non-robust fits."
+  },
+  "port": {
+    "command": "arrayprobe intarr-threshold --blocks 5 on the flight's HVPS proc file",
+    "files": "HVPS_intArrThreshold_base<stem>.V_1.cdf, untracked (decoded output, not in the repository)"
+  },
+  "comparison": "compare_blocks.py; report HVPS_SLICE2_OCTAVE_THRESHOLDS.md (development records)",
+  "rel_tolerance": 1e-5,
+  "flights": [
+    {
+      "flight": "160906064343",
+      "particles": 179448,
+      "blocks": [
+        {"block": 1, "first": 0, "last": 35889, "octave": 2.56535e-4, "port": 4.12125e-4, "agrees": false,
+         "attribution": "Fit difference in block 1 (hours 06-08); the slice-1 residual there is -1 particle, so it does not explain the flight's 0.43 % residual, which sits in blocks 2-5. May be the fitter (non-robust nlinfit), not the port."},
+        {"block": 2, "first": 35890, "last": 71779, "octave": 2.7451e-3, "port": 2.7451e-3, "agrees": true},
+        {"block": 3, "first": 71780, "last": 107669, "octave": 9.93989e-5, "port": 9.93989e-5, "agrees": true},
+        {"block": 4, "first": 107670, "last": 143559, "octave": 9.93989e-5, "port": 9.93989e-5, "agrees": true},
+        {"block": 5, "first": 143560, "last": 179447, "octave": 9.93989e-5, "port": 9.93989e-5, "agrees": true}
+      ]
+    },
+    {
+      "flight": "170826073738",
+      "particles": 63025,
+      "blocks": [
+        {"block": 1, "first": 0, "last": 12604, "octave": 1.30325e-7, "port": 1.30325e-7, "agrees": true},
+        {"block": 2, "first": 12605, "last": 25209, "octave": 1.82847e-2, "port": 1.82847e-2, "agrees": true},
+        {"block": 3, "first": 25210, "last": 37814, "octave": 2.7451e-3, "port": 2.7451e-3, "agrees": true},
+        {"block": 4, "first": 37815, "last": 50419, "octave": 2.7451e-3, "port": 2.7451e-3, "agrees": true},
+        {"block": 5, "first": 50420, "last": 63024, "octave": 2.7451e-3, "port": 2.7451e-3, "agrees": true}
+      ]
+    }
+  ],
+  "default_threshold_s": 1.3494e-6,
+  "default_held_by_any_block": false
+}

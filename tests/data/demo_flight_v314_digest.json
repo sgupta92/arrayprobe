@@ -1,0 +1,86 @@
+{
+ "call_sidecars": {
+  "image": "engine=3.1.4 profile=oracles-production spec_buffer_guard=False hvps_reader=hvps channels=H\n",
+  "proc": "engine=3.1.4 profile=oracles-production reject=(rej_zero_area=True,rej_split=True,rej_hollow=False,shadowed_area=25,max_edge_img_ar=4,max_comp_img_ar=4) shadow_diode=none\n",
+  "sd": "engine=3.1.4 iat_file=2DS_intArrThreshold_MISSING.cdf profile=oracles-production reject=(rej_zero_area=True,rej_split=True,rej_hollow=False,shadowed_area=25,max_edge_img_ar=4,max_comp_img_ar=4) shadow_diode=none tree=production area_ratio_z=0.5 (default) default_int_arr_thresh=6e-06 (default)\n"
+ },
+ "combined": {
+  "Bin Maximum": {
+   "dtype": "float64",
+   "sha256": "3ce9cd8f48be5309d0e99ca3948804424d214f47f1d501671ba22b103129c33c",
+   "shape": [
+    128
+   ]
+  },
+  "Bin Midpoints": {
+   "dtype": "float64",
+   "sha256": "945450dcabcc46cc4d91e2bb3178afe6e41b76ed892c6c6b444d9a1be7f1432e",
+   "shape": [
+    128
+   ]
+  },
+  "Bin Minimum": {
+   "dtype": "float64",
+   "sha256": "2b78238aefb6337fb92f411f3062420b05812072cbe8e391d6800bf16f65c343",
+   "shape": [
+    128
+   ]
+  },
+  "Bin Width": {
+   "dtype": "float64",
+   "sha256": "22e186a113d9b9c32db383dfd05a0ec2e4a79e9d2d194a448d1ec7977c2e0048",
+   "shape": [
+    128
+   ]
+  },
+  "Counts": {
+   "dtype": "float64",
+   "sha256": "ba11037c20f618e84ea2aa5748ad63b58def252ec06d07a7b4711ff1f3a4b34b",
+   "shape": [
+    128,
+    22004
+   ]
+  },
+  "Mean Area Ratio": {
+   "dtype": "float64",
+   "sha256": "350c5c877883f2b0fee25a07c2e6915950104c4d5ef116eadc85b39b1970a09b",
+   "shape": [
+    128,
+    22004
+   ]
+  },
+  "Number Concentration cm-3": {
+   "dtype": "float64",
+   "sha256": "2c43b7905f64be4751364bee76c1356222ffca05ae2871755a78c1b274147716",
+   "shape": [
+    22004
+   ]
+  },
+  "Reject Ratio": {
+   "dtype": "float64",
+   "sha256": "ee9dd2d68378b37259a6f9fb2293f0456037601fdef74c0c85243125843357bb",
+   "shape": [
+    22004
+   ]
+  },
+  "Size Distribution cm-3": {
+   "dtype": "float64",
+   "sha256": "ba11037c20f618e84ea2aa5748ad63b58def252ec06d07a7b4711ff1f3a4b34b",
+   "shape": [
+    128,
+    22004
+   ]
+  },
+  "Time Vector": {
+   "dtype": "float64",
+   "sha256": "f5bd67c9a0b80f808833fdecaf1a23d25a4ee137521350d5655e37246f273ce7",
+   "shape": [
+    22004
+   ]
+  }
+ },
+ "n_accepted": 5,
+ "n_particles": 5,
+ "n_seconds": 4,
+ "used_bin_count_sum": 0.0
+}

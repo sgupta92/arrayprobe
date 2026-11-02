@@ -1,0 +1,1 @@
+engine=3.1.4 profile=oracles-production reject=(rej_zero_area=True,rej_split=True,rej_hollow=False,shadowed_area=25,max_edge_img_ar=4,max_comp_img_ar=4) shadow_diode=none

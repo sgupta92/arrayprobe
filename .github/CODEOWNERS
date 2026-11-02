@@ -1,0 +1,9 @@
+# Code owners
+#
+# One maintainer today; adding a second is a decision not yet made. Every
+# path routes to the same owner rather than
+# listing sub-areas that would just repeat one name -- this file exists so
+# a review request has somewhere real to go, and so it is honest about
+# there being one reviewer, not a team, until that changes.
+
+* @sgupta92

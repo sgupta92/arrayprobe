@@ -1,0 +1,171 @@
+{
+  "cases": {
+    "all_good": [
+      100.0,
+      110.0,
+      120.0,
+      130.0
+    ],
+    "all_negative_but_one_bad": [
+      -999.0,
+      -999.0,
+      0.0,
+      -999.0
+    ],
+    "both_ends_bad": [
+      0.0,
+      110.0,
+      120.0,
+      NaN
+    ],
+    "interior_nan": [
+      100.0,
+      NaN,
+      120.0,
+      130.0
+    ],
+    "interior_zero": [
+      100.0,
+      0.0,
+      120.0,
+      130.0
+    ],
+    "leading_bad": [
+      0.0,
+      110.0,
+      120.0,
+      130.0
+    ],
+    "negative_sentinel": [
+      100.0,
+      -999.0,
+      120.0,
+      0.0
+    ],
+    "no_good_nodes": [
+      0.0,
+      0.0,
+      NaN
+    ],
+    "nonmonotonic": [
+      130.0,
+      0.0,
+      100.0,
+      120.0
+    ],
+    "single_good_node": [
+      100.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "trailing_bad": [
+      100.0,
+      110.0,
+      120.0,
+      0.0
+    ],
+    "two_interior_bad": [
+      100.0,
+      0.0,
+      NaN,
+      130.0
+    ]
+  },
+  "results": {
+    "all_good": {
+      "status": "OK",
+      "value": [
+        100,
+        110,
+        120,
+        130
+      ]
+    },
+    "all_negative_but_one_bad": {
+      "message": "interp1: minimum of 2 points required in each dimension",
+      "status": "ERROR"
+    },
+    "both_ends_bad": {
+      "status": "OK",
+      "value": [
+        null,
+        110,
+        120,
+        null
+      ]
+    },
+    "interior_nan": {
+      "status": "OK",
+      "value": [
+        100,
+        110,
+        120,
+        130
+      ]
+    },
+    "interior_zero": {
+      "status": "OK",
+      "value": [
+        100,
+        110,
+        120,
+        130
+      ]
+    },
+    "leading_bad": {
+      "status": "OK",
+      "value": [
+        null,
+        110,
+        120,
+        130
+      ]
+    },
+    "negative_sentinel": {
+      "status": "OK",
+      "value": [
+        100,
+        -999,
+        120,
+        null
+      ]
+    },
+    "no_good_nodes": {
+      "message": "interp1: minimum of 2 points required in each dimension",
+      "status": "ERROR"
+    },
+    "nonmonotonic": {
+      "status": "OK",
+      "value": [
+        130,
+        115,
+        100,
+        120
+      ]
+    },
+    "single_good_node": {
+      "message": "interp1: minimum of 2 points required in each dimension",
+      "status": "ERROR"
+    },
+    "trailing_bad": {
+      "status": "OK",
+      "value": [
+        100,
+        110,
+        120,
+        null
+      ]
+    },
+    "two_interior_bad": {
+      "status": "OK",
+      "value": [
+        100,
+        110,
+        120,
+        130
+      ]
+    }
+  },
+  "source": "function tasNew = interp_tas(tasValues) % interpolate TAS if bad values exist ~ Added by Joe Finlon 11/3/19\n\ntasNew = tasValues;\ngood = find((tasValues>0) & ~isnan(tasValues)); bad = find((tasValues==0) | isnan(tasValues));\nif ~isempty(bad)\n    tasNew(bad) = interp1(good, tasValues(good), bad);\nend\n\nend\n"
+}

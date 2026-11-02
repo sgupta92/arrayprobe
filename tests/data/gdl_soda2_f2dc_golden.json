@@ -1,0 +1,1429 @@
+[
+ {
+  "oracle_shims": [
+   "erode.pro (tail only)",
+   "uniq.pro (tail only)",
+   "dilate.pro (tail only)"
+  ],
+  "source": "SODA2/abansemer-soda2-afcea15/soda2_processbuffer.pro:28-78 + :612-747",
+  "pop": "soda2_probespecs.pro:719-737 Fast-2DC_v2 [C4]",
+  "pmisc": "soda2_process_2d.pro:39-41"
+ },
+ {
+  "name": "A_v2",
+  "probetype": "F2DC_v2",
+  "buffer_time": 18000.0,
+  "fresh_pmisc": true,
+  "note": "plan Case A",
+  "slices": {
+   "0": "AAAA0000000003E8",
+   "1": "FFFFFFFE3FFFFFFF",
+   "2": "FFFFFFFE3FFFFFFF",
+   "3": "FFFFFFFE3FFFFFFF",
+   "10": "AAAA1000000007D0",
+   "11": "FFFFFFFFFFEFFFFF",
+   "12": "FFFFFFFFFFEFFFFF",
+   "20": "AAAA000000000BB8"
+  },
+  "status": "OK",
+  "REJECT": 0,
+  "STARTLINE": [
+   0,
+   1,
+   11,
+   21
+  ],
+  "STOPLINE": [
+   0,
+   9,
+   19
+  ],
+  "RAWTIME": [
+   1000,
+   2000,
+   3000
+  ],
+  "DOF": [
+   1,
+   0,
+   1
+  ],
+  "PC": [
+   0,
+   0,
+   0
+  ],
+  "PROBETIMEHEX": [
+   "3EFF75104D551D69",
+   "3F0F75104D551D69",
+   "3F1797CC39FFD60F"
+  ],
+  "REFTIMEHEX": "3F1797CC39FFD60F",
+  "INTTIMEHEX": [
+   "0000000000000000",
+   "0000000000000000",
+   "0000000000000000"
+  ],
+  "CLOCKTASHEX": [
+   "43160000",
+   "43160000",
+   "43160000"
+  ],
+  "NSLICES": 19,
+  "BITDIM": "64,512",
+  "TAIL_DIAM": [
+   "00000000",
+   "42BF6BDE",
+   "42480000"
+  ],
+  "TAIL_XSIZEHEX": [
+   "00000000",
+   "42960000",
+   "41C80000"
+  ],
+  "TAIL_YSIZEHEX": [
+   "00000000",
+   "42960000",
+   "42480000"
+  ],
+  "TAIL_AREASIZEHEX": [
+   "00000000",
+   "42A941C3",
+   "421F93B0"
+  ],
+  "OVERLOADFLAG": [
+   0,
+   0,
+   0
+  ],
+  "NSTART": 4,
+  "NSTOP": 3,
+  "TAIL_ALLIN": [
+   0,
+   1,
+   1
+  ],
+  "DIODETOTAL": [
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   3,
+   3,
+   3,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   2,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "TN": "LONG,ULONG64,DOUBLE,ULONG64,BYTE",
+  "REMN": 492,
+  "REMHEAD": [
+   "FFFFFFFFFFFFFFFF",
+   "FFFFFFFFFFFFFFFF",
+   "FFFFFFFFFFFFFFFF",
+   "FFFFFFFFFFFFFFFF",
+   "FFFFFFFFFFFFFFFF",
+   "FFFFFFFFFFFFFFFF",
+   "FFFFFFFFFFFFFFFF",
+   "FFFFFFFFFFFFFFFF"
+  ],
+  "REMNONBLANK": 0,
+  "LASTBUFFTIMEHEX": "40D1940000000000"
+ },
+ {
+  "name": "A_v1",
+  "probetype": "F2DC",
+  "buffer_time": 18000.0,
+  "fresh_pmisc": true,
+  "note": "Case A bytes, v1 masks/clock",
+  "slices": {
+   "0": "AAAA0000000003E8",
+   "1": "FFFFFFFE3FFFFFFF",
+   "2": "FFFFFFFE3FFFFFFF",
+   "3": "FFFFFFFE3FFFFFFF",
+   "10": "AAAA1000000007D0",
+   "11": "FFFFFFFFFFEFFFFF",
+   "12": "FFFFFFFFFFEFFFFF",
+   "20": "AAAA000000000BB8"
+  },
+  "status": "OK",
+  "REJECT": 0,
+  "STARTLINE": [
+   0,
+   1,
+   11,
+   21
+  ],
+  "STOPLINE": [
+   0,
+   9,
+   19
+  ],
+  "RAWTIME": [
+   1000,
+   2000,
+   3000
+  ],
+  "DOF": [
+   1,
+   1,
+   1
+  ],
+  "PC": [
+   0,
+   0,
+   0
+  ],
+  "PROBETIMEHEX": [
+   "3F15D867C3ECE2A5",
+   "3F25D867C3ECE2A5",
+   "3F30624DD2F1A9FC"
+  ],
+  "REFTIMEHEX": "3F30624DD2F1A9FC",
+  "INTTIMEHEX": [
+   "0000000000000000",
+   "0000000000000000",
+   "0000000000000000"
+  ],
+  "CLOCKTASHEX": [
+   "43160000",
+   "43160000",
+   "43160000"
+  ],
+  "NSLICES": 19,
+  "BITDIM": "64,512",
+  "TAIL_DIAM": [
+   "00000000",
+   "42BF6BDE",
+   "42480000"
+  ],
+  "TAIL_XSIZEHEX": [
+   "00000000",
+   "42960000",
+   "41C80000"
+  ],
+  "TAIL_YSIZEHEX": [
+   "00000000",
+   "42960000",
+   "42480000"
+  ],
+  "TAIL_AREASIZEHEX": [
+   "00000000",
+   "42A941C3",
+   "421F93B0"
+  ],
+  "OVERLOADFLAG": [
+   0,
+   0,
+   0
+  ],
+  "NSTART": 4,
+  "NSTOP": 3,
+  "TAIL_ALLIN": [
+   0,
+   1,
+   1
+  ],
+  "DIODETOTAL": [
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   3,
+   3,
+   3,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   2,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "TN": "LONG,ULONG64,DOUBLE,ULONG64,BYTE",
+  "REMN": 492,
+  "REMHEAD": [
+   "FFFFFFFFFFFFFFFF",
+   "FFFFFFFFFFFFFFFF",
+   "FFFFFFFFFFFFFFFF",
+   "FFFFFFFFFFFFFFFF",
+   "FFFFFFFFFFFFFFFF",
+   "FFFFFFFFFFFFFFFF",
+   "FFFFFFFFFFFFFFFF",
+   "FFFFFFFFFFFFFFFF"
+  ],
+  "REMNONBLANK": 0,
+  "LASTBUFFTIMEHEX": "40D1940000000000"
+ },
+ {
+  "name": "B1",
+  "probetype": "F2DC_v2",
+  "buffer_time": 18000.0,
+  "fresh_pmisc": true,
+  "note": "carry-over, buffer 1",
+  "slices": {
+   "0": "AAAA0000000003E8",
+   "1": "FFFFFFFE3FFFFFFF",
+   "2": "FFFFFFFE3FFFFFFF",
+   "3": "FFFFFFFE3FFFFFFF",
+   "10": "AAAA1000000007D0",
+   "11": "FFFFFFFFFFEFFFFF",
+   "12": "FFFFFFFFFFEFFFFF",
+   "20": "AAAA000000000BB8"
+  },
+  "status": "OK",
+  "REJECT": 0,
+  "STARTLINE": [
+   0,
+   1,
+   11,
+   21
+  ],
+  "STOPLINE": [
+   0,
+   9,
+   19
+  ],
+  "RAWTIME": [
+   1000,
+   2000,
+   3000
+  ],
+  "DOF": [
+   1,
+   0,
+   1
+  ],
+  "PC": [
+   0,
+   0,
+   0
+  ],
+  "PROBETIMEHEX": [
+   "3EFF75104D551D69",
+   "3F0F75104D551D69",
+   "3F1797CC39FFD60F"
+  ],
+  "REFTIMEHEX": "3F1797CC39FFD60F",
+  "INTTIMEHEX": [
+   "0000000000000000",
+   "0000000000000000",
+   "0000000000000000"
+  ],
+  "CLOCKTASHEX": [
+   "43160000",
+   "43160000",
+   "43160000"
+  ],
+  "NSLICES": 19,
+  "BITDIM": "64,512",
+  "TAIL_DIAM": [
+   "00000000",
+   "42BF6BDE",
+   "42480000"
+  ],
+  "TAIL_XSIZEHEX": [
+   "00000000",
+   "42960000",
+   "41C80000"
+  ],
+  "TAIL_YSIZEHEX": [
+   "00000000",
+   "42960000",
+   "42480000"
+  ],
+  "TAIL_AREASIZEHEX": [
+   "00000000",
+   "42A941C3",
+   "421F93B0"
+  ],
+  "OVERLOADFLAG": [
+   0,
+   0,
+   0
+  ],
+  "NSTART": 4,
+  "NSTOP": 3,
+  "TAIL_ALLIN": [
+   0,
+   1,
+   1
+  ],
+  "DIODETOTAL": [
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   3,
+   3,
+   3,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   2,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "TN": "LONG,ULONG64,DOUBLE,ULONG64,BYTE",
+  "REMN": 492,
+  "REMHEAD": [
+   "FFFFFFFFFFFFFFFF",
+   "FFFFFFFFFFFFFFFF",
+   "FFFFFFFFFFFFFFFF",
+   "FFFFFFFFFFFFFFFF",
+   "FFFFFFFFFFFFFFFF",
+   "FFFFFFFFFFFFFFFF",
+   "FFFFFFFFFFFFFFFF",
+   "FFFFFFFFFFFFFFFF"
+  ],
+  "REMNONBLANK": 0,
+  "LASTBUFFTIMEHEX": "40D1940000000000"
+ },
+ {
+  "name": "B2",
+  "probetype": "F2DC_v2",
+  "buffer_time": 18001.0,
+  "fresh_pmisc": false,
+  "note": "carry-over, buffer 2 (B1's remainder)",
+  "slices": {
+   "0": "FFFFFCFFFFFFFFFF",
+   "1": "FFFFFCFFFFFFFFFF",
+   "2": "FFFFFCFFFFFFFFFF",
+   "3": "FFFFFCFFFFFFFFFF",
+   "4": "FFFFFCFFFFFFFFFF",
+   "5": "AAAA000000000FA0",
+   "30": "AAAA000000001388",
+   "31": "FFFFFFFFFFFFC3FF",
+   "100": "AAAA000000001770"
+  },
+  "status": "OK",
+  "REJECT": 0,
+  "STARTLINE": [
+   0,
+   498,
+   523,
+   593
+  ],
+  "STOPLINE": [
+   496,
+   521,
+   591
+  ],
+  "RAWTIME": [
+   4000,
+   5000,
+   6000
+  ],
+  "DOF": [
+   1,
+   1,
+   1
+  ],
+  "PC": [
+   0,
+   0,
+   0
+  ],
+  "PROBETIMEHEX": [
+   "3F1F75104D551D69",
+   "3F23A92A30553262",
+   "3F2797CC39FFD60F"
+  ],
+  "REFTIMEHEX": "3F2797CC39FFD60F",
+  "INTTIMEHEX": [
+   "0000000000000000",
+   "0000000000000000",
+   "0000000000000000"
+  ],
+  "CLOCKTASHEX": [
+   "43160000",
+   "43160000",
+   "43160000"
+  ],
+  "NSLICES": 590,
+  "BITDIM": "64,1004",
+  "TAIL_DIAM": [
+   "430013E0",
+   "00000000",
+   "42C80000"
+  ],
+  "TAIL_XSIZEHEX": [
+   "42480000",
+   "00000000",
+   "42C80000"
+  ],
+  "TAIL_YSIZEHEX": [
+   "42FA0000",
+   "00000000",
+   "41C80000"
+  ],
+  "TAIL_AREASIZEHEX": [
+   "42B26994",
+   "00000000",
+   "4261AD03"
+  ],
+  "OVERLOADFLAG": [
+   0,
+   0,
+   0
+  ],
+  "NSTART": 4,
+  "NSTOP": 3,
+  "TAIL_ALLIN": [
+   1,
+   0,
+   1
+  ],
+  "DIODETOTAL": [
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   5,
+   5,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   1,
+   1,
+   1,
+   1,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "TN": "LONG,ULONG64,DOUBLE,ULONG64,BYTE",
+  "REMN": 412,
+  "REMHEAD": [
+   "FFFFFFFFFFFFFFFF",
+   "FFFFFFFFFFFFFFFF",
+   "FFFFFFFFFFFFFFFF",
+   "FFFFFFFFFFFFFFFF",
+   "FFFFFFFFFFFFFFFF",
+   "FFFFFFFFFFFFFFFF",
+   "FFFFFFFFFFFFFFFF",
+   "FFFFFFFFFFFFFFFF"
+  ],
+  "REMNONBLANK": 0,
+  "LASTBUFFTIMEHEX": "40D1944000000000"
+ },
+ {
+  "name": "C1",
+  "probetype": "F2DC_v2",
+  "buffer_time": 18000.0,
+  "fresh_pmisc": true,
+  "note": "state clear, buffer 1",
+  "slices": {
+   "0": "AAAA0000000003E8",
+   "1": "FFFFFFFE3FFFFFFF",
+   "2": "FFFFFFFE3FFFFFFF",
+   "3": "FFFFFFFE3FFFFFFF",
+   "10": "AAAA1000000007D0",
+   "11": "FFFFFFFFFFEFFFFF",
+   "12": "FFFFFFFFFFEFFFFF",
+   "20": "AAAA000000000BB8"
+  },
+  "status": "OK",
+  "REJECT": 0,
+  "STARTLINE": [
+   0,
+   1,
+   11,
+   21
+  ],
+  "STOPLINE": [
+   0,
+   9,
+   19
+  ],
+  "RAWTIME": [
+   1000,
+   2000,
+   3000
+  ],
+  "DOF": [
+   1,
+   0,
+   1
+  ],
+  "PC": [
+   0,
+   0,
+   0
+  ],
+  "PROBETIMEHEX": [
+   "3EFF75104D551D69",
+   "3F0F75104D551D69",
+   "3F1797CC39FFD60F"
+  ],
+  "REFTIMEHEX": "3F1797CC39FFD60F",
+  "INTTIMEHEX": [
+   "0000000000000000",
+   "0000000000000000",
+   "0000000000000000"
+  ],
+  "CLOCKTASHEX": [
+   "43160000",
+   "43160000",
+   "43160000"
+  ],
+  "NSLICES": 19,
+  "BITDIM": "64,512",
+  "TAIL_DIAM": [
+   "00000000",
+   "42BF6BDE",
+   "42480000"
+  ],
+  "TAIL_XSIZEHEX": [
+   "00000000",
+   "42960000",
+   "41C80000"
+  ],
+  "TAIL_YSIZEHEX": [
+   "00000000",
+   "42960000",
+   "42480000"
+  ],
+  "TAIL_AREASIZEHEX": [
+   "00000000",
+   "42A941C3",
+   "421F93B0"
+  ],
+  "OVERLOADFLAG": [
+   0,
+   0,
+   0
+  ],
+  "NSTART": 4,
+  "NSTOP": 3,
+  "TAIL_ALLIN": [
+   0,
+   1,
+   1
+  ],
+  "DIODETOTAL": [
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   3,
+   3,
+   3,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   2,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "TN": "LONG,ULONG64,DOUBLE,ULONG64,BYTE",
+  "REMN": 492,
+  "REMHEAD": [
+   "FFFFFFFFFFFFFFFF",
+   "FFFFFFFFFFFFFFFF",
+   "FFFFFFFFFFFFFFFF",
+   "FFFFFFFFFFFFFFFF",
+   "FFFFFFFFFFFFFFFF",
+   "FFFFFFFFFFFFFFFF",
+   "FFFFFFFFFFFFFFFF",
+   "FFFFFFFFFFFFFFFF"
+  ],
+  "REMNONBLANK": 0,
+  "LASTBUFFTIMEHEX": "40D1940000000000"
+ },
+ {
+  "name": "C2",
+  "probetype": "F2DC_v2",
+  "buffer_time": 18001.0,
+  "fresh_pmisc": false,
+  "note": "2 syncs -> nullbuffer, remainder cleared",
+  "slices": {
+   "3": "AAAA000000001B58",
+   "4": "FFFFFFFFFFFFFFDF",
+   "40": "AAAA000000001F40"
+  },
+  "status": "OK",
+  "REJECT": 1,
+  "REMN": 0,
+  "LASTBUFFTIMEHEX": "40D1940000000000"
+ },
+ {
+  "name": "D",
+  "probetype": "F2DC_v2",
+  "buffer_time": 18000.0,
+  "fresh_pmisc": true,
+  "note": "last sync at 511 -> remainder 1",
+  "slices": {
+   "0": "AAAA0000000003E8",
+   "1": "FFFFFFFE3FFFFFFF",
+   "2": "FFFFFFFE3FFFFFFF",
+   "3": "FFFFFFFE3FFFFFFF",
+   "10": "AAAA1000000007D0",
+   "11": "FFFFFFFFFFEFFFFF",
+   "12": "FFFFFFFFFFEFFFFF",
+   "511": "AAAA000000000BB8"
+  },
+  "status": "OK",
+  "REJECT": 0,
+  "STARTLINE": [
+   0,
+   1,
+   11,
+   512
+  ],
+  "STOPLINE": [
+   0,
+   9,
+   510
+  ],
+  "RAWTIME": [
+   1000,
+   2000,
+   3000
+  ],
+  "DOF": [
+   1,
+   0,
+   1
+  ],
+  "PC": [
+   0,
+   0,
+   0
+  ],
+  "PROBETIMEHEX": [
+   "3EFF75104D551D69",
+   "3F0F75104D551D69",
+   "3F1797CC39FFD60F"
+  ],
+  "REFTIMEHEX": "3F1797CC39FFD60F",
+  "INTTIMEHEX": [
+   "0000000000000000",
+   "0000000000000000",
+   "0000000000000000"
+  ],
+  "CLOCKTASHEX": [
+   "43160000",
+   "43160000",
+   "43160000"
+  ],
+  "NSLICES": 510,
+  "BITDIM": "64,512",
+  "TAIL_DIAM": [
+   "00000000",
+   "42BF6BDE",
+   "42480000"
+  ],
+  "TAIL_XSIZEHEX": [
+   "00000000",
+   "42960000",
+   "41C80000"
+  ],
+  "TAIL_YSIZEHEX": [
+   "00000000",
+   "42960000",
+   "42480000"
+  ],
+  "TAIL_AREASIZEHEX": [
+   "00000000",
+   "42A941C3",
+   "421F93B0"
+  ],
+  "OVERLOADFLAG": [
+   0,
+   0,
+   0
+  ],
+  "NSTART": 4,
+  "NSTOP": 3,
+  "TAIL_ALLIN": [
+   0,
+   1,
+   1
+  ],
+  "DIODETOTAL": [
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   3,
+   3,
+   3,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   2,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "TN": "LONG,ULONG64,DOUBLE,ULONG64,BYTE",
+  "REMN": 1,
+  "REMHEAD": [
+   "FFFFFFFFFFFFFFFF"
+  ],
+  "REMNONBLANK": 0,
+  "LASTBUFFTIMEHEX": "40D1940000000000"
+ },
+ {
+  "name": "E_dof",
+  "probetype": "F2DC_v2",
+  "buffer_time": 18000.0,
+  "fresh_pmisc": true,
+  "note": "all dof bits set, dofreject 0",
+  "slices": {
+   "0": "AAAA1000000003E8",
+   "1": "FFFFFFFE3FFFFFFF",
+   "2": "FFFFFFFE3FFFFFFF",
+   "3": "FFFFFFFE3FFFFFFF",
+   "10": "AAAA1000000007D0",
+   "11": "FFFFFFFFFFEFFFFF",
+   "12": "FFFFFFFFFFEFFFFF",
+   "20": "AAAA100000000BB8"
+  },
+  "status": "OK",
+  "REJECT": 0,
+  "STARTLINE": [
+   0,
+   1,
+   11,
+   21
+  ],
+  "STOPLINE": [
+   0,
+   9,
+   19
+  ],
+  "RAWTIME": [
+   1000,
+   2000,
+   3000
+  ],
+  "DOF": [
+   0,
+   0,
+   0
+  ],
+  "PC": [
+   0,
+   0,
+   0
+  ],
+  "PROBETIMEHEX": [
+   "3EFF75104D551D69",
+   "3F0F75104D551D69",
+   "3F1797CC39FFD60F"
+  ],
+  "REFTIMEHEX": "3F1797CC39FFD60F",
+  "INTTIMEHEX": [
+   "0000000000000000",
+   "0000000000000000",
+   "0000000000000000"
+  ],
+  "CLOCKTASHEX": [
+   "43160000",
+   "43160000",
+   "43160000"
+  ],
+  "NSLICES": 19,
+  "BITDIM": "64,512",
+  "TAIL_DIAM": [
+   "00000000",
+   "42BF6BDE",
+   "42480000"
+  ],
+  "TAIL_XSIZEHEX": [
+   "00000000",
+   "42960000",
+   "41C80000"
+  ],
+  "TAIL_YSIZEHEX": [
+   "00000000",
+   "42960000",
+   "42480000"
+  ],
+  "TAIL_AREASIZEHEX": [
+   "00000000",
+   "42A941C3",
+   "421F93B0"
+  ],
+  "OVERLOADFLAG": [
+   0,
+   0,
+   0
+  ],
+  "NSTART": 4,
+  "NSTOP": 3,
+  "TAIL_ALLIN": [
+   0,
+   1,
+   1
+  ],
+  "DIODETOTAL": [
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   3,
+   3,
+   3,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   2,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "TN": "LONG,ULONG64,DOUBLE,ULONG64,BYTE",
+  "REMN": 492,
+  "REMHEAD": [
+   "FFFFFFFFFFFFFFFF",
+   "FFFFFFFFFFFFFFFF",
+   "FFFFFFFFFFFFFFFF",
+   "FFFFFFFFFFFFFFFF",
+   "FFFFFFFFFFFFFFFF",
+   "FFFFFFFFFFFFFFFF",
+   "FFFFFFFFFFFFFFFF",
+   "FFFFFFFFFFFFFFFF"
+  ],
+  "REMNONBLANK": 0,
+  "LASTBUFFTIMEHEX": "40D1940000000000"
+ },
+ {
+  "name": "F1",
+  "probetype": "F2DC_v2",
+  "buffer_time": 18000.0,
+  "fresh_pmisc": true,
+  "note": "remainder 500 for F2",
+  "slices": {
+   "0": "AAAA00000000000A",
+   "1": "AAAA000000000014",
+   "5": "7FFFFFFFFFFFFFFF",
+   "12": "AAAA00000000001E"
+  },
+  "status": "OK",
+  "REJECT": 0,
+  "STARTLINE": [
+   0,
+   1,
+   2,
+   13
+  ],
+  "STOPLINE": [
+   0,
+   1,
+   11
+  ],
+  "RAWTIME": [
+   10,
+   20,
+   30
+  ],
+  "DOF": [
+   1,
+   1,
+   1
+  ],
+  "PC": [
+   0,
+   0,
+   0
+  ],
+  "PROBETIMEHEX": [
+   "3E9421F5F40D8376",
+   "3EA421F5F40D8376",
+   "3EAE32F0EE144532"
+  ],
+  "REFTIMEHEX": "3EAE32F0EE144532",
+  "INTTIMEHEX": [
+   "0000000000000000",
+   "0000000000000000",
+   "0000000000000000"
+  ],
+  "CLOCKTASHEX": [
+   "43160000",
+   "43160000",
+   "43160000"
+  ],
+  "NSLICES": 12,
+  "BITDIM": "64,512",
+  "TAIL_DIAM": [
+   "00000000",
+   "00000000",
+   "41C80000"
+  ],
+  "TAIL_XSIZEHEX": [
+   "00000000",
+   "00000000",
+   "41C80000"
+  ],
+  "TAIL_YSIZEHEX": [
+   "00000000",
+   "00000000",
+   "41C80000"
+  ],
+  "TAIL_AREASIZEHEX": [
+   "00000000",
+   "00000000",
+   "41C80000"
+  ],
+  "OVERLOADFLAG": [
+   0,
+   0,
+   0
+  ],
+  "NSTART": 4,
+  "NSTOP": 3,
+  "TAIL_ALLIN": [
+   0,
+   0,
+   0
+  ],
+  "DIODETOTAL": [
+   1,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "TN": "LONG,ULONG64,DOUBLE,ULONG64,BYTE",
+  "REMN": 500,
+  "REMHEAD": [
+   "FFFFFFFFFFFFFFFF",
+   "FFFFFFFFFFFFFFFF",
+   "FFFFFFFFFFFFFFFF",
+   "FFFFFFFFFFFFFFFF",
+   "FFFFFFFFFFFFFFFF",
+   "FFFFFFFFFFFFFFFF",
+   "FFFFFFFFFFFFFFFF",
+   "FFFFFFFFFFFFFFFF"
+  ],
+  "REMNONBLANK": 0,
+  "LASTBUFFTIMEHEX": "40D1940000000000"
+ },
+ {
+  "name": "F2",
+  "probetype": "F2DC_v2",
+  "buffer_time": 18001.0,
+  "fresh_pmisc": false,
+  "note": "syncs planted in the 500-slice remainder's slices 0-2, none in the buffer: nremainder 1010 > 512 at :73",
+  "slices": {},
+  "status": "ERROR",
+  "stdout": "CASE=F1 REJECT=0\nSTARTLINE=0,1,2,13\nSTOPLINE=0,1,11\nRAWTIME=10,20,30\nDOF=1,1,1\nPC=0,0,0\nPROBETIMEHEX=3E9421F5F40D8376,3EA421F5F40D8376,3EAE32F0EE144532\nREFTIMEHEX=3EAE32F0EE144532\nINTTIMEHEX=0000000000000000,0000000000000000,0000000000000000\nCLOCKTASHEX=43160000,43160000,43160000\nNSLICES=12 BITDIM=64,512\nTAIL_DIAM=00000000,00000000,41C80000\nTAIL_XSIZEHEX=00000000,00000000,41C80000\nTAIL_YSIZEHEX=00000000,00000000,41C80000\nTAIL_AREASIZEHEX=00000000,00000000,41C80000\nOVERLOADFLAG=0,0,0\nNSTART=4 NSTOP=3\nTAIL_ALLIN=0,0,0\nDIODETOTAL=1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0\nTN=LONG,ULONG64,DOUBLE,ULONG64,BYTE\nREMN=500\nREMHEAD=FFFFFFFFFFFFFFFF,FFFFFFFFFFFFFFFF,FFFFFFFFFFFFFFFF,FFFFFFFFFFFFFFFF,FFFFFFFFFFFFFFFF,FFFFFFFFFFFFFFFF,FFFFFFFFFFFFFFFF,FFFFFFFFFFFFFFFF\nREMNONBLANK=0\nLASTBUFFTIMEHEX=40D1940000000000\n",
+  "stderr": "% SODA2_PROCESSBUFFER: Subscript out of range [s:e].\n% Execution halted at: SODA2_PROCESSBUFFER    73 <repo>\\SODA2\\abansemer-soda2-afcea15\\soda2_processbuffer.pro\n%                      BANK                47 <tmp>\\bank.pro\n%                      $MAIN$          "
+ }
+]

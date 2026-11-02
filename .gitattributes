@@ -1,0 +1,27 @@
+# Shell scripts must check out with LF everywhere: `#!/usr/bin/env bash\r` fails on Linux and
+# macOS, and a Windows clone with core.autocrlf=true would otherwise convert them.
+*.sh text eol=lf
+
+# Test fixtures are bytes, not text. Several tests compare files under tests/data/ byte for byte
+# against what the original MATLAB (or Octave running it) wrote, including one whose subject is
+# that a sidecar has no line terminators; a line-ending conversion on checkout would change them.
+tests/data/** -text
+
+# Licence, notice and citation copies are compared byte for byte with the masters at the
+# repository root, so git must not convert them. `-text` freezes the committed bytes.
+LICENSE -text
+*/LICENSE -text
+NOTICE.md -text
+*/NOTICE.md -text
+CITATION.cff -text
+*/CITATION.cff -text
+
+# The upstream trees' per-file SHA-256 lists ship with CRLF line endings and the release's SHA256SUMS
+# describes those bytes, so git must not convert them either.
+scripts/upstream/*.sha256.json -text
+
+# Generated documentation is written with LF; checking it out LF keeps a no-change rebuild clean.
+docs/*.html text eol=lf
+docs/*.css text eol=lf
+docs/*.js text eol=lf
+docs/figures/*.svg text eol=lf

@@ -1,0 +1,470 @@
+{
+ "source": "UIOPS-v3.5/joefinlon-UIOPS-039be82/imgProc_sm.m",
+ "block_lines": [
+  1132,
+  1183
+ ],
+ "block_text": "                    tempTime = double(handles.hour)*10000+double(handles.minute)*100+double(handles.second); % image record time in HHMMSS\n                    tas2d = tas(tasTime==tempTime); % get TAS for corresponding time period\n                    \n                    if exist('part_time_prev', 'var')\n                        if (isempty(tas2d)) || (isnan(tas2d)) % use when no TAS data (or NaN - Joe Finlon 02/09/18) is available for current time\n                            % compute time difference (sec) between\n                            % particles to determine whether corrections\n                            % are needed (see 'indexRollback' in\n                            % sizeDist.m)\n                            timeDiff = (part_time-part_time_prev)*(handles.diodesize/(10^3)/170);\n                            \n                            if timeDiff>=-250 % clock cycle hasn't rolled back\n                                time_in_seconds(kk) = time_in_seconds_prev + timeDiff;\n                            else % perform correction when clock cycle exceeds 2^32 and rolls back\n                                time_in_seconds(kk) = time_in_seconds_prev + (2^32-1-part_time_prev+part_time)*...\n                                    (handles.diodesize/(10^3)/170);\n                                disp(['Performing clock cyle time correction. ',num2str(part_time_prev),...\n                                    ' ',num2str(part_time),' ',num2str(time_in_seconds_prev),' ',num2str(time_in_seconds(kk))])\n                            end\n                        else % use the TAS to convert clock cycles to time\n                            % compute time difference (sec) between\n                            % particles to determine whether corrections\n                            % are needed (see 'indexRollback' in\n                            % sizeDist.m)\n                            timeDiff = (part_time-part_time_prev)*(handles.diodesize/(10^3)/tas2d);\n                            \n                            if timeDiff>=-250 % clock cycle hasn't rolled back\n                                time_in_seconds(kk) = time_in_seconds_prev + timeDiff;\n                            else % perform correction when TAS clock cycle exceeds 2^32 and rolls back\n                                time_in_seconds(kk) = time_in_seconds_prev + (2^32-1-part_time_prev+part_time)*...\n                                    (handles.diodesize/(10^3)/tas2d);\n                                disp(['Performing clock cyle time correction. ',num2str(part_time_prev),...\n                                    ' ',num2str(part_time),' ',num2str(time_in_seconds_prev),' ',num2str(time_in_seconds(kk))])\n                            end\n                        end\n                    else % run for the first particle in data file\n                        if isempty(tas2d)\n                            time_in_seconds(kk) = part_time*(handles.diodesize/(10^3)/170);\n                        else\n                            time_in_seconds(kk) = part_time*(handles.diodesize/(10^3)/tas2d);\n                        end\n                    end\n                    \n                    if(kk>1) % ** Use diff(time_in_seconds) to compute int-arr time in post-processing **\n                        images.int_arrival(kk) = time_in_seconds(kk)-time_in_seconds(kk-1);\n                    else\n                        images.int_arrival(kk) = 0;\n                    end\n                    \n                    part_time_prev = part_time; % assign the clock cycle for use in next iteration\n                    \n                    time_in_seconds_prev = time_in_seconds(kk);\n",
+ "octave": "GNU Octave, version 8.4.0",
+ "cases": [
+  {
+   "name": "b6_first_particle_nan_tas",
+   "diodesize": 0.01,
+   "recs": [
+    [
+     16,
+     41,
+     29
+    ],
+    [
+     16,
+     41,
+     29
+    ]
+   ],
+   "kks": [
+    1,
+    2
+   ],
+   "part_times": [
+    1000,
+    5000
+   ],
+   "tas": [
+    "NaN"
+   ],
+   "tasTime": [
+    164129
+   ]
+  },
+  {
+   "name": "first_particle_no_tas_match",
+   "diodesize": 0.01,
+   "recs": [
+    [
+     16,
+     41,
+     29
+    ],
+    [
+     16,
+     41,
+     29
+    ]
+   ],
+   "kks": [
+    1,
+    2
+   ],
+   "part_times": [
+    1000,
+    5000
+   ],
+   "tas": [
+    95.0
+   ],
+   "tasTime": [
+    164130
+   ]
+  },
+  {
+   "name": "first_particle_real_tas",
+   "diodesize": 0.01,
+   "recs": [
+    [
+     16,
+     41,
+     29
+    ],
+    [
+     16,
+     41,
+     29
+    ]
+   ],
+   "kks": [
+    1,
+    2
+   ],
+   "part_times": [
+    1000,
+    5000
+   ],
+   "tas": [
+    95.0
+   ],
+   "tasTime": [
+    164129
+   ]
+  },
+  {
+   "name": "nan_then_real_across_records",
+   "diodesize": 0.01,
+   "recs": [
+    [
+     16,
+     41,
+     29
+    ],
+    [
+     16,
+     41,
+     29
+    ],
+    [
+     16,
+     41,
+     30
+    ],
+    [
+     16,
+     41,
+     30
+    ]
+   ],
+   "kks": [
+    1,
+    2,
+    1,
+    2
+   ],
+   "part_times": [
+    1000,
+    5000,
+    9000,
+    9100
+   ],
+   "tas": [
+    "NaN",
+    120.0
+   ],
+   "tasTime": [
+    164129,
+    164130
+   ]
+  },
+  {
+   "name": "real_then_missing",
+   "diodesize": 0.01,
+   "recs": [
+    [
+     16,
+     41,
+     29
+    ],
+    [
+     16,
+     41,
+     30
+    ]
+   ],
+   "kks": [
+    1,
+    1
+   ],
+   "part_times": [
+    1000,
+    70000
+   ],
+   "tas": [
+    95.0
+   ],
+   "tasTime": [
+    164129
+   ]
+  },
+  {
+   "name": "clock_wrap_real_tas",
+   "diodesize": 0.01,
+   "recs": [
+    [
+     16,
+     41,
+     29
+    ],
+    [
+     16,
+     41,
+     29
+    ]
+   ],
+   "kks": [
+    1,
+    2
+   ],
+   "part_times": [
+    4294967000,
+    200
+   ],
+   "tas": [
+    95.0
+   ],
+   "tasTime": [
+    164129
+   ]
+  },
+  {
+   "name": "clock_wrap_no_tas",
+   "diodesize": 0.01,
+   "recs": [
+    [
+     16,
+     41,
+     29
+    ],
+    [
+     16,
+     41,
+     29
+    ]
+   ],
+   "kks": [
+    1,
+    2
+   ],
+   "part_times": [
+    4294967000,
+    200
+   ],
+   "tas": [
+    95.0
+   ],
+   "tasTime": [
+    164130
+   ]
+  },
+  {
+   "name": "small_backstep_not_a_wrap",
+   "diodesize": 0.01,
+   "recs": [
+    [
+     16,
+     41,
+     29
+    ],
+    [
+     16,
+     41,
+     29
+    ]
+   ],
+   "kks": [
+    1,
+    2
+   ],
+   "part_times": [
+    900000,
+    800000
+   ],
+   "tas": [
+    95.0
+   ],
+   "tasTime": [
+    164129
+   ]
+  },
+  {
+   "name": "duplicate_tas_second",
+   "diodesize": 0.01,
+   "recs": [
+    [
+     16,
+     41,
+     29
+    ],
+    [
+     16,
+     41,
+     29
+    ]
+   ],
+   "kks": [
+    1,
+    2
+   ],
+   "part_times": [
+    1000,
+    5000
+   ],
+   "tas": [
+    95.0,
+    96.0
+   ],
+   "tasTime": [
+    164129,
+    164129
+   ]
+  },
+  {
+   "name": "duplicate_tas_second_first_only",
+   "diodesize": 0.01,
+   "recs": [
+    [
+     16,
+     41,
+     29
+    ]
+   ],
+   "kks": [
+    1
+   ],
+   "part_times": [
+    1000
+   ],
+   "tas": [
+    95.0,
+    96.0
+   ],
+   "tasTime": [
+    164129,
+    164129
+   ]
+  }
+ ],
+ "results": [
+  {
+   "name": "b6_first_particle_nan_tas",
+   "status": "OK",
+   "time_in_seconds": [
+    null,
+    null
+   ],
+   "int_arrival": [
+    0,
+    null
+   ],
+   "nan_mask": [
+    1,
+    1
+   ]
+  },
+  {
+   "name": "first_particle_no_tas_match",
+   "status": "OK",
+   "time_in_seconds": [
+    5.882352941176471e-05,
+    0.00029411764705882356
+   ],
+   "int_arrival": [
+    0,
+    0.00023529411764705886
+   ],
+   "nan_mask": [
+    0,
+    0
+   ]
+  },
+  {
+   "name": "first_particle_real_tas",
+   "status": "OK",
+   "time_in_seconds": [
+    0.00010526315789473685,
+    0.0005263157894736842
+   ],
+   "int_arrival": [
+    0,
+    0.00042105263157894734
+   ],
+   "nan_mask": [
+    0,
+    0
+   ]
+  },
+  {
+   "name": "nan_then_real_across_records",
+   "status": "OK",
+   "time_in_seconds": [
+    null,
+    null,
+    null,
+    null
+   ],
+   "int_arrival": [
+    0,
+    null,
+    0,
+    null
+   ],
+   "nan_mask": [
+    1,
+    1,
+    1,
+    1
+   ]
+  },
+  {
+   "name": "real_then_missing",
+   "status": "OK",
+   "time_in_seconds": [
+    0.00010526315789473685,
+    0.004164086687306502
+   ],
+   "int_arrival": [
+    0,
+    0
+   ],
+   "nan_mask": [
+    0,
+    0
+   ]
+  },
+  {
+   "name": "clock_wrap_real_tas",
+   "status": "OK",
+   "time_in_seconds": [
+    452.1017894736842,
+    452.10184157894736
+   ],
+   "int_arrival": [
+    0,
+    5.210526313703667e-05
+   ],
+   "nan_mask": [
+    0,
+    0
+   ]
+  },
+  {
+   "name": "clock_wrap_no_tas",
+   "status": "OK",
+   "time_in_seconds": [
+    252.64511764705884,
+    252.64514676470588
+   ],
+   "int_arrival": [
+    0,
+    2.9117647045495687e-05
+   ],
+   "nan_mask": [
+    0,
+    0
+   ]
+  },
+  {
+   "name": "small_backstep_not_a_wrap",
+   "status": "OK",
+   "time_in_seconds": [
+    0.09473684210526316,
+    0.08421052631578947
+   ],
+   "int_arrival": [
+    0,
+    -0.01052631578947369
+   ],
+   "nan_mask": [
+    0,
+    0
+   ]
+  },
+  {
+   "name": "duplicate_tas_second",
+   "status": "ERROR",
+   "message": "=: nonconformant arguments (op1 is 1x1, op2 is 1x2)"
+  },
+  {
+   "name": "duplicate_tas_second_first_only",
+   "status": "ERROR",
+   "message": "=: nonconformant arguments (op1 is 1x1, op2 is 1x2)"
+  }
+ ]
+}

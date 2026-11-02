@@ -1,0 +1,65 @@
+# Lint at the commit, not nine jobs later.
+#
+# WHY THIS EXISTS. `ruff check src tests tools` runs in CI on exactly one leg of
+# a nine-job matrix. A lint failure therefore costs a full cross-platform round
+# trip to discover, at the Linux 1x / Windows 2x / macOS 10x runner rates the
+# workflow's cost note records. Ruff takes well under a second on this tree, so
+# the same finding is free here and expensive there.
+#
+# WHAT IT DELIBERATELY DOES NOT DO: run the suite. That is 70-140 s locally and
+# would make every commit painful. Correctness is CI's job; this hook only
+# covers the check whose answer cannot depend on the platform.
+#
+# INSTALL (once per clone):
+#   pip install -r requirements-dev.txt
+#   pre-commit install
+#
+# The hook is a convenience, never a gate: nothing in this repository requires
+# it to have run, and CI remains the authority. A contributor who has not
+# installed it gets the same answer, later.
+#
+# THE PIN IS CHECKED. `rev` below must match the `ruff==` pin in
+# requirements-dev.txt, or the hook and CI can disagree about what
+# is a finding -- a lint that passes locally and fails in CI is worse than no
+# hook at all. tests/test_precommit_config.py reads both files and
+# fails when they drift, in the spirit of every other count check here.
+
+repos:
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.14.4
+    hooks:
+      - id: ruff-check
+        # The documented scope exactly: src, tests, tools, gdl_oracle and
+        # octave_oracle at the root, plus paper/ (joined 2026-09-10).
+        # The two oracle directories joined on
+        # 2026-09-12, having never been linted at all -- the first run found
+        # two unused imports and ten long lines, four of which were MATLAB
+        # source held in string literals and are now per-file exemptions with
+        # their reasons written down. Ruff
+        # resolves its settings by walking up from each file, so it finds
+        # pyproject.toml and applies the same line-length, rule
+        # selection and per-file exemptions that CI applies -- paper/ has no
+        # pyproject.toml of its own for this to find.
+        #
+        # The flat root *.py re-export shims are outside this scope on
+        # purpose, matching the documented command; they are covered by the
+        # Phase-1 tests instead.
+        files: ^((src|tests|scripts)/.*\.py$|(paper|docs/_build|enhancements_uiops|enhancements_soda2)/.*\.py$|examples/_style\.py$)
+
+  # Two repository-hygiene checks, platform-independent and sub-second like the
+  # lint above. v6.0.0 is the latest pre-commit-hooks release (published
+  # 2025-08-09, tag verified on GitHub 2026-10-01); it has no counterpart pin in
+  # requirements-dev.txt because nothing else installs it.
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v6.0.0
+    hooks:
+      - id: check-added-large-files
+        # 4000 KB sits above every tracked file but one: the next largest is
+        # 3.5 MB. The exception, tests/data/s6_sea_raw_fixture
+        # (13,640,007 bytes, the raw SEA record the CIP/2DC reader is pinned
+        # against), stays tracked because this hook checks newly added files
+        # only and never re-examines an existing one. Reference data and flight
+        # files are gitignored; a new file above 4000 KB is almost certainly one
+        # of them (per the large-tracked-files census recorded during development).
+        args: ["--maxkb=4000"]
+      - id: check-merge-conflict

@@ -1,0 +1,32 @@
+Particle size distributions for the 2DS probe in ORACLES
+Flight date (yyyy/mm/dd):   2016/09/06
+Processed:   2026-09-14T00:00:00
+Raw data source:  raw.2DS
+Sizing method:  xsize
+Shattering correction:  on
+Liquid water processing:  off
+
+Bin midpoints (microns):
+    75.00   125.00   175.00   250.00   350.00   500.00   700.00   900.00
+Bin endpoints (microns):
+    50.00   100.00   150.00   200.00   300.00   400.00   600.00   800.00  1000.00
+Sample area using a depth of field constant of 8.12 (m^2):
+ 1.00e-04 1.00e-04 1.00e-04 1.00e-04 1.00e-04 1.00e-04 1.00e-04 1.00e-04
+
+Notes:
+   All bulk properties are computed using particles larger than 50.00 microns in size.
+   Size distributions were processed using ice rejection criteria.
+   Mass-size parameterization coefficients: a=  2.94e-03, b=1.90
+
+Variables:
+   Time: Time at start of interval [UTC seconds]
+   Nt: Total Concentration for Particles with D>50.00um [#/m3]
+   IWC: Estimated Ice Water Content [g/m3]
+   MMD: Median Mass-weighted Diameter [microns]
+   ConcXXX: Particle concentration per size bin, normalized by bin width [#/m4]
+
+  Time          Nt         IWC         MMD     Conc001     Conc002     Conc003     Conc004     Conc005     Conc006     Conc007     Conc008
+----------------------------------------------------
+     0    1.92e-01    8.30e-07    4.32e+02    1.00e+02    5.00e+02    8.00e+02    6.00e+02    3.00e+02    1.00e+02    5.00e+01    1.00e+01
+     1    1.92e-01    8.30e-07    4.32e+02    1.00e+02    5.00e+02    8.00e+02    6.00e+02    3.00e+02    1.00e+02    5.00e+01    1.00e+01
+     2    1.92e-01    8.30e-07    4.32e+02    1.00e+02    5.00e+02    8.00e+02    6.00e+02    3.00e+02    1.00e+02    5.00e+01    1.00e+01

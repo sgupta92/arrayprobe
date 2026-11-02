@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 360" width="100%" role="img" aria-labelledby="t d" font-family="system-ui, -apple-system, Segoe UI, Roboto, sans-serif">
+  <!-- source: page titles from line 1 of docs/02-user-guide.md, 27-choosing-an-engine.md, 06-configuration.md, 00a-scientists-guide.md, 10-known-gaps.md, 05-enhancements.md, 04-validation.md, 09-conventions.md, 07-findings.md, 12-orientation.md, 26-why-reproduce-first.md; README.md -->
+  <title id="t">Which page to read, by what you came to do</title>
+  <desc id="d">Three reading paths. To process data: the README quickstart, then the User guide, Choosing an engine, and Configuration. To understand the science: Orientation for OAP scientists, then the Scientist's guide, Known gaps and future work, and Enhancements. To maintain or validate the port: Why reproduce the original first, then Validation, Conventions and terms, and For UIOPS developers.</desc>
+  <rect id="figure-background" x="0" y="0" width="960" height="360" fill="#ffffff"/>
+  <defs>
+    <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#5B6B7C"/>
+    </marker>
+  </defs>
+
+  <g font-size="15" font-weight="700" fill="#5B6B7C" text-anchor="middle">
+    <text x="170" y="30">Process data</text>
+    <text x="480" y="30">Understand the science</text>
+    <text x="790" y="30">Maintain or validate</text>
+  </g>
+
+  <!-- column 1 -->
+  <g fill="#E8EEF7" stroke="#4A6FA5" stroke-width="1.5">
+    <rect x="40" y="50" width="260" height="50" rx="6"/>
+    <rect x="40" y="126" width="260" height="50" rx="6"/>
+    <rect x="40" y="202" width="260" height="50" rx="6"/>
+    <rect x="40" y="278" width="260" height="50" rx="6"/>
+  </g>
+  <!-- column 2 -->
+  <g fill="#E3F1E8" stroke="#4A8F63" stroke-width="1.5">
+    <rect x="350" y="50" width="260" height="50" rx="6"/>
+    <rect x="350" y="126" width="260" height="50" rx="6"/>
+    <rect x="350" y="202" width="260" height="50" rx="6"/>
+    <rect x="350" y="278" width="260" height="50" rx="6"/>
+  </g>
+  <!-- column 3 -->
+  <g fill="#F3E9D8" stroke="#A5764A" stroke-width="1.5">
+    <rect x="660" y="50" width="260" height="50" rx="6"/>
+    <rect x="660" y="126" width="260" height="50" rx="6"/>
+    <rect x="660" y="202" width="260" height="50" rx="6"/>
+    <rect x="660" y="278" width="260" height="50" rx="6"/>
+  </g>
+
+  <g font-size="15" fill="#1F2D3D" text-anchor="middle">
+    <text x="170" y="80">README quickstart</text>
+    <text x="170" y="156">User guide</text>
+    <text x="170" y="232">Choosing an engine</text>
+    <text x="170" y="308">Configuration</text>
+
+    <text x="480" y="80">Orientation</text>
+    <text x="480" y="156">Scientist's guide</text>
+    <text x="480" y="232">Known gaps and future work</text>
+    <text x="480" y="308">Enhancements</text>
+
+    <text x="790" y="80">Why reproduce first</text>
+    <text x="790" y="156">Validation</text>
+    <text x="790" y="232">Conventions and terms</text>
+    <text x="790" y="308">For UIOPS developers</text>
+  </g>
+
+  <g stroke="#5B6B7C" stroke-width="1.5" marker-end="url(#ah)">
+    <line x1="170" y1="100" x2="170" y2="124"/>
+    <line x1="170" y1="176" x2="170" y2="200"/>
+    <line x1="170" y1="252" x2="170" y2="276"/>
+    <line x1="480" y1="100" x2="480" y2="124"/>
+    <line x1="480" y1="176" x2="480" y2="200"/>
+    <line x1="480" y1="252" x2="480" y2="276"/>
+    <line x1="790" y1="100" x2="790" y2="124"/>
+    <line x1="790" y1="176" x2="790" y2="200"/>
+    <line x1="790" y1="252" x2="790" y2="276"/>
+  </g>
+</svg>

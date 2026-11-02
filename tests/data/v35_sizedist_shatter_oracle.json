@@ -1,0 +1,544 @@
+{
+ "area_ratio": {
+  "above_one": {
+   "area_ratio": 1,
+   "auto_reject": "A",
+   "status": "OK"
+  },
+  "below_one_above_z": {
+   "area_ratio": 0.6366197723675813,
+   "auto_reject": "A",
+   "status": "OK"
+  },
+  "below_one_below_z": {
+   "area_ratio": 0.15915494309189532,
+   "auto_reject": "z",
+   "status": "OK"
+  },
+  "exactly_one": {
+   "area_ratio": 1,
+   "auto_reject": "A",
+   "status": "OK"
+  },
+  "nan_area": {
+   "area_ratio": null,
+   "auto_reject": "A",
+   "status": "OK"
+  }
+ },
+ "area_ratio_cases": {
+  "above_one": {
+   "area": 0.05,
+   "diam": 0.2
+  },
+  "below_one_above_z": {
+   "area": 0.02,
+   "diam": 0.2
+  },
+  "below_one_below_z": {
+   "area": 0.005,
+   "diam": 0.2
+  },
+  "exactly_one": {
+   "area": null,
+   "diam": 0.2
+  },
+  "nan_area": {
+   "area": NaN,
+   "diam": 0.2
+  }
+ },
+ "blocks": {
+  "area_ratio_v35": {
+   "end_line": 1162,
+   "start_line": 1160,
+   "text": "        area_ratio = area./(pi/4.*particle_diameter_minR.^2);\n        area_ratio(area_ratio > 1.) = 1.; % Added by Joe Finlon 03/19/23\n        auto_reject(area_ratio < .2) = 'z';\n"
+  },
+  "type1_v35": {
+   "end_line": 1221,
+   "start_line": 1180,
+   "text": "            auto_reject_preIAT = auto_reject;\n\t\t\tiaThresh_ncid = netcdf.open(iaThreshFile,'nowrite');\n\t\t\tiaThresh = netcdf.getVar(iaThresh_ncid,netcdf.inqVarID(iaThresh_ncid,'threshold'),start,count);\n\t\t\tnetcdf.close(iaThresh_ncid);\n\t\t\n            if ((length(int_arr) == 1) && (int_arr(1) <= iaThresh(1)))\n\t\t\t\tauto_reject(1) = 'S';\n            else\n                if int_arr(1) <= iaThresh(1)\n\t\t\t\t\tauto_reject(1) = 'S';\n                end\n\t\t\n                for ix = 2:length(int_arr)\n\t\t\t\t\tif int_arr(ix) <= iaThresh(ix)\n\t\t\t\t\t\tauto_reject((ix-1):ix) = 'S';\n\t\t\t\t\tend\n                end\n            end\n            \n            % Experimental option to reaccept particles flagged as shattered which may in fact be the result of diffraction\n\t\t\t% fringes\n\t\t\t% Added by Dan Stechman - 6/8/2015 & Modified by Joe Finlon - 03/03/17 - with base code by Wei Wu\n\t\t\tif reaccptShatrs\n\t\t\t\t% Start by defining the indices for the beginning and end of individual shattering events\n\t\t\t\trBegin = ((int_arr > iaThresh & int_arr3 < iaThresh));\n\t\t\t\trEnd = ((int_arr < iaThresh & int_arr3 > iaThresh));\n\t\t\t\t\n\t\t\t\tmaxParticle = reaccptD;\n\t\t\t\teIndex = [];\n\t\t\t\t\n\t\t\t\t% We search through each individual set of shattering events and check to see if any of the particles are both\n\t\t\t\t% larger than the reacceptance diameter and have an interarrival time less than the reacceptance threshold as we'd\n\t\t\t\t% expect diffraction fringes to be larger than shattered particles and to have a particularly small interarrival time\n                for iEvent = find(rBegin):find(rEnd)\n\t\t\t\t\tif ((particle_diameter_minR(iEvent) > maxParticle) && (int_arr(iEvent) < reaccptMaxIA))\n\t\t\t\t\t\tmaxParticle = particle_diameter_minR(iEvent);\n\t\t\t\t\t\teIndex = iEvent;\n\t\t\t\t\tend\n                end\n\n\t\t\t\tauto_reject(eIndex) = 'R';\n\t\t\tend\n"
+  },
+  "type2_v35": {
+   "end_line": 1354,
+   "start_line": 1309,
+   "text": "\t\t\t% If the first particle in the next 1-sec period has a small interarrival time, we flag the last particle of\n\t\t\t% the current period as shattered as well\n\t\t\tif ~isempty(int_arr2)\n\t\t\t\tif int_arr2 <= intar_threshold(i)\n\t\t\t\t\tauto_reject(end) = 'S';\n\t\t\t\tend\n\t\t\tend\n\n\t\t\tif (length(int_arr) == 1 && int_arr(1) <= intar_threshold(i)) \n\t\t\t\tauto_reject(1) = 'S';\n\t\t\telse\n\t\t\t\tif int_arr(1) <= intar_threshold(i)\n\t\t\t\t\tauto_reject(1) = 'S';\n\t\t\t\tend\n\n\t\t\t\tfor ix = 2:length(int_arr)\n\t\t\t\t\tif int_arr(ix) <= intar_threshold(i)\n\t\t\t\t\t\tauto_reject(ix-1:ix) = 'S';\n\t\t\t\t\tend\n\t\t\t\tend\n\t\t\tend\n\n\t\t\t\n\t\t\t% Experimental option to reaccept particles flagged as shattered which may in fact be the result of diffraction\n\t\t\t% fringes\n\t\t\t% Added by Dan Stechman - 6/8/2015 - with base code by Wei Wu\n\t\t\tif reaccptShatrs\n\t\t\t\t% Start by defining the indices for the beginning and end of individual shattering events\n\t\t\t\trBegin = ((int_arr > intar_threshold(i) & int_arr3 < intar_threshold(i)));\n\t\t\t\trEnd = ((int_arr < intar_threshold(i) & int_arr3 > intar_threshold(i)));\n\t\t\t\t\n\t\t\t\tmaxParticle = reaccptD;\n\t\t\t\teIndex = [];\n\t\t\t\t\n\t\t\t\t% We search through each individual set of shattering events and check to see if any of the particles are both\n\t\t\t\t% larger than the reacceptance diameter and have an interarrival time less than the reacceptance threshold as we'd\n\t\t\t\t% expect diffraction fringes to be larger than shattered particles and to have a particularly small interarrival time\n\t\t\t\tfor iEvent = find(rBegin):find(rEnd)\n\t\t\t\t\tif ((particle_diameter_minR(iEvent) > maxParticle) && (int_arr(iEvent) < reaccptMaxIA))\n\t\t\t\t\t\tmaxParticle = particle_diameter_minR(iEvent);\n\t\t\t\t\t\teIndex = iEvent;\n\t\t\t\t\tend\n\t\t\t\tend\n\n\t\t\t\tauto_reject(eIndex) = 'R';\n\t\t\tend\n"
+  }
+ },
+ "type1": {
+  "equal_to_threshold_is_flagged": {
+   "auto_reject": "SSA",
+   "eIndex": [],
+   "iaThresh": [
+    1e-06,
+    1e-06,
+    1e-06
+   ],
+   "status": "OK"
+  },
+  "reaccept_event_at_block_start": {
+   "auto_reject": "SSA",
+   "eIndex": [],
+   "iaThresh": [
+    1e-06,
+    1e-06,
+    1e-06
+   ],
+   "status": "OK"
+  },
+  "reaccept_no_events": {
+   "auto_reject": "AAA",
+   "eIndex": [],
+   "iaThresh": [
+    1e-06,
+    1e-06,
+    1e-06
+   ],
+   "status": "OK"
+  },
+  "reaccept_one_large_fringe": {
+   "auto_reject": "ASSRSA",
+   "eIndex": [
+    4
+   ],
+   "iaThresh": [
+    1e-06,
+    1e-06,
+    1e-06,
+    1e-06,
+    1e-06,
+    1e-06
+   ],
+   "status": "OK"
+  },
+  "reaccept_two_events_spanned": {
+   "auto_reject": "ASRASSA",
+   "eIndex": [
+    3
+   ],
+   "iaThresh": [
+    1e-06,
+    1e-06,
+    1e-06,
+    1e-06,
+    1e-06,
+    1e-06,
+    1e-06
+   ],
+   "status": "OK"
+  },
+  "single_particle_below": {
+   "auto_reject": "S",
+   "eIndex": [],
+   "iaThresh": 1e-06,
+   "status": "OK"
+  }
+ },
+ "type1_cases": {
+  "equal_to_threshold_is_flagged": {
+   "diam": [
+    0.2,
+    0.2,
+    0.2
+   ],
+   "int_arr": [
+    5e-06,
+    1e-06,
+    5e-06
+   ],
+   "int_arr3": [
+    1e-06,
+    5e-06,
+    5e-06
+   ],
+   "reaccpt": 0,
+   "reaccptD": 0.5,
+   "reaccptMaxIA": 1e-06,
+   "thresh": 1e-06
+  },
+  "reaccept_event_at_block_start": {
+   "diam": [
+    0.9,
+    0.9,
+    0.2
+   ],
+   "int_arr": [
+    1e-07,
+    1e-07,
+    5e-06
+   ],
+   "int_arr3": [
+    1e-07,
+    5e-06,
+    5e-06
+   ],
+   "reaccpt": 1,
+   "reaccptD": 0.5,
+   "reaccptMaxIA": 1e-06,
+   "thresh": 1e-06
+  },
+  "reaccept_no_events": {
+   "diam": [
+    0.9,
+    0.9,
+    0.9
+   ],
+   "int_arr": [
+    5e-06,
+    5e-06,
+    5e-06
+   ],
+   "int_arr3": [
+    5e-06,
+    5e-06,
+    5e-06
+   ],
+   "reaccpt": 1,
+   "reaccptD": 0.5,
+   "reaccptMaxIA": 1e-06,
+   "thresh": 1e-06
+  },
+  "reaccept_one_large_fringe": {
+   "diam": [
+    0.2,
+    0.2,
+    0.3,
+    0.9,
+    0.2,
+    0.2
+   ],
+   "int_arr": [
+    5e-06,
+    5e-06,
+    1e-07,
+    1e-07,
+    1e-07,
+    5e-06
+   ],
+   "int_arr3": [
+    5e-06,
+    1e-07,
+    1e-07,
+    1e-07,
+    5e-06,
+    5e-06
+   ],
+   "reaccpt": 1,
+   "reaccptD": 0.5,
+   "reaccptMaxIA": 1e-06,
+   "thresh": 1e-06
+  },
+  "reaccept_two_events_spanned": {
+   "diam": [
+    0.2,
+    0.2,
+    0.6,
+    0.2,
+    0.2,
+    0.8,
+    0.2
+   ],
+   "int_arr": [
+    5e-06,
+    5e-06,
+    1e-07,
+    5e-06,
+    5e-06,
+    1e-07,
+    5e-06
+   ],
+   "int_arr3": [
+    5e-06,
+    1e-07,
+    5e-06,
+    5e-06,
+    1e-07,
+    5e-06,
+    5e-06
+   ],
+   "reaccpt": 1,
+   "reaccptD": 0.5,
+   "reaccptMaxIA": 1e-06,
+   "thresh": 1e-06
+  },
+  "single_particle_below": {
+   "diam": [
+    0.2
+   ],
+   "int_arr": [
+    1e-07
+   ],
+   "int_arr3": [
+    5e-06
+   ],
+   "reaccpt": 0,
+   "reaccptD": 0.5,
+   "reaccptMaxIA": 1e-06,
+   "thresh": 1e-06
+  }
+ },
+ "type2": {
+  "equal_to_threshold_is_flagged": {
+   "auto_reject": "SSA",
+   "eIndex": [],
+   "status": "OK"
+  },
+  "next_second_calm": {
+   "auto_reject": "AAA",
+   "eIndex": [],
+   "status": "OK"
+  },
+  "next_second_opens_with_burst": {
+   "auto_reject": "AAS",
+   "eIndex": [],
+   "status": "OK"
+  },
+  "no_next_second": {
+   "auto_reject": "AAA",
+   "eIndex": [],
+   "status": "OK"
+  },
+  "reaccept_event_at_block_start": {
+   "auto_reject": "SSA",
+   "eIndex": [],
+   "status": "OK"
+  },
+  "reaccept_no_events": {
+   "auto_reject": "AAA",
+   "eIndex": [],
+   "status": "OK"
+  },
+  "reaccept_one_large_fringe": {
+   "auto_reject": "ASSRSA",
+   "eIndex": [
+    4
+   ],
+   "status": "OK"
+  },
+  "reaccept_two_events_spanned": {
+   "auto_reject": "ASRASSA",
+   "eIndex": [
+    3
+   ],
+   "status": "OK"
+  },
+  "single_particle_below": {
+   "auto_reject": "S",
+   "eIndex": [],
+   "status": "OK"
+  }
+ },
+ "type2_cases": {
+  "equal_to_threshold_is_flagged": {
+   "diam": [
+    0.2,
+    0.2,
+    0.2
+   ],
+   "int_arr": [
+    5e-06,
+    1e-06,
+    5e-06
+   ],
+   "int_arr3": [
+    1e-06,
+    5e-06,
+    5e-06
+   ],
+   "reaccpt": 0,
+   "reaccptD": 0.5,
+   "reaccptMaxIA": 1e-06,
+   "thresh": 1e-06
+  },
+  "next_second_calm": {
+   "diam": [
+    0.9,
+    0.9,
+    0.9
+   ],
+   "int_arr": [
+    5e-06,
+    5e-06,
+    5e-06
+   ],
+   "int_arr2": [
+    5e-06
+   ],
+   "int_arr3": [
+    5e-06,
+    5e-06,
+    5e-06
+   ],
+   "reaccpt": 0,
+   "reaccptD": 0.5,
+   "reaccptMaxIA": 1e-06,
+   "thresh": 1e-06
+  },
+  "next_second_opens_with_burst": {
+   "diam": [
+    0.9,
+    0.9,
+    0.9
+   ],
+   "int_arr": [
+    5e-06,
+    5e-06,
+    5e-06
+   ],
+   "int_arr2": [
+    1e-07
+   ],
+   "int_arr3": [
+    5e-06,
+    5e-06,
+    5e-06
+   ],
+   "reaccpt": 0,
+   "reaccptD": 0.5,
+   "reaccptMaxIA": 1e-06,
+   "thresh": 1e-06
+  },
+  "no_next_second": {
+   "diam": [
+    0.9,
+    0.9,
+    0.9
+   ],
+   "int_arr": [
+    5e-06,
+    5e-06,
+    5e-06
+   ],
+   "int_arr2": [],
+   "int_arr3": [
+    5e-06,
+    5e-06,
+    5e-06
+   ],
+   "reaccpt": 0,
+   "reaccptD": 0.5,
+   "reaccptMaxIA": 1e-06,
+   "thresh": 1e-06
+  },
+  "reaccept_event_at_block_start": {
+   "diam": [
+    0.9,
+    0.9,
+    0.2
+   ],
+   "int_arr": [
+    1e-07,
+    1e-07,
+    5e-06
+   ],
+   "int_arr3": [
+    1e-07,
+    5e-06,
+    5e-06
+   ],
+   "reaccpt": 1,
+   "reaccptD": 0.5,
+   "reaccptMaxIA": 1e-06,
+   "thresh": 1e-06
+  },
+  "reaccept_no_events": {
+   "diam": [
+    0.9,
+    0.9,
+    0.9
+   ],
+   "int_arr": [
+    5e-06,
+    5e-06,
+    5e-06
+   ],
+   "int_arr3": [
+    5e-06,
+    5e-06,
+    5e-06
+   ],
+   "reaccpt": 1,
+   "reaccptD": 0.5,
+   "reaccptMaxIA": 1e-06,
+   "thresh": 1e-06
+  },
+  "reaccept_one_large_fringe": {
+   "diam": [
+    0.2,
+    0.2,
+    0.3,
+    0.9,
+    0.2,
+    0.2
+   ],
+   "int_arr": [
+    5e-06,
+    5e-06,
+    1e-07,
+    1e-07,
+    1e-07,
+    5e-06
+   ],
+   "int_arr3": [
+    5e-06,
+    1e-07,
+    1e-07,
+    1e-07,
+    5e-06,
+    5e-06
+   ],
+   "reaccpt": 1,
+   "reaccptD": 0.5,
+   "reaccptMaxIA": 1e-06,
+   "thresh": 1e-06
+  },
+  "reaccept_two_events_spanned": {
+   "diam": [
+    0.2,
+    0.2,
+    0.6,
+    0.2,
+    0.2,
+    0.8,
+    0.2
+   ],
+   "int_arr": [
+    5e-06,
+    5e-06,
+    1e-07,
+    5e-06,
+    5e-06,
+    1e-07,
+    5e-06
+   ],
+   "int_arr3": [
+    5e-06,
+    1e-07,
+    5e-06,
+    5e-06,
+    1e-07,
+    5e-06,
+    5e-06
+   ],
+   "reaccpt": 1,
+   "reaccptD": 0.5,
+   "reaccptMaxIA": 1e-06,
+   "thresh": 1e-06
+  },
+  "single_particle_below": {
+   "diam": [
+    0.2
+   ],
+   "int_arr": [
+    1e-07
+   ],
+   "int_arr3": [
+    5e-06
+   ],
+   "reaccpt": 0,
+   "reaccptD": 0.5,
+   "reaccptMaxIA": 1e-06,
+   "thresh": 1e-06
+  }
+ }
+}

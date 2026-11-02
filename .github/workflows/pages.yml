@@ -1,0 +1,47 @@
+# Build the documentation site from docs/*.md and publish it with GitHub Pages.
+# Nothing built is committed: docs/_build/build.py writes _site/ on the runner (standard
+# library only, so no install step), and the Pages actions deploy that folder.
+# Repository setting, once: Settings -> Pages -> Source -> "GitHub Actions".
+name: docs site
+
+on:
+  push:
+    branches: [main, master]  # whichever the public repository uses as its default
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+
+      - name: Build the site into _site/
+        run: python docs/_build/build.py --out _site
+
+      - uses: actions/upload-pages-artifact@v5
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v5

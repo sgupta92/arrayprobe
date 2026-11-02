@@ -1,0 +1,304 @@
+{
+ "source": "UIOPS-v3.5/joefinlon-UIOPS-039be82/sizeDist.m",
+ "block_lines": [
+  984,
+  1045
+ ],
+ "block_text": "        if 0==probetype\n            int_arr=Time_in_seconds;\n\t\telse\n\t\t\tif start-1 <= 0\n\t\t\t\tint_arr = [0;diff(Time_in_seconds)];\n\t\t\t\tint_arr2 = []; %Won't bother reaccepting particles at the beginning or end of dataset\t\t\t\t\n\t\t\telse\n\t\t\t\tTime_in_seconds2 = netcdf.getVar(f,netcdf.inqVarID(f,'Time_in_seconds'),start-1,count+1);\n\t\t\t\tint_arr = diff(Time_in_seconds2);\n\t\t\t\t\n\t\t\t\tif start ~= max(start_all) % Improve end of particle data detection (if particle times are out of order due to corruption) ~ Joe Finlon 02/13/19\n\t\t\t\t\tTime_in_seconds3 = netcdf.getVar(f,netcdf.inqVarID(f,'Time_in_seconds'),(start+count)-1,2);\t\t\t\t\t\t\n\t\t\t\t\tint_arr2 = diff(Time_in_seconds3); %Single value describing interarrival time of first particle of next 1-sec period\n\t\t\t\telse\n\t\t\t\t\tint_arr2 = [];\n\t\t\t\tend\n\t\t\tend\n\t\t\t\n\t\t\tint_arr2(int_arr2<0)=0;\n\t\t\t\n\t\t\tif reaccptShatrs\n\t\t\t\tif start ~= max(start_all) % Improve end of particle data detection ~ Joe Finlon 02/13/19\n\t\t\t\t\tTime_in_seconds4 = netcdf.getVar(f,netcdf.inqVarID(f,'Time_in_seconds'),start,count+1);\n\t\t\t\t\tint_arr3 = diff(Time_in_seconds4);  \n                else\n                    Time_in_seconds4 = Time_in_seconds;\n                    if length(Time_in_seconds4)>1\n                        int_arr3 = diff(Time_in_seconds4);\n                        int_arr3 = [int_arr3;int_arr3(end)];\n                    else % address rare occurrance where only 1 particle in last unique time ~ Joe Finlon 02/09/18\n                        int_arr3 = 0;\n                    end\n\t\t\t\tend\n\t\t\t\tint_arr3(int_arr3<0)=0;\n\t\t\tend\n\t\t\t\n        end\n%         if 2==probetype \n%           int_arr=int_arr*(res/10^6/170); \n%         end\n        \n        if 2==probetype\n            int_arr(int_arr<-10)=int_arr(int_arr<-10)+(2^32-1)*(res/10^6/tasMax);\n        elseif 0==probetype\n            int_arr(int_arr<0)=int_arr(int_arr<0)+(2^24-1)*(res/10^6/tasMax);            \n        end\n            \n        if sum(int_arr<0)>0\n\t\t\tfprintf(2,'\\nAt index %d number of int_arr < 0: %d\\n',i,sum(int_arr<0));\n            %disp([int_arr(int_arr<0),int_arr(int_arr<0)+(2^32-1)*(res/10^6/tasMax)]);\n        elseif sum(int_arr>1)>0\n\t\t\tsumIntArrGT1 = sumIntArrGT1 + sum(int_arr > 1);\n\t\t\ttempLocs = find(int_arr > 1); \n\t\t\tintArrGT1 = vertcat(intArrGT1,int_arr(tempLocs));\n\t\t\t\n%             fprintf(2,'\\nAt index %d number of int_arr > 1: %d\\n',i,sum(int_arr>1));\n%             disp([int_arr(int_arr>1)-(2^32-1)*(res/10^6/tasMax), int_arr(int_arr>1), Time_in_seconds(int_arr>1)/(0.15/(10^3)/170), Time_in_seconds((int_arr>1))/(0.15/(10^3)/170)]);\n        end\n        \n%         auto_reject(int_arr<0 | int_arr>1)='I';\n\t\tauto_reject(int_arr<0)='I';\n        int_arr(int_arr<0)=0;\n",
+ "octave": "GNU Octave, version 8.4.0",
+ "cases": [
+  {
+   "name": "b8_last_block_one_particle",
+   "probetype": 2,
+   "tis": [
+    5.25
+   ],
+   "reaccpt": 1,
+   "res": 10.0,
+   "tasMax": 100.0
+  },
+  {
+   "name": "b8_last_block_two_particles",
+   "probetype": 2,
+   "tis": [
+    5.0,
+    5.5
+   ],
+   "reaccpt": 1,
+   "res": 10.0,
+   "tasMax": 100.0
+  },
+  {
+   "name": "b8_last_block_three_particles",
+   "probetype": 2,
+   "tis": [
+    5.0,
+    5.25,
+    5.75
+   ],
+   "reaccpt": 1,
+   "res": 10.0,
+   "tasMax": 100.0
+  },
+  {
+   "name": "b8_last_block_three_particles_pt1",
+   "probetype": 1,
+   "tis": [
+    5.0,
+    5.25,
+    5.75
+   ],
+   "reaccpt": 1,
+   "res": 10.0,
+   "tasMax": 100.0
+  },
+  {
+   "name": "b9_pt1_steps_back_5s",
+   "probetype": 1,
+   "tis": [
+    10.0,
+    11.0,
+    6.0,
+    7.0
+   ],
+   "reaccpt": 1,
+   "res": 10.0,
+   "tasMax": 100.0
+  },
+  {
+   "name": "b9_pt1_steps_back_5s_no_reaccept",
+   "probetype": 1,
+   "tis": [
+    10.0,
+    11.0,
+    6.0,
+    7.0
+   ],
+   "reaccpt": 0,
+   "res": 10.0,
+   "tasMax": 100.0
+  },
+  {
+   "name": "pt2_rollover_below_minus10",
+   "probetype": 2,
+   "tis": [
+    100.0,
+    50.0,
+    51.0
+   ],
+   "reaccpt": 1,
+   "res": 10.0,
+   "tasMax": 100.0
+  },
+  {
+   "name": "pt2_small_backstep_no_rollover",
+   "probetype": 2,
+   "tis": [
+    100.0,
+    95.0,
+    96.0
+   ],
+   "reaccpt": 1,
+   "res": 10.0,
+   "tasMax": 100.0
+  },
+  {
+   "name": "pt3_no_rollover_arm",
+   "probetype": 3,
+   "tis": [
+    100.0,
+    50.0,
+    51.0
+   ],
+   "reaccpt": 1,
+   "res": 10.0,
+   "tasMax": 100.0
+  },
+  {
+   "name": "pt0_24bit_rollover",
+   "probetype": 0,
+   "tis": [
+    100.0,
+    -0.5,
+    101.0
+   ],
+   "reaccpt": 0,
+   "res": 10.0,
+   "tasMax": 100.0
+  }
+ ],
+ "results": [
+  {
+   "name": "b8_last_block_one_particle",
+   "int_arr": 0,
+   "has_int_arr3": 1,
+   "int_arr3": 0,
+   "auto_reject": 48
+  },
+  {
+   "name": "b8_last_block_two_particles",
+   "int_arr": [
+    0,
+    0.5
+   ],
+   "has_int_arr3": 1,
+   "int_arr3": [
+    0.5,
+    0.5
+   ],
+   "auto_reject": [
+    48,
+    48
+   ]
+  },
+  {
+   "name": "b8_last_block_three_particles",
+   "int_arr": [
+    0,
+    0.25,
+    0.5
+   ],
+   "has_int_arr3": 1,
+   "int_arr3": [
+    0.25,
+    0.5,
+    0.5
+   ],
+   "auto_reject": [
+    48,
+    48,
+    48
+   ]
+  },
+  {
+   "name": "b8_last_block_three_particles_pt1",
+   "int_arr": [
+    0,
+    0.25,
+    0.5
+   ],
+   "has_int_arr3": 1,
+   "int_arr3": [
+    0.25,
+    0.5,
+    0.5
+   ],
+   "auto_reject": [
+    48,
+    48,
+    48
+   ]
+  },
+  {
+   "name": "b9_pt1_steps_back_5s",
+   "int_arr": [
+    0,
+    1,
+    0,
+    1
+   ],
+   "has_int_arr3": 1,
+   "int_arr3": [
+    1,
+    0,
+    1,
+    1
+   ],
+   "auto_reject": [
+    48,
+    48,
+    73,
+    48
+   ]
+  },
+  {
+   "name": "b9_pt1_steps_back_5s_no_reaccept",
+   "int_arr": [
+    0,
+    1,
+    0,
+    1
+   ],
+   "has_int_arr3": 0,
+   "int_arr3": [],
+   "auto_reject": [
+    48,
+    48,
+    73,
+    48
+   ]
+  },
+  {
+   "name": "pt2_rollover_below_minus10",
+   "int_arr": [
+    0,
+    379.4967295,
+    1
+   ],
+   "has_int_arr3": 1,
+   "int_arr3": [
+    0,
+    1,
+    1
+   ],
+   "auto_reject": [
+    48,
+    48,
+    48
+   ]
+  },
+  {
+   "name": "pt2_small_backstep_no_rollover",
+   "int_arr": [
+    0,
+    0,
+    1
+   ],
+   "has_int_arr3": 1,
+   "int_arr3": [
+    0,
+    1,
+    1
+   ],
+   "auto_reject": [
+    48,
+    73,
+    48
+   ]
+  },
+  {
+   "name": "pt3_no_rollover_arm",
+   "int_arr": [
+    0,
+    0,
+    1
+   ],
+   "has_int_arr3": 1,
+   "int_arr3": [
+    0,
+    1,
+    1
+   ],
+   "auto_reject": [
+    48,
+    73,
+    48
+   ]
+  },
+  {
+   "name": "pt0_24bit_rollover",
+   "int_arr": [
+    100,
+    1.1777215,
+    101
+   ],
+   "has_int_arr3": 0,
+   "int_arr3": [],
+   "auto_reject": [
+    48,
+    48,
+    48
+   ]
+  }
+ ]
+}

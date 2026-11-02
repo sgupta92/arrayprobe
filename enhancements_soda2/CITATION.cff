@@ -1,0 +1,178 @@
+cff-version: 1.2.0
+title: arrayprobe
+message: >-
+  This is a port, not new science. If you use it, cite the ORIGINAL alongside this
+  package, as the source of the methodology (see the references below) -- UIOOPS for anything computed by
+  arrayprobe or arrayprobe_uiops, and SODA-2 for anything computed by
+  arrayprobe_soda2. arrayprobe 0.1.0 is archived at https://doi.org/10.5281/zenodo.23574623, and is cited
+  alongside either original, never in place of it. Much of the porting, testing and
+  documentation was written with the help of Anthropic's Claude, under
+  the author's direction; the author reviewed and is responsible for the
+  result.
+type: software
+version: 0.1.0
+doi: 10.5281/zenodo.23574623
+date-released: '2026-11-02'
+authors:
+  - family-names: Gupta
+    given-names: Siddhant
+    orcid: "https://orcid.org/0000-0002-0663-4595"
+# Sole author. CFF 1.2.0 has no
+# contributors field, so the others are credited in README.md:
+#   Advisors and collaborators: Joe O'Brien and Bobby Jackson (ANL), Greg
+#   McFarquhar and Yongjie Huang (University of Oklahoma), Aaron Bansemer
+#   (NCAR MMM).
+#   Data providers: Peter Brechner and Saurabh Patil (University of Oklahoma).
+repository-code: "https://github.com/sgupta92/arrayprobe"
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.23574623
+    description: arrayprobe 0.1.0
+abstract: >-
+  Python translations of two optical-array-probe processing chains that turn raw airborne probe
+  imagery into particle size distributions with no licensed software: UIOOPS v3.5
+  (University of Illinois/Oklahoma), the default engine, validated against GNU Octave runs
+  of its own sources, and NCAR's SODA-2, validated against GDL runs of its sources. An
+  earlier translation of UIOOPS v3.1.4, not part of this package, reproduced archived
+  products cell by cell. Opt-in enhancements carry corrections beyond the original codes.
+keywords:
+  - optical array probe
+  - cloud microphysics
+  - particle size distribution
+  - 2D-S
+  - HVPS
+  - airborne in-situ
+  - UIOOPS
+  - SODA-2
+license: BSD-3-Clause
+references:
+  - type: software
+    title: "University of Illinois/Oklahoma Optical Array Probe (OAP) Processing Software"
+    version: "v3.1.4"
+    year: 2018
+    doi: "10.5281/zenodo.1285969"
+    notes: >-
+      The original. Cite this for the methodology; arrayprobe ports it, under the
+      3-clause BSD licence, with the UIOOPS maintainers' permission. An earlier translation of
+      v3.1.4, not part of this package, reproduced archived products, defects
+      included. The default engine is a
+      port of UIOOPS v3.5, in which the UIOOPS developers had already fixed several
+      defects; those fixes are theirs. This package's own corrections for
+      data-destroying defects (the 2D-S bin table and stray-pixel removal) are on
+      by default in the v3.5 engine, each recorded in the run's .call stamp and
+      each with an off switch (--protective off, --stray-pixel off); every other
+      correction is opt-in.
+    repository-code: "https://github.com/joefinlon/UIOPS"
+    url: "https://zenodo.org/records/1285969"
+    authors:
+      - family-names: McFarquhar
+        given-names: Greg M.
+      - family-names: Finlon
+        given-names: Joseph A.
+      - family-names: Stechman
+        given-names: Daniel M.
+      - family-names: Wu
+        given-names: Wei
+      - family-names: Jackson
+        given-names: Robert C.
+      - family-names: Freer
+        given-names: Matt
+  - type: software
+    title: "joefinlon/UIOPS: New Ellipse/Rectangle Fit Executables + Modified Holroyd Improvements"
+    version: "v3.5"
+    year: 2026
+    doi: "10.5281/zenodo.18945998"
+    notes: >-
+      The UIOOPS release the default engine (arrayprobe_uiops) ports. Cite it beside
+      the entry above for anything the v3.5 engine computes.
+    repository-code: "https://github.com/joefinlon/UIOPS"
+    url: "https://zenodo.org/records/18945998"
+    authors:
+      - family-names: Finlon
+        given-names: Joe
+      - family-names: Wu
+        given-names: Wei
+  - type: article
+    title: >-
+      A Comparison of X-Band Polarization Parameters with In Situ Microphysical
+      Measurements in the Comma Head of Two Winter Cyclones
+    authors:
+      - family-names: Finlon
+        given-names: Joseph A.
+      - family-names: McFarquhar
+        given-names: Greg M.
+      - family-names: Rauber
+        given-names: Robert M.
+      - family-names: Plummer
+        given-names: David M.
+      - family-names: Jewett
+        given-names: Brian F.
+      - family-names: Leon
+        given-names: David
+      - family-names: Knupp
+        given-names: Kevin R.
+    journal: "Journal of Applied Meteorology and Climatology"
+    volume: 55
+    issue: 12
+    start: 2549
+    end: 2574
+    year: 2016
+    doi: "10.1175/JAMC-D-16-0059.1"
+    notes: "The UIOOPS validation reference."
+  - type: article
+    title: >-
+      A Multi-Probe Automated Classification of Ice Crystal Habits During the IMPACTS Campaign
+    authors:
+      - family-names: Schima
+        given-names: Julian
+      - family-names: McFarquhar
+        given-names: Greg M.
+      - family-names: Delene
+        given-names: David
+      - family-names: Heymsfield
+        given-names: Andrew
+      - family-names: Bansemer
+        given-names: Aaron
+      - family-names: Schnaiter
+        given-names: Martin
+      - family-names: Finlon
+        given-names: Joseph A.
+      - family-names: Järvinen
+        given-names: Emma
+      - family-names: Nehlert
+        given-names: Franziska
+    journal: "Journal of Geophysical Research: Atmospheres"
+    volume: 129
+    number: "e2024JD040895"
+    year: 2024
+    doi: "10.1029/2024JD040895"
+    notes: >-
+      The habit scheme behind `holroyd_new.m` and `holroyd_new_HVPS.m`, which the
+      v3.5 engine runs when `iNewHabit` is set. Cite it for any habit class
+      produced that way.
+  - type: software
+    title: "SODA-2: System for OAP Data Analysis"
+    notes: >-
+      The second upstream, translated by arrayprobe_soda2. A SEPARATE work under
+      a separate licence -- 3-clause BSD, not GPLv3 -- whose copyright notice
+      travels with any redistribution. Cite this for anything computed by that
+      module. Findings about SODA-2 are kept in their own register and are never
+      merged into the UIOOPS ones.
+    repository-code: "https://github.com/abansemer/soda2"
+    license: BSD-3-Clause
+    authors:
+      - family-names: Bansemer
+        given-names: Aaron
+      - name: "University Corporation for Atmospheric Research (UCAR)"
+  - type: software
+    title: "abansemer/soda2: v2.26.0"
+    version: v2.26.0
+    year: 2026
+    publisher:
+      name: Zenodo
+    doi: 10.5281/zenodo.18331418
+    url: "https://doi.org/10.5281/zenodo.18331418"
+    authors:
+      - family-names: Bansemer
+        given-names: Aaron
+    notes: "The software citation SODA-2's author, Aaron Bansemer, asks for (provided 2026-10-06), verbatim: Aaron Bansemer. (2026). abansemer/soda2: v2.26.0 (Version v2.26.0) [Computer software]. Zenodo. https://doi.org/10.5281/zenodo.18331418"

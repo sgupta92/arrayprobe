@@ -1,0 +1,50 @@
+{
+  "fractional_time": {
+    "golden": "stock_sd_div_fractional_time.nc",
+    "status": "COMPLETED"
+  },
+  "fractional_time_production": {
+    "golden": "stock_sd_div_fractional_time_production.nc",
+    "status": "COMPLETED"
+  },
+  "gpm_2ds_type2": {
+    "line": 1143,
+    "message": "'intar_threshold' undefined near line 1143, column 22",
+    "status": "ERROR"
+  },
+  "gpm_cip_type2": {
+    "line": 1143,
+    "message": "'intar_threshold' undefined near line 1143, column 22",
+    "status": "ERROR"
+  },
+  "ia1_named_missing": {
+    "line": 25,
+    "message": "No such file or directory",
+    "status": "ERROR"
+  },
+  "ia1_no_file": {
+    "golden": "stock_sd_div_ia1_no_file.nc",
+    "status": "COMPLETED"
+  },
+  "midnight_carryover": {
+    "golden": "stock_sd_div_midnight_carryover.nc",
+    "status": "COMPLETED"
+  },
+  "pip_anchor0": {
+    "golden": "stock_sd_div_pip_anchor0.nc",
+    "status": "COMPLETED"
+  },
+  "pip_raw_time": {
+    "golden": "stock_sd_div_pip_raw_time.nc",
+    "status": "COMPLETED"
+  },
+  "socrates_2ds_type2": {
+    "golden": "stock_sd_div_socrates_2ds_type2.nc",
+    "status": "COMPLETED"
+  },
+  "tas_gap": {
+    "line": 746,
+    "message": "starttime(2): out of bound 1 (dimensions are 1x1)",
+    "status": "ERROR"
+  }
+}

@@ -1,0 +1,97 @@
+# A 2D-S read from a SPEC raw file, through the SODA-2 engine.
+#
+#     arrayprobe soda2 run examples/configs/soda2/2ds_spec.toml --out <dir>
+#
+# Every probe field below is the `'2D-S Horizontal Array'` row of SODA-2's
+# `soda2_probespecs.pro:939-957`. The processing options are SODA-2's own
+# `example_script.pro`, which is itself a 2D-S example (`:1-43`), except where
+# the bottom of this file says otherwise and why.
+#
+# `fn` and `pth` are placeholders: point them at your own `.2DS` raw file and
+# your own 1 Hz true-airspeed file, and set `date`, `starttime` and `stoptime`
+# to your flight and window.
+
+[run]
+engine = "soda2"
+
+[soda2]
+fn = "path/to/your_probe.2DS"
+date = "20160912"
+# The processing window, seconds after midnight UTC: 120 s at `rate = 1`.
+starttime = 26681.0
+stoptime = 26800.0
+
+# Measured 1 Hz TAS, an IDL SAVE file (`SR\0\004`); a `pth` ending in `.dat`
+# or `.sav` is read as one. Without `pth`, `fixedtas` below is used instead.
+pth = "path/to/your_tas.dat"
+
+# --- soda2_probespecs.pro:939-957, value for value ------------------------
+# The row is the one whose probe name is the 2D-S horizontal array     (:940)
+format = "SPEC"                                                        # :942
+subformat = 0                                                          # :943
+probetype = "2DS"                                                      # :944
+shortname = "2DS"                                                      # :941
+probeid = "H"                                                          # :945
+greythresh = 0                                                         # :946
+res = 10.0                                                             # :947
+yres = 10.0                                                            # :948
+armwidth = 6.3                                                         # :949
+numdiodes = 128                                                        # :950
+dofconst = 8.12                                                        # :954
+wavelength = 0.785e-6                                                  # :955
+seatag = [0]                                                           # :956
+# `x.tau=41.0e-9` (:951), `x.firstsliceskip=0` (:952) and `x.dofthreshold=0.0`
+# (:953) are on the row but are not in `soda2_update_op.pro`'s op and are not
+# passed by `example_script.pro:35-43` either; they are omitted here for the
+# same reason, not dropped.
+
+# --- driver-level fields: example_script.pro:18-31 --------------------------
+endbins = [5.0, 15.0, 25.0, 35.0, 45.0, 55.0, 65.0, 75.0, 85.0, 95.0,
+           105.0, 125.0, 145.0, 175.0, 225.0, 275.0, 325.0, 400.0, 475.0,
+           550.0, 625.0, 700.0, 800.0, 900.0, 1000.0, 1200.0, 1400.0,
+           1600.0, 1800.0, 2000.0]                                     # :18-19
+arendbins = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0]         # see note
+rate = 1.0                                                             # :21
+smethod = "fastcircle"                                                 # :22
+particlefile = 1                                                       # :23
+inttime_reject = 0                                                     # see note
+stuckbits = 0                                                          # :27
+water = 0                                                              # :28
+fixedtas = 0.0                                                         # :29, see note
+timeoffset = 0.0                                                       # :30
+eawmethod = "centerin"                                                 # see note
+project = ""
+outdir = ""
+
+# --- deviations from example_script.pro, each with its reason ---------------
+#
+# 1. `arendbins` drops `example_script.pro:20`'s leading `0.0`.
+#    `compute_area.pro:17` forms `(arendbins + arendbins[1:*])/2`, so a leading
+#    0.0 only adds a 0-0.1 bin.
+#
+# 2. `inttime_reject = 0`, against `example_script.pro:25`'s 1. The
+#    inter-arrival fit it switches on cannot be checked against SODA-2's own
+#    routine (the free IDL interpreter lacks the fitting function it calls), so
+#    a run meant to be fully checked sets it to 0. Turn it on for a science
+#    product.
+#
+# 3. `reconstruct` (`example_script.pro:26`, value 1) is expressed in this
+#    package as `eawmethod`, one of `"reconstruct"`, `"centerin"`, `"allin"`.
+#    `centerin` is chosen here. Note what this costs: under `reconstruct`,
+#    reject bit 8 is unreachable by construction, so the two settings do not
+#    differ only in sample area.
+#
+# 4. `dofconst = 8.12` is passed from the probespec row even though
+#    `example_script.pro:35-43` omits it and `soda2_update_op.pro` would then
+#    default it to 0. This is the probe's own number; leaving it 0 would be a
+#    silent substitution.
+#
+# 5. `fixedtas = 0.0`, against `example_script.pro:29`'s 20.0 -- that example
+#    has no TAS file. `fixedtas` is read only when `pth` is absent; remove
+#    `pth` and set `fixedtas` to fly at a constant airspeed.
+#
+# --- the data ---------------------------------------------------------------
+# A multi-file `fn` is refused for SPEC, as SODA-2's own IDL stops there
+# (`soda2_process_2d.pro:376`): name the one raw volume that covers the window.
+# The vertical channel is the `'2D-S Vertical Array'` row
+# (`soda2_probespecs.pro:959-977`), identical to this one but for `probeid`.

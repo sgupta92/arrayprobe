@@ -1,0 +1,213 @@
+{
+ "source": "UIOPS-v3.5/joefinlon-UIOPS-039be82/read_binary_SPEC.m",
+ "block_lines": [
+  176,
+  193
+ ],
+ "block_text": "        if ~isempty(varargin)\n            if (fltTime(end)>=240000) && (hour<12) % Date crossover Joe Finlon 5/13/22\n                hour2 = hour + 24; % hour2 is a dummy variable only for use with TAS corrections\n            else\n                hour2 = hour;\n            end\n\n            fltTimeInd = find(fltTime==hour2*10000+minute*100+second);\n            if (~isempty(fltTimeInd)) && (~isnan(fltTAS_fixed(fltTimeInd)))\n                if imgTAS==-999. % uncorrectable probe TAS for current record\n                    tasRatio = 1.0;\n                else\n                    tasRatio = imgTAS ./ fltTAS_fixed(fltTimeInd); % TAS ratio between SPEC probe and aircraft info\n                end\n            else\n                tasRatio = 1.0; % assume SPEC probe TAS is correct as aircraft TAS does not exist for current time or is NaN\n            end\n        end\n",
+ "octave": "GNU Octave, version 8.4.0",
+ "cases": [
+  {
+   "name": "b11_empty_flight_series",
+   "imgTAS": 100.0,
+   "fltTime": [],
+   "fltTAS_fixed": [],
+   "tas_nan": [],
+   "hour": 10,
+   "minute": 0,
+   "second": 0
+  },
+  {
+   "name": "real_ratio",
+   "imgTAS": 110.0,
+   "fltTime": [
+    95959,
+    100000,
+    100001
+   ],
+   "fltTAS_fixed": [
+    90.0,
+    100.0,
+    101.0
+   ],
+   "tas_nan": [
+    0,
+    0,
+    0
+   ],
+   "hour": 10,
+   "minute": 0,
+   "second": 0
+  },
+  {
+   "name": "no_matching_second",
+   "imgTAS": 110.0,
+   "fltTime": [
+    100001,
+    100002
+   ],
+   "fltTAS_fixed": [
+    100.0,
+    101.0
+   ],
+   "tas_nan": [
+    0,
+    0
+   ],
+   "hour": 10,
+   "minute": 0,
+   "second": 0
+  },
+  {
+   "name": "nan_aircraft_tas",
+   "imgTAS": 110.0,
+   "fltTime": [
+    100000,
+    100001
+   ],
+   "fltTAS_fixed": [
+    0.0,
+    101.0
+   ],
+   "tas_nan": [
+    1,
+    0
+   ],
+   "hour": 10,
+   "minute": 0,
+   "second": 0
+  },
+  {
+   "name": "probe_sentinel_minus999",
+   "imgTAS": -999.0,
+   "fltTime": [
+    100000
+   ],
+   "fltTAS_fixed": [
+    100.0
+   ],
+   "tas_nan": [
+    0
+   ],
+   "hour": 10,
+   "minute": 0,
+   "second": 0
+  },
+  {
+   "name": "crossover_hour_shifted",
+   "imgTAS": 110.0,
+   "fltTime": [
+    235959,
+    240000,
+    240001
+   ],
+   "fltTAS_fixed": [
+    90.0,
+    100.0,
+    101.0
+   ],
+   "tas_nan": [
+    0,
+    0,
+    0
+   ],
+   "hour": 0,
+   "minute": 0,
+   "second": 1
+  },
+  {
+   "name": "crossover_not_before_noon",
+   "imgTAS": 110.0,
+   "fltTime": [
+    120000,
+    240000
+   ],
+   "fltTAS_fixed": [
+    90.0,
+    100.0
+   ],
+   "tas_nan": [
+    0,
+    0
+   ],
+   "hour": 12,
+   "minute": 0,
+   "second": 0
+  },
+  {
+   "name": "crossover_series_short_of_midnight",
+   "imgTAS": 110.0,
+   "fltTime": [
+    5,
+    235959
+   ],
+   "fltTAS_fixed": [
+    90.0,
+    100.0
+   ],
+   "tas_nan": [
+    0,
+    0
+   ],
+   "hour": 0,
+   "minute": 0,
+   "second": 5
+  }
+ ],
+ "results": [
+  {
+   "name": "b11_empty_flight_series",
+   "status": "ERROR",
+   "message": "fltTime(0): subscripts must be either integers 1 to (2^63)-1 or logicals"
+  },
+  {
+   "name": "real_ratio",
+   "status": "OK",
+   "tasRatio_class": "single",
+   "tasRatio": 1.100000023841858,
+   "n": 1
+  },
+  {
+   "name": "no_matching_second",
+   "status": "OK",
+   "tasRatio_class": "double",
+   "tasRatio": 1,
+   "n": 1
+  },
+  {
+   "name": "nan_aircraft_tas",
+   "status": "OK",
+   "tasRatio_class": "double",
+   "tasRatio": 1,
+   "n": 1
+  },
+  {
+   "name": "probe_sentinel_minus999",
+   "status": "OK",
+   "tasRatio_class": "double",
+   "tasRatio": 1,
+   "n": 1
+  },
+  {
+   "name": "crossover_hour_shifted",
+   "status": "OK",
+   "tasRatio_class": "single",
+   "tasRatio": 1.089108943939209,
+   "n": 1
+  },
+  {
+   "name": "crossover_not_before_noon",
+   "status": "OK",
+   "tasRatio_class": "single",
+   "tasRatio": 1.2222222089767456,
+   "n": 1
+  },
+  {
+   "name": "crossover_series_short_of_midnight",
+   "status": "OK",
+   "tasRatio_class": "single",
+   "tasRatio": 1.2222222089767456,
+   "n": 1
+  }
+ ]
+}

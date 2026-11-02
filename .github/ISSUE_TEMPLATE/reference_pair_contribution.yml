@@ -1,0 +1,78 @@
+name: Contribute a reference pair
+description: >-
+  You have raw probe data and a UIOOPS-written (or SODA-2-written) product for the same flight or
+  case, for a probe or campaign this project has not yet validated against.
+labels: ["reference-data"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        This project's fidelity claim rests on raw+processed pairs where a real run of the
+        original software (UIOOPS, SODA-2) is the archived product. Today that is 2D-S and HVPS
+        data from one field campaign; a pair for a probe this project has not validated — **CIP, PIP, 2DC**, or
+        another campaign entirely — is one of the most useful things this project can receive,
+        whatever the outcome of a comparison turns out to be.
+
+        **Nothing here is required to be public.** Say below what you can share openly, what you
+        can share privately for validation only, and what has to stay off any repository or issue
+        thread. A description of what you have, with nothing attached, is still useful — it lets
+        the maintainer ask the right follow-up.
+  - type: dropdown
+    id: probe
+    attributes:
+      label: Probe
+      options:
+        - CIP
+        - PIP
+        - 2DC
+        - 2D-S (a campaign not yet validated)
+        - HVPS (a campaign not yet validated)
+        - Other (say which, below)
+    validations:
+      required: true
+  - type: input
+    id: campaign
+    attributes:
+      label: Campaign / project and dates
+      description: e.g. "SOCRATES, 2018" or an institution + aircraft if there is no named campaign.
+    validations:
+      required: true
+  - type: textarea
+    id: what-you-have
+    attributes:
+      label: What you have
+      description: >-
+        Raw file(s), the UIOOPS/SODA-2-written processed product(s), the software version and
+        configuration that produced them (or a `.call`-equivalent record if one exists), and
+        roughly how large the files are.
+    validations:
+      required: true
+  - type: dropdown
+    id: sharing
+    attributes:
+      label: What may be shared, and how
+      description: Choose the option that matches, and use the field below for anything more specific.
+      options:
+        - Public — may be committed to this repository or linked from it
+        - Private for validation only — may be sent to the maintainer, not published
+        - Description only for now — the data itself needs a separate conversation
+    validations:
+      required: true
+  - type: textarea
+    id: sharing-detail
+    attributes:
+      label: Sharing details, restrictions, or attribution requests
+      description: >-
+        Any campaign data-use policy, embargo, required citation, or other condition. If in doubt,
+        say so here rather than guessing — nothing is assumed public by default.
+    validations:
+      required: false
+  - type: textarea
+    id: contact
+    attributes:
+      label: How to reach you to arrange transfer
+      description: >-
+        An email address or another channel, if different from your GitHub account. Leave blank
+        to be contacted through this issue only.
+    validations:
+      required: false

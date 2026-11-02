@@ -1,0 +1,3913 @@
+{
+  "cases": {
+    "bound_v314": {
+      "fixture": "v35_spec_bound_raw_fixture",
+      "netcdf": {
+        ".H.cdf": {
+          "data_model": "NETCDF3_CLASSIC",
+          "dimensions": {
+            "ImgBlocklen": [
+              1700,
+              false
+            ],
+            "ImgRowlen": [
+              8,
+              false
+            ],
+            "time": [
+              1,
+              true
+            ]
+          },
+          "global_attributes": {},
+          "variables": {
+            "data": {
+              "dimensions": [
+                "time",
+                "ImgBlocklen",
+                "ImgRowlen"
+              ],
+              "dtype": "int32",
+              "filters": {},
+              "nonzero": [
+                [
+                  0,
+                  0,
+                  0,
+                  2046
+                ],
+                [
+                  0,
+                  0,
+                  1,
+                  16320
+                ],
+                [
+                  0,
+                  2,
+                  0,
+                  43690
+                ],
+                [
+                  0,
+                  2,
+                  1,
+                  43690
+                ],
+                [
+                  0,
+                  2,
+                  2,
+                  43690
+                ],
+                [
+                  0,
+                  2,
+                  3,
+                  43690
+                ],
+                [
+                  0,
+                  2,
+                  4,
+                  43690
+                ],
+                [
+                  0,
+                  2,
+                  5,
+                  43690
+                ],
+                [
+                  0,
+                  2,
+                  6,
+                  43690
+                ],
+                [
+                  0,
+                  2,
+                  7,
+                  43690
+                ],
+                [
+                  0,
+                  3,
+                  3,
+                  4
+                ],
+                [
+                  0,
+                  3,
+                  4,
+                  7
+                ],
+                [
+                  0,
+                  3,
+                  5,
+                  2
+                ],
+                [
+                  0,
+                  3,
+                  6,
+                  176
+                ],
+                [
+                  0,
+                  4,
+                  1,
+                  4095
+                ],
+                [
+                  0,
+                  4,
+                  2,
+                  65535
+                ],
+                [
+                  0,
+                  4,
+                  3,
+                  49167
+                ],
+                [
+                  0,
+                  4,
+                  4,
+                  65535
+                ],
+                [
+                  0,
+                  4,
+                  5,
+                  63488
+                ],
+                [
+                  0,
+                  6,
+                  0,
+                  43690
+                ],
+                [
+                  0,
+                  6,
+                  1,
+                  43690
+                ],
+                [
+                  0,
+                  6,
+                  2,
+                  43690
+                ],
+                [
+                  0,
+                  6,
+                  3,
+                  43690
+                ],
+                [
+                  0,
+                  6,
+                  4,
+                  43690
+                ],
+                [
+                  0,
+                  6,
+                  5,
+                  43690
+                ],
+                [
+                  0,
+                  6,
+                  6,
+                  43690
+                ],
+                [
+                  0,
+                  6,
+                  7,
+                  43690
+                ],
+                [
+                  0,
+                  7,
+                  3,
+                  4
+                ],
+                [
+                  0,
+                  7,
+                  4,
+                  7
+                ],
+                [
+                  0,
+                  7,
+                  5,
+                  2
+                ],
+                [
+                  0,
+                  7,
+                  6,
+                  192
+                ]
+              ],
+              "shape": [
+                1,
+                1700,
+                8
+              ]
+            },
+            "day": {
+              "dimensions": [
+                "time"
+              ],
+              "dtype": "int8",
+              "filters": {},
+              "shape": [
+                1
+              ],
+              "values": [
+                6.0
+              ]
+            },
+            "hour": {
+              "dimensions": [
+                "time"
+              ],
+              "dtype": "int8",
+              "filters": {},
+              "shape": [
+                1
+              ],
+              "values": [
+                6.0
+              ]
+            },
+            "millisec": {
+              "dimensions": [
+                "time"
+              ],
+              "dtype": "int16",
+              "filters": {},
+              "shape": [
+                1
+              ],
+              "values": [
+                0.0
+              ]
+            },
+            "minute": {
+              "dimensions": [
+                "time"
+              ],
+              "dtype": "int8",
+              "filters": {},
+              "shape": [
+                1
+              ],
+              "values": [
+                44.0
+              ]
+            },
+            "month": {
+              "dimensions": [
+                "time"
+              ],
+              "dtype": "int8",
+              "filters": {},
+              "shape": [
+                1
+              ],
+              "values": [
+                9.0
+              ]
+            },
+            "second": {
+              "dimensions": [
+                "time"
+              ],
+              "dtype": "int8",
+              "filters": {},
+              "shape": [
+                1
+              ],
+              "values": [
+                20.0
+              ]
+            },
+            "wkday": {
+              "dimensions": [
+                "time"
+              ],
+              "dtype": "int8",
+              "filters": {},
+              "shape": [
+                1
+              ],
+              "values": [
+                2.0
+              ]
+            },
+            "year": {
+              "dimensions": [
+                "time"
+              ],
+              "dtype": "int16",
+              "filters": {},
+              "shape": [
+                1
+              ],
+              "values": [
+                2016.0
+              ]
+            }
+          }
+        },
+        ".V.cdf": {
+          "data_model": "NETCDF3_CLASSIC",
+          "dimensions": {
+            "ImgBlocklen": [
+              1700,
+              false
+            ],
+            "ImgRowlen": [
+              8,
+              false
+            ],
+            "time": [
+              0,
+              true
+            ]
+          },
+          "global_attributes": {},
+          "variables": {
+            "data": {
+              "dimensions": [
+                "time",
+                "ImgBlocklen",
+                "ImgRowlen"
+              ],
+              "dtype": "int32",
+              "filters": {},
+              "nonzero": [],
+              "shape": [
+                0,
+                1700,
+                8
+              ]
+            },
+            "day": {
+              "dimensions": [
+                "time"
+              ],
+              "dtype": "int8",
+              "filters": {},
+              "shape": [
+                0
+              ],
+              "values": []
+            },
+            "hour": {
+              "dimensions": [
+                "time"
+              ],
+              "dtype": "int8",
+              "filters": {},
+              "shape": [
+                0
+              ],
+              "values": []
+            },
+            "millisec": {
+              "dimensions": [
+                "time"
+              ],
+              "dtype": "int16",
+              "filters": {},
+              "shape": [
+                0
+              ],
+              "values": []
+            },
+            "minute": {
+              "dimensions": [
+                "time"
+              ],
+              "dtype": "int8",
+              "filters": {},
+              "shape": [
+                0
+              ],
+              "values": []
+            },
+            "month": {
+              "dimensions": [
+                "time"
+              ],
+              "dtype": "int8",
+              "filters": {},
+              "shape": [
+                0
+              ],
+              "values": []
+            },
+            "second": {
+              "dimensions": [
+                "time"
+              ],
+              "dtype": "int8",
+              "filters": {},
+              "shape": [
+                0
+              ],
+              "values": []
+            },
+            "wkday": {
+              "dimensions": [
+                "time"
+              ],
+              "dtype": "int8",
+              "filters": {},
+              "shape": [
+                0
+              ],
+              "values": []
+            },
+            "year": {
+              "dimensions": [
+                "time"
+              ],
+              "dtype": "int16",
+              "filters": {},
+              "shape": [
+                0
+              ],
+              "values": []
+            }
+          }
+        }
+      },
+      "release": "v3.1.4",
+      "sidecars": {
+        ".NV.csv": "64420.000000, 0\n64420.000000, 0\n"
+      },
+      "varargin": null
+    },
+    "bound_v35": {
+      "fixture": "v35_spec_bound_raw_fixture",
+      "netcdf": {
+        ".H.nc": {
+          "data_model": "NETCDF4",
+          "dimensions": {
+            "ImgBlocklen": [
+              1700,
+              false
+            ],
+            "ImgRowlen": [
+              8,
+              false
+            ],
+            "time": [
+              1,
+              true
+            ]
+          },
+          "global_attributes": {
+            "Creation Time": "2026/09/11 13:30:14",
+            "Probe Channel_Orientation": "Horizontal",
+            "Software": "UIOOPS_v3.5"
+          },
+          "variables": {
+            "data": {
+              "dimensions": [
+                "time",
+                "ImgBlocklen",
+                "ImgRowlen"
+              ],
+              "dtype": "int32",
+              "filters": {
+                "blosc": false,
+                "bzip2": false,
+                "complevel": 9,
+                "fletcher32": false,
+                "shuffle": true,
+                "szip": false,
+                "zlib": true,
+                "zstd": false
+              },
+              "nonzero": [
+                [
+                  0,
+                  0,
+                  0,
+                  2046
+                ],
+                [
+                  0,
+                  0,
+                  1,
+                  16320
+                ],
+                [
+                  0,
+                  2,
+                  0,
+                  43690
+                ],
+                [
+                  0,
+                  2,
+                  1,
+                  43690
+                ],
+                [
+                  0,
+                  2,
+                  2,
+                  43690
+                ],
+                [
+                  0,
+                  2,
+                  3,
+                  43690
+                ],
+                [
+                  0,
+                  2,
+                  4,
+                  43690
+                ],
+                [
+                  0,
+                  2,
+                  5,
+                  43690
+                ],
+                [
+                  0,
+                  2,
+                  6,
+                  43690
+                ],
+                [
+                  0,
+                  2,
+                  7,
+                  43690
+                ],
+                [
+                  0,
+                  3,
+                  3,
+                  4
+                ],
+                [
+                  0,
+                  3,
+                  4,
+                  7
+                ],
+                [
+                  0,
+                  3,
+                  5,
+                  2
+                ],
+                [
+                  0,
+                  3,
+                  6,
+                  176
+                ]
+              ],
+              "shape": [
+                1,
+                1700,
+                8
+              ]
+            },
+            "day": {
+              "dimensions": [
+                "time"
+              ],
+              "dtype": "int8",
+              "filters": {
+                "blosc": false,
+                "bzip2": false,
+                "complevel": 9,
+                "fletcher32": false,
+                "shuffle": true,
+                "szip": false,
+                "zlib": true,
+                "zstd": false
+              },
+              "shape": [
+                1
+              ],
+              "values": [
+                6.0
+              ]
+            },
+            "hour": {
+              "dimensions": [
+                "time"
+              ],
+              "dtype": "int8",
+              "filters": {
+                "blosc": false,
+                "bzip2": false,
+                "complevel": 9,
+                "fletcher32": false,
+                "shuffle": true,
+                "szip": false,
+                "zlib": true,
+                "zstd": false
+              },
+              "shape": [
+                1
+              ],
+              "values": [
+                6.0
+              ]
+            },
+            "millisec": {
+              "dimensions": [
+                "time"
+              ],
+              "dtype": "int16",
+              "filters": {
+                "blosc": false,
+                "bzip2": false,
+                "complevel": 9,
+                "fletcher32": false,
+                "shuffle": true,
+                "szip": false,
+                "zlib": true,
+                "zstd": false
+              },
+              "shape": [
+                1
+              ],
+              "values": [
+                0.0
+              ]
+            },
+            "minute": {
+              "dimensions": [
+                "time"
+              ],
+              "dtype": "int8",
+              "filters": {
+                "blosc": false,
+                "bzip2": false,
+                "complevel": 9,
+                "fletcher32": false,
+                "shuffle": true,
+                "szip": false,
+                "zlib": true,
+                "zstd": false
+              },
+              "shape": [
+                1
+              ],
+              "values": [
+                44.0
+              ]
+            },
+            "month": {
+              "dimensions": [
+                "time"
+              ],
+              "dtype": "int8",
+              "filters": {
+                "blosc": false,
+                "bzip2": false,
+                "complevel": 9,
+                "fletcher32": false,
+                "shuffle": true,
+                "szip": false,
+                "zlib": true,
+                "zstd": false
+              },
+              "shape": [
+                1
+              ],
+              "values": [
+                9.0
+              ]
+            },
+            "second": {
+              "dimensions": [
+                "time"
+              ],
+              "dtype": "int8",
+              "filters": {
+                "blosc": false,
+                "bzip2": false,
+                "complevel": 9,
+                "fletcher32": false,
+                "shuffle": true,
+                "szip": false,
+                "zlib": true,
+                "zstd": false
+              },
+              "shape": [
+                1
+              ],
+              "values": [
+                20.0
+              ]
+            },
+            "tas": {
+              "dimensions": [
+                "time"
+              ],
+              "dtype": "float64",
+              "filters": {
+                "blosc": false,
+                "bzip2": false,
+                "complevel": 9,
+                "fletcher32": false,
+                "shuffle": true,
+                "szip": false,
+                "zlib": true,
+                "zstd": false
+              },
+              "shape": [
+                1
+              ],
+              "values": [
+                -999.0
+              ]
+            },
+            "tasRatio": {
+              "dimensions": [
+                "time"
+              ],
+              "dtype": "float64",
+              "filters": {
+                "blosc": false,
+                "bzip2": false,
+                "complevel": 9,
+                "fletcher32": false,
+                "shuffle": true,
+                "szip": false,
+                "zlib": true,
+                "zstd": false
+              },
+              "shape": [
+                1
+              ],
+              "values": [
+                9.969209968386869e+36
+              ]
+            },
+            "wkday": {
+              "dimensions": [
+                "time"
+              ],
+              "dtype": "int8",
+              "filters": {
+                "blosc": false,
+                "bzip2": false,
+                "complevel": 9,
+                "fletcher32": false,
+                "shuffle": true,
+                "szip": false,
+                "zlib": true,
+                "zstd": false
+              },
+              "shape": [
+                1
+              ],
+              "values": [
+                2.0
+              ]
+            },
+            "year": {
+              "dimensions": [
+                "time"
+              ],
+              "dtype": "int16",
+              "filters": {
+                "blosc": false,
+                "bzip2": false,
+                "complevel": 9,
+                "fletcher32": false,
+                "shuffle": true,
+                "szip": false,
+                "zlib": true,
+                "zstd": false
+              },
+              "shape": [
+                1
+              ],
+              "values": [
+                2016.0
+              ]
+            }
+          }
+        },
+        ".V.nc": {
+          "data_model": "NETCDF4",
+          "dimensions": {
+            "ImgBlocklen": [
+              1700,
+              false
+            ],
+            "ImgRowlen": [
+              8,
+              false
+            ],
+            "time": [
+              0,
+              true
+            ]
+          },
+          "global_attributes": {
+            "Creation Time": "2026/09/11 13:30:14",
+            "Probe Channel_Orientation": "Vertical",
+            "Software": "UIOOPS_v3.5"
+          },
+          "variables": {
+            "data": {
+              "dimensions": [
+                "time",
+                "ImgBlocklen",
+                "ImgRowlen"
+              ],
+              "dtype": "int32",
+              "filters": {
+                "blosc": false,
+                "bzip2": false,
+                "complevel": 9,
+                "fletcher32": false,
+                "shuffle": true,
+                "szip": false,
+                "zlib": true,
+                "zstd": false
+              },
+              "nonzero": [],
+              "shape": [
+                0,
+                1700,
+                8
+              ]
+            },
+            "day": {
+              "dimensions": [
+                "time"
+              ],
+              "dtype": "int8",
+              "filters": {
+                "blosc": false,
+                "bzip2": false,
+                "complevel": 9,
+                "fletcher32": false,
+                "shuffle": true,
+                "szip": false,
+                "zlib": true,
+                "zstd": false
+              },
+              "shape": [
+                0
+              ],
+              "values": []
+            },
+            "hour": {
+              "dimensions": [
+                "time"
+              ],
+              "dtype": "int8",
+              "filters": {
+                "blosc": false,
+                "bzip2": false,
+                "complevel": 9,
+                "fletcher32": false,
+                "shuffle": true,
+                "szip": false,
+                "zlib": true,
+                "zstd": false
+              },
+              "shape": [
+                0
+              ],
+              "values": []
+            },
+            "millisec": {
+              "dimensions": [
+                "time"
+              ],
+              "dtype": "int16",
+              "filters": {
+                "blosc": false,
+                "bzip2": false,
+                "complevel": 9,
+                "fletcher32": false,
+                "shuffle": true,
+                "szip": false,
+                "zlib": true,
+                "zstd": false
+              },
+              "shape": [
+                0
+              ],
+              "values": []
+            },
+            "minute": {
+              "dimensions": [
+                "time"
+              ],
+              "dtype": "int8",
+              "filters": {
+                "blosc": false,
+                "bzip2": false,
+                "complevel": 9,
+                "fletcher32": false,
+                "shuffle": true,
+                "szip": false,
+                "zlib": true,
+                "zstd": false
+              },
+              "shape": [
+                0
+              ],
+              "values": []
+            },
+            "month": {
+              "dimensions": [
+                "time"
+              ],
+              "dtype": "int8",
+              "filters": {
+                "blosc": false,
+                "bzip2": false,
+                "complevel": 9,
+                "fletcher32": false,
+                "shuffle": true,
+                "szip": false,
+                "zlib": true,
+                "zstd": false
+              },
+              "shape": [
+                0
+              ],
+              "values": []
+            },
+            "second": {
+              "dimensions": [
+                "time"
+              ],
+              "dtype": "int8",
+              "filters": {
+                "blosc": false,
+                "bzip2": false,
+                "complevel": 9,
+                "fletcher32": false,
+                "shuffle": true,
+                "szip": false,
+                "zlib": true,
+                "zstd": false
+              },
+              "shape": [
+                0
+              ],
+              "values": []
+            },
+            "tas": {
+              "dimensions": [
+                "time"
+              ],
+              "dtype": "float64",
+              "filters": {
+                "blosc": false,
+                "bzip2": false,
+                "complevel": 9,
+                "fletcher32": false,
+                "shuffle": true,
+                "szip": false,
+                "zlib": true,
+                "zstd": false
+              },
+              "shape": [
+                0
+              ],
+              "values": []
+            },
+            "tasRatio": {
+              "dimensions": [
+                "time"
+              ],
+              "dtype": "float64",
+              "filters": {
+                "blosc": false,
+                "bzip2": false,
+                "complevel": 9,
+                "fletcher32": false,
+                "shuffle": true,
+                "szip": false,
+                "zlib": true,
+                "zstd": false
+              },
+              "shape": [
+                0
+              ],
+              "values": []
+            },
+            "wkday": {
+              "dimensions": [
+                "time"
+              ],
+              "dtype": "int8",
+              "filters": {
+                "blosc": false,
+                "bzip2": false,
+                "complevel": 9,
+                "fletcher32": false,
+                "shuffle": true,
+                "szip": false,
+                "zlib": true,
+                "zstd": false
+              },
+              "shape": [
+                0
+              ],
+              "values": []
+            },
+            "year": {
+              "dimensions": [
+                "time"
+              ],
+              "dtype": "int16",
+              "filters": {
+                "blosc": false,
+                "bzip2": false,
+                "complevel": 9,
+                "fletcher32": false,
+                "shuffle": true,
+                "szip": false,
+                "zlib": true,
+                "zstd": false
+              },
+              "shape": [
+                0
+              ],
+              "values": []
+            }
+          }
+        }
+      },
+      "release": "v3.5",
+      "sidecars": {
+        ".NV.csv": "64420.000000, 0\n"
+      },
+      "varargin": null
+    },
+    "main_no_tas": {
+      "fixture": "v35_spec_raw_fixture",
+      "netcdf": {
+        ".H.nc": {
+          "data_model": "NETCDF4",
+          "dimensions": {
+            "ImgBlocklen": [
+              1700,
+              false
+            ],
+            "ImgRowlen": [
+              8,
+              false
+            ],
+            "time": [
+              7,
+              true
+            ]
+          },
+          "global_attributes": {
+            "Creation Time": "2026/09/11 13:29:55",
+            "Probe Channel_Orientation": "Horizontal",
+            "Software": "UIOOPS_v3.5"
+          },
+          "variables": {
+            "data": {
+              "dimensions": [
+                "time",
+                "ImgBlocklen",
+                "ImgRowlen"
+              ],
+              "dtype": "int32",
+              "filters": {
+                "blosc": false,
+                "bzip2": false,
+                "complevel": 9,
+                "fletcher32": false,
+                "shuffle": true,
+                "szip": false,
+                "zlib": true,
+                "zstd": false
+              },
+              "nonzero": [
+                [
+                  0,
+                  0,
+                  0,
+                  2046
+                ],
+                [
+                  0,
+                  0,
+                  1,
+                  16320
+                ],
+                [
+                  0,
+                  2,
+                  0,
+                  43690
+                ],
+                [
+                  0,
+                  2,
+                  1,
+                  43690
+                ],
+                [
+                  0,
+                  2,
+                  2,
+                  43690
+                ],
+                [
+                  0,
+                  2,
+                  3,
+                  43690
+                ],
+                [
+                  0,
+                  2,
+                  4,
+                  43690
+                ],
+                [
+                  0,
+                  2,
+                  5,
+                  43690
+                ],
+                [
+                  0,
+                  2,
+                  6,
+                  43690
+                ],
+                [
+                  0,
+                  2,
+                  7,
+                  43690
+                ],
+                [
+                  0,
+                  3,
+                  3,
+                  4
+                ],
+                [
+                  0,
+                  3,
+                  4,
+                  7
+                ],
+                [
+                  0,
+                  3,
+                  5,
+                  2
+                ],
+                [
+                  0,
+                  3,
+                  6,
+                  1
+                ],
+                [
+                  1,
+                  0,
+                  0,
+                  2046
+                ],
+                [
+                  1,
+                  0,
+                  1,
+                  16320
+                ],
+                [
+                  1,
+                  2,
+                  0,
+                  43690
+                ],
+                [
+                  1,
+                  2,
+                  1,
+                  43690
+                ],
+                [
+                  1,
+                  2,
+                  2,
+                  43690
+                ],
+                [
+                  1,
+                  2,
+                  3,
+                  43690
+                ],
+                [
+                  1,
+                  2,
+                  4,
+                  43690
+                ],
+                [
+                  1,
+                  2,
+                  5,
+                  43690
+                ],
+                [
+                  1,
+                  2,
+                  6,
+                  43690
+                ],
+                [
+                  1,
+                  2,
+                  7,
+                  43690
+                ],
+                [
+                  1,
+                  3,
+                  3,
+                  4
+                ],
+                [
+                  1,
+                  3,
+                  4,
+                  7
+                ],
+                [
+                  1,
+                  3,
+                  5,
+                  2
+                ],
+                [
+                  1,
+                  3,
+                  6,
+                  3
+                ],
+                [
+                  2,
+                  0,
+                  0,
+                  2046
+                ],
+                [
+                  2,
+                  0,
+                  1,
+                  16320
+                ],
+                [
+                  2,
+                  2,
+                  0,
+                  43690
+                ],
+                [
+                  2,
+                  2,
+                  1,
+                  43690
+                ],
+                [
+                  2,
+                  2,
+                  2,
+                  43690
+                ],
+                [
+                  2,
+                  2,
+                  3,
+                  43690
+                ],
+                [
+                  2,
+                  2,
+                  4,
+                  43690
+                ],
+                [
+                  2,
+                  2,
+                  5,
+                  43690
+                ],
+                [
+                  2,
+                  2,
+                  6,
+                  43690
+                ],
+                [
+                  2,
+                  2,
+                  7,
+                  43690
+                ],
+                [
+                  2,
+                  3,
+                  3,
+                  4
+                ],
+                [
+                  2,
+                  3,
+                  4,
+                  7
+                ],
+                [
+                  2,
+                  3,
+                  5,
+                  2
+                ],
+                [
+                  2,
+                  3,
+                  6,
+                  4
+                ],
+                [
+                  3,
+                  0,
+                  0,
+                  2046
+                ],
+                [
+                  3,
+                  0,
+                  1,
+                  16320
+                ],
+                [
+                  3,
+                  2,
+                  0,
+                  43690
+                ],
+                [
+                  3,
+                  2,
+                  1,
+                  43690
+                ],
+                [
+                  3,
+                  2,
+                  2,
+                  43690
+                ],
+                [
+                  3,
+                  2,
+                  3,
+                  43690
+                ],
+                [
+                  3,
+                  2,
+                  4,
+                  43690
+                ],
+                [
+                  3,
+                  2,
+                  5,
+                  43690
+                ],
+                [
+                  3,
+                  2,
+                  6,
+                  43690
+                ],
+                [
+                  3,
+                  2,
+                  7,
+                  43690
+                ],
+                [
+                  3,
+                  3,
+                  3,
+                  4
+                ],
+                [
+                  3,
+                  3,
+                  4,
+                  7
+                ],
+                [
+                  3,
+                  3,
+                  5,
+                  2
+                ],
+                [
+                  3,
+                  3,
+                  6,
+                  5
+                ],
+                [
+                  4,
+                  0,
+                  0,
+                  2046
+                ],
+                [
+                  4,
+                  0,
+                  1,
+                  16320
+                ],
+                [
+                  4,
+                  2,
+                  0,
+                  43690
+                ],
+                [
+                  4,
+                  2,
+                  1,
+                  43690
+                ],
+                [
+                  4,
+                  2,
+                  2,
+                  43690
+                ],
+                [
+                  4,
+                  2,
+                  3,
+                  43690
+                ],
+                [
+                  4,
+                  2,
+                  4,
+                  43690
+                ],
+                [
+                  4,
+                  2,
+                  5,
+                  43690
+                ],
+                [
+                  4,
+                  2,
+                  6,
+                  43690
+                ],
+                [
+                  4,
+                  2,
+                  7,
+                  43690
+                ],
+                [
+                  4,
+                  3,
+                  3,
+                  4
+                ],
+                [
+                  4,
+                  3,
+                  4,
+                  7
+                ],
+                [
+                  4,
+                  3,
+                  5,
+                  2
+                ],
+                [
+                  4,
+                  3,
+                  6,
+                  6
+                ],
+                [
+                  5,
+                  0,
+                  0,
+                  2046
+                ],
+                [
+                  5,
+                  0,
+                  1,
+                  16320
+                ],
+                [
+                  5,
+                  2,
+                  0,
+                  43690
+                ],
+                [
+                  5,
+                  2,
+                  1,
+                  43690
+                ],
+                [
+                  5,
+                  2,
+                  2,
+                  43690
+                ],
+                [
+                  5,
+                  2,
+                  3,
+                  43690
+                ],
+                [
+                  5,
+                  2,
+                  4,
+                  43690
+                ],
+                [
+                  5,
+                  2,
+                  5,
+                  43690
+                ],
+                [
+                  5,
+                  2,
+                  6,
+                  43690
+                ],
+                [
+                  5,
+                  2,
+                  7,
+                  43690
+                ],
+                [
+                  5,
+                  3,
+                  3,
+                  4
+                ],
+                [
+                  5,
+                  3,
+                  4,
+                  7
+                ],
+                [
+                  5,
+                  3,
+                  5,
+                  2
+                ],
+                [
+                  5,
+                  3,
+                  6,
+                  7
+                ],
+                [
+                  6,
+                  0,
+                  0,
+                  2046
+                ],
+                [
+                  6,
+                  0,
+                  1,
+                  16320
+                ],
+                [
+                  6,
+                  2,
+                  0,
+                  43690
+                ],
+                [
+                  6,
+                  2,
+                  1,
+                  43690
+                ],
+                [
+                  6,
+                  2,
+                  2,
+                  43690
+                ],
+                [
+                  6,
+                  2,
+                  3,
+                  43690
+                ],
+                [
+                  6,
+                  2,
+                  4,
+                  43690
+                ],
+                [
+                  6,
+                  2,
+                  5,
+                  43690
+                ],
+                [
+                  6,
+                  2,
+                  6,
+                  43690
+                ],
+                [
+                  6,
+                  2,
+                  7,
+                  43690
+                ],
+                [
+                  6,
+                  3,
+                  3,
+                  4
+                ],
+                [
+                  6,
+                  3,
+                  4,
+                  7
+                ],
+                [
+                  6,
+                  3,
+                  5,
+                  2
+                ],
+                [
+                  6,
+                  3,
+                  6,
+                  9
+                ]
+              ],
+              "shape": [
+                7,
+                1700,
+                8
+              ]
+            },
+            "day": {
+              "dimensions": [
+                "time"
+              ],
+              "dtype": "int8",
+              "filters": {
+                "blosc": false,
+                "bzip2": false,
+                "complevel": 9,
+                "fletcher32": false,
+                "shuffle": true,
+                "szip": false,
+                "zlib": true,
+                "zstd": false
+              },
+              "shape": [
+                7
+              ],
+              "values": [
+                6.0,
+                6.0,
+                6.0,
+                6.0,
+                6.0,
+                6.0,
+                6.0
+              ]
+            },
+            "hour": {
+              "dimensions": [
+                "time"
+              ],
+              "dtype": "int8",
+              "filters": {
+                "blosc": false,
+                "bzip2": false,
+                "complevel": 9,
+                "fletcher32": false,
+                "shuffle": true,
+                "szip": false,
+                "zlib": true,
+                "zstd": false
+              },
+              "shape": [
+                7
+              ],
+              "values": [
+                6.0,
+                6.0,
+                6.0,
+                6.0,
+                6.0,
+                25.0,
+                6.0
+              ]
+            },
+            "millisec": {
+              "dimensions": [
+                "time"
+              ],
+              "dtype": "int16",
+              "filters": {
+                "blosc": false,
+                "bzip2": false,
+                "complevel": 9,
+                "fletcher32": false,
+                "shuffle": true,
+                "szip": false,
+                "zlib": true,
+                "zstd": false
+              },
+              "shape": [
+                7
+              ],
+              "values": [
+                250.0,
+                500.0,
+                125.0,
+                875.0,
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "minute": {
+              "dimensions": [
+                "time"
+              ],
+              "dtype": "int8",
+              "filters": {
+                "blosc": false,
+                "bzip2": false,
+                "complevel": 9,
+                "fletcher32": false,
+                "shuffle": true,
+                "szip": false,
+                "zlib": true,
+                "zstd": false
+              },
+              "shape": [
+                7
+              ],
+              "values": [
+                44.0,
+                44.0,
+                44.0,
+                44.0,
+                44.0,
+                44.0,
+                44.0
+              ]
+            },
+            "month": {
+              "dimensions": [
+                "time"
+              ],
+              "dtype": "int8",
+              "filters": {
+                "blosc": false,
+                "bzip2": false,
+                "complevel": 9,
+                "fletcher32": false,
+                "shuffle": true,
+                "szip": false,
+                "zlib": true,
+                "zstd": false
+              },
+              "shape": [
+                7
+              ],
+              "values": [
+                9.0,
+                9.0,
+                9.0,
+                9.0,
+                9.0,
+                9.0,
+                9.0
+              ]
+            },
+            "second": {
+              "dimensions": [
+                "time"
+              ],
+              "dtype": "int8",
+              "filters": {
+                "blosc": false,
+                "bzip2": false,
+                "complevel": 9,
+                "fletcher32": false,
+                "shuffle": true,
+                "szip": false,
+                "zlib": true,
+                "zstd": false
+              },
+              "shape": [
+                7
+              ],
+              "values": [
+                3.0,
+                5.0,
+                7.0,
+                8.0,
+                9.0,
+                10.0,
+                11.0
+              ]
+            },
+            "tas": {
+              "dimensions": [
+                "time"
+              ],
+              "dtype": "float64",
+              "filters": {
+                "blosc": false,
+                "bzip2": false,
+                "complevel": 9,
+                "fletcher32": false,
+                "shuffle": true,
+                "szip": false,
+                "zlib": true,
+                "zstd": false
+              },
+              "shape": [
+                7
+              ],
+              "values": [
+                -999.0,
+                50.0,
+                50.0,
+                50.0,
+                90.0,
+                90.0,
+                90.0
+              ]
+            },
+            "tasRatio": {
+              "dimensions": [
+                "time"
+              ],
+              "dtype": "float64",
+              "filters": {
+                "blosc": false,
+                "bzip2": false,
+                "complevel": 9,
+                "fletcher32": false,
+                "shuffle": true,
+                "szip": false,
+                "zlib": true,
+                "zstd": false
+              },
+              "shape": [
+                7
+              ],
+              "values": [
+                9.969209968386869e+36,
+                9.969209968386869e+36,
+                9.969209968386869e+36,
+                9.969209968386869e+36,
+                9.969209968386869e+36,
+                9.969209968386869e+36,
+                9.969209968386869e+36
+              ]
+            },
+            "wkday": {
+              "dimensions": [
+                "time"
+              ],
+              "dtype": "int8",
+              "filters": {
+                "blosc": false,
+                "bzip2": false,
+                "complevel": 9,
+                "fletcher32": false,
+                "shuffle": true,
+                "szip": false,
+                "zlib": true,
+                "zstd": false
+              },
+              "shape": [
+                7
+              ],
+              "values": [
+                2.0,
+                2.0,
+                2.0,
+                2.0,
+                2.0,
+                2.0,
+                2.0
+              ]
+            },
+            "year": {
+              "dimensions": [
+                "time"
+              ],
+              "dtype": "int16",
+              "filters": {
+                "blosc": false,
+                "bzip2": false,
+                "complevel": 9,
+                "fletcher32": false,
+                "shuffle": true,
+                "szip": false,
+                "zlib": true,
+                "zstd": false
+              },
+              "shape": [
+                7
+              ],
+              "values": [
+                2016.0,
+                2016.0,
+                2016.0,
+                2016.0,
+                2016.0,
+                2016.0,
+                2016.0
+              ]
+            }
+          }
+        },
+        ".V.nc": {
+          "data_model": "NETCDF4",
+          "dimensions": {
+            "ImgBlocklen": [
+              1700,
+              false
+            ],
+            "ImgRowlen": [
+              8,
+              false
+            ],
+            "time": [
+              2,
+              true
+            ]
+          },
+          "global_attributes": {
+            "Creation Time": "2026/09/11 13:29:56",
+            "Probe Channel_Orientation": "Vertical",
+            "Software": "UIOOPS_v3.5"
+          },
+          "variables": {
+            "data": {
+              "dimensions": [
+                "time",
+                "ImgBlocklen",
+                "ImgRowlen"
+              ],
+              "dtype": "int32",
+              "filters": {
+                "blosc": false,
+                "bzip2": false,
+                "complevel": 9,
+                "fletcher32": false,
+                "shuffle": true,
+                "szip": false,
+                "zlib": true,
+                "zstd": false
+              },
+              "nonzero": [
+                [
+                  0,
+                  0,
+                  0,
+                  15864
+                ],
+                [
+                  0,
+                  1,
+                  0,
+                  65520
+                ],
+                [
+                  0,
+                  3,
+                  0,
+                  43690
+                ],
+                [
+                  0,
+                  3,
+                  1,
+                  43690
+                ],
+                [
+                  0,
+                  3,
+                  2,
+                  43690
+                ],
+                [
+                  0,
+                  3,
+                  3,
+                  43690
+                ],
+                [
+                  0,
+                  3,
+                  4,
+                  43690
+                ],
+                [
+                  0,
+                  3,
+                  5,
+                  43690
+                ],
+                [
+                  0,
+                  3,
+                  6,
+                  43690
+                ],
+                [
+                  0,
+                  3,
+                  7,
+                  43690
+                ],
+                [
+                  0,
+                  4,
+                  3,
+                  5
+                ],
+                [
+                  0,
+                  4,
+                  4,
+                  7
+                ],
+                [
+                  0,
+                  4,
+                  5,
+                  3
+                ],
+                [
+                  0,
+                  4,
+                  6,
+                  2
+                ],
+                [
+                  1,
+                  4,
+                  0,
+                  63
+                ],
+                [
+                  1,
+                  4,
+                  1,
+                  65532
+                ],
+                [
+                  1,
+                  4,
+                  2,
+                  8191
+                ],
+                [
+                  1,
+                  4,
+                  3,
+                  49152
+                ],
+                [
+                  1,
+                  5,
+                  0,
+                  127
+                ],
+                [
+                  1,
+                  5,
+                  1,
+                  49152
+                ],
+                [
+                  1,
+                  5,
+                  3,
+                  56
+                ],
+                [
+                  1,
+                  8,
+                  0,
+                  43690
+                ],
+                [
+                  1,
+                  8,
+                  1,
+                  43690
+                ],
+                [
+                  1,
+                  8,
+                  2,
+                  43690
+                ],
+                [
+                  1,
+                  8,
+                  3,
+                  43690
+                ],
+                [
+                  1,
+                  8,
+                  4,
+                  43690
+                ],
+                [
+                  1,
+                  8,
+                  5,
+                  43690
+                ],
+                [
+                  1,
+                  8,
+                  6,
+                  43690
+                ],
+                [
+                  1,
+                  8,
+                  7,
+                  43690
+                ],
+                [
+                  1,
+                  9,
+                  3,
+                  6
+                ],
+                [
+                  1,
+                  9,
+                  4,
+                  7
+                ],
+                [
+                  1,
+                  9,
+                  5,
+                  4
+                ],
+                [
+                  1,
+                  9,
+                  6,
+                  8
+                ]
+              ],
+              "shape": [
+                2,
+                1700,
+                8
+              ]
+            },
+            "day": {
+              "dimensions": [
+                "time"
+              ],
+              "dtype": "int8",
+              "filters": {
+                "blosc": false,
+                "bzip2": false,
+                "complevel": 9,
+                "fletcher32": false,
+                "shuffle": true,
+                "szip": false,
+                "zlib": true,
+                "zstd": false
+              },
+              "shape": [
+                2
+              ],
+              "values": [
+                6.0,
+                6.0
+              ]
+            },
+            "hour": {
+              "dimensions": [
+                "time"
+              ],
+              "dtype": "int8",
+              "filters": {
+                "blosc": false,
+                "bzip2": false,
+                "complevel": 9,
+                "fletcher32": false,
+                "shuffle": true,
+                "szip": false,
+                "zlib": true,
+                "zstd": false
+              },
+              "shape": [
+                2
+              ],
+              "values": [
+                6.0,
+                1.0
+              ]
+            },
+            "millisec": {
+              "dimensions": [
+                "time"
+              ],
+              "dtype": "int16",
+              "filters": {
+                "blosc": false,
+                "bzip2": false,
+                "complevel": 9,
+                "fletcher32": false,
+                "shuffle": true,
+                "szip": false,
+                "zlib": true,
+                "zstd": false
+              },
+              "shape": [
+                2
+              ],
+              "values": [
+                100.0,
+                0.0
+              ]
+            },
+            "minute": {
+              "dimensions": [
+                "time"
+              ],
+              "dtype": "int8",
+              "filters": {
+                "blosc": false,
+                "bzip2": false,
+                "complevel": 9,
+                "fletcher32": false,
+                "shuffle": true,
+                "szip": false,
+                "zlib": true,
+                "zstd": false
+              },
+              "shape": [
+                2
+              ],
+              "values": [
+                44.0,
+                44.0
+              ]
+            },
+            "month": {
+              "dimensions": [
+                "time"
+              ],
+              "dtype": "int8",
+              "filters": {
+                "blosc": false,
+                "bzip2": false,
+                "complevel": 9,
+                "fletcher32": false,
+                "shuffle": true,
+                "szip": false,
+                "zlib": true,
+                "zstd": false
+              },
+              "shape": [
+                2
+              ],
+              "values": [
+                9.0,
+                9.0
+              ]
+            },
+            "second": {
+              "dimensions": [
+                "time"
+              ],
+              "dtype": "int8",
+              "filters": {
+                "blosc": false,
+                "bzip2": false,
+                "complevel": 9,
+                "fletcher32": false,
+                "shuffle": true,
+                "szip": false,
+                "zlib": true,
+                "zstd": false
+              },
+              "shape": [
+                2
+              ],
+              "values": [
+                4.0,
+                10.0
+              ]
+            },
+            "tas": {
+              "dimensions": [
+                "time"
+              ],
+              "dtype": "float64",
+              "filters": {
+                "blosc": false,
+                "bzip2": false,
+                "complevel": 9,
+                "fletcher32": false,
+                "shuffle": true,
+                "szip": false,
+                "zlib": true,
+                "zstd": false
+              },
+              "shape": [
+                2
+              ],
+              "values": [
+                -999.0,
+                90.0
+              ]
+            },
+            "tasRatio": {
+              "dimensions": [
+                "time"
+              ],
+              "dtype": "float64",
+              "filters": {
+                "blosc": false,
+                "bzip2": false,
+                "complevel": 9,
+                "fletcher32": false,
+                "shuffle": true,
+                "szip": false,
+                "zlib": true,
+                "zstd": false
+              },
+              "shape": [
+                2
+              ],
+              "values": [
+                9.969209968386869e+36,
+                9.969209968386869e+36
+              ]
+            },
+            "wkday": {
+              "dimensions": [
+                "time"
+              ],
+              "dtype": "int8",
+              "filters": {
+                "blosc": false,
+                "bzip2": false,
+                "complevel": 9,
+                "fletcher32": false,
+                "shuffle": true,
+                "szip": false,
+                "zlib": true,
+                "zstd": false
+              },
+              "shape": [
+                2
+              ],
+              "values": [
+                2.0,
+                2.0
+              ]
+            },
+            "year": {
+              "dimensions": [
+                "time"
+              ],
+              "dtype": "int16",
+              "filters": {
+                "blosc": false,
+                "bzip2": false,
+                "complevel": 9,
+                "fletcher32": false,
+                "shuffle": true,
+                "szip": false,
+                "zlib": true,
+                "zstd": false
+              },
+              "shape": [
+                2
+              ],
+              "values": [
+                2016.0,
+                2016.0
+              ]
+            }
+          }
+        }
+      },
+      "release": "v3.5",
+      "sidecars": {
+        ".MK.csv": "131075, 4096, 4097, 4098, 4099, 4100, 4101, 4102, 4103, 4104, 4105, 4106, 4107, 4108, 4109, 4110, 4111, 262149, 393223, ",
+        ".NV.csv": "64403.250000, 0\n64404.100000, 5\n64405.500000, 0\n64407.125000, 0\n64408.875000, 0\n64409.000000, 0\n254410.000000, 0\n254410.000000, 6\n64411.000000, 0\n",
+        ".tas.csv": "64405.500000, 50.000000, 100000.000000, 22, 33, 0, 0, 66, 77, 1.250000, 2.500000, 3.750000, 5.000000, 6.250000, 7.500000\n64407.125000, 50.000000, 100000.000000, 22, 33, 0, 0, 66, 77, 1.250000, 2.500000, 3.750000, 5.000000, 6.250000, 7.500000\n64408.875000, 50.000000, 100000.000000, 22, 33, 1, 0, 66, 77, 1.250000, 2.500000, 3.750000, 5.000000, 6.250000, 7.500000\n64409.000000, 90.000000, 100000.000000, 22, 33, 0, 0, 66, 77, 1.250000, 2.500000, 3.750000, 5.000000, 6.250000, 7.500000\n"
+      },
+      "varargin": null
+    },
+    "main_with_tas": {
+      "fixture": "v35_spec_raw_fixture",
+      "netcdf": {
+        ".H.nc": {
+          "data_model": "NETCDF4",
+          "dimensions": {
+            "ImgBlocklen": [
+              1700,
+              false
+            ],
+            "ImgRowlen": [
+              8,
+              false
+            ],
+            "time": [
+              7,
+              true
+            ]
+          },
+          "global_attributes": {
+            "Creation Time": "2026/09/11 13:30:04",
+            "Probe Channel_Orientation": "Horizontal",
+            "Software": "UIOOPS_v3.5"
+          },
+          "variables": {
+            "data": {
+              "dimensions": [
+                "time",
+                "ImgBlocklen",
+                "ImgRowlen"
+              ],
+              "dtype": "int32",
+              "filters": {
+                "blosc": false,
+                "bzip2": false,
+                "complevel": 9,
+                "fletcher32": false,
+                "shuffle": true,
+                "szip": false,
+                "zlib": true,
+                "zstd": false
+              },
+              "nonzero": [
+                [
+                  0,
+                  0,
+                  0,
+                  2046
+                ],
+                [
+                  0,
+                  0,
+                  1,
+                  16320
+                ],
+                [
+                  0,
+                  2,
+                  0,
+                  43690
+                ],
+                [
+                  0,
+                  2,
+                  1,
+                  43690
+                ],
+                [
+                  0,
+                  2,
+                  2,
+                  43690
+                ],
+                [
+                  0,
+                  2,
+                  3,
+                  43690
+                ],
+                [
+                  0,
+                  2,
+                  4,
+                  43690
+                ],
+                [
+                  0,
+                  2,
+                  5,
+                  43690
+                ],
+                [
+                  0,
+                  2,
+                  6,
+                  43690
+                ],
+                [
+                  0,
+                  2,
+                  7,
+                  43690
+                ],
+                [
+                  0,
+                  3,
+                  3,
+                  4
+                ],
+                [
+                  0,
+                  3,
+                  4,
+                  7
+                ],
+                [
+                  0,
+                  3,
+                  5,
+                  2
+                ],
+                [
+                  0,
+                  3,
+                  6,
+                  1
+                ],
+                [
+                  1,
+                  0,
+                  0,
+                  2046
+                ],
+                [
+                  1,
+                  0,
+                  1,
+                  16320
+                ],
+                [
+                  1,
+                  2,
+                  0,
+                  43690
+                ],
+                [
+                  1,
+                  2,
+                  1,
+                  43690
+                ],
+                [
+                  1,
+                  2,
+                  2,
+                  43690
+                ],
+                [
+                  1,
+                  2,
+                  3,
+                  43690
+                ],
+                [
+                  1,
+                  2,
+                  4,
+                  43690
+                ],
+                [
+                  1,
+                  2,
+                  5,
+                  43690
+                ],
+                [
+                  1,
+                  2,
+                  6,
+                  43690
+                ],
+                [
+                  1,
+                  2,
+                  7,
+                  43690
+                ],
+                [
+                  1,
+                  3,
+                  3,
+                  4
+                ],
+                [
+                  1,
+                  3,
+                  4,
+                  7
+                ],
+                [
+                  1,
+                  3,
+                  5,
+                  2
+                ],
+                [
+                  1,
+                  3,
+                  6,
+                  3
+                ],
+                [
+                  2,
+                  0,
+                  0,
+                  2046
+                ],
+                [
+                  2,
+                  0,
+                  1,
+                  16320
+                ],
+                [
+                  2,
+                  2,
+                  0,
+                  43690
+                ],
+                [
+                  2,
+                  2,
+                  1,
+                  43690
+                ],
+                [
+                  2,
+                  2,
+                  2,
+                  43690
+                ],
+                [
+                  2,
+                  2,
+                  3,
+                  43690
+                ],
+                [
+                  2,
+                  2,
+                  4,
+                  43690
+                ],
+                [
+                  2,
+                  2,
+                  5,
+                  43690
+                ],
+                [
+                  2,
+                  2,
+                  6,
+                  43690
+                ],
+                [
+                  2,
+                  2,
+                  7,
+                  43690
+                ],
+                [
+                  2,
+                  3,
+                  3,
+                  4
+                ],
+                [
+                  2,
+                  3,
+                  4,
+                  7
+                ],
+                [
+                  2,
+                  3,
+                  5,
+                  2
+                ],
+                [
+                  2,
+                  3,
+                  6,
+                  4
+                ],
+                [
+                  3,
+                  0,
+                  0,
+                  2046
+                ],
+                [
+                  3,
+                  0,
+                  1,
+                  16320
+                ],
+                [
+                  3,
+                  2,
+                  0,
+                  43690
+                ],
+                [
+                  3,
+                  2,
+                  1,
+                  43690
+                ],
+                [
+                  3,
+                  2,
+                  2,
+                  43690
+                ],
+                [
+                  3,
+                  2,
+                  3,
+                  43690
+                ],
+                [
+                  3,
+                  2,
+                  4,
+                  43690
+                ],
+                [
+                  3,
+                  2,
+                  5,
+                  43690
+                ],
+                [
+                  3,
+                  2,
+                  6,
+                  43690
+                ],
+                [
+                  3,
+                  2,
+                  7,
+                  43690
+                ],
+                [
+                  3,
+                  3,
+                  3,
+                  4
+                ],
+                [
+                  3,
+                  3,
+                  4,
+                  7
+                ],
+                [
+                  3,
+                  3,
+                  5,
+                  2
+                ],
+                [
+                  3,
+                  3,
+                  6,
+                  5
+                ],
+                [
+                  4,
+                  0,
+                  0,
+                  2046
+                ],
+                [
+                  4,
+                  0,
+                  1,
+                  16320
+                ],
+                [
+                  4,
+                  2,
+                  0,
+                  43690
+                ],
+                [
+                  4,
+                  2,
+                  1,
+                  43690
+                ],
+                [
+                  4,
+                  2,
+                  2,
+                  43690
+                ],
+                [
+                  4,
+                  2,
+                  3,
+                  43690
+                ],
+                [
+                  4,
+                  2,
+                  4,
+                  43690
+                ],
+                [
+                  4,
+                  2,
+                  5,
+                  43690
+                ],
+                [
+                  4,
+                  2,
+                  6,
+                  43690
+                ],
+                [
+                  4,
+                  2,
+                  7,
+                  43690
+                ],
+                [
+                  4,
+                  3,
+                  3,
+                  4
+                ],
+                [
+                  4,
+                  3,
+                  4,
+                  7
+                ],
+                [
+                  4,
+                  3,
+                  5,
+                  2
+                ],
+                [
+                  4,
+                  3,
+                  6,
+                  6
+                ],
+                [
+                  5,
+                  0,
+                  0,
+                  2046
+                ],
+                [
+                  5,
+                  0,
+                  1,
+                  16320
+                ],
+                [
+                  5,
+                  2,
+                  0,
+                  43690
+                ],
+                [
+                  5,
+                  2,
+                  1,
+                  43690
+                ],
+                [
+                  5,
+                  2,
+                  2,
+                  43690
+                ],
+                [
+                  5,
+                  2,
+                  3,
+                  43690
+                ],
+                [
+                  5,
+                  2,
+                  4,
+                  43690
+                ],
+                [
+                  5,
+                  2,
+                  5,
+                  43690
+                ],
+                [
+                  5,
+                  2,
+                  6,
+                  43690
+                ],
+                [
+                  5,
+                  2,
+                  7,
+                  43690
+                ],
+                [
+                  5,
+                  3,
+                  3,
+                  4
+                ],
+                [
+                  5,
+                  3,
+                  4,
+                  7
+                ],
+                [
+                  5,
+                  3,
+                  5,
+                  2
+                ],
+                [
+                  5,
+                  3,
+                  6,
+                  7
+                ],
+                [
+                  6,
+                  0,
+                  0,
+                  2046
+                ],
+                [
+                  6,
+                  0,
+                  1,
+                  16320
+                ],
+                [
+                  6,
+                  2,
+                  0,
+                  43690
+                ],
+                [
+                  6,
+                  2,
+                  1,
+                  43690
+                ],
+                [
+                  6,
+                  2,
+                  2,
+                  43690
+                ],
+                [
+                  6,
+                  2,
+                  3,
+                  43690
+                ],
+                [
+                  6,
+                  2,
+                  4,
+                  43690
+                ],
+                [
+                  6,
+                  2,
+                  5,
+                  43690
+                ],
+                [
+                  6,
+                  2,
+                  6,
+                  43690
+                ],
+                [
+                  6,
+                  2,
+                  7,
+                  43690
+                ],
+                [
+                  6,
+                  3,
+                  3,
+                  4
+                ],
+                [
+                  6,
+                  3,
+                  4,
+                  7
+                ],
+                [
+                  6,
+                  3,
+                  5,
+                  2
+                ],
+                [
+                  6,
+                  3,
+                  6,
+                  9
+                ]
+              ],
+              "shape": [
+                7,
+                1700,
+                8
+              ]
+            },
+            "day": {
+              "dimensions": [
+                "time"
+              ],
+              "dtype": "int8",
+              "filters": {
+                "blosc": false,
+                "bzip2": false,
+                "complevel": 9,
+                "fletcher32": false,
+                "shuffle": true,
+                "szip": false,
+                "zlib": true,
+                "zstd": false
+              },
+              "shape": [
+                7
+              ],
+              "values": [
+                6.0,
+                6.0,
+                6.0,
+                6.0,
+                6.0,
+                6.0,
+                6.0
+              ]
+            },
+            "hour": {
+              "dimensions": [
+                "time"
+              ],
+              "dtype": "int8",
+              "filters": {
+                "blosc": false,
+                "bzip2": false,
+                "complevel": 9,
+                "fletcher32": false,
+                "shuffle": true,
+                "szip": false,
+                "zlib": true,
+                "zstd": false
+              },
+              "shape": [
+                7
+              ],
+              "values": [
+                6.0,
+                6.0,
+                6.0,
+                6.0,
+                6.0,
+                25.0,
+                6.0
+              ]
+            },
+            "millisec": {
+              "dimensions": [
+                "time"
+              ],
+              "dtype": "int16",
+              "filters": {
+                "blosc": false,
+                "bzip2": false,
+                "complevel": 9,
+                "fletcher32": false,
+                "shuffle": true,
+                "szip": false,
+                "zlib": true,
+                "zstd": false
+              },
+              "shape": [
+                7
+              ],
+              "values": [
+                250.0,
+                500.0,
+                125.0,
+                875.0,
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "minute": {
+              "dimensions": [
+                "time"
+              ],
+              "dtype": "int8",
+              "filters": {
+                "blosc": false,
+                "bzip2": false,
+                "complevel": 9,
+                "fletcher32": false,
+                "shuffle": true,
+                "szip": false,
+                "zlib": true,
+                "zstd": false
+              },
+              "shape": [
+                7
+              ],
+              "values": [
+                44.0,
+                44.0,
+                44.0,
+                44.0,
+                44.0,
+                44.0,
+                44.0
+              ]
+            },
+            "month": {
+              "dimensions": [
+                "time"
+              ],
+              "dtype": "int8",
+              "filters": {
+                "blosc": false,
+                "bzip2": false,
+                "complevel": 9,
+                "fletcher32": false,
+                "shuffle": true,
+                "szip": false,
+                "zlib": true,
+                "zstd": false
+              },
+              "shape": [
+                7
+              ],
+              "values": [
+                9.0,
+                9.0,
+                9.0,
+                9.0,
+                9.0,
+                9.0,
+                9.0
+              ]
+            },
+            "second": {
+              "dimensions": [
+                "time"
+              ],
+              "dtype": "int8",
+              "filters": {
+                "blosc": false,
+                "bzip2": false,
+                "complevel": 9,
+                "fletcher32": false,
+                "shuffle": true,
+                "szip": false,
+                "zlib": true,
+                "zstd": false
+              },
+              "shape": [
+                7
+              ],
+              "values": [
+                3.0,
+                5.0,
+                7.0,
+                8.0,
+                9.0,
+                10.0,
+                11.0
+              ]
+            },
+            "tas": {
+              "dimensions": [
+                "time"
+              ],
+              "dtype": "float64",
+              "filters": {
+                "blosc": false,
+                "bzip2": false,
+                "complevel": 9,
+                "fletcher32": false,
+                "shuffle": true,
+                "szip": false,
+                "zlib": true,
+                "zstd": false
+              },
+              "shape": [
+                7
+              ],
+              "values": [
+                -999.0,
+                50.0,
+                50.0,
+                50.0,
+                90.0,
+                90.0,
+                90.0
+              ]
+            },
+            "tasRatio": {
+              "dimensions": [
+                "time"
+              ],
+              "dtype": "float64",
+              "filters": {
+                "blosc": false,
+                "bzip2": false,
+                "complevel": 9,
+                "fletcher32": false,
+                "shuffle": true,
+                "szip": false,
+                "zlib": true,
+                "zstd": false
+              },
+              "shape": [
+                7
+              ],
+              "values": [
+                1.0,
+                0.4166666567325592,
+                0.3571428656578064,
+                0.3333333432674408,
+                0.5625,
+                1.0,
+                0.529411792755127
+              ]
+            },
+            "wkday": {
+              "dimensions": [
+                "time"
+              ],
+              "dtype": "int8",
+              "filters": {
+                "blosc": false,
+                "bzip2": false,
+                "complevel": 9,
+                "fletcher32": false,
+                "shuffle": true,
+                "szip": false,
+                "zlib": true,
+                "zstd": false
+              },
+              "shape": [
+                7
+              ],
+              "values": [
+                2.0,
+                2.0,
+                2.0,
+                2.0,
+                2.0,
+                2.0,
+                2.0
+              ]
+            },
+            "year": {
+              "dimensions": [
+                "time"
+              ],
+              "dtype": "int16",
+              "filters": {
+                "blosc": false,
+                "bzip2": false,
+                "complevel": 9,
+                "fletcher32": false,
+                "shuffle": true,
+                "szip": false,
+                "zlib": true,
+                "zstd": false
+              },
+              "shape": [
+                7
+              ],
+              "values": [
+                2016.0,
+                2016.0,
+                2016.0,
+                2016.0,
+                2016.0,
+                2016.0,
+                2016.0
+              ]
+            }
+          }
+        },
+        ".V.nc": {
+          "data_model": "NETCDF4",
+          "dimensions": {
+            "ImgBlocklen": [
+              1700,
+              false
+            ],
+            "ImgRowlen": [
+              8,
+              false
+            ],
+            "time": [
+              2,
+              true
+            ]
+          },
+          "global_attributes": {
+            "Creation Time": "2026/09/11 13:30:04",
+            "Probe Channel_Orientation": "Vertical",
+            "Software": "UIOOPS_v3.5"
+          },
+          "variables": {
+            "data": {
+              "dimensions": [
+                "time",
+                "ImgBlocklen",
+                "ImgRowlen"
+              ],
+              "dtype": "int32",
+              "filters": {
+                "blosc": false,
+                "bzip2": false,
+                "complevel": 9,
+                "fletcher32": false,
+                "shuffle": true,
+                "szip": false,
+                "zlib": true,
+                "zstd": false
+              },
+              "nonzero": [
+                [
+                  0,
+                  0,
+                  0,
+                  15864
+                ],
+                [
+                  0,
+                  1,
+                  0,
+                  65520
+                ],
+                [
+                  0,
+                  3,
+                  0,
+                  43690
+                ],
+                [
+                  0,
+                  3,
+                  1,
+                  43690
+                ],
+                [
+                  0,
+                  3,
+                  2,
+                  43690
+                ],
+                [
+                  0,
+                  3,
+                  3,
+                  43690
+                ],
+                [
+                  0,
+                  3,
+                  4,
+                  43690
+                ],
+                [
+                  0,
+                  3,
+                  5,
+                  43690
+                ],
+                [
+                  0,
+                  3,
+                  6,
+                  43690
+                ],
+                [
+                  0,
+                  3,
+                  7,
+                  43690
+                ],
+                [
+                  0,
+                  4,
+                  3,
+                  5
+                ],
+                [
+                  0,
+                  4,
+                  4,
+                  7
+                ],
+                [
+                  0,
+                  4,
+                  5,
+                  3
+                ],
+                [
+                  0,
+                  4,
+                  6,
+                  2
+                ],
+                [
+                  1,
+                  4,
+                  0,
+                  63
+                ],
+                [
+                  1,
+                  4,
+                  1,
+                  65532
+                ],
+                [
+                  1,
+                  4,
+                  2,
+                  8191
+                ],
+                [
+                  1,
+                  4,
+                  3,
+                  49152
+                ],
+                [
+                  1,
+                  5,
+                  0,
+                  127
+                ],
+                [
+                  1,
+                  5,
+                  1,
+                  49152
+                ],
+                [
+                  1,
+                  5,
+                  3,
+                  56
+                ],
+                [
+                  1,
+                  8,
+                  0,
+                  43690
+                ],
+                [
+                  1,
+                  8,
+                  1,
+                  43690
+                ],
+                [
+                  1,
+                  8,
+                  2,
+                  43690
+                ],
+                [
+                  1,
+                  8,
+                  3,
+                  43690
+                ],
+                [
+                  1,
+                  8,
+                  4,
+                  43690
+                ],
+                [
+                  1,
+                  8,
+                  5,
+                  43690
+                ],
+                [
+                  1,
+                  8,
+                  6,
+                  43690
+                ],
+                [
+                  1,
+                  8,
+                  7,
+                  43690
+                ],
+                [
+                  1,
+                  9,
+                  3,
+                  6
+                ],
+                [
+                  1,
+                  9,
+                  4,
+                  7
+                ],
+                [
+                  1,
+                  9,
+                  5,
+                  4
+                ],
+                [
+                  1,
+                  9,
+                  6,
+                  8
+                ]
+              ],
+              "shape": [
+                2,
+                1700,
+                8
+              ]
+            },
+            "day": {
+              "dimensions": [
+                "time"
+              ],
+              "dtype": "int8",
+              "filters": {
+                "blosc": false,
+                "bzip2": false,
+                "complevel": 9,
+                "fletcher32": false,
+                "shuffle": true,
+                "szip": false,
+                "zlib": true,
+                "zstd": false
+              },
+              "shape": [
+                2
+              ],
+              "values": [
+                6.0,
+                6.0
+              ]
+            },
+            "hour": {
+              "dimensions": [
+                "time"
+              ],
+              "dtype": "int8",
+              "filters": {
+                "blosc": false,
+                "bzip2": false,
+                "complevel": 9,
+                "fletcher32": false,
+                "shuffle": true,
+                "szip": false,
+                "zlib": true,
+                "zstd": false
+              },
+              "shape": [
+                2
+              ],
+              "values": [
+                6.0,
+                1.0
+              ]
+            },
+            "millisec": {
+              "dimensions": [
+                "time"
+              ],
+              "dtype": "int16",
+              "filters": {
+                "blosc": false,
+                "bzip2": false,
+                "complevel": 9,
+                "fletcher32": false,
+                "shuffle": true,
+                "szip": false,
+                "zlib": true,
+                "zstd": false
+              },
+              "shape": [
+                2
+              ],
+              "values": [
+                100.0,
+                0.0
+              ]
+            },
+            "minute": {
+              "dimensions": [
+                "time"
+              ],
+              "dtype": "int8",
+              "filters": {
+                "blosc": false,
+                "bzip2": false,
+                "complevel": 9,
+                "fletcher32": false,
+                "shuffle": true,
+                "szip": false,
+                "zlib": true,
+                "zstd": false
+              },
+              "shape": [
+                2
+              ],
+              "values": [
+                44.0,
+                44.0
+              ]
+            },
+            "month": {
+              "dimensions": [
+                "time"
+              ],
+              "dtype": "int8",
+              "filters": {
+                "blosc": false,
+                "bzip2": false,
+                "complevel": 9,
+                "fletcher32": false,
+                "shuffle": true,
+                "szip": false,
+                "zlib": true,
+                "zstd": false
+              },
+              "shape": [
+                2
+              ],
+              "values": [
+                9.0,
+                9.0
+              ]
+            },
+            "second": {
+              "dimensions": [
+                "time"
+              ],
+              "dtype": "int8",
+              "filters": {
+                "blosc": false,
+                "bzip2": false,
+                "complevel": 9,
+                "fletcher32": false,
+                "shuffle": true,
+                "szip": false,
+                "zlib": true,
+                "zstd": false
+              },
+              "shape": [
+                2
+              ],
+              "values": [
+                4.0,
+                10.0
+              ]
+            },
+            "tas": {
+              "dimensions": [
+                "time"
+              ],
+              "dtype": "float64",
+              "filters": {
+                "blosc": false,
+                "bzip2": false,
+                "complevel": 9,
+                "fletcher32": false,
+                "shuffle": true,
+                "szip": false,
+                "zlib": true,
+                "zstd": false
+              },
+              "shape": [
+                2
+              ],
+              "values": [
+                -999.0,
+                90.0
+              ]
+            },
+            "tasRatio": {
+              "dimensions": [
+                "time"
+              ],
+              "dtype": "float64",
+              "filters": {
+                "blosc": false,
+                "bzip2": false,
+                "complevel": 9,
+                "fletcher32": false,
+                "shuffle": true,
+                "szip": false,
+                "zlib": true,
+                "zstd": false
+              },
+              "shape": [
+                2
+              ],
+              "values": [
+                1.0,
+                1.0
+              ]
+            },
+            "wkday": {
+              "dimensions": [
+                "time"
+              ],
+              "dtype": "int8",
+              "filters": {
+                "blosc": false,
+                "bzip2": false,
+                "complevel": 9,
+                "fletcher32": false,
+                "shuffle": true,
+                "szip": false,
+                "zlib": true,
+                "zstd": false
+              },
+              "shape": [
+                2
+              ],
+              "values": [
+                2.0,
+                2.0
+              ]
+            },
+            "year": {
+              "dimensions": [
+                "time"
+              ],
+              "dtype": "int16",
+              "filters": {
+                "blosc": false,
+                "bzip2": false,
+                "complevel": 9,
+                "fletcher32": false,
+                "shuffle": true,
+                "szip": false,
+                "zlib": true,
+                "zstd": false
+              },
+              "shape": [
+                2
+              ],
+              "values": [
+                2016.0,
+                2016.0
+              ]
+            }
+          }
+        }
+      },
+      "release": "v3.5",
+      "sidecars": {
+        ".MK.csv": "131075, 4096, 4097, 4098, 4099, 4100, 4101, 4102, 4103, 4104, 4105, 4106, 4107, 4108, 4109, 4110, 4111, 262149, 393223, ",
+        ".NV.csv": "64403.250000, 0\n64404.100000, 5\n64405.500000, 0\n64407.125000, 0\n64408.875000, 0\n64409.000000, 0\n254410.000000, 0\n254410.000000, 6\n64411.000000, 0\n",
+        ".tas.csv": "64405.500000, 50.000000, 100000.000000, 22, 33, 0, 0, 66, 77, 1.250000, 2.500000, 3.750000, 5.000000, 6.250000, 7.500000\n64407.125000, 50.000000, 100000.000000, 22, 33, 0, 0, 66, 77, 1.250000, 2.500000, 3.750000, 5.000000, 6.250000, 7.500000\n64408.875000, 50.000000, 100000.000000, 22, 33, 1, 0, 66, 77, 1.250000, 2.500000, 3.750000, 5.000000, 6.250000, 7.500000\n64409.000000, 90.000000, 100000.000000, 22, 33, 0, 0, 66, 77, 1.250000, 2.500000, 3.750000, 5.000000, 6.250000, 7.500000\n"
+      },
+      "varargin": {
+        "fltTAS": [
+          100.0,
+          0.0,
+          120.0,
+          130.0,
+          140.0,
+          150.0,
+          160.0,
+          170.0,
+          180.0
+        ],
+        "fltTime": [
+          64403,
+          64404,
+          64405,
+          64406,
+          64407,
+          64408,
+          64409,
+          64411,
+          64412
+        ]
+      }
+    }
+  },
+  "fixtures": {
+    "v35_spec_bound_raw_fixture": "74ff918ad228847eb23d49d19b2b2664cb2dc9b8501af85685edc745ff574475",
+    "v35_spec_raw_fixture": "e8d1b88d4da0e05c50aa383c4e4df74dd1695519f940cc87469df53ef4545ec0"
+  }
+}

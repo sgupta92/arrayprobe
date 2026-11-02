@@ -1,0 +1,367 @@
+# The reading order of the example notebooks. `number` is the position in that order and
+# `name` is the notebook's path under examples/. tests/test_notebook_order.py reads this file.
+# A new notebook needs one entry here.
+
+[[notebook]]
+number = 0
+name = "1_getting_started/01_start_here.ipynb"
+track = "1_getting_started"
+old = "1_getting_started/01_start_here.ipynb"
+group = "A Start"
+
+[[notebook]]
+number = 1
+name = "1_getting_started/02_quickstart.ipynb"
+track = "1_getting_started"
+old = "1_getting_started/02_quickstart.ipynb"
+group = "A Start"
+
+[[notebook]]
+number = 2
+name = "1_getting_started/03_choosing_an_engine.ipynb"
+track = "1_getting_started"
+old = "1_getting_started/03_choosing_an_engine.ipynb"
+group = "A Start"
+
+[[notebook]]
+number = 3
+name = "1_getting_started/04_soda2_end_to_end.ipynb"
+track = "1_getting_started"
+old = "1_getting_started/04_soda2_end_to_end.ipynb"
+group = "A Start"
+
+[[notebook]]
+number = 4
+name = "1_getting_started/05_triage_and_gallery.ipynb"
+track = "1_getting_started"
+old = "1_getting_started/05_triage_and_gallery.ipynb"
+group = "B Look"
+
+[[notebook]]
+number = 5
+name = "1_getting_started/06_read_products.ipynb"
+track = "1_getting_started"
+old = "1_getting_started/06_read_products.ipynb"
+group = "B Look"
+
+[[notebook]]
+number = 6
+name = "1_getting_started/07_working_with_an_ai_assistant.ipynb"
+track = "1_getting_started"
+old = "1_getting_started/07_working_with_an_ai_assistant.ipynb"
+group = "B Look"
+
+[[notebook]]
+number = 7
+name = "1_getting_started/08_ai_assistant_with_your_own_data.ipynb"
+track = "1_getting_started"
+old = "1_getting_started/08_ai_assistant_with_your_own_data.ipynb"
+group = "B Look"
+
+[[notebook]]
+number = 8
+name = "1_getting_started/09_ai_assistant_limits_and_ethics.ipynb"
+track = "1_getting_started"
+old = "1_getting_started/09_ai_assistant_limits_and_ethics.ipynb"
+group = "B Look"
+
+[[notebook]]
+number = 9
+name = "3_validation/01_validate_against_a_product.ipynb"
+track = "3_validation"
+old = "3_validation/01_validate_against_a_product.ipynb"
+group = "C Validate"
+
+[[notebook]]
+number = 10
+name = "3_validation/02_known_truth.ipynb"
+track = "3_validation"
+old = "3_validation/02_known_truth.ipynb"
+group = "C Validate"
+
+[[notebook]]
+number = 11
+name = "6_science/01_microphysics_moments.ipynb"
+track = "6_science"
+old = "6_science/01_microphysics_moments.ipynb"
+group = "D Analyse"
+
+[[notebook]]
+number = 12
+name = "7_analysis_and_outputs/01_cip_vs_2ds.ipynb"
+track = "7_analysis_and_outputs"
+old = "7_analysis_and_outputs/01_cip_vs_2ds.ipynb"
+group = "E Compare"
+
+[[notebook]]
+number = 13
+name = "2_processing/08_opt_ins.ipynb"
+track = "2_processing"
+old = "2_processing/08_opt_ins.ipynb"
+group = "F Tune"
+
+[[notebook]]
+number = 14
+name = "2_processing/09_enhancement_ab.ipynb"
+track = "2_processing"
+old = "2_processing/09_enhancement_ab.ipynb"
+group = "F Tune"
+
+[[notebook]]
+number = 15
+name = "2_processing/10_labelling_particles.ipynb"
+track = "2_processing"
+old = "2_processing/10_labelling_particles.ipynb"
+group = "F Tune"
+
+[[notebook]]
+number = 16
+name = "5_data_quality/02_airspeed_and_stuck_airspeed.ipynb"
+track = "5_data_quality"
+old = "5_data_quality/02_airspeed_and_stuck_airspeed.ipynb"
+group = "F Tune"
+
+[[notebook]]
+number = 17
+name = "5_data_quality/01_find_stuck_diodes.ipynb"
+track = "5_data_quality"
+old = "5_data_quality/01_find_stuck_diodes.ipynb"
+group = "F Tune"
+
+[[notebook]]
+number = 18
+name = "5_data_quality/11_image_assisted_threshold.ipynb"
+track = "5_data_quality"
+old = "5_data_quality/11_image_assisted_threshold.ipynb"
+group = "F Tune"
+
+[[notebook]]
+number = 19
+name = "2_processing/07_reproducible_runs.ipynb"
+track = "2_processing"
+old = "2_processing/07_reproducible_runs.ipynb"
+group = "F Tune"
+
+[[notebook]]
+number = 20
+name = "5_data_quality/03_clock_offsets.ipynb"
+track = "5_data_quality"
+old = "5_data_quality/03_clock_offsets.ipynb"
+group = "G Self-review"
+
+[[notebook]]
+number = 21
+name = "5_data_quality/04_stray_pixel_images.ipynb"
+track = "5_data_quality"
+old = "5_data_quality/04_stray_pixel_images.ipynb"
+group = "G Self-review"
+
+[[notebook]]
+number = 22
+name = "5_data_quality/05_images_in_pieces.ipynb"
+track = "5_data_quality"
+old = "5_data_quality/05_images_in_pieces.ipynb"
+group = "G Self-review"
+
+[[notebook]]
+number = 23
+name = "5_data_quality/06_duplicated_seconds.ipynb"
+track = "5_data_quality"
+old = "5_data_quality/06_duplicated_seconds.ipynb"
+group = "G Self-review"
+
+[[notebook]]
+number = 24
+name = "5_data_quality/07_hollow_particles.ipynb"
+track = "5_data_quality"
+old = "5_data_quality/07_hollow_particles.ipynb"
+group = "G Self-review"
+
+[[notebook]]
+number = 25
+name = "5_data_quality/08_interarrival_rollover.ipynb"
+track = "5_data_quality"
+old = "5_data_quality/08_interarrival_rollover.ipynb"
+group = "G Self-review"
+
+[[notebook]]
+number = 26
+name = "5_data_quality/10_check_the_phase_assumption.ipynb"
+track = "5_data_quality"
+old = "5_data_quality/10_check_the_phase_assumption.ipynb"
+group = "G Self-review"
+
+[[notebook]]
+number = 27
+name = "2_processing/03_whole_campaign.ipynb"
+track = "2_processing"
+old = "2_processing/03_whole_campaign.ipynb"
+group = "H Advanced"
+
+[[notebook]]
+number = 28
+name = "7_analysis_and_outputs/07_arco_export_tour.ipynb"
+track = "7_analysis_and_outputs"
+old = "7_analysis_and_outputs/07_arco_export_tour.ipynb"
+group = "H Advanced"
+
+[[notebook]]
+number = 29
+name = "7_analysis_and_outputs/03_comparing_processing_chains_in_db.ipynb"
+track = "7_analysis_and_outputs"
+old = "7_analysis_and_outputs/03_comparing_processing_chains_in_db.ipynb"
+group = "G Self-review"
+
+[[notebook]]
+number = 30
+name = "4_methods_and_literature/02_sample_area_conventions.ipynb"
+track = "4_methods_and_literature"
+old = "4_methods_and_literature/02_sample_area_conventions.ipynb"
+group = "G Self-review"
+
+[[notebook]]
+number = 31
+name = "5_data_quality/09_shattering_interarrival_fit.ipynb"
+track = "5_data_quality"
+old = "5_data_quality/09_shattering_interarrival_fit.ipynb"
+group = "G Self-review"
+
+[[notebook]]
+number = 32
+name = "4_methods_and_literature/01_enclosing_circle_conventions.ipynb"
+track = "4_methods_and_literature"
+old = "4_methods_and_literature/01_enclosing_circle_conventions.ipynb"
+group = "G Self-review"
+
+[[notebook]]
+number = 33
+name = "7_analysis_and_outputs/04_output_formats_and_tables.ipynb"
+track = "7_analysis_and_outputs"
+old = "7_analysis_and_outputs/04_output_formats_and_tables.ipynb"
+group = "H Advanced"
+
+[[notebook]]
+number = 34
+name = "3_validation/03_preregistered_test.ipynb"
+track = "3_validation"
+old = "3_validation/03_preregistered_test.ipynb"
+group = "H Advanced"
+
+[[notebook]]
+number = 35
+name = "7_analysis_and_outputs/05_ml_particle_table.ipynb"
+track = "7_analysis_and_outputs"
+old = "7_analysis_and_outputs/05_ml_particle_table.ipynb"
+group = "H Advanced"
+
+[[notebook]]
+number = 36
+name = "7_analysis_and_outputs/06_provenance.ipynb"
+track = "7_analysis_and_outputs"
+old = "7_analysis_and_outputs/06_provenance.ipynb"
+group = "H Advanced"
+
+[[notebook]]
+number = 37
+name = "2_processing/06_your_own_profile.ipynb"
+track = "2_processing"
+old = "2_processing/06_your_own_profile.ipynb"
+group = "H Advanced"
+
+[[notebook]]
+number = 38
+name = "6_science/02_counting_uncertainty.ipynb"
+track = "6_science"
+old = "6_science/02_counting_uncertainty.ipynb"
+group = "H Advanced"
+
+[[notebook]]
+number = 39
+name = "6_science/03_explicit_bin_edges.ipynb"
+track = "6_science"
+old = "6_science/03_explicit_bin_edges.ipynb"
+group = "H Advanced"
+
+[[notebook]]
+number = 40
+name = "7_analysis_and_outputs/02_probe_overlap_check.ipynb"
+track = "7_analysis_and_outputs"
+old = "7_analysis_and_outputs/02_probe_overlap_check.ipynb"
+group = "H Advanced"
+
+[[notebook]]
+number = 41
+name = "6_science/04_size_definition_sensitivity.ipynb"
+track = "6_science"
+old = "6_science/04_size_definition_sensitivity.ipynb"
+group = "H Advanced"
+
+[[notebook]]
+number = 42
+name = "6_science/05_ice_water_content_mass_relation.ipynb"
+track = "6_science"
+old = "6_science/05_ice_water_content_mass_relation.ipynb"
+group = "H Advanced"
+
+[[notebook]]
+number = 43
+name = "5_data_quality/12_particle_gallery.ipynb"
+track = "5_data_quality"
+old = "5_data_quality/12_particle_gallery.ipynb"
+group = "G Self-review"
+
+[[notebook]]
+number = 44
+name = "5_data_quality/13_shattering.ipynb"
+track = "5_data_quality"
+old = "5_data_quality/13_shattering.ipynb"
+group = "G Self-review"
+
+[[notebook]]
+number = 45
+name = "5_data_quality/14_stray_pixels.ipynb"
+track = "5_data_quality"
+old = "5_data_quality/14_stray_pixels.ipynb"
+group = "G Self-review"
+
+[[notebook]]
+number = 46
+name = "5_data_quality/15_hollow_rings.ipynb"
+track = "5_data_quality"
+old = "5_data_quality/15_hollow_rings.ipynb"
+group = "G Self-review"
+
+[[notebook]]
+number = 47
+name = "5_data_quality/17_stuck_diodes.ipynb"
+track = "5_data_quality"
+old = "5_data_quality/17_stuck_diodes.ipynb"
+group = "G Self-review"
+
+[[notebook]]
+number = 48
+name = "5_data_quality/18_edge_touching.ipynb"
+track = "5_data_quality"
+old = "5_data_quality/18_edge_touching.ipynb"
+group = "G Self-review"
+
+[[notebook]]
+number = 49
+name = "5_data_quality/19_two_particles.ipynb"
+track = "5_data_quality"
+old = "5_data_quality/19_two_particles.ipynb"
+group = "G Self-review"
+
+[[notebook]]
+number = 50
+name = "7_analysis_and_outputs/08_enhancements_on_a_product.ipynb"
+track = "7_analysis_and_outputs"
+old = "7_analysis_and_outputs/08_enhancements_on_a_product.ipynb"
+group = "H Advanced"
+
+[[notebook]]
+number = 51
+name = "6_science/07_gamma_fitting.ipynb"
+track = "6_science"
+old = "6_science/07_gamma_fitting.ipynb"
+group = "H Advanced"

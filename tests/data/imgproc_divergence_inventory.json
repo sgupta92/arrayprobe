@@ -1,0 +1,1238 @@
+{
+ "_about": "GL8 (the imgProc_sm stock-versus-ORACLES divergence bank): every hunk of `diff -w --strip-trailing-cr <stock> <keeling>` for the five files, classified. stock = UIOPS-v3.1.4/joefinlon-UIOPS-ba5e67c/, keeling = <ORACLES variant tree>. Rendered as a divergence-inventory table recorded during development; checked by tests/test_imgproc_stock_divergences.py.",
+ "classes": {
+  "dead": "comment, blank or syntax-only",
+  "stdout": "prints only",
+  "attr": "netCDF type/attribute contract",
+  "live": "changes computed output",
+  "live, stock only": "a branch only the stock tree has",
+  "live, oracles only": "a branch only the ORACLES variant has"
+ },
+ "files": {
+  "imgProc_sm.m": [
+   {
+    "hunk": "1c1",
+    "what": "signature: stock adds iRectEllipse, iCalcAllDiodeStats, varargin{1} (TAS file)",
+    "class": "live",
+    "reach": "all",
+    "stock_side": "keyword args imgproc_sm(..., iRectEllipse, iCalcAllDiodeStats, tas_file) (imgproc.py:421-437)",
+    "oracles_side": "iCalcAllDiodeStats refused under all-double (imgproc.py:510, P:imgproc_output_typing); tas_file unused unless P:time_in_seconds_from_tas; iRectEllipse: see 116a50,51",
+    "pinned_by": "s3_stock_octave_golden.nc / s3_variant_octave_golden.nc"
+   },
+   {
+    "hunk": "10,11c10",
+    "what": "usage comment (probe list)",
+    "class": "dead",
+    "reach": "-",
+    "stock_side": "-",
+    "oracles_side": "-",
+    "pinned_by": "-"
+   },
+   {
+    "hunk": "17,21d15",
+    "what": "usage comment (new arguments)",
+    "class": "dead",
+    "reach": "-",
+    "stock_side": "-",
+    "oracles_side": "-",
+    "pinned_by": "-"
+   },
+   {
+    "hunk": "48,85d41",
+    "what": "stock changelog comments",
+    "class": "dead",
+    "reach": "-",
+    "stock_side": "-",
+    "oracles_side": "-",
+    "pinned_by": "-"
+   },
+   {
+    "hunk": "89,115c45,48",
+    "what": "probetype comments; stock GPL preamble fprintf",
+    "class": "stdout",
+    "reach": "-",
+    "stock_side": "-",
+    "oracles_side": "-",
+    "pinned_by": "-"
+   },
+   {
+    "hunk": "116a50,51",
+    "what": "variant hard-codes iRectEllipse = 0",
+    "class": "live, oracles only",
+    "reach": "all",
+    "stock_side": "iRectEllipse is an argument (imgproc.py:430)",
+    "oracles_side": "NONE -- the port accepts iRectEllipse=1 under every profile (imgproc.py:325, :1314, :1424); the default 0 is what the variant computes. No ORACLES run sets it. Fixture cost: a CGAL rect/ellipse build, which does not exist here (imgproc.py:443-451)",
+    "pinned_by": "none (both trees default 0; no CGAL_RectSize/EllipseSize oracle)"
+   },
+   {
+    "hunk": "167,171d101",
+    "what": "stock HVPS case reads TAS/Time from varargin{1}",
+    "class": "live",
+    "reach": "2",
+    "stock_side": "P:time_in_seconds_from_tas (imgproc.py:525, :972)",
+    "oracles_side": "P:time_in_seconds_from_tas (imgproc.py:525, :972)",
+    "pinned_by": "s3_stock_octave_golden.nc / s3_variant_octave_golden.nc"
+   },
+   {
+    "hunk": "182,196d111",
+    "what": "stock 2DS case reads TAS; stock adds the whole 'Fast2DC' probe case",
+    "class": "live",
+    "reach": "2, 3",
+    "stock_side": "P:time_in_seconds_from_tas (imgproc.py:525, :972); Fast2DC: constants.py:221 (probetype 3)",
+    "oracles_side": "P:time_in_seconds_from_tas (imgproc.py:525, :972); Fast2DC: NONE -- variant has no 'Fast2DC' case and dies at :114 ('handles' undefined; measured, f2dc_variant); the port writes a file",
+    "pinned_by": "s3_stock_octave_golden.nc / s3_variant_octave_golden.nc; s7e_f2dc_octave_golden.nc (stock); f2dc_variant ERROR (variant)"
+   },
+   {
+    "hunk": "211c126,128",
+    "what": "variant prints 'Testing...' for PECAN",
+    "class": "stdout",
+    "reach": "-",
+    "stock_side": "-",
+    "oracles_side": "-",
+    "pinned_by": "-"
+   },
+   {
+    "hunk": "218,252c135,137",
+    "what": "global attributes; Date/Time/msec typed + attributes vs all 'double'",
+    "class": "attr",
+    "reach": "all",
+    "stock_side": "P:imgproc_output_typing (imgproc.py:332, :687); _put_global_attrs imgproc.py:702",
+    "oracles_side": "P:imgproc_output_typing (imgproc.py:332, :687)",
+    "pinned_by": "s3_stock_octave_golden.nc / s3_variant_octave_golden.nc"
+   },
+   {
+    "hunk": "254,255d138",
+    "what": "Time_in_seconds attributes",
+    "class": "attr",
+    "reach": "all",
+    "stock_side": "P:imgproc_output_typing (imgproc.py:332, :687)",
+    "oracles_side": "P:imgproc_output_typing (imgproc.py:332, :687)",
+    "pinned_by": "s3_stock_octave_golden.nc / s3_variant_octave_golden.nc"
+   },
+   {
+    "hunk": "257,281c140,142",
+    "what": "SliceCount..particle_millisec typed + attributes; stock gates Particle_number_all defVar on 'probetype~=0 || probetype~=3' (always true)",
+    "class": "attr",
+    "reach": "all",
+    "stock_side": "P:imgproc_output_typing (imgproc.py:332, :687)",
+    "oracles_side": "P:imgproc_output_typing (imgproc.py:332, :687)",
+    "pinned_by": "s3_stock_octave_golden.nc / s3_variant_octave_golden.nc"
+   },
+   {
+    "hunk": "282a144,147",
+    "what": "variant defVars (all double)",
+    "class": "attr",
+    "reach": "all",
+    "stock_side": "P:imgproc_output_typing (imgproc.py:332, :687)",
+    "oracles_side": "P:imgproc_output_typing (imgproc.py:332, :687)",
+    "pinned_by": "s3_stock_octave_golden.nc / s3_variant_octave_golden.nc"
+   },
+   {
+    "hunk": "284,302c149,152",
+    "what": "typed + attributes",
+    "class": "attr",
+    "reach": "all",
+    "stock_side": "P:imgproc_output_typing (imgproc.py:332, :687)",
+    "oracles_side": "P:imgproc_output_typing (imgproc.py:332, :687)",
+    "pinned_by": "s3_stock_octave_golden.nc / s3_variant_octave_golden.nc"
+   },
+   {
+    "hunk": "304,338c154,160",
+    "what": "typed + attributes",
+    "class": "attr",
+    "reach": "all",
+    "stock_side": "P:imgproc_output_typing (imgproc.py:332, :687)",
+    "oracles_side": "P:imgproc_output_typing (imgproc.py:332, :687)",
+    "pinned_by": "s3_stock_octave_golden.nc / s3_variant_octave_golden.nc"
+   },
+   {
+    "hunk": "340,342d161",
+    "what": "per-variable Units/Description attributes (stock only)",
+    "class": "attr",
+    "reach": "all",
+    "stock_side": "P:imgproc_output_typing (imgproc.py:332, :687)",
+    "oracles_side": "P:imgproc_output_typing (imgproc.py:332, :687)",
+    "pinned_by": "s3_stock_octave_golden.nc / s3_variant_octave_golden.nc"
+   },
+   {
+    "hunk": "344,346d162",
+    "what": "per-variable Units/Description attributes (stock only)",
+    "class": "attr",
+    "reach": "all",
+    "stock_side": "P:imgproc_output_typing (imgproc.py:332, :687)",
+    "oracles_side": "P:imgproc_output_typing (imgproc.py:332, :687)",
+    "pinned_by": "s3_stock_octave_golden.nc / s3_variant_octave_golden.nc"
+   },
+   {
+    "hunk": "348,350d163",
+    "what": "per-variable Units/Description attributes (stock only)",
+    "class": "attr",
+    "reach": "all",
+    "stock_side": "P:imgproc_output_typing (imgproc.py:332, :687)",
+    "oracles_side": "P:imgproc_output_typing (imgproc.py:332, :687)",
+    "pinned_by": "s3_stock_octave_golden.nc / s3_variant_octave_golden.nc"
+   },
+   {
+    "hunk": "352,354d164",
+    "what": "per-variable Units/Description attributes (stock only)",
+    "class": "attr",
+    "reach": "all",
+    "stock_side": "P:imgproc_output_typing (imgproc.py:332, :687)",
+    "oracles_side": "P:imgproc_output_typing (imgproc.py:332, :687)",
+    "pinned_by": "s3_stock_octave_golden.nc / s3_variant_octave_golden.nc"
+   },
+   {
+    "hunk": "356,358d165",
+    "what": "per-variable Units/Description attributes (stock only)",
+    "class": "attr",
+    "reach": "all",
+    "stock_side": "P:imgproc_output_typing (imgproc.py:332, :687)",
+    "oracles_side": "P:imgproc_output_typing (imgproc.py:332, :687)",
+    "pinned_by": "s3_stock_octave_golden.nc / s3_variant_octave_golden.nc"
+   },
+   {
+    "hunk": "360,363d166",
+    "what": "per-variable Units/Description attributes (stock only)",
+    "class": "attr",
+    "reach": "all",
+    "stock_side": "P:imgproc_output_typing (imgproc.py:332, :687)",
+    "oracles_side": "P:imgproc_output_typing (imgproc.py:332, :687)",
+    "pinned_by": "s3_stock_octave_golden.nc / s3_variant_octave_golden.nc"
+   },
+   {
+    "hunk": "365,367d167",
+    "what": "per-variable Units/Description attributes (stock only)",
+    "class": "attr",
+    "reach": "all",
+    "stock_side": "P:imgproc_output_typing (imgproc.py:332, :687)",
+    "oracles_side": "P:imgproc_output_typing (imgproc.py:332, :687)",
+    "pinned_by": "s3_stock_octave_golden.nc / s3_variant_octave_golden.nc"
+   },
+   {
+    "hunk": "369,371d168",
+    "what": "per-variable Units/Description attributes (stock only)",
+    "class": "attr",
+    "reach": "all",
+    "stock_side": "P:imgproc_output_typing (imgproc.py:332, :687)",
+    "oracles_side": "P:imgproc_output_typing (imgproc.py:332, :687)",
+    "pinned_by": "s3_stock_octave_golden.nc / s3_variant_octave_golden.nc"
+   },
+   {
+    "hunk": "373,375d169",
+    "what": "per-variable Units/Description attributes (stock only)",
+    "class": "attr",
+    "reach": "all",
+    "stock_side": "P:imgproc_output_typing (imgproc.py:332, :687)",
+    "oracles_side": "P:imgproc_output_typing (imgproc.py:332, :687)",
+    "pinned_by": "s3_stock_octave_golden.nc / s3_variant_octave_golden.nc"
+   },
+   {
+    "hunk": "378,380d171",
+    "what": "per-variable Units/Description attributes (stock only)",
+    "class": "attr",
+    "reach": "all",
+    "stock_side": "P:imgproc_output_typing (imgproc.py:332, :687)",
+    "oracles_side": "P:imgproc_output_typing (imgproc.py:332, :687)",
+    "pinned_by": "s3_stock_octave_golden.nc / s3_variant_octave_golden.nc"
+   },
+   {
+    "hunk": "382,384d172",
+    "what": "per-variable Units/Description attributes (stock only)",
+    "class": "attr",
+    "reach": "all",
+    "stock_side": "P:imgproc_output_typing (imgproc.py:332, :687)",
+    "oracles_side": "P:imgproc_output_typing (imgproc.py:332, :687)",
+    "pinned_by": "s3_stock_octave_golden.nc / s3_variant_octave_golden.nc"
+   },
+   {
+    "hunk": "386,388d173",
+    "what": "per-variable Units/Description attributes (stock only)",
+    "class": "attr",
+    "reach": "all",
+    "stock_side": "P:imgproc_output_typing (imgproc.py:332, :687)",
+    "oracles_side": "P:imgproc_output_typing (imgproc.py:332, :687)",
+    "pinned_by": "s3_stock_octave_golden.nc / s3_variant_octave_golden.nc"
+   },
+   {
+    "hunk": "390,392d174",
+    "what": "per-variable Units/Description attributes (stock only)",
+    "class": "attr",
+    "reach": "all",
+    "stock_side": "P:imgproc_output_typing (imgproc.py:332, :687)",
+    "oracles_side": "P:imgproc_output_typing (imgproc.py:332, :687)",
+    "pinned_by": "s3_stock_octave_golden.nc / s3_variant_octave_golden.nc"
+   },
+   {
+    "hunk": "394,396d175",
+    "what": "per-variable Units/Description attributes (stock only)",
+    "class": "attr",
+    "reach": "all",
+    "stock_side": "P:imgproc_output_typing (imgproc.py:332, :687)",
+    "oracles_side": "P:imgproc_output_typing (imgproc.py:332, :687)",
+    "pinned_by": "s3_stock_octave_golden.nc / s3_variant_octave_golden.nc"
+   },
+   {
+    "hunk": "398,399d176",
+    "what": "per-variable Units/Description attributes (stock only)",
+    "class": "attr",
+    "reach": "all",
+    "stock_side": "P:imgproc_output_typing (imgproc.py:332, :687)",
+    "oracles_side": "P:imgproc_output_typing (imgproc.py:332, :687)",
+    "pinned_by": "s3_stock_octave_golden.nc / s3_variant_octave_golden.nc"
+   },
+   {
+    "hunk": "402,413c179,180",
+    "what": "typed + attributes",
+    "class": "attr",
+    "reach": "all",
+    "stock_side": "P:imgproc_output_typing (imgproc.py:332, :687)",
+    "oracles_side": "P:imgproc_output_typing (imgproc.py:332, :687)",
+    "pinned_by": "s3_stock_octave_golden.nc / s3_variant_octave_golden.nc"
+   },
+   {
+    "hunk": "415,417d181",
+    "what": "attributes",
+    "class": "attr",
+    "reach": "all",
+    "stock_side": "P:imgproc_output_typing (imgproc.py:332, :687)",
+    "oracles_side": "P:imgproc_output_typing (imgproc.py:332, :687)",
+    "pinned_by": "s3_stock_octave_golden.nc / s3_variant_octave_golden.nc"
+   },
+   {
+    "hunk": "419,428c183",
+    "what": "typed + attributes",
+    "class": "attr",
+    "reach": "all",
+    "stock_side": "P:imgproc_output_typing (imgproc.py:332, :687)",
+    "oracles_side": "P:imgproc_output_typing (imgproc.py:332, :687)",
+    "pinned_by": "s3_stock_octave_golden.nc / s3_variant_octave_golden.nc"
+   },
+   {
+    "hunk": "430,432d184",
+    "what": "attributes",
+    "class": "attr",
+    "reach": "all",
+    "stock_side": "P:imgproc_output_typing (imgproc.py:332, :687)",
+    "oracles_side": "P:imgproc_output_typing (imgproc.py:332, :687)",
+    "pinned_by": "s3_stock_octave_golden.nc / s3_variant_octave_golden.nc"
+   },
+   {
+    "hunk": "434,447c186",
+    "what": "inter_arrival/bin_stats typed + attributes; stock-only image_bin_stats (iCalcAllDiodeStats)",
+    "class": "attr",
+    "reach": "all",
+    "stock_side": "P:imgproc_output_typing (imgproc.py:332, :687); image_bin_stats imgproc.py:270, :328",
+    "oracles_side": "P:imgproc_output_typing (imgproc.py:332, :687) (iCalcAllDiodeStats refused, imgproc.py:510)",
+    "pinned_by": "s3_stock_octave_golden.nc / s3_variant_octave_golden.nc; s3_diodestats_octave_golden.nc (stock)"
+   },
+   {
+    "hunk": "450c189",
+    "what": "comment spelling",
+    "class": "dead",
+    "reach": "-",
+    "stock_side": "-",
+    "oracles_side": "-",
+    "pinned_by": "-"
+   },
+   {
+    "hunk": "461,466c200",
+    "what": "stock initialises PECAN corrupt-record counters (read only by the :941 fprintf)",
+    "class": "stdout",
+    "reach": "-",
+    "stock_side": "-",
+    "oracles_side": "-",
+    "pinned_by": "-"
+   },
+   {
+    "hunk": "479,481d212",
+    "what": "stock reads the record 'wkday' (PMS dead time) for probetypes 0/3",
+    "class": "live, stock only",
+    "reach": "0, 3",
+    "stock_side": "S -- imgproc.py:1198 (every profile)",
+    "oracles_side": "NONE -- variant dies at :461 for probetype 0 ('particle_sliceCount' undefined; measured, imgproc_div_octave_status.json 2dc_variant); the port writes a file",
+    "pinned_by": "s7c_2dc_octave_golden.nc, imgproc_div_pms_carry_stock_octave_golden.nc (stock)"
+   },
+   {
+    "hunk": "484c215",
+    "what": "progress line: disp(...) vs a bare expression",
+    "class": "stdout",
+    "reach": "-",
+    "stock_side": "-",
+    "oracles_side": "-",
+    "pinned_by": "-"
+   },
+   {
+    "hunk": "490,491d220",
+    "what": "Fast2DC read width [8,512,1]",
+    "class": "live, stock only",
+    "reach": "3",
+    "stock_side": "S -- constants.py:221 read_slices=512, read_width=8",
+    "oracles_side": "NONE -- variant has no 'Fast2DC' case and dies at :114 ('handles' undefined; measured, f2dc_variant); the port writes a file",
+    "pinned_by": "s7e_f2dc_octave_golden.nc"
+   },
+   {
+    "hunk": "501,518d229",
+    "what": "PECAN corrupt-boundary scan (memberSum 5-7 of 8)",
+    "class": "live, stock only",
+    "reach": "PECAN",
+    "stock_side": "S -- imgproc.py:779, :812-817 (gated on projectname, every profile)",
+    "oracles_side": "NONE -- the port skips the record under ORACLES profiles too (measured: 309 vs the variant's 421 particles, pip_pecan_variant)",
+    "pinned_by": "imgproc_div_pip_pecan_stock/_variant_octave_golden.nc"
+   },
+   {
+    "hunk": "520c231",
+    "what": "while-condition adds 'numCrptBnds < 1'",
+    "class": "live, stock only",
+    "reach": "PECAN",
+    "stock_side": "S -- imgproc.py:824",
+    "oracles_side": "NONE -- as 501,518d229",
+    "pinned_by": "imgproc_div_pip_pecan_stock/_variant_octave_golden.nc"
+   },
+   {
+    "hunk": "522,523c233",
+    "what": "boundary test: stock compares a prefix of length(boundary) and adds probetype==3",
+    "class": "live",
+    "reach": "all",
+    "stock_side": "imgproc.py:830-837 (prefix compare)",
+    "oracles_side": "same -- length(boundary) equals the read width for probetypes 0-2 (constants.py:192-217), so the prefix IS the whole slice; the two differ only for Fast2DC",
+    "pinned_by": "s3_stock_octave_golden.nc / s3_variant_octave_golden.nc; s7a; s7c"
+   },
+   {
+    "hunk": "525c235,237",
+    "what": "start initialisation: stock {0,1,3}->2 else 1; variant 1->2, 0->2, else 1",
+    "class": "live",
+    "reach": "all",
+    "stock_side": "constants.py start_first",
+    "oracles_side": "same -- identical for probetypes 0-2",
+    "pinned_by": "s3_stock_octave_golden.nc / s3_variant_octave_golden.nc"
+   },
+   {
+    "hunk": "532d243",
+    "what": "comment",
+    "class": "dead",
+    "reach": "-",
+    "stock_side": "-",
+    "oracles_side": "-",
+    "pinned_by": "-"
+   },
+   {
+    "hunk": "535,538c246",
+    "what": "zero-image particle, probetype 0: continue vs break",
+    "class": "live",
+    "reach": "0",
+    "stock_side": "P:zero_image_particle_recovery (imgproc.py:846)",
+    "oracles_side": "P:zero_image_particle_recovery (imgproc.py:846)",
+    "pinned_by": "s3_zeroimg_* (probetype 2 only; the probetype-0 arm has no zero-image fixture)"
+   },
+   {
+    "hunk": "542,545c250",
+    "what": "zero-image particle, other probetypes: continue vs break",
+    "class": "live",
+    "reach": "1, 2, 3",
+    "stock_side": "P:zero_image_particle_recovery (imgproc.py:846)",
+    "oracles_side": "P:zero_image_particle_recovery (imgproc.py:846)",
+    "pinned_by": "s3_zeroimg_stock_golden.nc / s3_zeroimg_variant_golden.nc"
+   },
+   {
+    "hunk": "547d251",
+    "what": "blank",
+    "class": "dead",
+    "reach": "-",
+    "stock_side": "-",
+    "oracles_side": "-",
+    "pinned_by": "-"
+   },
+   {
+    "hunk": "555c259",
+    "what": "comment",
+    "class": "dead",
+    "reach": "-",
+    "stock_side": "-",
+    "oracles_side": "-",
+    "pinned_by": "-"
+   },
+   {
+    "hunk": "557c261",
+    "what": "image construction branch adds probetype 3",
+    "class": "live, stock only",
+    "reach": "3",
+    "stock_side": "S -- constants.py:221; imgproc.py:868-872",
+    "oracles_side": "NONE -- variant has no 'Fast2DC' case and dies at :114 ('handles' undefined; measured, f2dc_variant); the port writes a file",
+    "pinned_by": "s7e_f2dc_octave_golden.nc"
+   },
+   {
+    "hunk": "567c271",
+    "what": "comment spelling",
+    "class": "dead",
+    "reach": "-",
+    "stock_side": "-",
+    "oracles_side": "-",
+    "pinned_by": "-"
+   },
+   {
+    "hunk": "580d283",
+    "what": "timing branch opens 'if probetype == 0 || probetype == 3'",
+    "class": "live, stock only",
+    "reach": "0, 3",
+    "stock_side": "S -- imgproc.py:899-904",
+    "oracles_side": "NONE -- variant has no 'Fast2DC' case and dies at :114 ('handles' undefined; measured, f2dc_variant); the port writes a file",
+    "pinned_by": "s7e_f2dc_octave_golden.nc"
+   },
+   {
+    "hunk": "583c286",
+    "what": "comment",
+    "class": "dead",
+    "reach": "-",
+    "stock_side": "-",
+    "oracles_side": "-",
+    "pinned_by": "-"
+   },
+   {
+    "hunk": "586,592d288",
+    "what": "probetype 0: int_arrival and time_in_seconds = part_time (the variant computes the same two values at :289/:291); probetype 3 clock",
+    "class": "live",
+    "reach": "0, 3",
+    "stock_side": "imgproc.py:1140-1141; Fast2DC :1172-1175",
+    "oracles_side": "same values for probetype 0 (then dies at :461); Fast2DC: NONE -- variant has no 'Fast2DC' case and dies at :114 ('handles' undefined; measured, f2dc_variant); the port writes a file",
+    "pinned_by": "s7c, s7e (stock)"
+   },
+   {
+    "hunk": "594,599d289",
+    "what": "Fast2DC int_arrival",
+    "class": "live, stock only",
+    "reach": "3",
+    "stock_side": "S -- imgproc.py:1178-1184",
+    "oracles_side": "NONE -- variant has no 'Fast2DC' case and dies at :114 ('handles' undefined; measured, f2dc_variant); the port writes a file",
+    "pinned_by": "s7e_f2dc_octave_golden.nc"
+   },
+   {
+    "hunk": "601,602c291",
+    "what": "probetypes 0/3 set particle_sliceCount and particle_DOF (variant: neither, and it writes int_arrival = part_time here instead)",
+    "class": "live, stock only",
+    "reach": "0, 3",
+    "stock_side": "S -- imgproc.py:1196-1199",
+    "oracles_side": "NONE -- variant dies at :461 for probetype 0 ('particle_sliceCount' undefined; measured, imgproc_div_octave_status.json 2dc_variant); the port writes a file",
+    "pinned_by": "s7c; imgproc_div_pms_carry_stock; 2dc_variant ERROR"
+   },
+   {
+    "hunk": "609,610c298",
+    "what": "firstpart start_msec = millisec (stock) vs millisec*10 (variant)",
+    "class": "live",
+    "reach": "0, 3",
+    "stock_side": "S -- imgproc.py:1210-1211",
+    "oracles_side": "NONE -- variant dies at :461 for probetype 0 ('particle_sliceCount' undefined; measured, imgproc_div_octave_status.json 2dc_variant); the port writes a file",
+    "pinned_by": "s7c (millisec 250 -> 250)"
+   },
+   {
+    "hunk": "612c300",
+    "what": "no-op assignment commented out",
+    "class": "dead",
+    "reach": "-",
+    "stock_side": "-",
+    "oracles_side": "-",
+    "pinned_by": "-"
+   },
+   {
+    "hunk": "614d301",
+    "what": "blank",
+    "class": "dead",
+    "reach": "-",
+    "stock_side": "-",
+    "oracles_side": "-",
+    "pinned_by": "-"
+   },
+   {
+    "hunk": "624,625c311",
+    "what": "part_micro(kk) = start_microsec (= 0, :613) vs 0",
+    "class": "live",
+    "reach": "0, 3",
+    "stock_side": "imgproc.py:1212",
+    "oracles_side": "same value",
+    "pinned_by": "s7c"
+   },
+   {
+    "hunk": "627d312",
+    "what": "frac_time branch opens 'if probetype == 0'",
+    "class": "live, stock only",
+    "reach": "0, 3",
+    "stock_side": "S -- imgproc.py:1145, :1181",
+    "oracles_side": "NONE -- variant has no 'Fast2DC' case and dies at :114 ('handles' undefined; measured, f2dc_variant); the port writes a file",
+    "pinned_by": "s7e"
+   },
+   {
+    "hunk": "629,633c314",
+    "what": "Fast2DC frac_time from the time difference",
+    "class": "live, stock only",
+    "reach": "3",
+    "stock_side": "S -- imgproc.py:1178-1184",
+    "oracles_side": "NONE -- variant has no 'Fast2DC' case and dies at :114 ('handles' undefined; measured, f2dc_variant); the port writes a file",
+    "pinned_by": "s7e"
+   },
+   {
+    "hunk": "641,643d321",
+    "what": "microsecond carry: part_mil += 1, part_micro -= 1000 where part_micro >= 1000",
+    "class": "live, stock only",
+    "reach": "0, 3",
+    "stock_side": "S -- imgproc.py:1224-1226",
+    "oracles_side": "NONE -- variant dies at :461 for probetype 0 ('particle_sliceCount' undefined; measured, imgproc_div_octave_status.json 2dc_variant); the port writes a file",
+    "pinned_by": "imgproc_div_pms_carry_stock_octave_golden.nc (NEW: particle 3 micro 1200 -> 200, mil 250 -> 251)"
+   },
+   {
+    "hunk": "653d330",
+    "what": "blank",
+    "class": "dead",
+    "reach": "-",
+    "stock_side": "-",
+    "oracles_side": "-",
+    "pinned_by": "-"
+   },
+   {
+    "hunk": "664,696d340",
+    "what": "PECAN/PIP date-dependent -12 h clock offset",
+    "class": "live, stock only",
+    "reach": "PECAN PIP",
+    "stock_side": "S -- imgproc.py:1067-1068, :1097-1114 (gated on projectname/probename, every profile)",
+    "oracles_side": "NONE -- the port applies the offset under ORACLES profiles too (measured, pip_pecan_variant: particle_time -58661 vs the variant's 61339)",
+    "pinned_by": "imgproc_div_pip_pecan_stock/_variant_octave_golden.nc (NEW)"
+   },
+   {
+    "hunk": "702,703d345",
+    "what": "blank",
+    "class": "dead",
+    "reach": "-",
+    "stock_side": "-",
+    "oracles_side": "-",
+    "pinned_by": "-"
+   },
+   {
+    "hunk": "707c349",
+    "what": "probetype 1, first particle of a record: int_arrival = 0 (stock) vs time_in_seconds(kk) (variant)",
+    "class": "live",
+    "reach": "1",
+    "stock_side": "S -- imgproc.py:1092-1094 (every profile)",
+    "oracles_side": "NONE -- measured, pip_variant: inter_arrival differs in 4/421 cells, exactly the first particle of each record. Not read by sizeDist (it uses Time_in_seconds, uioops_testing/sizeDist.m:671-715); IntArrAnalysis_time.m:77 reads it for non-SPEC probes, where both values fall outside logspace(-7,0) and histcounts drops them (derived)",
+    "pinned_by": "s7a_pip_octave_golden.nc (stock); imgproc_div_pip_variant_octave_golden.nc (NEW, variant)"
+   },
+   {
+    "hunk": "717c359",
+    "what": "comment",
+    "class": "dead",
+    "reach": "-",
+    "stock_side": "-",
+    "oracles_side": "-",
+    "pinned_by": "-"
+   },
+   {
+    "hunk": "723,762d364",
+    "what": "stock TAS-based Time_in_seconds accumulation with 2^32 rollback",
+    "class": "live",
+    "reach": "2",
+    "stock_side": "P:time_in_seconds_from_tas (imgproc.py:525, :972)",
+    "oracles_side": "P:time_in_seconds_from_tas (imgproc.py:525, :972)",
+    "pinned_by": "s3_stock_octave_golden.nc / s3_variant_octave_golden.nc (Time_in_seconds 99/99 cells differ)"
+   },
+   {
+    "hunk": "764,770c366,367",
+    "what": "first-particle TAS branch; inter_arrival in seconds vs clock counts",
+    "class": "live",
+    "reach": "2",
+    "stock_side": "P:time_in_seconds_from_tas (imgproc.py:525, :972); P:inter_arrival_in_seconds (imgproc.py:980)",
+    "oracles_side": "P:time_in_seconds_from_tas (imgproc.py:525, :972); P:inter_arrival_in_seconds (imgproc.py:980)",
+    "pinned_by": "s3_stock_octave_golden.nc / s3_variant_octave_golden.nc (inter_arrival 75/99)"
+   },
+   {
+    "hunk": "774,778d370",
+    "what": "part_time_prev / time_in_seconds_prev carried across records",
+    "class": "live",
+    "reach": "2",
+    "stock_side": "P:time_in_seconds_from_tas (imgproc.py:525, :972)",
+    "oracles_side": "P:time_in_seconds_from_tas (imgproc.py:525, :972)",
+    "pinned_by": "s3_stock_octave_golden.nc / s3_variant_octave_golden.nc"
+   },
+   {
+    "hunk": "782,783c374,375",
+    "what": "commented-out debug",
+    "class": "dead",
+    "reach": "-",
+    "stock_side": "-",
+    "oracles_side": "-",
+    "pinned_by": "-"
+   },
+   {
+    "hunk": "792,797d383",
+    "what": "commented-out debug",
+    "class": "dead",
+    "reach": "-",
+    "stock_side": "-",
+    "oracles_side": "-",
+    "pinned_by": "-"
+   },
+   {
+    "hunk": "801,805c387,388",
+    "what": "diode_stats counts shadowed ('0') vs lit ('1'); stock per-particle image_bin_stats",
+    "class": "live",
+    "reach": "all",
+    "stock_side": "P:diode_stats_counts_shadowed (imgproc.py:1245); image_bin_stats imgproc.py:1247-1251",
+    "oracles_side": "P:diode_stats_counts_shadowed (imgproc.py:1245) (iCalcAllDiodeStats refused)",
+    "pinned_by": "s3_stock_octave_golden.nc / s3_variant_octave_golden.nc (bin_stats 128/128); s3_diodestats (stock)"
+   },
+   {
+    "hunk": "863a447",
+    "what": "commented '%end'",
+    "class": "dead",
+    "reach": "-",
+    "stock_side": "-",
+    "oracles_side": "-",
+    "pinned_by": "-"
+   },
+   {
+    "hunk": "877,879c461,462",
+    "what": "putVar SliceCount/DMT_DOF_SPEC_OVERLOAD (same in both); Particle_number_all write gated to probetypes 1/2 in stock",
+    "class": "live",
+    "reach": "all",
+    "stock_side": "imgproc.py:1382-1385",
+    "oracles_side": "same for probetypes 1/2; probetype 0: NONE -- variant dies at :461 for probetype 0 ('particle_sliceCount' undefined; measured, imgproc_div_octave_status.json 2dc_variant); the port writes a file",
+    "pinned_by": "s7c/s7e (fill for probetypes 0/3)"
+   },
+   {
+    "hunk": "881c464",
+    "what": "end of that gate",
+    "class": "dead",
+    "reach": "-",
+    "stock_side": "-",
+    "oracles_side": "-",
+    "pinned_by": "-"
+   },
+   {
+    "hunk": "898c481",
+    "what": "image_auto_reject written int16(...) vs double(...)",
+    "class": "attr",
+    "reach": "all",
+    "stock_side": "P:imgproc_output_typing (imgproc.py:332, :687)",
+    "oracles_side": "P:imgproc_output_typing (imgproc.py:332, :687)",
+    "pinned_by": "s3_stock_octave_golden.nc / s3_variant_octave_golden.nc (dtype int16 vs float64; values equal)"
+   },
+   {
+    "hunk": "923c506",
+    "what": "holroyd_habit written int16(...) vs double(...)",
+    "class": "attr",
+    "reach": "all",
+    "stock_side": "P:imgproc_output_typing (imgproc.py:332, :687)",
+    "oracles_side": "P:imgproc_output_typing (imgproc.py:332, :687)",
+    "pinned_by": "s3_stock_octave_golden.nc / s3_variant_octave_golden.nc (dtype int16 vs float64; values equal)"
+   },
+   {
+    "hunk": "928,931d510",
+    "what": "stock writes image_bin_stats when iCalcAllDiodeStats",
+    "class": "live, stock only",
+    "reach": "all",
+    "stock_side": "S -- imgproc.py:1449-1460",
+    "oracles_side": "refused (imgproc.py:510)",
+    "pinned_by": "s3_diodestats_octave_golden.nc"
+   },
+   {
+    "hunk": "938d516",
+    "what": "blank",
+    "class": "dead",
+    "reach": "-",
+    "stock_side": "-",
+    "oracles_side": "-",
+    "pinned_by": "-"
+   },
+   {
+    "hunk": "940,946d517",
+    "what": "PECAN per-chunk corrupt-record summary fprintf",
+    "class": "stdout",
+    "reach": "-",
+    "stock_side": "-",
+    "oracles_side": "-",
+    "pinned_by": "-"
+   }
+  ],
+  "read_binary_SPEC.m": [
+   {
+    "hunk": "7,12d6",
+    "what": "modification-notes comment",
+    "class": "dead",
+    "reach": "-",
+    "stock_side": "-",
+    "oracles_side": "-",
+    "pinned_by": "-"
+   },
+   {
+    "hunk": "30d23",
+    "what": "disp Raw File",
+    "class": "stdout",
+    "reach": "-",
+    "stock_side": "-",
+    "oracles_side": "-",
+    "pinned_by": "-"
+   },
+   {
+    "hunk": "82a76",
+    "what": "blank",
+    "class": "dead",
+    "reach": "-",
+    "stock_side": "-",
+    "oracles_side": "-",
+    "pinned_by": "-"
+   },
+   {
+    "hunk": "86c80",
+    "what": "variant prints timebuffer",
+    "class": "stdout",
+    "reach": "-",
+    "stock_side": "-",
+    "oracles_side": "-",
+    "pinned_by": "-"
+   },
+   {
+    "hunk": "98c92",
+    "what": "variant prints sizeimg(2)",
+    "class": "stdout",
+    "reach": "-",
+    "stock_side": "-",
+    "oracles_side": "-",
+    "pinned_by": "-"
+   },
+   {
+    "hunk": "104c98",
+    "what": "variant prints sizeimg(2)",
+    "class": "stdout",
+    "reach": "-",
+    "stock_side": "-",
+    "oracles_side": "-",
+    "pinned_by": "-"
+   },
+   {
+    "hunk": "221,222c215",
+    "what": "2017-03-08 image-buffer bounds guard",
+    "class": "live",
+    "reach": "SPEC",
+    "stock_side": "P:spec_buffer_guard (readers/spec.py:428, :455, :463, :253, :261)",
+    "oracles_side": "P:spec_buffer_guard (readers/spec.py:428, :455, :463, :253, :261)",
+    "pinned_by": "s2_spec_guard_stock_golden.* + s2_spec_guard_octave_result.json (variant dies)"
+   },
+   {
+    "hunk": "225,226c218",
+    "what": "2017-03-08 image-buffer bounds guard",
+    "class": "live",
+    "reach": "SPEC",
+    "stock_side": "P:spec_buffer_guard (readers/spec.py:428, :455, :463, :253, :261)",
+    "oracles_side": "P:spec_buffer_guard (readers/spec.py:428, :455, :463, :253, :261)",
+    "pinned_by": "s2_spec_guard_stock_golden.* + s2_spec_guard_octave_result.json (variant dies)"
+   },
+   {
+    "hunk": "232,233c224",
+    "what": "2017-03-08 image-buffer bounds guard",
+    "class": "live",
+    "reach": "SPEC",
+    "stock_side": "P:spec_buffer_guard (readers/spec.py:428, :455, :463, :253, :261)",
+    "oracles_side": "P:spec_buffer_guard (readers/spec.py:428, :455, :463, :253, :261)",
+    "pinned_by": "s2_spec_guard_stock_golden.* + s2_spec_guard_octave_result.json (variant dies)"
+   },
+   {
+    "hunk": "255,256c246",
+    "what": "2017-03-08 image-buffer bounds guard",
+    "class": "live",
+    "reach": "SPEC",
+    "stock_side": "P:spec_buffer_guard (readers/spec.py:428, :455, :463, :253, :261)",
+    "oracles_side": "P:spec_buffer_guard (readers/spec.py:428, :455, :463, :253, :261)",
+    "pinned_by": "s2_spec_guard_stock_golden.* + s2_spec_guard_octave_result.json (variant dies)"
+   },
+   {
+    "hunk": "259,260c249",
+    "what": "2017-03-08 image-buffer bounds guard",
+    "class": "live",
+    "reach": "SPEC",
+    "stock_side": "P:spec_buffer_guard (readers/spec.py:428, :455, :463, :253, :261)",
+    "oracles_side": "P:spec_buffer_guard (readers/spec.py:428, :455, :463, :253, :261)",
+    "pinned_by": "s2_spec_guard_stock_golden.* + s2_spec_guard_octave_result.json (variant dies)"
+   },
+   {
+    "hunk": "266,267c255",
+    "what": "2017-03-08 image-buffer bounds guard",
+    "class": "live",
+    "reach": "SPEC",
+    "stock_side": "P:spec_buffer_guard (readers/spec.py:428, :455, :463, :253, :261)",
+    "oracles_side": "P:spec_buffer_guard (readers/spec.py:428, :455, :463, :253, :261)",
+    "pinned_by": "s2_spec_guard_stock_golden.* + s2_spec_guard_octave_result.json (variant dies)"
+   }
+  ],
+  "read_binary_DMT.m": [
+   {
+    "hunk": "34,43c34,42",
+    "what": "decoded-file netCDF types: stock short/byte/int vs variant double",
+    "class": "live",
+    "reach": "CIP/PIP",
+    "stock_side": "readers/dmt.py:71-80, :189 (stock types, no profile)",
+    "oracles_side": "NONE -- measured, dmt_variant: the variant writes every variable double and every value equals the stock decode; only the on-disk types differ. No ORACLES product was decoded by read_binary_DMT (the 2016 CIP came through read_binary_SEA, byte-identical in both trees)",
+    "pinned_by": "s6_dmt_octave_golden.nc (stock); imgproc_div_octave_status.json dmt_variant (variant)"
+   },
+   {
+    "hunk": "116c115",
+    "what": "'for ...;' trailing semicolon",
+    "class": "dead",
+    "reach": "-",
+    "stock_side": "-",
+    "oracles_side": "-",
+    "pinned_by": "-"
+   },
+   {
+    "hunk": "119,120c118",
+    "what": "'else break' split over two lines",
+    "class": "dead",
+    "reach": "-",
+    "stock_side": "-",
+    "oracles_side": "-",
+    "pinned_by": "-"
+   },
+   {
+    "hunk": "138c136",
+    "what": "'kk;' vs 'kk' (variant echoes kk)",
+    "class": "stdout",
+    "reach": "-",
+    "stock_side": "-",
+    "oracles_side": "-",
+    "pinned_by": "-"
+   }
+  ],
+  "read_binary_PMS.m": [
+   {
+    "hunk": "28,32d27",
+    "what": "stock builds the three output names from an explicit outfilename (else branch)",
+    "class": "live",
+    "reach": "PMS",
+    "stock_side": "readers/pms.py:161-163 (always appends .2dc/.f2dc/.2dp.cdf)",
+    "oracles_side": "NONE -- measured, pms_variant_named: the variant dies at :37 ('outfilename1' undefined) unless outfilename == '1'; the port does not port the '1'/'*' naming branches (readers/pms.py:60-64)",
+    "pinned_by": "imgproc_div_octave_status.json pms_variant_named"
+   },
+   {
+    "hunk": "49,57c44,51",
+    "what": "decoded-file netCDF types: stock short/byte/int vs variant double",
+    "class": "live",
+    "reach": "PMS",
+    "stock_side": "readers/pms.py:106-115 (stock types, no profile)",
+    "oracles_side": "NONE -- not measured; same shape as read_binary_DMT's 34,43c34,42. No ORACLES product is PMS",
+    "pinned_by": "s6_pms / s7c / s7e decodes (stock)"
+   },
+   {
+    "hunk": "59c53",
+    "what": "decoded-file netCDF types: stock short/byte/int vs variant double",
+    "class": "live",
+    "reach": "PMS",
+    "stock_side": "readers/pms.py:106-115 (stock types, no profile)",
+    "oracles_side": "NONE -- not measured; same shape as read_binary_DMT's 34,43c34,42. No ORACLES product is PMS",
+    "pinned_by": "s6_pms / s7c / s7e decodes (stock)"
+   },
+   {
+    "hunk": "65,72c59,66",
+    "what": "decoded-file netCDF types: stock short/byte/int vs variant double",
+    "class": "live",
+    "reach": "PMS",
+    "stock_side": "readers/pms.py:106-115 (stock types, no profile)",
+    "oracles_side": "NONE -- not measured; same shape as read_binary_DMT's 34,43c34,42. No ORACLES product is PMS",
+    "pinned_by": "s6_pms / s7c / s7e decodes (stock)"
+   },
+   {
+    "hunk": "74c68",
+    "what": "decoded-file netCDF types: stock short/byte/int vs variant double",
+    "class": "live",
+    "reach": "PMS",
+    "stock_side": "readers/pms.py:106-115 (stock types, no profile)",
+    "oracles_side": "NONE -- not measured; same shape as read_binary_DMT's 34,43c34,42. No ORACLES product is PMS",
+    "pinned_by": "s6_pms / s7c / s7e decodes (stock)"
+   },
+   {
+    "hunk": "81,88c75,82",
+    "what": "decoded-file netCDF types: stock short/byte/int vs variant double",
+    "class": "live",
+    "reach": "PMS",
+    "stock_side": "readers/pms.py:106-115 (stock types, no profile)",
+    "oracles_side": "NONE -- not measured; same shape as read_binary_DMT's 34,43c34,42. No ORACLES product is PMS",
+    "pinned_by": "s6_pms / s7c / s7e decodes (stock)"
+   },
+   {
+    "hunk": "90c84",
+    "what": "decoded-file netCDF types: stock short/byte/int vs variant double",
+    "class": "live",
+    "reach": "PMS",
+    "stock_side": "readers/pms.py:106-115 (stock types, no profile)",
+    "oracles_side": "NONE -- not measured; same shape as read_binary_DMT's 34,43c34,42. No ORACLES product is PMS",
+    "pinned_by": "s6_pms / s7c / s7e decodes (stock)"
+   },
+   {
+    "hunk": "105a100",
+    "what": "variant prints the XML header",
+    "class": "stdout",
+    "reach": "-",
+    "stock_side": "-",
+    "oracles_side": "-",
+    "pinned_by": "-"
+   },
+   {
+    "hunk": "109c104",
+    "what": "'&&' vs '&' on scalars",
+    "class": "dead",
+    "reach": "-",
+    "stock_side": "-",
+    "oracles_side": "-",
+    "pinned_by": "-"
+   },
+   {
+    "hunk": "127c122",
+    "what": "'&&' vs '&' on scalars",
+    "class": "dead",
+    "reach": "-",
+    "stock_side": "-",
+    "oracles_side": "-",
+    "pinned_by": "-"
+   },
+   {
+    "hunk": "147c142",
+    "what": "'&&' vs '&' on scalars",
+    "class": "dead",
+    "reach": "-",
+    "stock_side": "-",
+    "oracles_side": "-",
+    "pinned_by": "-"
+   },
+   {
+    "hunk": "168,179c163",
+    "what": "'C4' (F2DC) scalar writes: stock at kk3-1, variant at kk2-1",
+    "class": "live",
+    "reach": "PMS F2DC",
+    "stock_side": "readers/pms.py:191-193 (kk3)",
+    "oracles_side": "NONE -- not measured. The variant writes C4 scalars at the C6 counter. Fixture cost: a raw file with a C6 and a C4 record, decoded with outfilename '1' (the only name the variant accepts); ~20 min. No ORACLES product is PMS",
+    "pinned_by": "s7e (stock, C4)"
+   },
+   {
+    "hunk": "181c165,175",
+    "what": "'C4' image write: stock at kk3-1, variant at kk2-1",
+    "class": "live",
+    "reach": "PMS F2DC",
+    "stock_side": "readers/pms.py:192",
+    "oracles_side": "NONE -- as 168,179c163",
+    "pinned_by": "s7e (stock, C4)"
+   }
+  ],
+  "IntArrAnalysis.m": [
+   {
+    "hunk": "1,18c1,3",
+    "what": "signature (7 args vs 2) and preamble",
+    "class": "live",
+    "reach": "IAT stage",
+    "stock_side": "NONE -- the port ports neither file. arrayprobe.intarr / intarr_analysis reproduce uioops_testing/IntArrAnalysis_time.m (FORK_ONLY), which is what the ORACLES lineage ran; stock IntArrAnalysis.m and the keeling IntArrAnalysis.m are both unported",
+    "oracles_side": "NONE -- the port ports neither file. arrayprobe.intarr / intarr_analysis reproduce uioops_testing/IntArrAnalysis_time.m (FORK_ONLY), which is what the ORACLES lineage ran; stock IntArrAnalysis.m and the keeling IntArrAnalysis.m are both unported",
+    "pinned_by": "none"
+   },
+   {
+    "hunk": "20,42c5",
+    "what": "stock: usage comments; Time_in_seconds-differenced intarr for 2DS/HVPS/Fast2DC",
+    "class": "live",
+    "reach": "IAT stage",
+    "stock_side": "NONE -- the port ports neither file. arrayprobe.intarr / intarr_analysis reproduce uioops_testing/IntArrAnalysis_time.m (FORK_ONLY), which is what the ORACLES lineage ran; stock IntArrAnalysis.m and the keeling IntArrAnalysis.m are both unported",
+    "oracles_side": "NONE -- the port ports neither file. arrayprobe.intarr / intarr_analysis reproduce uioops_testing/IntArrAnalysis_time.m (FORK_ONLY), which is what the ORACLES lineage ran; stock IntArrAnalysis.m and the keeling IntArrAnalysis.m are both unported",
+    "pinned_by": "none"
+   },
+   {
+    "hunk": "44c7,9",
+    "what": "variant: open file, read inter_arrival for every probe",
+    "class": "live",
+    "reach": "IAT stage",
+    "stock_side": "NONE -- the port ports neither file. arrayprobe.intarr / intarr_analysis reproduce uioops_testing/IntArrAnalysis_time.m (FORK_ONLY), which is what the ORACLES lineage ran; stock IntArrAnalysis.m and the keeling IntArrAnalysis.m are both unported",
+    "oracles_side": "NONE -- the port ports neither file. arrayprobe.intarr / intarr_analysis reproduce uioops_testing/IntArrAnalysis_time.m (FORK_ONLY), which is what the ORACLES lineage ran; stock IntArrAnalysis.m and the keeling IntArrAnalysis.m are both unported",
+    "pinned_by": "none"
+   },
+   {
+    "hunk": "46,47d10",
+    "what": "stock reads Date and image_diam_minR",
+    "class": "live",
+    "reach": "IAT stage",
+    "stock_side": "NONE -- the port ports neither file. arrayprobe.intarr / intarr_analysis reproduce uioops_testing/IntArrAnalysis_time.m (FORK_ONLY), which is what the ORACLES lineage ran; stock IntArrAnalysis.m and the keeling IntArrAnalysis.m are both unported",
+    "oracles_side": "NONE -- the port ports neither file. arrayprobe.intarr / intarr_analysis reproduce uioops_testing/IntArrAnalysis_time.m (FORK_ONLY), which is what the ORACLES lineage ran; stock IntArrAnalysis.m and the keeling IntArrAnalysis.m are both unported",
+    "pinned_by": "none"
+   },
+   {
+    "hunk": "52,61c15,29",
+    "what": "stock parallel-chunk trimming vs variant contour-histogram loop",
+    "class": "live",
+    "reach": "IAT stage",
+    "stock_side": "NONE -- the port ports neither file. arrayprobe.intarr / intarr_analysis reproduce uioops_testing/IntArrAnalysis_time.m (FORK_ONLY), which is what the ORACLES lineage ran; stock IntArrAnalysis.m and the keeling IntArrAnalysis.m are both unported",
+    "oracles_side": "NONE -- the port ports neither file. arrayprobe.intarr / intarr_analysis reproduce uioops_testing/IntArrAnalysis_time.m (FORK_ONLY), which is what the ORACLES lineage ran; stock IntArrAnalysis.m and the keeling IntArrAnalysis.m are both unported",
+    "pinned_by": "none"
+   },
+   {
+    "hunk": "63a32,61",
+    "what": "variant contour and scatter figures",
+    "class": "live",
+    "reach": "IAT stage",
+    "stock_side": "NONE -- the port ports neither file. arrayprobe.intarr / intarr_analysis reproduce uioops_testing/IntArrAnalysis_time.m (FORK_ONLY), which is what the ORACLES lineage ran; stock IntArrAnalysis.m and the keeling IntArrAnalysis.m are both unported",
+    "oracles_side": "NONE -- the port ports neither file. arrayprobe.intarr / intarr_analysis reproduce uioops_testing/IntArrAnalysis_time.m (FORK_ONLY), which is what the ORACLES lineage ran; stock IntArrAnalysis.m and the keeling IntArrAnalysis.m are both unported",
+    "pinned_by": "none"
+   },
+   {
+    "hunk": "68,71c66",
+    "what": "section header, clear",
+    "class": "live",
+    "reach": "IAT stage",
+    "stock_side": "NONE -- the port ports neither file. arrayprobe.intarr / intarr_analysis reproduce uioops_testing/IntArrAnalysis_time.m (FORK_ONLY), which is what the ORACLES lineage ran; stock IntArrAnalysis.m and the keeling IntArrAnalysis.m are both unported",
+    "oracles_side": "NONE -- the port ports neither file. arrayprobe.intarr / intarr_analysis reproduce uioops_testing/IntArrAnalysis_time.m (FORK_ONLY), which is what the ORACLES lineage ran; stock IntArrAnalysis.m and the keeling IntArrAnalysis.m are both unported",
+    "pinned_by": "none"
+   },
+   {
+    "hunk": "76,86c71",
+    "what": "population size: stock adaptive (numparticles) vs variant 100000",
+    "class": "live",
+    "reach": "IAT stage",
+    "stock_side": "NONE -- the port ports neither file. arrayprobe.intarr / intarr_analysis reproduce uioops_testing/IntArrAnalysis_time.m (FORK_ONLY), which is what the ORACLES lineage ran; stock IntArrAnalysis.m and the keeling IntArrAnalysis.m are both unported",
+    "oracles_side": "NONE -- the port ports neither file. arrayprobe.intarr / intarr_analysis reproduce uioops_testing/IntArrAnalysis_time.m (FORK_ONLY), which is what the ORACLES lineage ran; stock IntArrAnalysis.m and the keeling IntArrAnalysis.m are both unported",
+    "pinned_by": "none"
+   },
+   {
+    "hunk": "90,95d74",
+    "what": "stock preallocation",
+    "class": "live",
+    "reach": "IAT stage",
+    "stock_side": "NONE -- the port ports neither file. arrayprobe.intarr / intarr_analysis reproduce uioops_testing/IntArrAnalysis_time.m (FORK_ONLY), which is what the ORACLES lineage ran; stock IntArrAnalysis.m and the keeling IntArrAnalysis.m are both unported",
+    "oracles_side": "NONE -- the port ports neither file. arrayprobe.intarr / intarr_analysis reproduce uioops_testing/IntArrAnalysis_time.m (FORK_ONLY), which is what the ORACLES lineage ran; stock IntArrAnalysis.m and the keeling IntArrAnalysis.m are both unported",
+    "pinned_by": "none"
+   },
+   {
+    "hunk": "97,99d75",
+    "what": "stock progress disp",
+    "class": "stdout",
+    "reach": "IAT stage",
+    "stock_side": "-",
+    "oracles_side": "-",
+    "pinned_by": "-"
+   },
+   {
+    "hunk": "102c78,79",
+    "what": "histcounts output capture",
+    "class": "live",
+    "reach": "IAT stage",
+    "stock_side": "NONE -- the port ports neither file. arrayprobe.intarr / intarr_analysis reproduce uioops_testing/IntArrAnalysis_time.m (FORK_ONLY), which is what the ORACLES lineage ran; stock IntArrAnalysis.m and the keeling IntArrAnalysis.m are both unported",
+    "oracles_side": "NONE -- the port ports neither file. arrayprobe.intarr / intarr_analysis reproduce uioops_testing/IntArrAnalysis_time.m (FORK_ONLY), which is what the ORACLES lineage ran; stock IntArrAnalysis.m and the keeling IntArrAnalysis.m are both unported",
+    "pinned_by": "none"
+   },
+   {
+    "hunk": "103a81",
+    "what": "commented-out nlinfit",
+    "class": "dead",
+    "reach": "IAT stage",
+    "stock_side": "-",
+    "oracles_side": "-",
+    "pinned_by": "-"
+   },
+   {
+    "hunk": "105,108c83",
+    "what": "stock NEWtime/NEWdate and beta0 vs variant NEWtime",
+    "class": "live",
+    "reach": "IAT stage",
+    "stock_side": "NONE -- the port ports neither file. arrayprobe.intarr / intarr_analysis reproduce uioops_testing/IntArrAnalysis_time.m (FORK_ONLY), which is what the ORACLES lineage ran; stock IntArrAnalysis.m and the keeling IntArrAnalysis.m are both unported",
+    "oracles_side": "NONE -- the port ports neither file. arrayprobe.intarr / intarr_analysis reproduce uioops_testing/IntArrAnalysis_time.m (FORK_ONLY), which is what the ORACLES lineage ran; stock IntArrAnalysis.m and the keeling IntArrAnalysis.m are both unported",
+    "pinned_by": "none"
+   },
+   {
+    "hunk": "110,115c85,86",
+    "what": "nlinfit initial guess: stock fixed beta0 vs variant previous fit",
+    "class": "live",
+    "reach": "IAT stage",
+    "stock_side": "NONE -- the port ports neither file. arrayprobe.intarr / intarr_analysis reproduce uioops_testing/IntArrAnalysis_time.m (FORK_ONLY), which is what the ORACLES lineage ran; stock IntArrAnalysis.m and the keeling IntArrAnalysis.m are both unported",
+    "oracles_side": "NONE -- the port ports neither file. arrayprobe.intarr / intarr_analysis reproduce uioops_testing/IntArrAnalysis_time.m (FORK_ONLY), which is what the ORACLES lineage ran; stock IntArrAnalysis.m and the keeling IntArrAnalysis.m are both unported",
+    "pinned_by": "none"
+   },
+   {
+    "hunk": "117,118d87",
+    "what": "end of stock NaN guard",
+    "class": "live",
+    "reach": "IAT stage",
+    "stock_side": "NONE -- the port ports neither file. arrayprobe.intarr / intarr_analysis reproduce uioops_testing/IntArrAnalysis_time.m (FORK_ONLY), which is what the ORACLES lineage ran; stock IntArrAnalysis.m and the keeling IntArrAnalysis.m are both unported",
+    "oracles_side": "NONE -- the port ports neither file. arrayprobe.intarr / intarr_analysis reproduce uioops_testing/IntArrAnalysis_time.m (FORK_ONLY), which is what the ORACLES lineage ran; stock IntArrAnalysis.m and the keeling IntArrAnalysis.m are both unported",
+    "pinned_by": "none"
+   },
+   {
+    "hunk": "122d90",
+    "what": "blank",
+    "class": "dead",
+    "reach": "IAT stage",
+    "stock_side": "-",
+    "oracles_side": "-",
+    "pinned_by": "-"
+   },
+   {
+    "hunk": "127,129c95,100",
+    "what": "threshold candidates vs commented plotting",
+    "class": "live",
+    "reach": "IAT stage",
+    "stock_side": "NONE -- the port ports neither file. arrayprobe.intarr / intarr_analysis reproduce uioops_testing/IntArrAnalysis_time.m (FORK_ONLY), which is what the ORACLES lineage ran; stock IntArrAnalysis.m and the keeling IntArrAnalysis.m are both unported",
+    "oracles_side": "NONE -- the port ports neither file. arrayprobe.intarr / intarr_analysis reproduce uioops_testing/IntArrAnalysis_time.m (FORK_ONLY), which is what the ORACLES lineage ran; stock IntArrAnalysis.m and the keeling IntArrAnalysis.m are both unported",
+    "pinned_by": "none"
+   },
+   {
+    "hunk": "131,135c102,104",
+    "what": "stock empty-newDT fallback",
+    "class": "live",
+    "reach": "IAT stage",
+    "stock_side": "NONE -- the port ports neither file. arrayprobe.intarr / intarr_analysis reproduce uioops_testing/IntArrAnalysis_time.m (FORK_ONLY), which is what the ORACLES lineage ran; stock IntArrAnalysis.m and the keeling IntArrAnalysis.m are both unported",
+    "oracles_side": "NONE -- the port ports neither file. arrayprobe.intarr / intarr_analysis reproduce uioops_testing/IntArrAnalysis_time.m (FORK_ONLY), which is what the ORACLES lineage ran; stock IntArrAnalysis.m and the keeling IntArrAnalysis.m are both unported",
+    "pinned_by": "none"
+   },
+   {
+    "hunk": "137,145d105",
+    "what": "stock default thresholds on failed fit",
+    "class": "live",
+    "reach": "IAT stage",
+    "stock_side": "NONE -- the port ports neither file. arrayprobe.intarr / intarr_analysis reproduce uioops_testing/IntArrAnalysis_time.m (FORK_ONLY), which is what the ORACLES lineage ran; stock IntArrAnalysis.m and the keeling IntArrAnalysis.m are both unported",
+    "oracles_side": "NONE -- the port ports neither file. arrayprobe.intarr / intarr_analysis reproduce uioops_testing/IntArrAnalysis_time.m (FORK_ONLY), which is what the ORACLES lineage ran; stock IntArrAnalysis.m and the keeling IntArrAnalysis.m are both unported",
+    "pinned_by": "none"
+   },
+   {
+    "hunk": "146a107",
+    "what": "variant minOriginal",
+    "class": "live",
+    "reach": "IAT stage",
+    "stock_side": "NONE -- the port ports neither file. arrayprobe.intarr / intarr_analysis reproduce uioops_testing/IntArrAnalysis_time.m (FORK_ONLY), which is what the ORACLES lineage ran; stock IntArrAnalysis.m and the keeling IntArrAnalysis.m are both unported",
+    "oracles_side": "NONE -- the port ports neither file. arrayprobe.intarr / intarr_analysis reproduce uioops_testing/IntArrAnalysis_time.m (FORK_ONLY), which is what the ORACLES lineage ran; stock IntArrAnalysis.m and the keeling IntArrAnalysis.m are both unported",
+    "pinned_by": "none"
+   },
+   {
+    "hunk": "147a109,111",
+    "what": "variant progress disp and commented reject flags",
+    "class": "stdout",
+    "reach": "IAT stage",
+    "stock_side": "-",
+    "oracles_side": "-",
+    "pinned_by": "-"
+   },
+   {
+    "hunk": "150,180c114,115",
+    "what": "stock per-population histogram figure",
+    "class": "live",
+    "reach": "IAT stage",
+    "stock_side": "NONE -- the port ports neither file. arrayprobe.intarr / intarr_analysis reproduce uioops_testing/IntArrAnalysis_time.m (FORK_ONLY), which is what the ORACLES lineage ran; stock IntArrAnalysis.m and the keeling IntArrAnalysis.m are both unported",
+    "oracles_side": "NONE -- the port ports neither file. arrayprobe.intarr / intarr_analysis reproduce uioops_testing/IntArrAnalysis_time.m (FORK_ONLY), which is what the ORACLES lineage ran; stock IntArrAnalysis.m and the keeling IntArrAnalysis.m are both unported",
+    "pinned_by": "none"
+   },
+   {
+    "hunk": "182,300c117,130",
+    "what": "stock contour, .mat and _intArrThreshold_ .cdf writer vs variant scatter",
+    "class": "live",
+    "reach": "IAT stage",
+    "stock_side": "NONE -- the port ports neither file. arrayprobe.intarr / intarr_analysis reproduce uioops_testing/IntArrAnalysis_time.m (FORK_ONLY), which is what the ORACLES lineage ran; stock IntArrAnalysis.m and the keeling IntArrAnalysis.m are both unported",
+    "oracles_side": "NONE -- the port ports neither file. arrayprobe.intarr / intarr_analysis reproduce uioops_testing/IntArrAnalysis_time.m (FORK_ONLY), which is what the ORACLES lineage ran; stock IntArrAnalysis.m and the keeling IntArrAnalysis.m are both unported",
+    "pinned_by": "none"
+   },
+   {
+    "hunk": "302,306c132",
+    "what": "stock time2datenum vs variant save allthreshholdforfutureuse.mat",
+    "class": "live",
+    "reach": "IAT stage",
+    "stock_side": "NONE -- the port ports neither file. arrayprobe.intarr / intarr_analysis reproduce uioops_testing/IntArrAnalysis_time.m (FORK_ONLY), which is what the ORACLES lineage ran; stock IntArrAnalysis.m and the keeling IntArrAnalysis.m are both unported",
+    "oracles_side": "NONE -- the port ports neither file. arrayprobe.intarr / intarr_analysis reproduce uioops_testing/IntArrAnalysis_time.m (FORK_ONLY), which is what the ORACLES lineage ran; stock IntArrAnalysis.m and the keeling IntArrAnalysis.m are both unported",
+    "pinned_by": "none"
+   }
+  ]
+ }
+}

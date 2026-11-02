@@ -1,0 +1,165 @@
+{
+ "octave_version": "11.3.0",
+ "netcdf_pkg": "1.0.20",
+ "getVar": [
+  {
+   "name": "names",
+   "xtype": 2,
+   "dimids": [
+    0,
+    1
+   ],
+   "class": "char",
+   "size": [
+    5,
+    3
+   ],
+   "codes_colmajor": [
+    97,
+    98,
+    99,
+    100,
+    101,
+    102,
+    103,
+    104,
+    105,
+    106,
+    107,
+    108,
+    109,
+    110,
+    111
+   ]
+  },
+  {
+   "name": "word",
+   "xtype": 2,
+   "dimids": [
+    2
+   ],
+   "class": "char",
+   "size": [
+    4,
+    1
+   ],
+   "codes_colmajor": [
+    119,
+    120,
+    121,
+    122
+   ]
+  },
+  {
+   "name": "partial",
+   "xtype": 2,
+   "dimids": [
+    3
+   ],
+   "class": "char",
+   "size": [
+    6,
+    1
+   ],
+   "codes_colmajor": [
+    0,
+    81,
+    82,
+    83,
+    0,
+    0
+   ]
+  },
+  {
+   "name": "tags",
+   "xtype": 2,
+   "dimids": [
+    0,
+    4
+   ],
+   "class": "char",
+   "size": [
+    5,
+    2
+   ],
+   "codes_colmajor": [
+    117,
+    118,
+    119,
+    120,
+    121,
+    122,
+    48,
+    49,
+    50,
+    51
+   ]
+  }
+ ],
+ "NC_CHAR": 2,
+ "on_disk": {
+  "data_model": "NETCDF3_CLASSIC",
+  "dimensions": {
+   "strlen": 5,
+   "n": 3,
+   "w": 4,
+   "p": 6,
+   "time": null
+  },
+  "unlimited_length": {
+   "time": 2
+  },
+  "variables": {
+   "names": {
+    "dtype": "|S1",
+    "dimensions": [
+     "n",
+     "strlen"
+    ],
+    "shape": [
+     3,
+     5
+    ],
+    "bytes_hex": "6162636465666768696a6b6c6d6e6f",
+    "attributes": {
+     "units": "none"
+    }
+   },
+   "word": {
+    "dtype": "|S1",
+    "dimensions": [
+     "w"
+    ],
+    "shape": [
+     4
+    ],
+    "bytes_hex": "7778797a",
+    "attributes": {}
+   },
+   "partial": {
+    "dtype": "|S1",
+    "dimensions": [
+     "p"
+    ],
+    "shape": [
+     6
+    ],
+    "bytes_hex": "005152530000",
+    "attributes": {}
+   },
+   "tags": {
+    "dtype": "|S1",
+    "dimensions": [
+     "time",
+     "strlen"
+    ],
+    "shape": [
+     2,
+     5
+    ],
+    "bytes_hex": "75767778797a30313233",
+    "attributes": {}
+   }
+  }
+ }
+}

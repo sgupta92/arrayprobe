@@ -1,0 +1,32 @@
+name: Feature or enhancement request
+description: A new capability, probe, campaign preset, or enhancement module
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Read `CONTRIBUTING.md` first: for `arrayprobe`, a change that alters the port's computed
+        output belongs in `enhancements_uiops/`, not in the faithful port, and needs an A/B-consequence
+        measurement. `arrayprobe_uiops` and `arrayprobe_soda2` have no `enhancements_uiops/` equivalent
+        yet — describe the correction here and it will be routed by hand while those packages are
+        still being built out. A new campaign usually needs no code at all — see
+        `docs/06-configuration.md`.
+  - type: textarea
+    id: what
+    attributes:
+      label: What you want to do
+    validations:
+      required: true
+  - type: textarea
+    id: why
+    attributes:
+      label: Why the existing package cannot do it today
+    validations:
+      required: true
+  - type: textarea
+    id: data
+    attributes:
+      label: What data or reference this would need to validate against
+      description: If none exists yet, say so — that is itself useful information.
+    validations:
+      required: false

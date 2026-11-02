@@ -1,0 +1,57 @@
+{
+ "block": {
+  "end_line": 805,
+  "start_line": 788,
+  "text": "if numel(find(diff(image_time_hhmmssall)<0))==1\n    image_time_hhmmssall(find(diff(image_time_hhmmssall)<0)+1:end)=...\n        image_time_hhmmssall(find(diff(image_time_hhmmssall)<0)+1:end) + 240000;\nelseif numel(find(diff(image_time_hhmmssall)<0))>1 % ignore corrupt particle times where time briefly \"decreases\"\n    decreasedTimeInds = find(diff(image_time_hhmmssall)<0);\n    % flags index where particle time goes between dates (from later than\n    % 23 UTC to a time read as more than 23 hours prior)\n    for decreasedInds=1:length(decreasedTimeInds)\n        if (image_time_hhmmssall(decreasedTimeInds(decreasedInds))>230000) && (image_time_hhmmssall(decreasedTimeInds(decreasedInds))-...\n                image_time_hhmmssall(decreasedTimeInds(decreasedInds)+1)>230000)\n            image_time_hhmmssall(decreasedTimeInds(decreasedInds)+1:end) = image_time_hhmmssall(decreasedTimeInds(decreasedInds)+1:end)+...\n                240000;\n            break;\n        elseif decreasedInds==length(decreasedTimeInds) % no date crossover was detected\n            fprintf('Multiple instances of decreasing particle time were found,\\n  but a crossover between dates was not detected.\\n')\n        end\n    end\nend\n"
+ },
+ "cases": {
+  "three_genuine_crossings": [
+   235959,
+   10,
+   235959,
+   20,
+   235959,
+   30,
+   40
+  ],
+  "two_genuine_crossings": [
+   235000,
+   235959,
+   10,
+   120000,
+   235958,
+   20,
+   30
+  ]
+ },
+ "octave": {
+  "three_genuine_crossings": {
+   "image_time_hhmmssall": [
+    235959,
+    240010,
+    475959,
+    240020,
+    475959,
+    240030,
+    240040
+   ],
+   "message": "",
+   "status": "OK"
+  },
+  "two_genuine_crossings": {
+   "image_time_hhmmssall": [
+    235000,
+    235959,
+    240010,
+    360000,
+    475958,
+    240020,
+    240030
+   ],
+   "message": "",
+   "status": "OK"
+  }
+ },
+ "octave_stdout": "",
+ "source": "UIOPS-v3.5/joefinlon-UIOPS-039be82/sizeDist.m"
+}

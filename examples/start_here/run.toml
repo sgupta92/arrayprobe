@@ -1,0 +1,31 @@
+# The settings for the start-here run. `examples/1_getting_started/01_start_here.ipynb` and the commands in
+# this folder's README.md both use this file. Paths in it are relative to this folder.
+#
+# Every line is a choice the program refuses to guess, so each one is written out here.
+
+[fidelity]
+# The processing rules: the UIOPS v3.5 rules as the UIOPS developers released them.
+profile = "stock-v3.5"
+
+[run]
+# Which processing program. "3.5" is the default for new data.
+engine = "3.5"
+# Which probe and aircraft settings. DEMO_2DS_H is the synthetic demo file's own
+# settings; your own data needs its own (see "Step 4" in the notebook).
+preset = "DEMO_2DS_H"
+# Where the results go: examples/start_here/output/.
+out = "output"
+# Which steps to run: 2 = read the raw file, 3 = measure each particle,
+# 4 = count particles by size each second, c = write one combined file.
+stages = "234c"
+# The aircraft's speed through the air, second by second. `arrayprobe make-demo-flight`
+# writes this file beside the raw file; the probe needs it to turn counts into concentrations.
+tas_file = "output/base160101000000.aircraft.cdf"
+
+[combine]
+# Write the combined file (step "c"). Stock v3.5 has no combine step, so this
+# borrows one and labels the output as borrowed.
+borrowed = true
+
+[enhancements]
+# Empty on purpose: no optional corrections. The run is the plain UIOPS v3.5 processing.

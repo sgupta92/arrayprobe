@@ -1,0 +1,37 @@
+{
+ "source": "soda2_buildindex.pro:32,43 under GDL",
+ "stderr": "",
+ "cases": [
+  {
+   "assigned": 2147483647,
+   "stored": 2147483647
+  },
+  {
+   "assigned": 2147483648,
+   "stored": -2147483648
+  },
+  {
+   "assigned": 3000000000,
+   "stored": -1294967296
+  },
+  {
+   "assigned": 4294967295,
+   "stored": -1
+  },
+  {
+   "assigned": 4294967296,
+   "stored": 0
+  },
+  {
+   "assigned": 5000000000,
+   "stored": 705032704
+  }
+ ],
+ "negative_seek": {
+  "start": 100,
+  "pointer": -2147483648,
+  "cur_ptr_after": 100,
+  "next_byte": 100,
+  "stderr": ""
+ }
+}

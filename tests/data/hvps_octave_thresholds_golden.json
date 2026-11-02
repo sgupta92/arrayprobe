@@ -1,0 +1,35 @@
+{
+  "_header": {
+    "what": "Per-block inter-arrival thresholds (seconds) written by GNU Octave 11.3.0 running UIOPS IntArrAnalysis_time.m unmodified (fileNum='5', IntArrAnalysis_time.m:36-38; threshold fit 'threshhold_ak' via nlinfit, :153) on two ORACLES HVPS procs.",
+    "run": "HVPS slice 2d, 2026-10-04 (log run_logs/hvps_s2_octave_h1b.launch.log, exited 0 at 2:00:35 PM); driver hvps_s2_octave/run_iat_octave.sh, pkg load statistics optim netcdf, shims +netcdf/open.m and histcounts.m (plot calls no-op).",
+    "source_record": "HVPS_SLICE2_OCTAVE_THRESHOLDS.md, slice 2d table (a development record)",
+    "read_from": "the Octave run workspace on the archive drive, arrayprobe/_free_to_move/_decoded/hvps_s2_octave/<stem>/HVPS_intArrThreshold_base160920063628.V_1.cdf, variable 'threshold', runs of equal value, repr(float) (copied 2026-10-05)",
+    "caveat": "Octave's statset ignores Robust and FunValCheck (IntArrAnalysis_time.m:153), so this is a non-robust fit; MATLAB's robust fit may differ. 160906 block 1 differs from the port (port 4.12125e-4 s).",
+    "blocks": "[start_index (0-based), length, threshold_s]"
+  },
+  "flights": {
+    "base160906064343": {
+      "particles": 179448,
+      "not_comparable": {
+        "1": "Octave ignores Robust=on (IntArrAnalysis_time.m:153) -- not comparable. Root-caused 2026-10-05: the port's fit with robust=False reproduces Octave's tau and this 2.5653e-4 s; with robust=True (the port, honouring :153) tau1 crosses the 4.1212e-4 bin centre and :186 picks 4.12125e-4 s. HVPS_ROOT_CAUSE_PLAN_1150.md section F."
+      },
+      "blocks": [
+        [0, 35890, 0.0002565348553727495],
+        [35890, 35890, 0.0027450998478761777],
+        [71780, 35890, 9.939892216426045e-05],
+        [107670, 35890, 9.939892216426045e-05],
+        [143560, 35888, 9.939892216426045e-05]
+      ]
+    },
+    "base170826073738": {
+      "particles": 63025,
+      "blocks": [
+        [0, 12605, 1.3032530019268642e-07],
+        [12605, 12605, 0.018284688139626828],
+        [25210, 12605, 0.0027450998478761777],
+        [37815, 12605, 0.0027450998478761777],
+        [50420, 12605, 0.0027450998478761777]
+      ]
+    }
+  }
+}

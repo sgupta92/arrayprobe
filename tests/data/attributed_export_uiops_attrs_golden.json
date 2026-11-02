@@ -1,0 +1,302 @@
+{
+ "global": [
+  [
+   "arrayprobe_export_convention",
+   "arrayprobe-attributed-1.0"
+  ],
+  [
+   "arrayprobe_export_module",
+   "arrayprobe.attributed_export"
+  ],
+  [
+   "arrayprobe_package_version",
+   "0.1.0"
+  ],
+  [
+   "arrayprobe_export_time",
+   "2026-09-17T00:00:00+00:00"
+  ],
+  [
+   "arrayprobe_source_file",
+   "base160906064017.combined.H.2DS_2.cdf"
+  ],
+  [
+   "arrayprobe_source_sha256",
+   "7021f21fabf7038171dad31f11f84b144c31078b4997c0facad55f459a8ce6f4"
+  ],
+  [
+   "arrayprobe_source_bytes",
+   1052
+  ],
+  [
+   "arrayprobe_source_writer",
+   "ORACLES-variant combine_sizedist.m:202-231 (arrayprobe.combine._write)"
+  ],
+  [
+   "arrayprobe_product_shape",
+   "combined_sizedist"
+  ],
+  [
+   "arrayprobe_fidelity_note",
+   "This file is NOT the byte-comparison artefact. The faithful file named in arrayprobe_source_file is: it carries zero attributes because the MATLAB that defines its format writes zero attributes (combine_sizedist.m:202-231, measured), and every validated-flight comparison is made against it. This file holds the same values and adds metadata; use it to read the data, use the faithful file to compare bytes."
+  ],
+  [
+   "arrayprobe_time_convention",
+   "Time Vector is a MATLAB datenum in days (combine_sizedist.m:95-120), not the HHMMSS the sd files carry. Seconds since 1970-01-01T00:00:00Z = (Time Vector - arrayprobe_datenum_unix_epoch_days) * 86400."
+  ],
+  [
+   "arrayprobe_datenum_unix_epoch_days",
+   719529.0
+  ],
+  [
+   "arrayprobe_missing_value_convention",
+   "Missing seconds are IEEE-754 NaN in the float64 payload, with no _FillValue attribute -- the faithful writer's own convention (combine_sizedist.m:124-148 pads the 1 Hz grid with NaN; arrayprobe.combine:245-250). No _FillValue is added here, because adding one would change what a masking reader returns."
+  ],
+  [
+   "arrayprobe_enhancements_applied",
+   "none"
+  ],
+  [
+   "arrayprobe_enhancements_basis",
+   "none by construction when the producer is the port: 'the port is the faithful reproduction and nothing else' (the package's rule that enhancements live outside the port), enforced by tests/test_no_enhancement_coupling.py. scripts/run_flight.py applies corrections only to SEPARATE <stem>.enh.* products (named in their own .call), never to the faithful file this export reads. A non-port chain must name what it applied through this exporter's `enhancements` argument."
+  ],
+  [
+   "arrayprobe_files_stitched",
+   5
+  ],
+  [
+   "arrayprobe_tas_qc",
+   "absent: the source carries no .tasqc.json, either because the run named no TAS source (probe housekeeping TAS throughout) or because it predates the record (2026-09-23). Which seconds took a default TAS is not established here."
+  ],
+  [
+   "arrayprobe_call_stamp",
+   "engine=3.1.4 combine=oracles-fork:combine_sizedist.m inputs=sd.base160906064017.2DS.nc inputs_built_with=(engine=3.1.4 iat_file=2DS_intArrThreshold_MISSING.cdf profile=ORACLES_PRODUCTION reject=(rej_hollow=0,max_edge_img_ar=4,max_comp_img_ar=4,area_ratio_z=0.5) shadow_diode=none tree=production area_ratio_z=0.5 (default) default_int_arr_thresh=6e-06 (default))"
+  ],
+  [
+   "arrayprobe_engine",
+   "3.1.4"
+  ],
+  [
+   "arrayprobe_combine",
+   "oracles-fork:combine_sizedist.m"
+  ],
+  [
+   "arrayprobe_inputs",
+   "sd.base160906064017.2DS.nc"
+  ],
+  [
+   "arrayprobe_inputs_built_with",
+   "(engine=3.1.4 iat_file=2DS_intArrThreshold_MISSING.cdf profile=ORACLES_PRODUCTION reject=(rej_hollow=0,max_edge_img_ar=4,max_comp_img_ar=4,area_ratio_z=0.5) shadow_diode=none tree=production area_ratio_z=0.5 (default) default_int_arr_thresh=6e-06 (default))"
+  ],
+  [
+   "arrayprobe_encoding",
+   "analysis-ready: netCDF4/HDF5, every numeric variable zlib-compressed at level 4, the byte-shuffle filter on integer variables only (measured to hurt float data, arrayprobe_enhancements.arco_export), chunked to at most 3600 along any dimension longer than 256 (one hour of 1 Hz seconds) and whole along shorter ones. Lossless: every value, dtype and dimension order is the faithful file's, so a chunk can be read over a network without the rest."
+  ],
+  [
+   "Conventions",
+   "ACDD-1.3, arrayprobe-attributed-1.0"
+  ],
+  [
+   "history",
+   "2026-09-17T00:00:00+00:00 arrayprobe.attributed_export 0.1.0: attributed copy of base160906064017.combined.H.2DS_2.cdf (sha256 7021f21fabf7038171dad31f11f84b144c31078b4997c0facad55f459a8ce6f4), values unchanged; run record (.call, verbatim): engine=3.1.4 combine=oracles-fork:combine_sizedist.m inputs=sd.base160906064017.2DS.nc inputs_built_with=(engine=3.1.4 iat_file=2DS_intArrThreshold_MISSING.cdf profile=ORACLES_PRODUCTION reject=(rej_hollow=0,max_edge_img_ar=4,max_comp_img_ar=4,area_ratio_z=0.5) shadow_diode=none tree=production area_ratio_z=0.5 (default) default_int_arr_thresh=6e-06 (default))"
+  ],
+  [
+   "source",
+   "arrayprobe engine=3.1.4; the full run record is the attribute arrayprobe_call_stamp"
+  ],
+  [
+   "processing_level",
+   "combined_sizedist, as written by ORACLES-variant combine_sizedist.m:202-231 (arrayprobe.combine._write)"
+  ],
+  [
+   "product_version",
+   "0.1.0"
+  ],
+  [
+   "date_created",
+   "2026-09-17T00:00:00+00:00"
+  ]
+ ],
+ "variables": {
+  "Time Vector": [
+   [
+    "units",
+    "days"
+   ],
+   [
+    "long_name",
+    "MATLAB datenum time vector"
+   ],
+   [
+    "arrayprobe_units_basis",
+    "derived. The sd `time` this is built from is HHMMSS (sizeDist.m:1732), but combine_sizedist.m:95-120 converts it to a MATLAB datenum in days (arrayprobe.combine:214-223: `datenum(year, month, day) + time_of_day`), so the source unit string does not describe this variable. Measured in this environment: matlab_compat.datenum(1970,1,1) == 719529.0; see the global attribute arrayprobe_datenum_unix_epoch_days for the conversion."
+   ],
+   [
+    "arrayprobe_source_units",
+    "HHMMSS (sd `time`; NOT this variable -- see basis)"
+   ]
+  ],
+  "Bin Minimum": [
+   [
+    "units",
+    "mm"
+   ],
+   [
+    "long_name",
+    "bin minimum size"
+   ],
+   [
+    "arrayprobe_units_basis",
+    "read. ORACLES-variant sizeDist.m:1736 'millimeter', on sd `bin_min`, copied unchanged by ORACLES-variant combine_sizedist.m:62-65 (arrayprobe.combine:162)."
+   ],
+   [
+    "arrayprobe_source_units",
+    "millimeter"
+   ]
+  ],
+  "Bin Maximum": [
+   [
+    "units",
+    "mm"
+   ],
+   [
+    "long_name",
+    "bin maximum size"
+   ],
+   [
+    "arrayprobe_units_basis",
+    "read. ORACLES-variant sizeDist.m:1741 'millimeter', on sd `bin_max`, copied unchanged by ORACLES-variant combine_sizedist.m:62-65 (arrayprobe.combine:163)."
+   ],
+   [
+    "arrayprobe_source_units",
+    "millimeter"
+   ]
+  ],
+  "Bin Midpoints": [
+   [
+    "units",
+    "mm"
+   ],
+   [
+    "long_name",
+    "bin midpoint size"
+   ],
+   [
+    "arrayprobe_units_basis",
+    "read. ORACLES-variant sizeDist.m:1746 'millimeter', on sd `bin_mid`, copied unchanged by ORACLES-variant combine_sizedist.m:62-65 (arrayprobe.combine:164). This is the variable whose missing unit in the faithful file is the reason this attributed export exists."
+   ],
+   [
+    "arrayprobe_source_units",
+    "millimeter"
+   ]
+  ],
+  "Bin Width": [
+   [
+    "units",
+    "mm"
+   ],
+   [
+    "long_name",
+    "bin width"
+   ],
+   [
+    "arrayprobe_units_basis",
+    "read. ORACLES-variant sizeDist.m:1751 'millimeter', on sd `bin_dD`, copied unchanged by ORACLES-variant combine_sizedist.m:62-65 (arrayprobe.combine:165)."
+   ],
+   [
+    "arrayprobe_source_units",
+    "millimeter"
+   ]
+  ],
+  "Mean Area Ratio": [
+   [
+    "units",
+    "1"
+   ],
+   [
+    "long_name",
+    "mean area ratio per size bin"
+   ],
+   [
+    "arrayprobe_units_basis",
+    "read. ORACLES-variant sizeDist.m:1834 '1', on sd `mean_area_ratio` (varid21), concatenated unchanged by ORACLES-variant combine_sizedist.m:70-71 (arrayprobe.combine:178)."
+   ],
+   [
+    "arrayprobe_source_units",
+    "1"
+   ]
+  ],
+  "Counts": [
+   [
+    "units",
+    "1"
+   ],
+   [
+    "long_name",
+    "accepted particle count per size bin"
+   ],
+   [
+    "arrayprobe_units_basis",
+    "read. ORACLES-variant sizeDist.m:1829 '1', on sd `count` (varid20), concatenated unchanged by ORACLES-variant combine_sizedist.m:70-71 (arrayprobe.combine:177)."
+   ],
+   [
+    "arrayprobe_source_units",
+    "1"
+   ]
+  ],
+  "Size Distribution cm-3": [
+   [
+    "units",
+    "cm-3"
+   ],
+   [
+    "long_name",
+    "number concentration per size bin"
+   ],
+   [
+    "arrayprobe_units_basis",
+    "derived, and the arithmetic checks out to the name the MATLAB gave the variable. sd `conc_minR` is 'cm-4' (ORACLES-variant sizeDist.m:1757), i.e. cm-3 per cm of size; `bin_dD` is 'millimeter' (ORACLES-variant sizeDist.m:1751). ORACLES-variant combine_sizedist.m:47-50 (arrayprobe.combine:173) writes (conc_minR / 10) * bin_dD, and dividing by 10 is exactly the mm->cm conversion (0.1 cm/mm), so cm-4 * cm = cm-3."
+   ],
+   [
+    "arrayprobe_source_units",
+    "cm-4 (sd `conc_minR`, before the bin-width multiplication)"
+   ]
+  ],
+  "Number Concentration cm-3": [
+   [
+    "units",
+    "cm-3"
+   ],
+   [
+    "long_name",
+    "total number concentration"
+   ],
+   [
+    "arrayprobe_units_basis",
+    "read. ORACLES-variant sizeDist.m:1772 'cm-3', on sd `n` (varid8), concatenated unchanged by ORACLES-variant combine_sizedist.m:66-69 (arrayprobe.combine:179)."
+   ],
+   [
+    "arrayprobe_source_units",
+    "cm-3"
+   ]
+  ],
+  "Reject Ratio": [
+   [
+    "units",
+    "1"
+   ],
+   [
+    "long_name",
+    "fraction of particles rejected"
+   ],
+   [
+    "arrayprobe_units_basis",
+    "read, with the spelling corrected. ORACLES-variant sizeDist.m:1807 writes '100/100' on sd `Reject_ratio` (varid15), concatenated unchanged by ORACLES-variant combine_sizedist.m:66-69 (arrayprobe.combine:180). '100/100' is not udunits-legal and is UIOPS's own spelling of a dimensionless ratio; it is kept verbatim in arrayprobe_source_units rather than discarded."
+   ],
+   [
+    "arrayprobe_source_units",
+    "100/100"
+   ]
+  ]
+ }
+}

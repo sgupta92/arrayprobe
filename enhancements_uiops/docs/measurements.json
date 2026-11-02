@@ -1,0 +1,292 @@
+{
+  "a1_spurious_hollow": {
+    "measured": "2026-08-29",
+    "corpus": [
+      "base160906064403",
+      "base160906075333",
+      "base160906095907",
+      "base160906104932",
+      "base160906125407",
+      "base160910102201",
+      "base160914093925",
+      "base160914124937",
+      "base160920135030",
+      "base160925115451"
+    ],
+    "sampled_particles": 1956,
+    "within_32": {
+      "n": 499,
+      "orig": 9,
+      "wide": 9
+    },
+    "beyond_32": {
+      "n": 1457,
+      "orig": 106,
+      "wide": 42
+    },
+    "spurious": 64,
+    "spurious_of": 106,
+    "spurious_pct": 60.4,
+    "per_flight": [
+      {
+        "flight": "base160906064403",
+        "within_32": {
+          "n": 36,
+          "orig": 2,
+          "wide": 2
+        },
+        "beyond_32": {
+          "n": 142,
+          "orig": 28,
+          "wide": 17
+        }
+      },
+      {
+        "flight": "base160906075333",
+        "within_32": {
+          "n": 52,
+          "orig": 0,
+          "wide": 0
+        },
+        "beyond_32": {
+          "n": 148,
+          "orig": 4,
+          "wide": 1
+        }
+      },
+      {
+        "flight": "base160906095907",
+        "within_32": {
+          "n": 46,
+          "orig": 0,
+          "wide": 0
+        },
+        "beyond_32": {
+          "n": 154,
+          "orig": 2,
+          "wide": 1
+        }
+      },
+      {
+        "flight": "base160906104932",
+        "within_32": {
+          "n": 50,
+          "orig": 3,
+          "wide": 3
+        },
+        "beyond_32": {
+          "n": 147,
+          "orig": 20,
+          "wide": 11
+        }
+      },
+      {
+        "flight": "base160906125407",
+        "within_32": {
+          "n": 35,
+          "orig": 4,
+          "wide": 4
+        },
+        "beyond_32": {
+          "n": 164,
+          "orig": 28,
+          "wide": 12
+        }
+      },
+      {
+        "flight": "base160910102201",
+        "within_32": {
+          "n": 52,
+          "orig": 0,
+          "wide": 0
+        },
+        "beyond_32": {
+          "n": 134,
+          "orig": 4,
+          "wide": 0
+        }
+      },
+      {
+        "flight": "base160914093925",
+        "within_32": {
+          "n": 60,
+          "orig": 0,
+          "wide": 0
+        },
+        "beyond_32": {
+          "n": 137,
+          "orig": 6,
+          "wide": 0
+        }
+      },
+      {
+        "flight": "base160914124937",
+        "within_32": {
+          "n": 50,
+          "orig": 0,
+          "wide": 0
+        },
+        "beyond_32": {
+          "n": 150,
+          "orig": 3,
+          "wide": 0
+        }
+      },
+      {
+        "flight": "base160920135030",
+        "within_32": {
+          "n": 36,
+          "orig": 0,
+          "wide": 0
+        },
+        "beyond_32": {
+          "n": 164,
+          "orig": 1,
+          "wide": 0
+        }
+      },
+      {
+        "flight": "base160925115451",
+        "within_32": {
+          "n": 82,
+          "orig": 0,
+          "wide": 0
+        },
+        "beyond_32": {
+          "n": 117,
+          "orig": 10,
+          "wide": 0
+        }
+      }
+    ]
+  },
+  "a1_spurious_hollow_history": [
+    {
+      "measured": "2026-08-27",
+      "corpus": [],
+      "corpus_note": "NOT RECORDED at the time -- described only as 'all ten decoded flights'. That omission is why this registry exists: without the flight list the figure cannot be reproduced or compared, only repeated.",
+      "sampled_particles": 1952,
+      "spurious": 67,
+      "spurious_of": 110,
+      "spurious_pct": 60.9
+    }
+  ],
+  "_README": "Measured values quoted in prose. Written by scripts/a1_hollow_measure.py from real decoded flights; checked against the documents by tests/test_measurements_registry.py. Do not hand-edit the current entry -- re-run the tool.",
+  "v35_hole_edge_swap": {
+    "engine": "3.5",
+    "reference": "demo_flight_dense_raw.2DS",
+    "measured": "2026-09-14",
+    "n_particles": 240,
+    "n_swapped": 40,
+    "description": "count of particles where edge_at_max_hole != max_hole_diameter on the port's own proc file (the C5 swap this corrects)"
+  },
+  "v35_outoffocus": {
+    "engine": "3.5",
+    "reference": "demo_flight_dense_raw.2DS",
+    "measured": "2026-09-14",
+    "n_particles": 240,
+    "n_changed": 40,
+    "median_size_factor_among_changed": 1.897,
+    "n_with_part_z_gt0": 40,
+    "superseded": "2026-09-15",
+    "superseded_reason": "measured with correct_diameter's multiply (the dead sizeDist.m:793 line), which on a v3.5 proc undid v3.5's own minR/sf division (imgProc_sm.m:1276) on exactly the 40 particles v3.5 had corrected; under direction='korolev' those 40 are left as written (K2x)"
+  },
+  "v35_int_arr_rollback_fix": {
+    "engine": "3.5",
+    "reference": "demo_flight_dense_raw.2DS",
+    "measured": "2026-09-14",
+    "n_particles": 240,
+    "rollbacks": 0,
+    "vacuous": true,
+    "reason": "no midnight rollover in this raw's 20-second span; an input that would not be vacuous: a raw spanning 24:00 UTC"
+  },
+  "v35_particle_number_all_fix": {
+    "engine": "3.5",
+    "reference": "demo_flight_dense_raw.2DS",
+    "measured": "2026-09-14",
+    "vacuous": true,
+    "reason": "probetype 2 (2D-S) writes Particle_number_all correctly (240 of 240 real values) -- C5b applies to probetype 0/3 only"
+  },
+  "v35_particle_time_int8_fix": {
+    "engine": "3.5",
+    "reference": "demo_flight_dense_raw.2DS",
+    "measured": "2026-09-14",
+    "vacuous": true,
+    "reason": "probetype 2 not affected (A15)"
+  },
+  "v35_pressure_units_fix": {
+    "engine": "3.5",
+    "reference": "demo_flight_dense_raw.2DS",
+    "measured": "2026-09-14",
+    "vacuous": true,
+    "reason": "run pressure not recoverable from the .call stamp"
+  },
+  "v35_overload_accounting_fix": {
+    "engine": "3.5",
+    "reference": "demo_flight_dense_raw.2DS",
+    "measured": "2026-09-14",
+    "vacuous": true,
+    "reason": "sd lacks sum_IntArr/sample_vol (iSaveIntArrSV=0)"
+  },
+  "v35_arco_export": {
+    "engine": "3.5",
+    "reference": "demo_flight_dense_raw.2DS",
+    "measured": "2026-09-14",
+    "sd_bytes": 199812,
+    "arco_bytes": 87710,
+    "ratio": 0.439
+  },
+  "v35_intarr_policy": {
+    "engine": "3.5",
+    "reference": "demo_flight_dense_raw.2DS",
+    "measured": "2026-09-14",
+    "n_particles": 240,
+    "flagged_by_rule_and_neighbours": {
+      "min_measured": [
+        20,
+        20,
+        40
+      ],
+      "twice_tau2": [
+        20,
+        20,
+        40
+      ],
+      "min_fitted": [
+        68,
+        116,
+        184
+      ]
+    },
+    "flagged_at_6us_default_by_neighbours": [
+      80,
+      140,
+      220
+    ],
+    "description": "particles flagged 'S' by intarr_policy.flag_shattered_by_second on the v3.5 decode's inter_arrival, per (rule, neighbours 0/1/2); min_measured with 1 neighbour is UIOPS (tests/test_intarr_policy.py DenseDemoFlightAB)"
+  },
+  "a12_direction_k2x": {
+    "measured": "2026-09-15",
+    "finding": "correct_diameter multiplied until 2026-09-15; Korolev (2007) section 2 p.377 D_0 = D_m/eta, eta = D_edge/D_0 >= 1; v3.5 imgProc_sm.m:1276 divides",
+    "v35_dense_demo_equivalence": {
+      "reference": "demo_flight_dense_raw.2DS",
+      "engine": "3.5",
+      "n_particles": 240,
+      "n_v35_corrected": 40,
+      "korolev_equals_v35_bit_for_bit": true
+    },
+    "tracked_fixture_gate": {
+      "reference": "demo_flight_v314_proc.nc (copy, 3 ring drops, f=1.53, area ratio 0.6)",
+      "area_ratio_z": 0.5,
+      "baseline_used_bin": 2,
+      "dead_line_v314_keep_used_bin": 0,
+      "korolev_keep_used_bin": 2,
+      "korolev_sphere_used_bin": 2
+    },
+    "superseded_by_this": [
+      "v35_outoffocus",
+      "BACKLOG_STATUS A12 dense A/B -6.1 % used-bin (base170828121128, 2026-09-09)",
+      "CORRECTIONS A12 064403 A/B -14 used-bin (2026-08-29)"
+    ]
+  }
+}

@@ -1,0 +1,142 @@
+[
+  {
+    "name": "no_spot",
+    "orig": 12.0,
+    "fill": 12.0,
+    "predicted_ip": 0,
+    "status": "OK",
+    "CORR": "3F800000",
+    "ZD": "00000000",
+    "stderr": ""
+  },
+  {
+    "name": "tiny_spot_below_table",
+    "orig": 100000.0,
+    "fill": 100001.0,
+    "predicted_ip": 0,
+    "status": "OK",
+    "CORR": "3F800000",
+    "ZD": "00000000",
+    "stderr": ""
+  },
+  {
+    "name": "tiny_spot_truly_below",
+    "orig": 200000.0,
+    "fill": 200001.0,
+    "predicted_ip": 0,
+    "status": "OK",
+    "CORR": "3F800000",
+    "ZD": "00000000",
+    "stderr": ""
+  },
+  {
+    "name": "mid_table",
+    "orig": 60.0,
+    "fill": 100.0,
+    "predicted_ip": 121,
+    "status": "OK",
+    "CORR": "3FE76C8B",
+    "ZD": "40C1999A",
+    "stderr": ""
+  },
+  {
+    "name": "near_757",
+    "orig": 42.0,
+    "fill": 100.0,
+    "predicted_ip": 146,
+    "status": "OK",
+    "CORR": "3FF39581",
+    "ZD": "40E9999A",
+    "stderr": ""
+  },
+  {
+    "name": "above_table_top",
+    "orig": 1.0,
+    "fill": 100.0,
+    "predicted_ip": 163,
+    "status": "OK",
+    "CORR": "3FEC28F6",
+    "ZD": "41026666",
+    "stderr": ""
+  },
+  {
+    "name": "last_entry_exact",
+    "orig": 975.0,
+    "fill": 10000.0,
+    "predicted_ip": 163,
+    "status": "OK",
+    "CORR": "3FEC28F6",
+    "ZD": "41026666",
+    "stderr": ""
+  },
+  {
+    "name": "fill_zero_orig_zero",
+    "orig": 0.0,
+    "fill": 0.0,
+    "predicted_ip": 0,
+    "status": "OK",
+    "CORR": "3F800000",
+    "ZD": "00000000",
+    "stderr": ""
+  },
+  {
+    "name": "fill_zero_orig_positive",
+    "orig": 5.0,
+    "fill": 0.0,
+    "predicted_ip": 0,
+    "status": "OK",
+    "CORR": "3F800000",
+    "ZD": "00000000",
+    "stderr": ""
+  },
+  {
+    "name": "filled_smaller_than_orig",
+    "orig": 100.0,
+    "fill": 90.0,
+    "predicted_ip": 0,
+    "status": "OK",
+    "CORR": "3F800000",
+    "ZD": "00000000",
+    "stderr": ""
+  },
+  {
+    "name": "orig_negative",
+    "orig": -1.0,
+    "fill": 10.0,
+    "predicted_ip": null,
+    "status": "OK",
+    "CORR": "3F800000",
+    "ZD": "00000000",
+    "stderr": ""
+  },
+  {
+    "name": "fill_negative",
+    "orig": 10.0,
+    "fill": -1.0,
+    "predicted_ip": null,
+    "status": "OK",
+    "CORR": "3F800000",
+    "ZD": "00000000",
+    "stderr": ""
+  },
+  {
+    "name": "one_pixel",
+    "orig": 1.0,
+    "fill": 1.0,
+    "predicted_ip": 0,
+    "status": "OK",
+    "CORR": "3F800000",
+    "ZD": "00000000",
+    "stderr": ""
+  },
+  {
+    "name": "large_values",
+    "orig": 3000000.0,
+    "fill": 3000100.0,
+    "predicted_ip": 0,
+    "status": "OK",
+    "CORR": "3F800000",
+    "ZD": "00000000",
+    "stderr": ""
+  }
+]

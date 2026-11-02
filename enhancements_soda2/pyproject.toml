@@ -1,0 +1,51 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "arrayprobe-soda2-enhancements"
+# 0.1.0, matching the core package.
+#
+# Held equal to the core version and to the sibling enhancement suite: they are
+# released together. These modules are not part of the reproduction claim and
+# their API can still move; 0.x says so.
+version = "0.1.0"
+description = "Opt-in corrections and extensions that consume arrayprobe_soda2's output -- never part of the faithful SODA-2 port itself"
+readme = "README.md"
+requires-python = ">=3.12"
+
+# Not a SODA-2 derivative work in the way the port is: this package contains no
+# transcribed IDL. Individual modules cite their own scientific source instead
+# of a SODA-2 file:line where one applies.
+#
+# The SODA-2 *source* this package's docstrings cite (via `arrayprobe_soda2`)
+# is BSD-3 (UCAR/NCAR 2016), not GPL -- see `arrayprobe_soda2/__init__.py`.
+# The 3-clause BSD licence (LICENSE), like SODA-2, whose notice LICENSES/BSD-3-Clause.txt
+# retains.
+license = "BSD-3-Clause"
+license-files = ["LICENSE", "LICENSES/BSD-3-Clause.txt", "NOTICE.md"]
+
+authors = [{ name = "Siddhant Gupta" }]
+keywords = ["optical array probe", "OAP", "cloud microphysics", "SODA-2", "enhancements"]
+
+dependencies = [
+    "arrayprobe>=0.1.0,<0.2",
+    "numpy>=2.0",
+    "netCDF4>=1.7.2",  # first netCDF4 with wheels on every supported Python (as the core)
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "ruff>=0.6", "mypy>=2.3"]
+
+[project.urls]
+Homepage = "https://github.com/sgupta92/arrayprobe"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+"*" = ["py.typed"]
+
+[tool.ruff]
+line-length = 100
+src = ["src", "tests"]

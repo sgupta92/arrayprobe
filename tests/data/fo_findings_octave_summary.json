@@ -1,0 +1,255 @@
+{
+ "cases": {
+  "deadtime_gap": {
+   "ddate": "20160906 164129",
+   "probe": "2DS",
+   "timehhmmss": [
+    164129,
+    164130,
+    164131,
+    164132,
+    164133,
+    164134
+   ],
+   "trees": {
+    "production": {
+     "messages": [
+      "Number of duplicate times = 0",
+      "int_arr > 1 mean: 3.7000, max: 3.7000",
+      "Number of particles with int_arr > 1: 1"
+     ]
+    }
+   }
+  },
+  "deadtime_gap_control": {
+   "ddate": "20160906 164129",
+   "probe": "2DS",
+   "timehhmmss": [
+    164129,
+    164130,
+    164131,
+    164132,
+    164133,
+    164134
+   ],
+   "trees": {
+    "production": {
+     "messages": [
+      "Number of duplicate times = 0",
+      "int_arr > 1 mean: 3.7000, max: 3.7000",
+      "Number of particles with int_arr > 1: 1"
+     ]
+    }
+   }
+  },
+  "dof_cip": {
+   "ddate": "20160906 095600",
+   "probe": "CIP",
+   "timehhmmss": [
+    95600,
+    95601,
+    95602,
+    95603
+   ],
+   "trees": {
+    "production": {
+     "messages": [
+      "Number of duplicate times = 0",
+      "int_arr > 1 mean: NaN, max:",
+      "Number of particles with int_arr > 1: 0"
+     ]
+    }
+   }
+  },
+  "dof_cip_control": {
+   "ddate": "20160906 095600",
+   "probe": "CIP",
+   "timehhmmss": [
+    95600,
+    95601,
+    95602,
+    95603
+   ],
+   "trees": {
+    "production": {
+     "messages": [
+      "Number of duplicate times = 0",
+      "int_arr > 1 mean: NaN, max:",
+      "Number of particles with int_arr > 1: 0"
+     ]
+    }
+   }
+  },
+  "midnight_cip_control": {
+   "ddate": "20160906 095600",
+   "probe": "CIP",
+   "timehhmmss": [
+    95600,
+    95601,
+    95602,
+    95603,
+    95604,
+    95605,
+    95606,
+    95607
+   ],
+   "trees": {
+    "production": {
+     "messages": [
+      "Number of duplicate times = 0",
+      "int_arr > 1 mean: NaN, max:",
+      "Number of particles with int_arr > 1: 0"
+     ]
+    }
+   }
+  },
+  "midnight_cip_high": {
+   "ddate": "20160906 095600",
+   "probe": "CIP",
+   "timehhmmss": [
+    95600,
+    95601,
+    95602,
+    95603,
+    95604,
+    95605,
+    95606,
+    95607
+   ],
+   "trees": {
+    "production": {
+     "messages": [
+      "Number of duplicate times = 0",
+      "int_arr > 1 mean: NaN, max:",
+      "Number of particles with int_arr > 1: 0",
+      "2 / 4\tError on sizing at index 4"
+     ]
+    }
+   }
+  },
+  "midnight_cip_zero": {
+   "ddate": "20160906 095600",
+   "probe": "CIP",
+   "timehhmmss": [
+    95600,
+    95601,
+    95602,
+    95603,
+    95604,
+    95605,
+    95606,
+    95607
+   ],
+   "trees": {
+    "production": {
+     "messages": [
+      "Number of duplicate times = 0",
+      "int_arr > 1 mean: NaN, max:",
+      "Number of particles with int_arr > 1: 0"
+     ]
+    }
+   }
+  },
+  "tas_grid_gap": {
+   "ddate": "20160906 164129",
+   "probe": "2DS",
+   "timehhmmss": [
+    164129,
+    164130,
+    164130,
+    164131,
+    164133,
+    164134
+   ],
+   "trees": {
+    "production": {
+     "messages": [
+      "Number of duplicate times = 0",
+      "int_arr > 1 mean: NaN, max:",
+      "Number of particles with int_arr > 1: 0",
+      "0 / 3\tError on sizing at index 2"
+     ]
+    }
+   }
+  },
+  "tas_grid_regular": {
+   "ddate": "20160906 164129",
+   "probe": "2DS",
+   "timehhmmss": [
+    164129,
+    164130,
+    164131,
+    164132,
+    164133,
+    164134
+   ],
+   "trees": {
+    "production": {
+     "messages": [
+      "Number of duplicate times = 0",
+      "int_arr > 1 mean: NaN, max:",
+      "Number of particles with int_arr > 1: 0"
+     ]
+    }
+   }
+  },
+  "z_hollow_ring": {
+   "ddate": "20160906 164129",
+   "probe": "2DS",
+   "timehhmmss": [
+    164129,
+    164130,
+    164131
+   ],
+   "trees": {
+    "production": {
+     "messages": [
+      "Number of duplicate times = 0",
+      "int_arr > 1 mean: NaN, max:",
+      "Number of particles with int_arr > 1: 0"
+     ]
+    },
+    "stock": {
+     "messages": [
+      "Number of duplicate times = 0",
+      "int_arr > 1 mean: NaN, max:",
+      "Number of particles with int_arr > 1: 0"
+     ]
+    }
+   }
+  }
+ },
+ "octave": "<HOME>\\AppData\\Local\\Programs\\GNU Octave\\Octave-11.3.0\\mingw64\\bin\\octave-cli.exe",
+ "reject_stage": {
+  "images": {
+   "cx": 16.0,
+   "cy": 9.0,
+   "inner": 5.0,
+   "n_diodes": 128,
+   "n_slices": 19,
+   "outer": 7.0
+  },
+  "stock_calculate_reject_unified": {
+   "disc": {
+    "area": 149.0,
+    "area_ratio": 0.84316752073573,
+    "code": "0",
+    "habit": "h",
+    "minR": 15.0,
+    "p_length": 15.0,
+    "percent_shadow_area": 66.22222222222223,
+    "width": 15.0
+   },
+   "ring": {
+    "area": 68.0,
+    "area_ratio": 0.3848012846310714,
+    "code": "H",
+    "habit": "d",
+    "minR": 15.0,
+    "p_length": 15.0,
+    "percent_shadow_area": 30.22222222222222,
+    "width": 15.0
+   }
+  }
+ }
+}

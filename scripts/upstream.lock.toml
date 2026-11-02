@@ -1,0 +1,36 @@
+# Pinned upstream source trees. Read by scripts/fetch_upstream.py.
+#
+# Each full SHA was taken from, or resolved against, the vendored tree's provenance record:
+# - soda2: the provenance record states the full SHA directly.
+# - uiops314 / uiops35: the provenance record has only the short SHA in the directory name
+#   (ba5e67c, 039be82); resolved 2026-10-08 with
+#   `gh api repos/joefinlon/UIOPS/commits/<short> --jq .sha`.
+# tests/test_fetch_upstream.py checks each SHA against its PROVENANCE file.
+#
+# tree     = the tree's directory name, which prefixes every manifest key
+# inner    = the source directory inside the tree (GitHub's tarball top-level name)
+# manifest = the tracked hash manifest, repository-relative
+
+[uiops314]
+repo = "joefinlon/UIOPS"
+sha = "ba5e67c5439581955bb6b1832aebcdc45bef5c64"
+tree = "UIOPS-v3.1.4"
+inner = "joefinlon-UIOPS-ba5e67c"
+manifest = "scripts/upstream/UIOPS-v3.1.4.sha256.json"
+env = "ARRAYPROBE_UIOPS314_TREE"
+
+[uiops35]
+repo = "joefinlon/UIOPS"
+sha = "039be8296277c7b5e71e6cdb3d0069354de191e3"
+tree = "UIOPS-v3.5"
+inner = "joefinlon-UIOPS-039be82"
+manifest = "scripts/upstream/UIOPS-v3.5.sha256.json"
+env = "ARRAYPROBE_UIOPS35_TREE"
+
+[soda2]
+repo = "abansemer/soda2"
+sha = "afcea15459b77eca538c4eb732beebc67e7c7010"
+tree = "SODA2"
+inner = "abansemer-soda2-afcea15"
+manifest = "scripts/upstream/SODA2.sha256.json"
+env = "ARRAYPROBE_SODA2_TREE"

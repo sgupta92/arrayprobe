@@ -1,0 +1,45 @@
+Source: SODA-2 OAP Processing Software
+Flight Date (mm/dd/yyyy): 09/06/2016
+Date Processed: Sat Oct  3 02:48:19 2026
+Variable Descriptions: 
+      1. time: UTC time [seconds]
+      2. probetime: Unadjusted probe particle time [seconds]
+      3. buffertime: Buffer time [seconds]
+      4. rawtime: Raw time [slices or seconds]
+      5. reftime: Reference time for buffer matching [seconds]
+      6. inttime: Interarrival time from previous particle [seconds]
+      7. diam: Particle diameter [microns]
+      8. xsize: X-size [microns]
+      9. ysize: Y-size [microns]
+     10. xextent: Maximum x-size [microns]
+     11. oned: 1-D emulation size [microns]
+     12. twod: 2-D emulation size [microns]
+     13. areasize: Equivalent area size [microns]
+     14. arearatio: Area ratio [unitless]
+     15. arearatiofilled: Area ratio filled [unitless]
+     16. aspectratio: Aspect ratio [unitless]
+     17. area: Number of shaded pixels [pixels]
+     18. areafilled: Number of shaded pixels filled [pixels]
+     19. perimeterarea: Number of perimeter pixels [pixels]
+     20. area75: Number of shaded pixels at 75% [pixels]
+     21. xpos: X-position [pixels]
+     22. ypos: Y-position [pixels]
+     23. allin: All-in flag [unitless]
+     24. centerin: Center-in flag [unitless]
+     25. dofflag: Depth of field flag [unitless]
+     26. edgetouch: Edge touch [unitless]
+     27. sizecorrection: Size correction factor [unitless]
+     28. zd: Z position [microns]
+     29. missed: Missed particle count [number]
+     30. probetas: True air speed for probe clock [m/s]
+     31. aircrafttas: True air speed for aircraft [m/s]
+     32. overloadflag: Overload flag [boolean]
+     33. particlecounter: Particle counter [number]
+     34. orientation: Particle orientation [degrees]
+     35. rejectionflag: Particle rejection code [unitless]
+     36. numregions: Number of connected regions [count]
+     37. diodegaps: Number of unshaded diodes [count]
+-------------------------------------------
+time,probetime,buffertime,rawtime,reftime,inttime,diam,xsize,ysize,xextent,oned,twod,areasize,arearatio,arearatiofilled,aspectratio,area,areafilled,perimeterarea,area75,xpos,ypos,allin,centerin,dofflag,edgetouch,sizecorrection,zd,missed,probetas,aircrafttas,overloadflag,particlecounter,orientation,rejectionflag,numregions,diodegaps
+0.50000,0.00000,0.50000,0.00000,0.00000,1.00000e-02,120.0,0.0,0.0,0.0,0.0,0.0,0.0,0.80,0.80,0.80,100,100,50,80,0.00,0.00,1,1,1,0,0.00,0.00,0,50.00,0.00,0,0,0.00,0,0,0
+2.50000,0.00000,2.50000,0.00000,0.00000,1.00000e-02,120.0,0.0,0.0,0.0,0.0,0.0,0.0,0.80,0.80,0.80,100,100,50,80,0.00,0.00,1,1,1,0,0.00,0.00,0,50.00,0.00,0,0,0.00,0,0,0

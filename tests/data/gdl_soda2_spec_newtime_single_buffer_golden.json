@@ -1,0 +1,88 @@
+{
+ "subscript": {
+  "n1": {
+   "x": [
+    10.0
+   ],
+   "scalar_minus2": "ERR: Scalar subscript out of range [<0]: (-1)",
+   "array_minus2": "10"
+  },
+  "n2": {
+   "x": [
+    10.0,
+    11.0
+   ],
+   "scalar_minus2": "10",
+   "array_minus2": "10"
+  },
+  "n3": {
+   "x": [
+    10.0,
+    11.0,
+    12.0
+   ],
+   "scalar_minus2": "11",
+   "array_minus2": "10"
+  }
+ },
+ "spec_newtime": {
+  "n1_equal": {
+   "halt": "% SPEC_NEWTIME: Subscript out of range [s:*].",
+   "halted_at": "spec_newtime.pro:10",
+   "n": 1,
+   "rawtime": [
+    2147483648.0
+   ],
+   "buffertime_idl": "[5000d]",
+   "probetas": 100.0,
+   "yres": 10.0
+  },
+  "n2_equal": {
+   "newtime": [
+    5000.0,
+    5429.49674461914
+   ],
+   "n": 2,
+   "rawtime": [
+    2147483648.0,
+    2147483748.0
+   ],
+   "buffertime_idl": "[5000d, 5000d]",
+   "probetas": 100.0,
+   "yres": 10.0
+  },
+  "n3_equal": {
+   "newtime": [
+    5000.0,
+    5000.00001,
+    5429.496754619141
+   ],
+   "n": 3,
+   "rawtime": [
+    2147483648.0,
+    2147483748.0,
+    2147483848.0
+   ],
+   "buffertime_idl": "[5000d, 5000d, 5000d]",
+   "probetas": 100.0,
+   "yres": 10.0
+  },
+  "n3_decreasing": {
+   "newtime": [
+    4999.0,
+    4999.00001,
+    5428.496754619141
+   ],
+   "n": 3,
+   "rawtime": [
+    2147483648.0,
+    2147483748.0,
+    2147483848.0
+   ],
+   "buffertime_idl": "[5000d, 4999d, 4998d]",
+   "probetas": 100.0,
+   "yres": 10.0
+  }
+ },
+ "gdl_version": "8.4"
+}

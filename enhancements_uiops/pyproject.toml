@@ -1,0 +1,72 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "arrayprobe-uiops-enhancements"
+# 0.1.0, matching the core package.
+#
+# Held equal to the core version and to the sibling enhancement suite: they are
+# released together. These modules are not part of the reproduction claim and
+# their API can still move; 0.x says so.
+version = "0.1.0"
+description = "Opt-in, real-new-science extensions that consume arrayprobe's output -- never part of the faithful port itself"
+readme = "README.md"
+# 3.12, not 3.11. This package depends on `arrayprobe`, whose pinned numpy
+# 2.5.2 requires 3.12, so a ">=3.11" declared here could never be satisfied:
+# pip resolving this package on 3.11 fails on the port, not on anything of its
+# own. The port's floor was corrected on 2026-09-08 after the first
+# cross-platform CI run killed every 3.11 leg at the install; this file was
+# missed in that pass, and the enhancements CI job runs 3.13 only, so nothing
+# would have caught it. `tests/test_publish_ready.py` now asserts the two
+# floors and every page quoting one agree.
+requires-python = ">=3.12"
+
+# Not a UIOPS derivative work in the way the port is: this package contains no
+# transcribed MATLAB. Individual modules cite their own scientific source
+# (e.g. Korolev 2007) instead of a UIOPS file:line. The 3-clause BSD licence (LICENSE);
+# the one module derived from NCAR Process2D (`field2006_shatter.py`) also keeps
+# Process2D's Apache-2.0 terms (LICENSES/).
+license = "BSD-3-Clause AND Apache-2.0"
+license-files = ["LICENSE", "LICENSES/BSD-3-Clause.txt", "LICENSES/Apache-2.0.txt", "NOTICE.md"]
+
+authors = [{ name = "Siddhant Gupta" }]
+keywords = ["optical array probe", "OAP", "cloud microphysics", "UIOPS", "enhancements"]
+
+dependencies = [
+    "arrayprobe>=0.1.0,<0.2",
+    "numpy>=2.0",
+    "netCDF4>=1.7.2",  # first netCDF4 with wheels on every supported Python (as the core)
+]
+
+[project.optional-dependencies]
+# Dependency sweep, 2026-10-05: psutil, xarray and cftime are imported by this suite's tests
+# (cftime only transitively guaranteed by netCDF4) and scipy by scripts/und_chain_crossover.py;
+# floors are the installed versions. mypy's floor is the 2.x line CI's baseline was run on.
+dev = ["pytest>=8", "ruff>=0.6", "mypy>=2.3", "psutil>=7.2", "xarray>=2026.9", "cftime>=1.6"]
+tools = ["scipy>=1.16"]
+
+[project.scripts]
+# Adding or renaming a line here does NOT reach an existing editable install.
+# Console scripts are generated at install time, so a venv installed before this
+# table existed keeps a dist-info with no `entry_points.txt` and exposes no
+# command -- silently, with every document still telling a reader to run it.
+# That is exactly what happened between commit 41b7cce (which added this table)
+# and 2026-09-16, when the worked example measured the missing
+# `arrayprobe-enhanced.exe`. After touching this table, re-run:
+#     python -m pip install -e enhancements_uiops --no-deps --no-build-isolation
+# into every venv that is meant to expose the command.
+arrayprobe-enhanced = "arrayprobe_enhancements.pipeline:main"
+
+[project.urls]
+Homepage = "https://github.com/sgupta92/arrayprobe"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+"*" = ["py.typed"]
+
+[tool.ruff]
+line-length = 100
+src = ["src", "tests"]

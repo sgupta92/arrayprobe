@@ -1,0 +1,1 @@
+engine=3.1.4 iat_file=2DS_intArrThreshold_MISSING.cdf profile=oracles-production reject=(rej_zero_area=True,rej_split=True,rej_hollow=False,shadowed_area=25,max_edge_img_ar=4,max_comp_img_ar=4) shadow_diode=none tree=production area_ratio_z=0.5 (default) default_int_arr_thresh=6e-06 (default)

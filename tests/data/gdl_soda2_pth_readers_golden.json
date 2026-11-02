@@ -1,0 +1,382 @@
+[
+  {
+    "name": "txt_plain",
+    "fixture": "soda2_pth_plain.txt",
+    "starttime": 100,
+    "stoptime": 105,
+    "rate": 1,
+    "note": "space-separated, gap at 103 carried forward by `:156`'s `i:*`.",
+    "status": "OK",
+    "GOT": 1,
+    "TAS": [
+      "43168000",
+      "43174000",
+      "43180000",
+      "43180000",
+      "431AC000",
+      "431AC000"
+    ],
+    "TN": "FLOAT,6"
+  },
+  {
+    "name": "csv_mixed",
+    "fixture": "soda2_pth_mixed.csv",
+    "starttime": 100,
+    "stoptime": 106,
+    "rate": 1,
+    "note": "header row, a non-numeric TAS field, TAS 450 accepted (bound 500), 0/-5 rejected, a 1-field row, a blank line, a tab, an exponent.",
+    "status": "OK",
+    "GOT": 1,
+    "TAS": [
+      "43160000",
+      "43160000",
+      "43E10000",
+      "43E10000",
+      "43200000",
+      "432A0000",
+      "432A0000"
+    ],
+    "TN": "FLOAT,7"
+  },
+  {
+    "name": "csv_window",
+    "fixture": "soda2_pth_window.csv",
+    "starttime": 100,
+    "stoptime": 104,
+    "rate": 1,
+    "note": "a row before starttime clamps to index 0 (`> 0`); one past the window is dropped; out-of-order rows: last read wins.",
+    "status": "OK",
+    "GOT": 1,
+    "TAS": [
+      "42DE0000",
+      "43050000",
+      "43050000",
+      "43050000",
+      "43050000"
+    ],
+    "TN": "FLOAT,5"
+  },
+  {
+    "name": "csv_window_rate2",
+    "fixture": "soda2_pth_window.csv",
+    "starttime": 100,
+    "stoptime": 104,
+    "rate": 2,
+    "note": "the same file at rate 2: (102-100)/2 = 1, (101-100)/2 = 0.5 truncates to subscript 0.",
+    "status": "OK",
+    "GOT": 1,
+    "TAS": [
+      "43050000",
+      "43050000",
+      "43050000"
+    ],
+    "TN": "FLOAT,3"
+  },
+  {
+    "name": "txt_float32",
+    "fixture": "soda2_pth_float32.txt",
+    "starttime": 36000,
+    "stoptime": 36004,
+    "rate": 1,
+    "note": "36001.4999 parses to FLOAT 36001.5, rounds to 36002.",
+    "status": "OK",
+    "GOT": 1,
+    "TAS": [
+      "42C80000",
+      "42C80000",
+      "43480000",
+      "43960000",
+      "43960000"
+    ],
+    "TN": "FLOAT,5"
+  },
+  {
+    "name": "csv_crlf",
+    "fixture": "soda2_pth_crlf.csv",
+    "starttime": 100,
+    "stoptime": 103,
+    "rate": 1,
+    "note": "CRLF terminators: does the trailing CR reach `float()`?",
+    "status": "OK",
+    "GOT": 1,
+    "TAS": [
+      "43160000",
+      "43200000",
+      "432A0000",
+      "432A0000"
+    ],
+    "TN": "FLOAT,4"
+  },
+  {
+    "name": "txt_noeol",
+    "fixture": "soda2_pth_noeol.txt",
+    "starttime": 100,
+    "stoptime": 103,
+    "rate": 1,
+    "note": "leading whitespace; last line without a terminator.",
+    "status": "OK",
+    "GOT": 1,
+    "TAS": [
+      "43160000",
+      "43160000",
+      "432A0000",
+      "432A0000"
+    ],
+    "TN": "FLOAT,4"
+  },
+  {
+    "name": "txt_empty",
+    "fixture": "soda2_pth_empty.txt",
+    "starttime": 100,
+    "stoptime": 102,
+    "rate": 1,
+    "note": "empty file: first `readf` hits end of file inside `on_ioerror`.",
+    "status": "OK",
+    "GOT": 1,
+    "TAS": [
+      "00000000",
+      "00000000",
+      "00000000"
+    ],
+    "TN": "FLOAT,3"
+  },
+  {
+    "name": "csv_hirate",
+    "fixture": "soda2_pth_hirate.csv",
+    "starttime": 100,
+    "stoptime": 102,
+    "rate": 1,
+    "note": "several rows a second; `round()` half away from zero.",
+    "status": "OK",
+    "GOT": 1,
+    "TAS": [
+      "43160000",
+      "43250000",
+      "432A0000"
+    ],
+    "TN": "FLOAT,3"
+  },
+  {
+    "name": "csv_nan",
+    "fixture": "soda2_pth_nan.csv",
+    "starttime": 100,
+    "stoptime": 104,
+    "rate": 1,
+    "note": "NaN and Inf TAS strings.",
+    "status": "OK",
+    "GOT": 1,
+    "TAS": [
+      "00000000",
+      "43160000",
+      "43160000",
+      "43200000",
+      "43200000"
+    ],
+    "TN": "FLOAT,5"
+  },
+  {
+    "name": "csv_badtime",
+    "fixture": "soda2_pth_badtime.csv",
+    "starttime": 100,
+    "stoptime": 103,
+    "rate": 1,
+    "note": "`abc` time with good TAS; `102x` numeric prefix plus junk.",
+    "status": "OK",
+    "GOT": 1,
+    "TAS": [
+      "00000000",
+      "43200000",
+      "432A0000",
+      "432A0000"
+    ],
+    "TN": "FLOAT,4"
+  },
+  {
+    "name": "csv_allbad",
+    "fixture": "soda2_pth_allbad.csv",
+    "starttime": 100,
+    "stoptime": 102,
+    "rate": 1,
+    "note": "no row accepted, yet `got_pth=1` with an all-zero `pth_tas`.",
+    "status": "OK",
+    "GOT": 1,
+    "TAS": [
+      "00000000",
+      "00000000",
+      "00000000"
+    ],
+    "TN": "FLOAT,3"
+  },
+  {
+    "name": "csv_exotic",
+    "fixture": "soda2_pth_exotic.csv",
+    "starttime": 100,
+    "stoptime": 104,
+    "rate": 1,
+    "note": "`d` exponent, sign, leading `.`, trailing comma, junk third field, hex literal.",
+    "status": "OK",
+    "GOT": 1,
+    "TAS": [
+      "43160000",
+      "43200000",
+      "43200000",
+      "432A0000",
+      "433E0000"
+    ],
+    "TN": "FLOAT,5"
+  },
+  {
+    "name": "csv_dexp",
+    "fixture": "soda2_pth_dexp.csv",
+    "starttime": 100,
+    "stoptime": 103,
+    "rate": 1,
+    "note": "`1.02d2`: 102 if `d` is an exponent, clamped to 0 if a prefix.",
+    "status": "OK",
+    "GOT": 1,
+    "TAS": [
+      "43160000",
+      "43160000",
+      "43200000",
+      "43200000"
+    ],
+    "TN": "FLOAT,4"
+  },
+  {
+    "name": "csv_nantime",
+    "fixture": "soda2_pth_nantime.csv",
+    "starttime": 100,
+    "stoptime": 104,
+    "rate": 1,
+    "note": "a NaN time with TAS 155 read last.",
+    "status": "OK",
+    "GOT": 1,
+    "TAS": [
+      "431B0000",
+      "431B0000",
+      "431B0000",
+      "431B0000",
+      "431B0000"
+    ],
+    "TN": "FLOAT,5"
+  },
+  {
+    "name": "nc_mismatch",
+    "fixture": "soda2_pth_mismatch.nc",
+    "starttime": 100,
+    "stoptime": 104,
+    "rate": 1,
+    "note": "TIME (5) and TASX (3) of unequal length.",
+    "status": "OK",
+    "GOT": 1,
+    "TAS": [
+      "43160000",
+      "43200000",
+      "432A0000",
+      "432A0000",
+      "432A0000"
+    ],
+    "TN": "FLOAT,5"
+  },
+  {
+    "name": "nc_plain",
+    "fixture": "soda2_pth_plain.nc",
+    "starttime": 100,
+    "stoptime": 104,
+    "rate": 1,
+    "note": "NCAR-style Time/TASX; 0, 450, -32767 and a past-stoptime sample rejected by `:167`.",
+    "status": "OK",
+    "GOT": 1,
+    "TAS": [
+      "43160000",
+      "43160000",
+      "43160000",
+      "43160000",
+      "432A0000"
+    ],
+    "TN": "FLOAT,5"
+  },
+  {
+    "name": "nc_lowercase",
+    "fixture": "soda2_pth_lowercase.nc",
+    "starttime": 100,
+    "stoptime": 104,
+    "rate": 1,
+    "note": "`time`/`TasX` still matched (upper-cased compare); DOUBLE .5 times.",
+    "status": "OK",
+    "GOT": 1,
+    "TAS": [
+      "00000000",
+      "43200000",
+      "43200000",
+      "43340000",
+      "43340000"
+    ],
+    "TN": "FLOAT,5"
+  },
+  {
+    "name": "nc_packed",
+    "fixture": "soda2_pth_packed.nc",
+    "starttime": 100,
+    "stoptime": 103,
+    "rate": 1,
+    "note": "SHORT TASX with scale_factor 0.1: read raw, 1500/1700 rejected.",
+    "status": "OK",
+    "GOT": 1,
+    "TAS": [
+      "00000000",
+      "43160000",
+      "43160000",
+      "43160000"
+    ],
+    "TN": "FLOAT,4"
+  },
+  {
+    "name": "nc_duplicate",
+    "fixture": "soda2_pth_duplicate.nc",
+    "starttime": 100,
+    "stoptime": 104,
+    "rate": 1,
+    "note": "`Time` then `TIME`: the first is kept.",
+    "status": "OK",
+    "GOT": 1,
+    "TAS": [
+      "43160000",
+      "43200000",
+      "432A0000",
+      "432A0000",
+      "432A0000"
+    ],
+    "TN": "FLOAT,5"
+  },
+  {
+    "name": "nc_nogood",
+    "fixture": "soda2_pth_nogood.nc",
+    "starttime": 100,
+    "stoptime": 104,
+    "rate": 1,
+    "note": "no sample passes `:167` (TAS 450/500/600); `where` returns -1 unchecked and an out-of-range TAS still reaches `pth_tas`.",
+    "status": "OK",
+    "GOT": 1,
+    "TAS": [
+      "00000000",
+      "00000000",
+      "00000000",
+      "44160000",
+      "44160000"
+    ],
+    "TN": "FLOAT,5"
+  },
+  {
+    "name": "nc_notasx",
+    "fixture": "soda2_pth_notasx.nc",
+    "starttime": 100,
+    "stoptime": 104,
+    "rate": 1,
+    "note": "no TASX variable: `data.tasx` is not a tag.",
+    "status": "HALTED",
+    "timed_out": true,
+    "stdout": "BEGIN=nc_notasx\n",
+    "stderr": "% Attempt to call undefined procedure: DLM_REGISTER\n% Execution halted at: $MAIN$          \n% Compiled module: BANK.\n% Compiled module: PTH_BLOCK.\n% Compiled module: RESTORENC.\n% Compiled module: NCDF2SAV.\n% PTH_BLOCK: Tag name: TASX is undefined for STRUCT.\n% Execution halted at: PTH_BLOCK           25 <tmp>\\pth_block.pro\n%                      BANK                 6 <tmp>\\bank.pro\n%                      $MAIN$          \n"
+  }
+]

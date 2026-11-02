@@ -1,0 +1,121 @@
+{
+ "payload_len": 256,
+ "payload_at_pointer": [
+  100,
+  101,
+  102,
+  103,
+  104,
+  105,
+  106,
+  107
+ ],
+ "gz_bytes_at_pointer": [
+  85,
+  86,
+  87,
+  88,
+  89,
+  90,
+  91,
+  92
+ ],
+ "records": [
+  {
+   "name": "fstat_size_plain",
+   "line": "soda2_buildindex.pro:22-26, plain file",
+   "compress": 0,
+   "file_bytes": 256,
+   "pointer": 100,
+   "nread": 8,
+   "status": "OK",
+   "SIZE": 256,
+   "READ": [
+    100,
+    101,
+    102,
+    103,
+    104,
+    105,
+    106,
+    107
+   ]
+  },
+  {
+   "name": "fstat_size_gz",
+   "line": "soda2_buildindex.pro:22-26, compress=1",
+   "compress": 1,
+   "file_bytes": 279,
+   "pointer": 100,
+   "nread": 8,
+   "status": "OK",
+   "SIZE": 279,
+   "READ": [
+    100,
+    101,
+    102,
+    103,
+    104,
+    105,
+    106,
+    107
+   ]
+  },
+  {
+   "name": "empty_gz",
+   "line": "soda2_buildindex.pro:26, empty .gz",
+   "compress": 1,
+   "file_bytes": 20,
+   "pointer": 100,
+   "nread": 8,
+   "status": "OK",
+   "SIZE": 20,
+   "READ": null
+  },
+  {
+   "name": "reopen_gz_without_compress",
+   "line": "soda2_process_2d.pro:445-446, bare openr on the .gz",
+   "compress": 0,
+   "file_bytes": 279,
+   "pointer": 100,
+   "nread": 8,
+   "status": "OK",
+   "SIZE": 279,
+   "READ": [
+    85,
+    86,
+    87,
+    88,
+    89,
+    90,
+    91,
+    92
+   ]
+  },
+  {
+   "name": "sea_pointers_plain",
+   "line": "seaimagepointers.pro:6-8,62-64",
+   "compress": 0,
+   "file_bytes": 20000,
+   "status": "OK",
+   "SIZE": 20000,
+   "EOF": 0,
+   "PTR": [
+    48,
+    84,
+    4000,
+    8000
+   ]
+  },
+  {
+   "name": "sea_pointers_gz",
+   "line": "seaimagepointers.pro:6-8,62-64",
+   "compress": 1,
+   "file_bytes": 79,
+   "status": "OK",
+   "SIZE": 79,
+   "EOF": 1,
+   "PTR": []
+  }
+ ]
+}

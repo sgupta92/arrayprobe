@@ -1,0 +1,266 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "arrayprobe"
+# Keep in step with ``src/arrayprobe/__init__.py``'s ``__version__``.
+# ``tests/test_version.py`` reads this file and the module separately and fails
+# if they disagree, so the pair cannot drift silently; see that module's
+# docstring for why the first release is ``0.1.0`` and not ``1.0.0``.
+version = "0.1.0"
+description = "Python ports of the UIOPS v3.5 and SODA-2 optical array probe processing chains"
+# A short pointer page with no typed counts, so the long description cannot drift from the README.
+readme = "docs/developer/PACKAGE_README.md"
+requires-python = ">=3.12"
+
+# PEP 639 SPDX expression: the 3-clause BSD licence (LICENSE).
+# NOTICE.md credits UIOPS and SODA-2; LICENSES/BSD-3-Clause.txt retains SODA-2's notice;
+# A licence-header check reads every file's SPDX line.
+# License classifiers are deprecated -- do not add them back.
+license = "BSD-3-Clause"
+license-files = ["LICENSE", "LICENSES/BSD-3-Clause.txt", "NOTICE.md"]
+
+authors = [{ name = "Siddhant Gupta" }]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Science/Research",
+    "Natural Language :: English",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Scientific/Engineering :: Atmospheric Science",
+]
+keywords = ["optical array probe", "OAP", "cloud microphysics", "2DS", "HVPS", "UIOPS",
+            "SODA-2", "particle size distribution", "cloud probe"]
+
+dependencies = [
+    "numpy>=2.0",
+    # 1.7.2 is the first netCDF4 with wheels for every supported Python.
+    "netCDF4>=1.7.2",
+    # The default v3.5 path's stray-pixel correction (arrayprobe_uiops.stray_pixel) uses
+    # scipy.ndimage; 1.16 is the same floor as the [extra] entry below.
+    "scipy>=1.16",
+]
+
+[project.optional-dependencies]
+# scipy 1.16 is the lowest series on which the inter-arrival fitting tests pass (1.13-1.15 fail them);
+# psutil feeds the run load record; matplotlib 3.8.4 is the first 3.8 that installs with numpy>=2.
+extra = ["scipy>=1.16", "matplotlib>=3.8.4", "psutil>=7.2"]
+# numba has its own extra: it bounds numpy from above, so it is kept out of [extra].
+jit = ["numba>=0.67"]
+# The opt-in Zarr writer; xarray 2025.1.1 is the first that writes to zarr 3.
+zarr = ["zarr>=3.0", "xarray>=2025.1.1"]
+# The opt-in Parquet writer; the floor is the major version in use.
+parquet = ["pyarrow>=26.0"]
+# The opt-in corrections package, released alongside at the same version.
+enhancements = ["arrayprobe-uiops-enhancements>=0.1.0,<0.2", "arrayprobe-soda2-enhancements>=0.1.0,<0.2"]
+# Development tools; floors are the major versions actually run (reportlab and pypdf build the paper).
+dev = ["pytest>=8", "ruff>=0.6", "mypy>=2.3", "reportlab>=5", "pypdf>=6", "build>=1.6", "coverage>=7.16", "pre-commit>=4.6", "twine>=7.0"]
+# Exact pins of requirements.txt, requirements-dev.txt and requirements-extra.txt, for a reproducible environment:
+# pip install -e ".[pinned]". The three files stay as the source the dependency tests read.
+pinned = ["numpy==2.5.3", "netCDF4==1.7.4", "pytest==9.1.1", "ruff==0.14.4", "pre-commit==4.6.2", "coverage==7.16.1", "mypy==2.3.1", "reportlab==5.0.1", "pypdf==6.19.0", "build==1.6.1", "twine==7.0.0", "scipy==1.18.1", "matplotlib==3.11.2", "numba==0.67.0", "psutil==7.2.2", "zarr==3.4.0", "xarray==2026.9.0", "pyarrow==26.0.0"]
+
+[project.scripts]
+arrayprobe = "arrayprobe.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/sgupta92/arrayprobe"
+Documentation = "https://sgupta92.github.io/arrayprobe/"
+Issues = "https://github.com/sgupta92/arrayprobe/issues"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+# PEP 561. Without this the marker sits in the source tree and never reaches a
+# wheel, which is indistinguishable from not having written it.
+[tool.setuptools.package-data]
+"*" = ["py.typed"]
+
+[tool.ruff]
+line-length = 100
+# `scripts/` joined this on 2026-09-06. It had NEVER been linted, because the
+# documented command was `ruff check src tests` -- and `scripts/run_flight.py` is
+# the batch driver that produced every validation result and the file a UIOPS
+# developer is most likely to read as the worked example. The first run found 63
+# findings; the real ones were fixed and the rest are the exemption below.
+# `../paper` joined the same way on 2026-09-10:
+# added here so ruff's isort plugin resolves `from build_paper import ...`
+# as first-party when linting the sibling builders. The actual check scope is
+# the CLI invocation (CI, the pre-commit `files:` regex), not this
+# field -- `src` never gated which files ruff checks. The first real run over
+# `paper/` found 27 findings, all real (a genuinely unused loop variable
+# became an actual fix rather than an underscore, two `strict=True` zips that
+# are identically shaped by construction, one unsorted import block) except
+# the per-file exemption below.
+src = ["src", "tests", "scripts"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "UP", "B"]
+
+[tool.ruff.lint.per-file-ignores]
+# The flat modules are deliberate re-export shims for the Phase-1 layout.
+"*.py" = []
+# The LaTeX-generating format strings in build_paper_latex.py are made of
+# braces ("\caption{%s}" % text); ruff's UP031 rewrite to an f-string turns
+# "\caption{%s}" into "\caption{{{text}}}", where three consecutive braces
+# mean something different in both LaTeX and Python. Documented in the
+# module's own docstring; decided per call site like B905, not blanket.
+"paper/build_paper_latex.py" = ["UP031"]
+# tests/test_regression_admission.py pastes the real 2026-09-10 incident log
+# (regression_4flights_resume.launch.log's `stdout tail:`/`stderr tail:`
+# blocks) verbatim as a fixture -- reflowing it would stop it being the real
+# log the guard must refuse. E501 ONLY; the file was checked clean of
+# everything else before this exemption was written.
+"tests/test_regression_admission.py" = ["E501"]
+# octave_oracle/make_counterfactuals.py holds the MATLAB lines it splices into
+# the vendored sources as string literals, one per counterfactual. Reflowing
+# them to 100 columns would change the MATLAB, which is the whole content of
+# the file. E501 ONLY; checked clean of everything else before the exemption
+# was written, 2026-09-12, when the two oracle directories joined the lint
+# scope -- neither had ever been linted, which is why this was the first time
+# anybody looked.
+"scripts/validation/octave/make_counterfactuals.py" = ["E501"]
+# Same reason, two more files: make_probes.py holds the instrumented
+# `is_it_hollow` function it splices in, and make_production_config.py holds
+# the five dated threshold edits with their original trailing comments.
+# Both are MATLAB text, not Python, and reflowing either would change what gets
+# spliced.
+"scripts/validation/octave/make_probes.py" = ["E501"]
+"scripts/validation/octave/make_production_config.py" = ["E501"]
+# summarise_version_matrix.py prints a column-aligned report; its long lines
+# are f-strings whose padding IS the alignment. Reflowing them would leave the
+# code shorter and the output ragged, which is the wrong trade for a file whose
+# only product is that report. E501 ONLY, and it was clean of everything else
+# when the exemption was written.
+"scripts/validation/octave/summarise_version_matrix.py" = ["E501"]
+# scripts/validation/gdl/run_soda2_spec_index_bank.py's LAYOUT table carries one trailing
+# comment per fixture item explaining what it proves (the decoy it is, the
+# branch it drives) column-aligned against the tuple it documents, and its IDL
+# script constants are literal print statements copied from the plan's own
+# GDL script -- reflowing either would separate a comment from the line it
+# explains or change the IDL text under test. E501 ONLY; checked clean of
+# everything else before the exemption was written.
+"scripts/validation/gdl/run_soda2_spec_index_bank.py" = ["E501"]
+# scripts/validation/gdl/run_soda2_processbuffer_spec_bank.py's `_CASE_SCRIPT` is a
+# literal IDL print script copied verbatim from the plan's own GDL script
+# skeleton -- reflowing it would change the text under test. E501 ONLY;
+# checked clean of everything else before the exemption was written.
+"scripts/validation/gdl/run_soda2_processbuffer_spec_bank.py" = ["E501"]
+# scripts/validation/gdl/run_soda2_preloop_bank.py's `_SCRIPT` is a literal IDL print
+# script; the `op` literal is repeated per case verbatim as the plan
+# specifies it, and reflowing it would change the text under test. E501
+# ONLY; checked clean of everything else before the exemption was written.
+"scripts/validation/gdl/run_soda2_preloop_bank.py" = ["E501"]
+# scripts/validation/gdl/run_soda2_particlesort_bank.py's `_D_TEMPLATE` is the `d`
+# accumulator struct transcribed VERBATIM from soda2_process_2d.pro:49-98
+# (a verbatim-transcription rule) plus the sparse-print idiom lines --
+# reflowing either would break the verbatim-transcription requirement or
+# separate a `print`/`else print` pair. E501 ONLY; checked clean of
+# everything else before the exemption was written.
+"scripts/validation/gdl/run_soda2_particlesort_bank.py" = ["E501"]
+
+# src/arrayprobe_soda2/pbp_writer.py's `PBPPROPS` is soda2_process_2d.pro:202-238
+# transcribed VERBATIM -- the varname/longname/unit/
+# datatype/ascii_format table each writer indexes by position; reflowing the
+# long `longname` strings would break the verbatim-transcription requirement.
+# E501 ONLY; checked clean of everything else before the exemption was written.
+"src/arrayprobe_soda2/pbp_writer.py" = ["E501"]
+
+# scripts/validation/gdl/run_soda2_pbp_writer_bank.py transcribes soda2_process_2d.pro's
+# `d`/`basestruct` (same binding rule as the
+# particlesort bank above) plus the IDL `op`/header/tail blocks VERBATIM;
+# reflowing them would break the verbatim-transcription requirement. E501
+# ONLY; checked clean of everything else before the exemption was written.
+"scripts/validation/gdl/run_soda2_pbp_writer_bank.py" = ["E501"]
+
+[tool.mypy]
+# 3.12, matching `requires-python`: the pinned numpy (2.5.3) requires Python 3.12, and its stubs use PEP 695 `type` statements.
+python_version = "3.12"
+# Widened 2026-09-11 from ["src/arrayprobe"]: a bare `mypy` (no arguments) reads this list, and
+# with only `arrayprobe` named it silently skipped `arrayprobe_uiops` and `arrayprobe_soda2`
+# entirely -- CI was never affected, because `.github/workflows/tests.yml` passes `src` on the
+# command line explicitly rather than relying on this default, but a local bare `mypy` invocation
+# was checking two of the three shipped packages for nothing.
+#
+# WIDENED AGAIN 2026-09-15: `src/uiops` was the fourth shipped package this list
+# still omitted -- irrelevant to the documented CI command (`mypy src`, which passes a directory
+# on the command line and therefore ignores this list entirely, per the note above), but a real
+# gap for the same bare-`mypy` invocation the 2026-09-11 widening was written to fix. `mypy src`
+# was measured at the same time (2026-09-15) to be non-clean regardless of this list: two ports
+# (`arrayprobe_soda2/fit_poisson.py:148,154`, `particlesort.py:216`) passed an `ndarray` where a
+# function typed `Sequence[float]` was declared -- a real gap between the declared and the called
+# type, fixed by widening the declarations (`Sequence[float] | np.ndarray`) rather than by
+# narrowing the callers, since the arrays are what every real caller has. No arithmetic changed.
+files = ["src/arrayprobe", "src/arrayprobe_uiops", "src/arrayprobe_soda2", "src/uiops"]
+ignore_missing_imports = true
+
+# STAGED STRICTNESS RAMP (2026-09-15). `[tool.mypy]` above is deliberately not
+# strict -- turning on `disallow_untyped_defs` globally surfaced 302/15/362 `no-untyped-def`
+# errors in arrayprobe_uiops/arrayprobe_soda2/arrayprobe respectively (measured, `mypy
+# --disallow-untyped-defs <package>`), most of which are not one-line annotation additions --
+# fixing a handful surfaced further errors several calls downstream that would have required
+# either genuine control-flow narrowing or a change to a computed value's type through the
+# pipeline, neither of which belongs in a package-hygiene pass. THE RAMP IS THEREFORE PER
+# PACKAGE, TURNED ON ONLY WHERE IT ALREADY PASSES, never forced by weakening a check elsewhere.
+# `uiops` (1 module) and `arrayprobe_soda2` (31 modules) pass `--disallow-untyped-defs` cleanly
+# as of this measurement and are enabled below. `arrayprobe` and `arrayprobe_uiops` do not yet and
+# are NOT overridden -- forcing them would mean adding `Any`-typed escape hatches at real call
+# boundaries rather than a scoped annotation, which is a design decision for a dedicated pass,
+# not a default. Re-measure with `mypy --disallow-untyped-defs <package>` before adding either.
+#
+# `arrayprobe_uiops` JOINED 2026-09-26, annotation-only: `mypy src` under
+# this overlay reported 92 `no-untyped-def` in 14 files (78 outside `sizedist.py`), cleared by
+# adding parameter/return annotations and nothing else -- an AST comparison with annotations
+# stripped is identical to the pre-change source, and the v3.5 Octave-golden and engine tests
+# pass unchanged. Most added parameter types are `Any`: the escape hatch the paragraph above
+# names, taken deliberately so the bodies type-check without narrowing, and a list to refine.
+# `arrayprobe_uiops.sizedist` is held out by the second override below: it was being refactored
+# the same day (the first v3.5 refactor), and annotating a moving file invites a conflict. Remove that
+# override when it is annotated.
+[[tool.mypy.overrides]]
+module = ["uiops.*", "arrayprobe_soda2.*", "arrayprobe_uiops.*"]
+disallow_untyped_defs = true
+
+[[tool.mypy.overrides]]
+module = ["arrayprobe_uiops.sizedist"]
+disallow_untyped_defs = false
+
+# Shared code. The v3.1.4 package's shared modules live in arrayprobe_uiops, and each
+# arrayprobe.<m> is a sys.modules alias onto one of them. These modules are not yet fully
+# annotated, so they are checked without the disallow_untyped_defs overlay above until an
+# annotation pass removes this block. No other arrayprobe_uiops module is loosened.
+[[tool.mypy.overrides]]
+module = ["arrayprobe_uiops.combine_fork", "arrayprobe_uiops.geometry_core", "arrayprobe_uiops.habit_core", "arrayprobe_uiops.imgproc_core", "arrayprobe_uiops.intarr", "arrayprobe_uiops.intarr_analysis", "arrayprobe_uiops.intarr_plots", "arrayprobe_uiops.matlab_compat", "arrayprobe_uiops.particle_perimeter", "arrayprobe_uiops.profiles", "arrayprobe_uiops.readers.pms", "arrayprobe_uiops.readers.tasinfo", "arrayprobe_uiops.reject_core", "arrayprobe_uiops.sample_area", "arrayprobe_uiops.sizedist_core", "arrayprobe_uiops.spec_core", "arrayprobe_uiops.time_convert"]
+disallow_untyped_defs = false
+
+[tool.coverage.run]
+# Declared here, not typed into the CI workflow, so the number CI reports and
+# the number measured on the author's laptop come from the same scope.
+#
+# WIDENED 2026-09-11 from source = ["arrayprobe"]. This repository ships three
+# packages under src/ (arrayprobe, arrayprobe_uiops, arrayprobe_soda2); naming
+# only the first meant the reported figure counted none of the other two
+# packages' lines, however thoroughly (or thinly) tested they were. The old
+# figure of record, measured under that narrower scope, was 92 % REPORTED,
+# 94 % CORRECTED -- the correction was for the numba-compiled kernels in
+# `hollow.py` and `slices.py`, whose bodies execute as machine code that
+# coverage.py's tracer cannot see at all. That correction is unaffected by
+# this widening; it is still a property of the JIT, not of the suite. NO
+# `fail_under` is set, and still should not be: a threshold here would be a
+# number nobody chose, sitting on top of a measurement that already needs an
+# explanation to read correctly. The new figure under this widened scope is
+# reported wherever CI or a local run prints it -- see README/docs for
+# the platform-caveated headline number, which is refreshed separately.
+source = ["arrayprobe", "arrayprobe_uiops", "arrayprobe_soda2"]
+
+[tool.coverage.report]
+# Coverage is reported, never enforced. See the note above before adding
+# `fail_under`; it is a decision for the author, not a default.
+show_missing = false
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+# The suite is stdlib unittest (Phase-1 convention); pytest runs it unchanged.

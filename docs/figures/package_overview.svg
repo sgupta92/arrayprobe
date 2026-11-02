@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 520" width="100%" role="img" aria-labelledby="t d" font-family="system-ui, -apple-system, Segoe UI, Roboto, sans-serif">
+  <!-- source: README.md "What runs underneath", "Why trust it", "Choosing an engine", "What comes out", "Enhancements on the v3.5 engine" -->
+  <title id="t">What a user runs, and what gives confidence in it</title>
+  <desc id="d">A raw SPEC, DMT, PMS or SEA probe file goes to one of the two shipped engines, each tracking its latest upstream release: the UIOPS engine, a port of UIOPS v3.5 and the default, checked against v3.5's own sources under Octave; and the SODA-2 engine, a port of NCAR's SODA-2, checked against its own sources under GDL. Each runs the stages read-binary, imgproc, sizedist and combine to a combined flight product with size distributions, and every stage writes a .call record. Opt-in enhancements sit beside the UIOPS engine, off unless named in a run. Set apart below, and not part of this package or anything a user runs: an earlier port of UIOPS v3.1.4 reproduced archived ORACLES products cell by cell, which gives confidence that the shipped engines were built responsibly and are as accurate as possible.</desc>
+  <rect id="figure-background" x="0" y="0" width="960" height="520" fill="#ffffff"/>
+  <defs>
+    <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#5B6B7C"/>
+    </marker>
+    <marker id="ahg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#3E7D5A"/>
+    </marker>
+  </defs>
+
+  <!-- section label: what you run -->
+  <text x="24" y="34" font-size="16" font-weight="700" fill="#1F2D3D">What you run</text>
+
+  <!-- raw file -->
+  <rect x="24" y="120" width="170" height="84" rx="6" fill="#E8EEF7" stroke="#4A6FA5" stroke-width="1.5"/>
+  <text x="109" y="154" text-anchor="middle" font-size="15" font-weight="600" fill="#1F2D3D">raw probe file</text>
+  <text x="109" y="177" text-anchor="middle" font-size="13" fill="#1F2D3D">SPEC · DMT · PMS · SEA</text>
+
+  <!-- UIOPS engine -->
+  <rect x="262" y="56" width="300" height="96" rx="6" fill="#E3F1E8" stroke="#3E7D5A" stroke-width="2"/>
+  <text x="412" y="84" text-anchor="middle" font-size="15" font-weight="700" fill="#1F2D3D">UIOPS engine (default)</text>
+  <text x="412" y="106" text-anchor="middle" font-size="13" fill="#1F2D3D">port of UIOPS v3.5, latest release</text>
+  <text x="412" y="128" text-anchor="middle" font-size="13" fill="#1F2D3D">checked against v3.5's own sources (Octave)</text>
+
+  <!-- SODA-2 engine -->
+  <rect x="262" y="172" width="300" height="96" rx="6" fill="#E3F1E8" stroke="#3E7D5A" stroke-width="2"/>
+  <text x="412" y="200" text-anchor="middle" font-size="15" font-weight="700" fill="#1F2D3D">SODA-2 engine</text>
+  <text x="412" y="222" text-anchor="middle" font-size="13" fill="#1F2D3D">port of NCAR's SODA-2, latest release</text>
+  <text x="412" y="244" text-anchor="middle" font-size="13" fill="#1F2D3D">checked against its own sources (GDL)</text>
+
+  <!-- arrows raw -> engines -->
+  <path d="M194,150 L260,106" fill="none" stroke="#5B6B7C" stroke-width="1.6" marker-end="url(#ah)"/>
+  <path d="M194,176 L260,218" fill="none" stroke="#5B6B7C" stroke-width="1.6" marker-end="url(#ah)"/>
+
+  <!-- enhancements, opt-in, beside the UIOPS engine -->
+  <rect x="262" y="290" width="300" height="56" rx="6" fill="#FFFFFF" stroke="#8A6D3B" stroke-width="1.5" stroke-dasharray="6 4"/>
+  <text x="412" y="314" text-anchor="middle" font-size="14" font-weight="600" fill="#5A4520">opt-in enhancements</text>
+  <text x="412" y="334" text-anchor="middle" font-size="13" fill="#5A4520">off unless a run names them</text>
+  <path d="M340,290 L340,154" fill="none" stroke="#8A6D3B" stroke-width="1.4" stroke-dasharray="4 3" marker-end="url(#ah)"/>
+
+  <!-- outputs -->
+  <rect x="632" y="96" width="304" height="132" rx="6" fill="#E8EEF7" stroke="#4A6FA5" stroke-width="1.5"/>
+  <text x="784" y="126" text-anchor="middle" font-size="15" font-weight="600" fill="#1F2D3D">combined flight product</text>
+  <text x="784" y="150" text-anchor="middle" font-size="13" fill="#1F2D3D">read-binary → imgproc →</text>
+  <text x="784" y="170" text-anchor="middle" font-size="13" fill="#1F2D3D">sizedist → combine</text>
+  <text x="784" y="194" text-anchor="middle" font-size="13" fill="#1F2D3D">particle size distributions (netCDF)</text>
+  <text x="784" y="214" text-anchor="middle" font-size="13" fill="#1F2D3D">+ a .call record per stage</text>
+
+  <!-- arrows engines -> output -->
+  <path d="M562,104 L630,140" fill="none" stroke="#5B6B7C" stroke-width="1.6" marker-end="url(#ah)"/>
+  <path d="M562,220 L630,186" fill="none" stroke="#5B6B7C" stroke-width="1.6" marker-end="url(#ah)"/>
+
+  <!-- separator -->
+  <line x1="24" y1="378" x2="936" y2="378" stroke="#9AA6B2" stroke-width="1" stroke-dasharray="3 4"/>
+
+  <!-- validation anchor, set apart -->
+  <text x="24" y="404" font-size="16" font-weight="700" fill="#4A5563">Why trust it: a validation anchor, not part of this package</text>
+  <rect x="24" y="418" width="538" height="84" rx="6" fill="#F1F2F4" stroke="#7A8592" stroke-width="1.5" stroke-dasharray="6 4"/>
+  <text x="293" y="446" text-anchor="middle" font-size="14" font-weight="600" fill="#3A4452">earlier port of UIOPS v3.1.4 (internal, not shipped)</text>
+  <text x="293" y="468" text-anchor="middle" font-size="13" fill="#3A4452">reproduced archived ORACLES products cell by cell</text>
+  <text x="293" y="488" text-anchor="middle" font-size="13" fill="#3A4452">users never run it</text>
+
+  <!-- confidence arrow up to the engines -->
+  <path d="M600,460 L600,270" fill="none" stroke="#3E7D5A" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#ahg)"/>
+  <path d="M562,460 L600,460" fill="none" stroke="#3E7D5A" stroke-width="2" stroke-dasharray="5 4"/>
+  <text x="612" y="440" font-size="14" font-weight="600" fill="#2F6347">confidence that the</text>
+  <text x="612" y="460" font-size="14" font-weight="600" fill="#2F6347">engines were built responsibly</text>
+  <text x="612" y="480" font-size="14" font-weight="600" fill="#2F6347">and are as accurate as possible</text>
+</svg>

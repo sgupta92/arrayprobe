@@ -1,0 +1,272 @@
+# Publish the three distributions to PyPI (or TestPyPI) by trusted publishing.
+#
+#   arrayprobe                       (repository root)
+#   arrayprobe-uiops-enhancements    (enhancements_uiops/)
+#   arrayprobe-soda2-enhancements    (enhancements_soda2/)
+#
+# A tag push is the release event. The checksums of the released tree (SHA256SUMS, written
+# beside the tree by the release builder) are not in the repository: the maintainer attaches
+# them to a GitHub Release made for the tag with `gh release create`. This workflow makes none.
+#
+#   push of a tag v*     -> build, check, smoke-test, run the suite on the sdist, then publish to PyPI, but only
+#                           when the tag equals the version in all three pyproject.toml
+#                           files (the check step fails the run otherwise).
+#   workflow_dispatch    -> the same build and checks, then publish to the index chosen
+#                           in the `index` input (testpypi or pypi). `pypi` publishes only
+#                           when the run is dispatched on a tag ref; on a branch the
+#                           publish-pypi job is skipped and the run still shows success.
+#
+# No token is stored anywhere. Each index trusts this repository, this workflow file and
+# the named environment (`testpypi`, `pypi`) through OpenID Connect, and mints a
+# short-lived upload credential for the publish job only.
+
+name: release
+
+on:
+  push:
+    tags: ["v*"]
+  workflow_dispatch:
+    inputs:
+      index:
+        description: "Index to publish to"
+        type: choice
+        options:
+          - testpypi
+          - pypi
+        default: testpypi
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  build:
+    name: build, check and smoke-test the three distributions
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    permissions:
+      contents: read
+      id-token: write
+      attestations: write
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+
+      - name: Versions must agree with each other and, on a tag, with the tag
+        # Reads the three static versions with tomllib. On a tag push the tag (minus the
+        # leading "v") must equal all three; on a manual run the three must at least agree
+        # with each other, because the enhancement suites pin `arrayprobe>=X,<Y`.
+        env:
+          REF_TYPE: ${{ github.ref_type }}
+          REF_NAME: ${{ github.ref_name }}
+        run: |
+          python - <<'PY'
+          import os, sys, tomllib
+          files = {
+              "arrayprobe": "pyproject.toml",
+              "arrayprobe-uiops-enhancements": "enhancements_uiops/pyproject.toml",
+              "arrayprobe-soda2-enhancements": "enhancements_soda2/pyproject.toml",
+          }
+          versions = {}
+          for expected_name, path in files.items():
+              with open(path, "rb") as fh:
+                  project = tomllib.load(fh)["project"]
+              if project["name"] != expected_name:
+                  sys.exit(f"{path} names {project['name']!r}, expected {expected_name!r}")
+              if "version" not in project:
+                  sys.exit(f"{path} has no static version")
+              versions[expected_name] = project["version"]
+          for name, version in versions.items():
+              print(f"{name} {version}")
+          if len(set(versions.values())) != 1:
+              sys.exit(f"the three versions disagree: {versions}")
+          (version,) = set(versions.values())
+          if os.environ["REF_TYPE"] == "tag":
+              tag = os.environ["REF_NAME"]
+              if tag != f"v{version}":
+                  sys.exit(f"tag {tag} does not match the pyproject version v{version}; "
+                           "refusing to publish.")
+              print(f"tag {tag} matches all three versions")
+          else:
+              print("manual run: versions agree with each other (no tag to compare)")
+          PY
+
+      - name: Install the build tooling
+        # Same pins as the `dist` job in tests.yml.
+        run: pip install "build==1.6.1" "twine==7.0.0"
+
+      - name: Build the wheel and the sdist of each distribution
+        run: |
+          python -m build --outdir dist .
+          python -m build --outdir dist enhancements_uiops
+          python -m build --outdir dist enhancements_soda2
+          ls -l dist
+
+      - name: Expect exactly one sdist and one wheel per distribution
+        run: |
+          python - <<'PY'
+          import pathlib, sys
+          names = sorted(p.name for p in pathlib.Path("dist").iterdir())
+          print("\n".join(names))
+          wheels = [n for n in names if n.endswith(".whl")]
+          sdists = [n for n in names if n.endswith(".tar.gz")]
+          if len(wheels) != 3 or len(sdists) != 3 or len(names) != 6:
+              sys.exit(f"expected 3 wheels and 3 sdists, found {len(wheels)} and {len(sdists)} "
+                       f"({len(names)} files)")
+          for stem in ("arrayprobe", "arrayprobe_uiops_enhancements",
+                       "arrayprobe_soda2_enhancements"):
+              for kind, group in (("wheel", wheels), ("sdist", sdists)):
+                  if not any(n.startswith(stem + "-") for n in group):
+                      sys.exit(f"no {kind} for {stem}")
+          PY
+
+      - name: twine check
+        run: python -m twine check dist/*
+
+      - name: Install the three wheels into a clean environment
+        # From the built wheels, not the checkout and not editable. Naming all three on one
+        # command line lets pip satisfy the enhancements' `arrayprobe>=0.1.0,<0.2` from the
+        # wheel built here rather than from the index; third-party dependencies come from
+        # PyPI as a user's install would.
+        run: |
+          python -m venv /tmp/clean
+          /tmp/clean/bin/python -m pip install --upgrade pip
+          /tmp/clean/bin/python -m pip install --find-links dist/ dist/*.whl
+
+      - name: Import all three and run the console script
+        run: |
+          /tmp/clean/bin/python -c "import arrayprobe, arrayprobe_enhancements, arrayprobe_soda2_enhancements, pathlib, inspect; print('arrayprobe from', pathlib.Path(inspect.getfile(arrayprobe)).parent)"
+          /tmp/clean/bin/arrayprobe --help
+
+      - name: Attest the build provenance of the wheels and sdists
+        # Keyless Sigstore attestation: signed with the run's OIDC identity, no key held by
+        # anyone. Check a download with `gh attestation verify <file> --repo sgupta92/arrayprobe`.
+        uses: actions/attest-build-provenance@4d101475d8b20a2381f78447822ac1eab6504dd8 # v4.2.2
+        with:
+          subject-path: dist/*
+
+      - uses: actions/upload-artifact@v7
+        with:
+          name: dist
+          path: dist/
+          if-no-files-found: error
+
+  test:
+    name: run the three suites on the built sdists
+    # tests.yml is not callable (no workflow_call) and also fires on this tag in parallel, so
+    # the same check is repeated here and gates both publish jobs. It mirrors tests.yml's `dist`
+    # job for the port and its `enhancements` job for the two corrections packages: install all
+    # three from their sdists (not editable, not the checkout), unpack each sdist and run its
+    # suite at the default gate state from the unpacked directory, so every test imports the
+    # installed package. The enhancements' fixture-guarded tests skip there, with the reason,
+    # as they do in a clone without the gitignored decoded flights.
+    needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+
+      - uses: actions/download-artifact@v8
+        with:
+          name: dist
+          path: dist/
+
+      - name: Install the three distributions from their sdists into a clean environment
+        # One command line, so pip satisfies the enhancements' `arrayprobe>=0.1.0,<0.2` from the
+        # sdist built here rather than from the index; --no-binary forces each sdist over the
+        # wheel beside it.
+        run: |
+          python -m venv /tmp/clean
+          /tmp/clean/bin/python -m pip install --upgrade pip
+          /tmp/clean/bin/python -m pip install             --no-binary arrayprobe,arrayprobe-uiops-enhancements,arrayprobe-soda2-enhancements             dist/arrayprobe-[0-9]*.tar.gz             dist/arrayprobe_uiops_enhancements-[0-9]*.tar.gz             dist/arrayprobe_soda2_enhancements-[0-9]*.tar.gz --find-links dist/
+
+      - name: Unpack the sdist and run its suite there
+        run: |
+          mkdir -p /tmp/unpacked
+          tar xzf dist/arrayprobe-[0-9]*.tar.gz -C /tmp/unpacked
+          cd /tmp/unpacked/arrayprobe-*
+          /tmp/clean/bin/python -c "import tomllib; print('\n'.join(tomllib.load(open('pyproject.toml', 'rb'))['project']['optional-dependencies']['pinned']))" > /tmp/pinned.txt
+          /tmp/clean/bin/python -m pip install -r /tmp/pinned.txt
+          /tmp/clean/bin/python -c "import arrayprobe, pathlib, inspect; print('imported from', pathlib.Path(inspect.getfile(arrayprobe)).parent)"
+          /tmp/clean/bin/python -m unittest discover -s tests -p "test_*.py"
+
+      - name: Unpack the UIOPS enhancements sdist and run its suite there
+        run: |
+          mkdir -p /tmp/unpacked-uiops-enh
+          tar xzf dist/arrayprobe_uiops_enhancements-[0-9]*.tar.gz -C /tmp/unpacked-uiops-enh
+          cd /tmp/unpacked-uiops-enh/arrayprobe_uiops_enhancements-*
+          /tmp/clean/bin/python -c "import arrayprobe_enhancements, pathlib, inspect; print('imported from', pathlib.Path(inspect.getfile(arrayprobe_enhancements)).parent)"
+          /tmp/clean/bin/python -m unittest discover -s tests -p "test_*.py"
+
+      - name: Unpack the SODA-2 enhancements sdist and run its suite there
+        run: |
+          mkdir -p /tmp/unpacked-soda2-enh
+          tar xzf dist/arrayprobe_soda2_enhancements-[0-9]*.tar.gz -C /tmp/unpacked-soda2-enh
+          cd /tmp/unpacked-soda2-enh/arrayprobe_soda2_enhancements-*
+          /tmp/clean/bin/python -c "import arrayprobe_soda2_enhancements, pathlib, inspect; print('imported from', pathlib.Path(inspect.getfile(arrayprobe_soda2_enhancements)).parent)"
+          /tmp/clean/bin/python -m unittest discover -s tests -p "test_*.py"
+
+      - name: The console script works
+        run: /tmp/clean/bin/arrayprobe --help
+
+  publish-testpypi:
+    name: publish to TestPyPI
+    needs: [build, test]
+    if: github.event_name == 'workflow_dispatch' && inputs.index == 'testpypi'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    environment:
+      name: testpypi
+      url: https://test.pypi.org/project/arrayprobe/
+    permissions:
+      id-token: write
+    steps:
+      - uses: actions/download-artifact@v8
+        with:
+          name: dist
+          path: dist/
+
+      - uses: pypa/gh-action-pypi-publish@v1.14.3
+        with:
+          repository-url: https://test.pypi.org/legacy/
+          packages-dir: dist/
+          # A re-run after a partial upload must not fail on the files already there.
+          skip-existing: true
+
+  publish-pypi:
+    name: publish to PyPI
+    needs: [build, test]
+    if: >-
+      github.ref_type == 'tag'
+      && (github.event_name == 'push'
+          || (github.event_name == 'workflow_dispatch' && inputs.index == 'pypi'))
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    environment:
+      name: pypi
+      url: https://pypi.org/project/arrayprobe/
+    permissions:
+      id-token: write
+    steps:
+      - uses: actions/download-artifact@v8
+        with:
+          name: dist
+          path: dist/
+
+      - uses: pypa/gh-action-pypi-publish@v1.14.3
+        with:
+          packages-dir: dist/
+          # A re-run after a partial upload of the three distributions must complete.
+          skip-existing: true

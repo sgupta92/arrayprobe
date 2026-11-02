@@ -1,0 +1,568 @@
+{
+ "arearatio": {
+  "below_reject_threshold": {
+   "area_ratio": 0.012732395447351628,
+   "auto_reject": "z",
+   "message": "",
+   "status": "OK"
+  },
+  "exceeds_one_before_clip": {
+   "area_ratio": 1,
+   "auto_reject": "A",
+   "message": "",
+   "status": "OK"
+  },
+  "within_range": {
+   "area_ratio": 0.9999999999920461,
+   "auto_reject": "A",
+   "message": "",
+   "status": "OK"
+  }
+ },
+ "arearatio_cases": {
+  "below_reject_threshold": {
+   "area": [
+    0.01
+   ],
+   "diam": [
+    1.0
+   ]
+  },
+  "exceeds_one_before_clip": {
+   "area": [
+    10.0
+   ],
+   "diam": [
+    1.0
+   ]
+  },
+  "within_range": {
+   "area": [
+    1.0
+   ],
+   "diam": [
+    1.1283791671
+   ]
+  }
+ },
+ "blockres": {
+  "midnight_rollover_then_two_more_seconds": {
+   "count_all": [
+    2,
+    2,
+    1
+   ],
+   "message": "",
+   "start_all": [
+    0,
+    2,
+    4
+   ],
+   "starttime": [
+    235959,
+    240010,
+    240020
+   ],
+   "status": "OK"
+  },
+  "monotonic_three_seconds": {
+   "count_all": [
+    3,
+    3,
+    3
+   ],
+   "message": "",
+   "start_all": [
+    0,
+    3,
+    6
+   ],
+   "starttime": [
+    100000,
+    100001,
+    100002
+   ],
+   "status": "OK"
+  },
+  "out_of_order_leading_block_dropped": {
+   "count_all": [],
+   "message": "",
+   "start_all": [],
+   "starttime": [],
+   "status": "OK"
+  }
+ },
+ "blockres_cases": {
+  "midnight_rollover_then_two_more_seconds": {
+   "image_time_hhmmssall": [
+    235959,
+    235959,
+    240010,
+    240010,
+    240020
+   ],
+   "num_of_part": 5,
+   "timehhmmss": [
+    235959,
+    240010,
+    240020
+   ]
+  },
+  "monotonic_three_seconds": {
+   "image_time_hhmmssall": [
+    100000,
+    100000,
+    100000,
+    100001,
+    100001,
+    100001,
+    100002,
+    100002,
+    100002
+   ],
+   "num_of_part": 9,
+   "timehhmmss": [
+    100000,
+    100001,
+    100002
+   ]
+  },
+  "out_of_order_leading_block_dropped": {
+   "image_time_hhmmssall": [
+    100002,
+    100000,
+    100000,
+    100001,
+    100001
+   ],
+   "num_of_part": 5,
+   "timehhmmss": [
+    100000,
+    100001,
+    100002
+   ]
+  }
+ },
+ "blocks": {
+  "arearatio": {
+   "end_line": 1162,
+   "start_line": 1160,
+   "text": "        area_ratio = area./(pi/4.*particle_diameter_minR.^2);\n        area_ratio(area_ratio > 1.) = 1.; % Added by Joe Finlon 03/19/23\n        auto_reject(area_ratio < .2) = 'z';\n"
+  },
+  "blockres": {
+   "end_line": 887,
+   "start_line": 815,
+   "text": "% startindex=[true;(diff(hhmmss2insec(image_time_hhmmssall))>0)]; % & diff(hhmmss2insec(image_time_hhmmssall))<5)]; % Simplified (tested/changed by DS)\nstartindex=[true;(diff(hhmmss2insec(image_time_hhmmssall))~=0)]; % Also find corrupt instances where particle time decreases ~ Modified by Joe Finlon 02/13/19\n\n% startindex=int8(image_time_hhmmssall*0);\n% for i=1:length(timehhmmss)\n%    indexofFirstTime =  find(image_time_hhmmssall==timehhmmss(i),1);\n%    if ( ~isempty(indexofFirstTime) )\n%        startindex(indexofFirstTime)=1;\n%    end\n%    disp([i,length(timehhmmss)]);\n% end\n\n\n% Get the start time for each new one-second period\nstarttime=image_time_hhmmssall(startindex); % Simplified (tested/changed by DS)\n\n\n% Find all instances where startindex is true (where image_time_hhmmssall changes by more than 0) and shift indices back by one to\n% facilitate proper particle counts for each one-second period\nstart_all=find(startindex)-1; % Simplified (tested/changed by DS)\ncount_all= [diff(start_all); NumofPart-start_all(end)]; % Modified handling of particle count from below ~ Joe Finlon 02/13/19\n\n% Sort the particle one-second time array in the event it is out of order and redefine the start_all variable as needed\n[starttime,newindexofsort]=sort(starttime);\nstart_all=start_all(newindexofsort);\ncount_all = count_all(newindexofsort); % Added by Joe Finlon 02/13/19\n\n% Remove particle instances where corrupt times occur during flight\n% (as it throws off time sync between TAS file time & particle time) ~\n% Added by Joe Finlon 02/13/19\nif newindexofsort(1)~=1\n    one_sec_ind = 1; newTimeIndex = [];\n    while one_sec_ind < length(newindexofsort)\n        if (one_sec_ind==1) && (newindexofsort(one_sec_ind)==1) % first particle occurs during flight time bounds\n            newTimeIndex = [newTimeIndex; one_sec_ind];\n        elseif (one_sec_ind>1) && (newindexofsort(one_sec_ind+1)-newindexofsort(one_sec_ind)==1)\n            newTimeIndex = [newTimeIndex; one_sec_ind];\n        end\n        one_sec_ind = one_sec_ind + 1;\n    end\n    % nth unique time where first non-corrupt paricle is observed (ones later in flight may have corrupt time)\n    newindexofsort = newindexofsort(newTimeIndex);\n    starttime = starttime(newTimeIndex);\n    start_all = start_all(newTimeIndex);\n    count_all = count_all(newTimeIndex);\nend\n\n%% Remove times when there is no tas data available\n% nNoTAS=0;\n% for i=1:length(starttime)\n%     if isempty(timehhmmss(timehhmmss == starttime(i)))\n%         starttime(i)=500000;\n%         nNoTAS=nNoTAS+1;\n%     end\n%     \n%     if i>5 & i<length(starttime)-5 & hhmmss2insec(starttime(i))>mean(hhmmss2insec(starttime(i-5:i+5)))+5\n%         starttime(i)=500000;\n%     end\n% end\n% nNoTAS\n% start_all = start_all(starttime<500000);\n% count_all = count_all(starttime<500000);\n% starttime = starttime(starttime<500000);\n\n%% Remove any duplicate times and determine how many particles are present in each one-second period\nfprintf('Number of duplicate times = %d\\n\\n',(length(starttime)-length(unique(starttime))));\n\n[starttime, ia, ~] = unique(starttime,'first');\nstart_all = start_all(ia);\ncount_all = count_all(ia); % Added by Joe Finlon 02/13/19\n% count_all= [diff(start_all); NumofPart-start_all(end)]; ~ Altered above\n% by Joe Finlon 02/13/19\ncount_all(count_all<0)=1;\n"
+  },
+  "carryover": {
+   "end_line": 811,
+   "start_line": 809,
+   "text": "if (numel(find(timehhmmss>240000))>0) && (numel(find(image_time_hhmmssall>240000))==0)\n    image_time_hhmmssall(1:end) = image_time_hhmmssall(1:end) + 240000;\nend\n"
+  },
+  "deadtime": {
+   "end_line": 1125,
+   "start_line": 1115,
+   "text": "            time_interval72(i) = sum(int_arr(DMT_DOF_SPEC_OVERLOAD~=0));\n            % Give warning if dead time exceeds 0.8 sec ~ Joe Finlon\n            % 08/07/20\n            if (probetype==2) && (time_interval72(i)>0.8)\n                fprintf(2, 'Sum of overloaded particles at index %d (%.2f sec) exceeds 0.8 sec. Use caution when interpreting results.\\n\\n', ...\n                    i, time_interval72(i));\n                if time_interval72(i)>1 % Dead time shouldn't be > 1. Resulting PSD will be invalid. ~ Joe Finlon\n            % 08/07/20\n                    time_interval72(i) = 1;\n                end\n            end\n"
+  },
+  "multiday": {
+   "end_line": 805,
+   "start_line": 788,
+   "text": "if numel(find(diff(image_time_hhmmssall)<0))==1\n    image_time_hhmmssall(find(diff(image_time_hhmmssall)<0)+1:end)=...\n        image_time_hhmmssall(find(diff(image_time_hhmmssall)<0)+1:end) + 240000;\nelseif numel(find(diff(image_time_hhmmssall)<0))>1 % ignore corrupt particle times where time briefly \"decreases\"\n    decreasedTimeInds = find(diff(image_time_hhmmssall)<0);\n    % flags index where particle time goes between dates (from later than\n    % 23 UTC to a time read as more than 23 hours prior)\n    for decreasedInds=1:length(decreasedTimeInds)\n        if (image_time_hhmmssall(decreasedTimeInds(decreasedInds))>230000) && (image_time_hhmmssall(decreasedTimeInds(decreasedInds))-...\n                image_time_hhmmssall(decreasedTimeInds(decreasedInds)+1)>230000)\n            image_time_hhmmssall(decreasedTimeInds(decreasedInds)+1:end) = image_time_hhmmssall(decreasedTimeInds(decreasedInds)+1:end)+...\n                240000;\n            break;\n        elseif decreasedInds==length(decreasedTimeInds) % no date crossover was detected\n            fprintf('Multiple instances of decreasing particle time were found,\\n  but a crossover between dates was not detected.\\n')\n        end\n    end\nend\n"
+  },
+  "type1": {
+   "end_line": 1221,
+   "start_line": 1185,
+   "text": "            if ((length(int_arr) == 1) && (int_arr(1) <= iaThresh(1)))\n\t\t\t\tauto_reject(1) = 'S';\n            else\n                if int_arr(1) <= iaThresh(1)\n\t\t\t\t\tauto_reject(1) = 'S';\n                end\n\t\t\n                for ix = 2:length(int_arr)\n\t\t\t\t\tif int_arr(ix) <= iaThresh(ix)\n\t\t\t\t\t\tauto_reject((ix-1):ix) = 'S';\n\t\t\t\t\tend\n                end\n            end\n            \n            % Experimental option to reaccept particles flagged as shattered which may in fact be the result of diffraction\n\t\t\t% fringes\n\t\t\t% Added by Dan Stechman - 6/8/2015 & Modified by Joe Finlon - 03/03/17 - with base code by Wei Wu\n\t\t\tif reaccptShatrs\n\t\t\t\t% Start by defining the indices for the beginning and end of individual shattering events\n\t\t\t\trBegin = ((int_arr > iaThresh & int_arr3 < iaThresh));\n\t\t\t\trEnd = ((int_arr < iaThresh & int_arr3 > iaThresh));\n\t\t\t\t\n\t\t\t\tmaxParticle = reaccptD;\n\t\t\t\teIndex = [];\n\t\t\t\t\n\t\t\t\t% We search through each individual set of shattering events and check to see if any of the particles are both\n\t\t\t\t% larger than the reacceptance diameter and have an interarrival time less than the reacceptance threshold as we'd\n\t\t\t\t% expect diffraction fringes to be larger than shattered particles and to have a particularly small interarrival time\n                for iEvent = find(rBegin):find(rEnd)\n\t\t\t\t\tif ((particle_diameter_minR(iEvent) > maxParticle) && (int_arr(iEvent) < reaccptMaxIA))\n\t\t\t\t\t\tmaxParticle = particle_diameter_minR(iEvent);\n\t\t\t\t\t\teIndex = iEvent;\n\t\t\t\t\tend\n                end\n\n\t\t\t\tauto_reject(eIndex) = 'R';\n\t\t\tend\n"
+  },
+  "type2": {
+   "end_line": 46,
+   "start_line": 1309,
+   "text": "\t\t\t% If the first particle in the next 1-sec period has a small interarrival time, we flag the last particle of\n\t\t\t% the current period as shattered as well\n\t\t\tif ~isempty(int_arr2)\n\t\t\t\tif int_arr2 <= intar_threshold(i)\n\t\t\t\t\tauto_reject(end) = 'S';\n\t\t\t\tend\n\t\t\tend\n\n\t\t\tif (length(int_arr) == 1 && int_arr(1) <= intar_threshold(i)) \n\t\t\t\tauto_reject(1) = 'S';\n\t\t\telse\n\t\t\t\tif int_arr(1) <= intar_threshold(i)\n\t\t\t\t\tauto_reject(1) = 'S';\n\t\t\t\tend\n\n\t\t\t\tfor ix = 2:length(int_arr)\n\t\t\t\t\tif int_arr(ix) <= intar_threshold(i)\n\t\t\t\t\t\tauto_reject(ix-1:ix) = 'S';\n\t\t\t\t\tend\n\t\t\t\tend\n\t\t\tend\n\n\t\t\t\n\t\t\t% Experimental option to reaccept particles flagged as shattered which may in fact be the result of diffraction\n\t\t\t% fringes\n\t\t\t% Added by Dan Stechman - 6/8/2015 - with base code by Wei Wu\n\t\t\tif reaccptShatrs\n\t\t\t\t% Start by defining the indices for the beginning and end of individual shattering events\n\t\t\t\trBegin = ((int_arr > intar_threshold(i) & int_arr3 < intar_threshold(i)));\n\t\t\t\trEnd = ((int_arr < intar_threshold(i) & int_arr3 > intar_threshold(i)));\n\t\t\t\t\n\t\t\t\tmaxParticle = reaccptD;\n\t\t\t\teIndex = [];\n\t\t\t\t\n\t\t\t\t% We search through each individual set of shattering events and check to see if any of the particles are both\n\t\t\t\t% larger than the reacceptance diameter and have an interarrival time less than the reacceptance threshold as we'd\n\t\t\t\t% expect diffraction fringes to be larger than shattered particles and to have a particularly small interarrival time\n\t\t\t\tfor iEvent = find(rBegin):find(rEnd)\n\t\t\t\t\tif ((particle_diameter_minR(iEvent) > maxParticle) && (int_arr(iEvent) < reaccptMaxIA))\n\t\t\t\t\t\tmaxParticle = particle_diameter_minR(iEvent);\n\t\t\t\t\t\teIndex = iEvent;\n\t\t\t\t\tend\n\t\t\t\tend\n\n\t\t\t\tauto_reject(eIndex) = 'R';\n\t\t\tend\n"
+  }
+ },
+ "carryover": {
+  "both_already_cross": {
+   "image_time_hhmmssall": [
+    235959,
+    240005
+   ],
+   "message": "",
+   "status": "OK"
+  },
+  "flight_crosses_midnight_particle_time_does_not": {
+   "image_time_hhmmssall": [
+    475958,
+    475959,
+    240010,
+    240020
+   ],
+   "message": "",
+   "status": "OK"
+  },
+  "neither_crosses": {
+   "image_time_hhmmssall": [
+    50000,
+    50001
+   ],
+   "message": "",
+   "status": "OK"
+  }
+ },
+ "carryover_cases": {
+  "both_already_cross": {
+   "image_time_hhmmssall": [
+    235959,
+    240005
+   ],
+   "timehhmmss": [
+    235959,
+    240010
+   ]
+  },
+  "flight_crosses_midnight_particle_time_does_not": {
+   "image_time_hhmmssall": [
+    235958,
+    235959,
+    10,
+    20
+   ],
+   "timehhmmss": [
+    235959,
+    240001,
+    240010
+   ]
+  },
+  "neither_crosses": {
+   "image_time_hhmmssall": [
+    50000,
+    50001
+   ],
+   "timehhmmss": [
+    100000,
+    100001
+   ]
+  }
+ },
+ "deadtime": {
+  "between_warn_and_cap": {
+   "message": "",
+   "status": "OK",
+   "time_interval72": 0.9
+  },
+  "not_probetype_2": {
+   "message": "",
+   "status": "OK",
+   "time_interval72": 1.8
+  },
+  "over_cap": {
+   "message": "",
+   "status": "OK",
+   "time_interval72": 1
+  },
+  "under_warn_threshold": {
+   "message": "",
+   "status": "OK",
+   "time_interval72": 0.30000000000000004
+  }
+ },
+ "deadtime_cases": {
+  "between_warn_and_cap": {
+   "int_arr": [
+    0.5,
+    0.4
+   ],
+   "overload": [
+    1,
+    1
+   ],
+   "probetype": 2
+  },
+  "not_probetype_2": {
+   "int_arr": [
+    0.9,
+    0.9
+   ],
+   "overload": [
+    1,
+    1
+   ],
+   "probetype": 1
+  },
+  "over_cap": {
+   "int_arr": [
+    0.9,
+    0.9
+   ],
+   "overload": [
+    1,
+    1
+   ],
+   "probetype": 2
+  },
+  "under_warn_threshold": {
+   "int_arr": [
+    0.1,
+    0.2,
+    0.1
+   ],
+   "overload": [
+    0,
+    1,
+    1
+   ],
+   "probetype": 2
+  }
+ },
+ "multiday": {
+  "no_decrease": {
+   "image_time_hhmmssall": [
+    100000,
+    100001,
+    100002
+   ],
+   "message": "",
+   "status": "OK"
+  },
+  "one_decrease_midnight": {
+   "image_time_hhmmssall": [
+    235959,
+    235959,
+    240010,
+    240010,
+    240020
+   ],
+   "message": "",
+   "status": "OK"
+  },
+  "two_decreases_crossover_detected": {
+   "image_time_hhmmssall": [
+    235959,
+    235959,
+    240010,
+    240020,
+    240005
+   ],
+   "message": "",
+   "status": "OK"
+  },
+  "two_decreases_no_crossover": {
+   "image_time_hhmmssall": [
+    100010,
+    100005,
+    100020,
+    100015
+   ],
+   "message": "",
+   "status": "OK"
+  }
+ },
+ "multiday_cases": {
+  "no_decrease": [
+   100000,
+   100001,
+   100002
+  ],
+  "one_decrease_midnight": [
+   235959,
+   235959,
+   10,
+   10,
+   20
+  ],
+  "two_decreases_crossover_detected": [
+   235959,
+   235959,
+   10,
+   20,
+   5
+  ],
+  "two_decreases_no_crossover": [
+   100010,
+   100005,
+   100020,
+   100015
+  ]
+ },
+ "type1": {
+  "first_particle_flagged": {
+   "auto_reject": "SAA",
+   "message": "",
+   "status": "OK"
+  },
+  "no_events": {
+   "auto_reject": "AAA",
+   "message": "",
+   "status": "OK"
+  },
+  "rEnd_before_rBegin_nothing_reaccepted": {
+   "auto_reject": "SSA",
+   "message": "",
+   "status": "OK"
+  },
+  "single_particle_above": {
+   "auto_reject": "A",
+   "message": "",
+   "status": "OK"
+  },
+  "single_particle_below": {
+   "auto_reject": "S",
+   "message": "",
+   "status": "OK"
+  },
+  "two_events_only_first_reaccepted": {
+   "auto_reject": "ASRASSA",
+   "message": "",
+   "status": "OK"
+  }
+ },
+ "type12_cases": {
+  "first_particle_flagged": {
+   "diam": [
+    0.2,
+    0.2,
+    0.2
+   ],
+   "int_arr": [
+    1e-07,
+    5e-06,
+    5e-06
+   ],
+   "int_arr3": [
+    5e-06,
+    5e-06,
+    5e-06
+   ],
+   "reaccpt": 0,
+   "thresh": 1e-06
+  },
+  "no_events": {
+   "diam": [
+    0.9,
+    0.9,
+    0.9
+   ],
+   "int_arr": [
+    5e-06,
+    5e-06,
+    5e-06
+   ],
+   "int_arr3": [
+    5e-06,
+    5e-06,
+    5e-06
+   ],
+   "reaccpt": 1,
+   "thresh": 1e-06
+  },
+  "rEnd_before_rBegin_nothing_reaccepted": {
+   "diam": [
+    0.9,
+    0.9,
+    0.2
+   ],
+   "int_arr": [
+    1e-07,
+    1e-07,
+    5e-06
+   ],
+   "int_arr3": [
+    1e-07,
+    5e-06,
+    5e-06
+   ],
+   "reaccpt": 1,
+   "thresh": 1e-06
+  },
+  "single_particle_above": {
+   "diam": [
+    0.2
+   ],
+   "int_arr": [
+    5e-06
+   ],
+   "int_arr3": [
+    5e-06
+   ],
+   "reaccpt": 0,
+   "thresh": 1e-06
+  },
+  "single_particle_below": {
+   "diam": [
+    0.2
+   ],
+   "int_arr": [
+    1e-07
+   ],
+   "int_arr3": [
+    5e-06
+   ],
+   "reaccpt": 0,
+   "thresh": 1e-06
+  },
+  "two_events_only_first_reaccepted": {
+   "diam": [
+    0.2,
+    0.2,
+    0.6,
+    0.2,
+    0.2,
+    0.8,
+    0.2
+   ],
+   "int_arr": [
+    5e-06,
+    5e-06,
+    1e-07,
+    5e-06,
+    5e-06,
+    1e-07,
+    5e-06
+   ],
+   "int_arr3": [
+    5e-06,
+    1e-07,
+    5e-06,
+    5e-06,
+    1e-07,
+    5e-06,
+    5e-06
+   ],
+   "reaccpt": 1,
+   "thresh": 1e-06
+  }
+ },
+ "type12_reaccptD": 0.5,
+ "type12_reaccptMaxIA": 1e-06,
+ "type2": {
+  "first_particle_flagged": {
+   "auto_reject": "SAA",
+   "message": "",
+   "status": "OK"
+  },
+  "no_events": {
+   "auto_reject": "AAA",
+   "message": "",
+   "status": "OK"
+  },
+  "rEnd_before_rBegin_nothing_reaccepted": {
+   "auto_reject": "SSA",
+   "message": "",
+   "status": "OK"
+  },
+  "single_particle_above": {
+   "auto_reject": "A",
+   "message": "",
+   "status": "OK"
+  },
+  "single_particle_below": {
+   "auto_reject": "S",
+   "message": "",
+   "status": "OK"
+  },
+  "two_events_only_first_reaccepted": {
+   "auto_reject": "ASRASSA",
+   "message": "",
+   "status": "OK"
+  }
+ }
+}

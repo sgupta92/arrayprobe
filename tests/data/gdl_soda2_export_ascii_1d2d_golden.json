@@ -1,0 +1,86 @@
+[
+  {
+    "name": "modes_and_edges",
+    "status": "OK",
+    "note": "probemode 1,2,3,3,1; edgereject 0,1,1,1,1 (sum clipped by <1)",
+    "ntimes": 5,
+    "house": {
+      "dofnumreject": [
+        0,
+        5,
+        5,
+        0,
+        0
+      ],
+      "dofpercent": [
+        0,
+        0,
+        4,
+        4,
+        0
+      ],
+      "leftreject": [
+        0,
+        1,
+        0,
+        1,
+        1
+      ],
+      "rightreject": [
+        0,
+        1,
+        1,
+        0,
+        0
+      ]
+    },
+    "text": "Particle size distributions for the 1D2D probe in ORACLES\nFlight date (yyyy/mm/dd):   2016/09/06\nProcessed:   2026-09-14T00:00:00\nRaw data source:  raw.2DS\nSizing method:  xsize\nShattering correction:  on\nLiquid water processing:  off\n\nBin midpoints (microns):\n    75.00   125.00   175.00   250.00   350.00   500.00   700.00   900.00\nBin endpoints (microns):\n    50.00   100.00   150.00   200.00   300.00   400.00   600.00   800.00  1000.00\nSample area using a depth of field constant of 8.12 (m^2):\n 1.00e-04 1.00e-04 1.00e-04 1.00e-04 1.00e-04 1.00e-04 1.00e-04 1.00e-04\n\nNotes:\n   All bulk properties are computed using particles larger than 50.00 microns in size.\n   Size distributions were processed using ice rejection criteria.\n   Mass-size parameterization coefficients: a=  2.94e-03, b=1.90\n\nVariables:\n   Time: Time at start of interval [UTC seconds]\n   Nt: Total Concentration for Particles with D>50.00um [#/m3]\n   IWC: Estimated Ice Water Content [g/m3]\n   MMD: Median Mass-weighted Diameter [microns]\n   1D2D Probe Mode (1: No Depth of Field Rejections, 2: N75 Count Rejection, 3: N75/N50 Ratio Rejection)\n   1D2D Edge-touch Rejection (0:Disabled, 1:Enabled)\n   ConcXXX: Particle concentration per size bin, normalized by bin width [#/m4]\n\n  Time          Nt         IWC         MMD   ProbeMode  EdgeReject     Conc001     Conc002     Conc003     Conc004     Conc005     Conc006     Conc007     Conc008\n----------------------------------------------------\n     0    1.92e-01    8.30e-07    4.32e+02           1           0    1.00e+02    5.00e+02    8.00e+02    6.00e+02    3.00e+02    1.00e+02    5.00e+01    1.00e+01\n     1    1.92e-01    8.30e-07    4.32e+02           2           1    1.00e+02    5.00e+02    8.00e+02    6.00e+02    3.00e+02    1.00e+02    5.00e+01    1.00e+01\n     2    1.92e-01    8.30e-07    4.32e+02           3           1    1.00e+02    5.00e+02    8.00e+02    6.00e+02    3.00e+02    1.00e+02    5.00e+01    1.00e+01\n     3    1.92e-01    8.30e-07    4.32e+02           3           1    1.00e+02    5.00e+02    8.00e+02    6.00e+02    3.00e+02    1.00e+02    5.00e+01    1.00e+01\n     4    1.92e-01    8.30e-07    4.32e+02           1           1    1.00e+02    5.00e+02    8.00e+02    6.00e+02    3.00e+02    1.00e+02    5.00e+01    1.00e+01\n"
+  },
+  {
+    "name": "edge_sum_256",
+    "status": "OK",
+    "note": "byte(256)=0 then <1 -> 0; byte(300)=44 then <1 -> 1",
+    "ntimes": 2,
+    "house": {
+      "dofnumreject": [
+        0,
+        0
+      ],
+      "dofpercent": [
+        0,
+        0
+      ],
+      "leftreject": [
+        128,
+        200
+      ],
+      "rightreject": [
+        128,
+        100
+      ]
+    },
+    "text": "Particle size distributions for the 1D2D probe in ORACLES\nFlight date (yyyy/mm/dd):   2016/09/06\nProcessed:   2026-09-14T00:00:00\nRaw data source:  raw.2DS\nSizing method:  xsize\nShattering correction:  on\nLiquid water processing:  off\n\nBin midpoints (microns):\n    75.00   125.00   175.00   250.00   350.00   500.00   700.00   900.00\nBin endpoints (microns):\n    50.00   100.00   150.00   200.00   300.00   400.00   600.00   800.00  1000.00\nSample area using a depth of field constant of 8.12 (m^2):\n 1.00e-04 1.00e-04 1.00e-04 1.00e-04 1.00e-04 1.00e-04 1.00e-04 1.00e-04\n\nNotes:\n   All bulk properties are computed using particles larger than 50.00 microns in size.\n   Size distributions were processed using ice rejection criteria.\n   Mass-size parameterization coefficients: a=  2.94e-03, b=1.90\n\nVariables:\n   Time: Time at start of interval [UTC seconds]\n   Nt: Total Concentration for Particles with D>50.00um [#/m3]\n   IWC: Estimated Ice Water Content [g/m3]\n   MMD: Median Mass-weighted Diameter [microns]\n   1D2D Probe Mode (1: No Depth of Field Rejections, 2: N75 Count Rejection, 3: N75/N50 Ratio Rejection)\n   1D2D Edge-touch Rejection (0:Disabled, 1:Enabled)\n   ConcXXX: Particle concentration per size bin, normalized by bin width [#/m4]\n\n  Time          Nt         IWC         MMD   ProbeMode  EdgeReject     Conc001     Conc002     Conc003     Conc004     Conc005     Conc006     Conc007     Conc008\n----------------------------------------------------\n     0    1.92e-01    8.30e-07    4.32e+02           1           0    1.00e+02    5.00e+02    8.00e+02    6.00e+02    3.00e+02    1.00e+02    5.00e+01    1.00e+01\n     1    1.92e-01    8.30e-07    4.32e+02           1           1    1.00e+02    5.00e+02    8.00e+02    6.00e+02    3.00e+02    1.00e+02    5.00e+01    1.00e+01\n"
+  },
+  {
+    "name": "house_one_tag",
+    "status": "OK",
+    "note": "n_elements(tag_names(data.house)) gt 1 fails: no house columns",
+    "ntimes": 3,
+    "house": {
+      "dofpercent": [
+        0,
+        4,
+        0
+      ]
+    },
+    "text": "Particle size distributions for the 1D2D probe in ORACLES\nFlight date (yyyy/mm/dd):   2016/09/06\nProcessed:   2026-09-14T00:00:00\nRaw data source:  raw.2DS\nSizing method:  xsize\nShattering correction:  on\nLiquid water processing:  off\n\nBin midpoints (microns):\n    75.00   125.00   175.00   250.00   350.00   500.00   700.00   900.00\nBin endpoints (microns):\n    50.00   100.00   150.00   200.00   300.00   400.00   600.00   800.00  1000.00\nSample area using a depth of field constant of 8.12 (m^2):\n 1.00e-04 1.00e-04 1.00e-04 1.00e-04 1.00e-04 1.00e-04 1.00e-04 1.00e-04\n\nNotes:\n   All bulk properties are computed using particles larger than 50.00 microns in size.\n   Size distributions were processed using ice rejection criteria.\n   Mass-size parameterization coefficients: a=  2.94e-03, b=1.90\n\nVariables:\n   Time: Time at start of interval [UTC seconds]\n   Nt: Total Concentration for Particles with D>50.00um [#/m3]\n   IWC: Estimated Ice Water Content [g/m3]\n   MMD: Median Mass-weighted Diameter [microns]\n   ConcXXX: Particle concentration per size bin, normalized by bin width [#/m4]\n\n  Time          Nt         IWC         MMD     Conc001     Conc002     Conc003     Conc004     Conc005     Conc006     Conc007     Conc008\n----------------------------------------------------\n     0    1.92e-01    8.30e-07    4.32e+02    1.00e+02    5.00e+02    8.00e+02    6.00e+02    3.00e+02    1.00e+02    5.00e+01    1.00e+01\n     1    1.92e-01    8.30e-07    4.32e+02    1.00e+02    5.00e+02    8.00e+02    6.00e+02    3.00e+02    1.00e+02    5.00e+01    1.00e+01\n     2    1.92e-01    8.30e-07    4.32e+02    1.00e+02    5.00e+02    8.00e+02    6.00e+02    3.00e+02    1.00e+02    5.00e+01    1.00e+01\n"
+  },
+  {
+    "name": "no_house_tag",
+    "status": "OK",
+    "note": "1D2D with no HOUSE tag: no house columns",
+    "ntimes": 3,
+    "house": null,
+    "text": "Particle size distributions for the 1D2D probe in ORACLES\nFlight date (yyyy/mm/dd):   2016/09/06\nProcessed:   2026-09-14T00:00:00\nRaw data source:  raw.2DS\nSizing method:  xsize\nShattering correction:  on\nLiquid water processing:  off\n\nBin midpoints (microns):\n    75.00   125.00   175.00   250.00   350.00   500.00   700.00   900.00\nBin endpoints (microns):\n    50.00   100.00   150.00   200.00   300.00   400.00   600.00   800.00  1000.00\nSample area using a depth of field constant of 8.12 (m^2):\n 1.00e-04 1.00e-04 1.00e-04 1.00e-04 1.00e-04 1.00e-04 1.00e-04 1.00e-04\n\nNotes:\n   All bulk properties are computed using particles larger than 50.00 microns in size.\n   Size distributions were processed using ice rejection criteria.\n   Mass-size parameterization coefficients: a=  2.94e-03, b=1.90\n\nVariables:\n   Time: Time at start of interval [UTC seconds]\n   Nt: Total Concentration for Particles with D>50.00um [#/m3]\n   IWC: Estimated Ice Water Content [g/m3]\n   MMD: Median Mass-weighted Diameter [microns]\n   ConcXXX: Particle concentration per size bin, normalized by bin width [#/m4]\n\n  Time          Nt         IWC         MMD     Conc001     Conc002     Conc003     Conc004     Conc005     Conc006     Conc007     Conc008\n----------------------------------------------------\n     0    1.92e-01    8.30e-07    4.32e+02    1.00e+02    5.00e+02    8.00e+02    6.00e+02    3.00e+02    1.00e+02    5.00e+01    1.00e+01\n     1    1.92e-01    8.30e-07    4.32e+02    1.00e+02    5.00e+02    8.00e+02    6.00e+02    3.00e+02    1.00e+02    5.00e+01    1.00e+01\n     2    1.92e-01    8.30e-07    4.32e+02    1.00e+02    5.00e+02    8.00e+02    6.00e+02    3.00e+02    1.00e+02    5.00e+01    1.00e+01\n"
+  }
+]

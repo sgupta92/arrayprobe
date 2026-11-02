@@ -1,0 +1,37 @@
+[
+  {
+    "name": "nc_hirate_tasx2d",
+    "fixture": "soda2_pth_hirate2d.nc",
+    "starttime": 100,
+    "stoptime": 104,
+    "rate": 1,
+    "note": "Time 1-D (4), TASX 2-D (4 s x 4 sps): `:167`'s `and` of a 4-vector and a 4x4 array; 0 and 450 inside.",
+    "status": "OK",
+    "GOT": 1,
+    "TAS": [
+      "43160000",
+      "43170000",
+      "43180000",
+      "43190000",
+      "43190000"
+    ],
+    "TN": "FLOAT,5"
+  },
+  {
+    "name": "nc_hirate_both2d",
+    "fixture": "soda2_pth_hirate2d_both.nc",
+    "starttime": 100,
+    "stoptime": 103,
+    "rate": 1,
+    "note": "Time and TASX both 2-D (3 s x 2 sps), half-second times.",
+    "status": "OK",
+    "GOT": 1,
+    "TAS": [
+      "43160000",
+      "43200000",
+      "432A0000",
+      "432F0000"
+    ],
+    "TN": "FLOAT,4"
+  }
+]

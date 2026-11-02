@@ -1,0 +1,15 @@
+# The v3.5 demo-flight reference's run configuration (built by scripts/make_demo_reference.py).
+# stock-v3.5 is the configuration a new user should run: nothing here is ORACLES-specific.
+# Paths are relative to this file. `arrayprobe run demo_flight_v35_run.toml <raw.2DS>`.
+[fidelity]
+profile = "stock-v3.5"
+
+[run]
+engine = "3.5"
+preset = "DEMO_2DS_H"
+out = "_decoded"
+stages = "234c"
+tas_file = "demo_flight_v35_aircraft.cdf"
+
+[combine]
+borrowed = true

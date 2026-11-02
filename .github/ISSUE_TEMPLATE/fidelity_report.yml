@@ -1,0 +1,48 @@
+name: Fidelity report
+description: The port's output disagrees with a real MATLAB (UIOOPS) run
+labels: ["fidelity"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        This is the most valuable kind of report this project can receive: a case where
+        `arrayprobe` and the original UIOOPS MATLAB produce different output on the same input.
+        See `docs/07-findings.md` for the standard this project holds its own
+        findings about the MATLAB to.
+  - type: textarea
+    id: what-differs
+    attributes:
+      label: What differs, and by how much
+      description: A specific variable, bin, or particle count — not "the output looks wrong".
+    validations:
+      required: true
+  - type: input
+    id: matlab-version
+    attributes:
+      label: MATLAB / UIOOPS version and configuration used
+      description: e.g. "UIOOPS v3.5, rej_hollow=0, max_edge_img_ar=4" — see FidelityProfile if known.
+    validations:
+      required: true
+  - type: textarea
+    id: input-file
+    attributes:
+      label: Input file
+      description: >-
+        A minimal raw file that reproduces the difference, or a description of how to obtain
+        one. If you cannot share the raw data, say so — the report is still useful.
+    validations:
+      required: false
+  - type: textarea
+    id: reference-product
+    attributes:
+      label: Archived MATLAB product to compare against, if you have one
+      description: The .call sidecar or equivalent provenance, if available.
+    validations:
+      required: false
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: How to reproduce with arrayprobe
+      description: The exact command line or Python call that produced the port's output.
+    validations:
+      required: true

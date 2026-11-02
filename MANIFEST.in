@@ -1,0 +1,231 @@
+# What travels in the source distribution.
+#
+# WHY THIS FILE EXISTS. Before it, `python -m build` produced an sdist holding
+# `src/`, `pyproject.toml`, `LICENSE` and -- by a distutils default nobody
+# chose -- `tests/*.py`. It did NOT hold `tests/data/`. So the tarball carried
+# 130 test modules and not one of the 72 tracked fixtures they compared against
+# on the day this was found (81 today -- and the CI guard that enforces it now
+# derives that number from `git ls-files tests/data` instead of carrying a copy
+# of it, because the typed 72 went nine fixtures stale without failing),
+# and the Octave-golden tests, which are the whole differential-oracle layer,
+# would have SKIPPED for anyone who received it: their guards are
+# `skipUnless(GOLDEN.is_file(), ...)` and the golden was not there. A recipient
+# would have seen "OK" from a suite that had checked nothing about fidelity.
+#
+# That is the same failure shape as the skips found on 2026-09-05 and pinned by
+# tests/test_tracked_fixtures_are_present.py: a guard whose message is a claim
+# about the machine, firing for a reason that is not about the machine.
+#
+# The package itself is pure Python -- `find src -type f ! -name "*.py"` returns
+# nothing but __pycache__ -- so the WHEEL was never at risk and is not the
+# reason this file was written. The sdist is.
+#
+# COST OF THE DECISION, measured rather than estimated: the fixtures are 19.7 MB
+# on disk, 13.6 MB of it the one SEA raw fixture, but they are netCDF and text
+# and they compress. The tarball goes from 0.56 MB to 1.81 MB -- not the ~20 MB
+# the uncompressed figure suggests, and nowhere near PyPI's 100 MB per-file
+# limit. The alternative, a tarball whose test suite passes vacuously, would not
+# have been worth 20 MB either; it happens not to cost that.
+
+graft tests
+
+# ...but `graft` DOES NOT CONSULT `.gitignore`, and on 2026-09-21 that was
+# measured rather than assumed: the built tarball carried eight files git
+# deliberately does not track, 8.2 MB of them, and the sdist weighed 9.46 MB
+# against the 1.81 MB this file's own header records.
+#
+# Four were ORACLES CAMPAIGN DATA -- `tests/data/oracles_subsets/*.2DS` (raw
+# 2D-S, 4.0 MB each) and the archived `*.cdf` products cut beside them
+# from the ORACLES archive. They are gitignored because campaign data is
+# never committed here; an sdist is a redistribution, so shipping them is the
+# same act by another route. The two `*_manifest.json` files and the
+# directory's `README.md` ARE tracked and still travel, so a recipient can see
+# what the subsets were and regenerate them from the archive.
+#
+# Four were `*noShatters.mat` / `*withShatters.mat` -- MATLAB workspace dumps
+# the port deliberately does not implement, ignored by `.gitignore:236-241`
+# after one spilled into `tests/data` in 2026-08-30. A dump that is not a
+# fixture in the repository is not a fixture in the tarball either.
+#
+# THE RULE, not the four names: the sdist's fixture set is the TRACKED fixture
+# set. CI's "The fixtures must travel" guard checks only that every tracked
+# fixture is present; it says nothing about extras, which is why this went
+# unseen. `tests/test_sdist_carries_only_tracked_fixtures.py` checks the other
+# direction, against `git ls-files`.
+exclude tests/data/oracles_subsets/*.2DS
+exclude tests/data/oracles_subsets/*.cdf
+global-exclude *noShatters.mat
+global-exclude *withShatters.mat
+# The v3.5 demo's own output: `arrayprobe run tests/data/demo_flight_v35_run.toml` writes
+# `out = "_decoded"` relative to the TOML, i.e. here. Gitignored, never a fixture.
+prune tests/data/_decoded
+
+# docs/developer/PACKAGE_README.md, since `pyproject.toml`'s `readme` key points at it
+# (2026-09-10). Package data outside `src/` is not included automatically.
+include README.md
+
+# NOTICE.md and CITATION.cff, copied here from the repository root 2026-09-21.
+#
+# They are the attribution document and the citation file, and until that date
+# they travelled in NONE of the three distributions: they live above every
+# project root and setuptools >= 84 refuses to reach up (the same constraint
+# that forced `docs/developer/PACKAGE_README.md` to exist). A recipient of any tarball or
+# wheel got `LICENSE` and the per-module UCAR docstrings, and no statement of
+# whose work this reproduces or how to cite it.
+#
+# This is the `LICENSE` pattern, deliberately: one master at the repository
+# root, a per-distribution copy for packaging, and a TEST -- not a habit --
+# holding the copies byte-identical to the master
+# (`tests/test_license_copies.py::AttributionCopies`, which derives the
+# distribution list the same way the licence sweep does).
+#
+# NOTICE.md also reaches the WHEEL without being named here: setuptools'
+# default `license-files` globs are `LICEN[CS]E*`, `COPYING*`, `NOTICE*`,
+# `AUTHORS*`, so the copy lands in `.dist-info/licenses/`. CITATION.cff is not
+# a licence file and is not claimed as one; it travels in the sdist, which is
+# where a citation file is looked for.
+include NOTICE.md
+include CITATION.cff
+
+# The batch driver that produced every validation result, and the file a UIOPS
+# developer is most likely to read as the worked example. Four test modules also
+# read it directly (test_run_flight.py, test_run_flight_config.py,
+# test_tool_usage_matches_parser.py, test_sync_counts.py), so a tarball without
+# it is a tarball whose suite cannot run.
+graft scripts
+
+# The flat Phase-1 re-export shims (`tests/lwc.py` and four more: the loose
+# non-test, non-underscore modules in `tests/`). They moved there from
+# the former port directory in the 2026-10-08 layout move. They are not part of the
+# installed package -- `[tool.setuptools.packages.find]` looks only in `src` --
+# so nothing about the wheel needs them; the test modules `import lwc` and four
+# like it from `tests/`. Their absence made five test modules fail to import
+# from an unpacked tarball (`ModuleNotFoundError: No module named 'lwc'`),
+# measured 2026-09-08 on the first clean-environment run. `graft tests` above
+# already carries them; the explicit lines keep them named, so narrowing the
+# graft cannot drop them unnoticed (tests/test_sdist_split_is_honest.py).
+include tests/lwc.py
+include tests/particle_perimeter.py
+include tests/particle_physics.py
+include tests/sample_area.py
+include tests/time_convert.py
+
+# The port's own design records and the findings written for the UIOPS
+# developers -- 595 KB across 20 markdown files, and the most valuable thing a
+# recipient of the tarball gets after the code itself. `docs/README.md` indexes
+# them and tests/test_docs_index.py count-checks that index.
+#
+# MARKDOWN ONLY, deliberately. The other 4.2 MB in that directory is ten
+# published-artifact HTML pages whose live copies are online (registry:
+# the development artifact registry); they are build outputs of a sharing workflow, not source, and
+# shipping them would be seven times the whole rest of the tarball.
+recursive-include docs *.md
+
+# The exact pins. A fidelity port's numbers are a property of its numeric stack,
+# so "which numpy" is part of what the source distribution has to say. They travel
+# in pyproject.toml's [pinned] extra, which every sdist carries; the requirements
+# files are development-repository only and are not included here.
+
+# The differential-oracle layer.
+#
+# `octave_oracle/` and `gdl_oracle/` hold the bank runners, the Octave/GDL
+# driver scripts and `V9_GOLDENS.sha256.json`. Forty-four tests import a helper
+# from them (`run_*_bank.py`, `gdl_oracle.locate`) or read the goldens' hash
+# file, so a tarball without them is one whose oracle tests cannot import.
+# The example configurations (the ARM ENA preset and profile, the CIP and 2D-S
+# configs) live at the repository root, `examples/configs/`, since 30f3bf4, and
+# setuptools cannot graft a tree outside the former port directory, so this sdist does not
+# carry them; they ship with the repository release (its release manifest).
+#
+# As under `graft tests`, the shipped set is the TRACKED set:
+# `tests/test_sdist_carries_only_tracked_fixtures.py` checks every file on disk
+# under these trees against `git ls-files`. The Octave work directories hold
+# re-runnable outputs (close to 1 GB in a working checkout) that `.gitignore`
+# keeps out of the repository, and compiled MEX binaries are build products of
+# `mkoctfile`, not source. `_version_work/` is pruned whole and its six tracked
+# goldens and logs are re-included by name.
+graft scripts/validation/octave
+prune scripts/validation/octave/_olympex_work
+prune scripts/validation/octave/_rectellipse_work
+prune scripts/validation/octave/_s3o_work
+prune scripts/validation/octave/mex_ndebug
+prune scripts/validation/octave/_version_work
+include scripts/validation/octave/_version_work/oracles_v35.nc
+include scripts/validation/octave/_version_work/oracles_v35.log
+include scripts/validation/octave/_version_work/oraclesprod_v35.nc
+include scripts/validation/octave/_version_work/oraclesprod_v35.log
+include scripts/validation/octave/_version_work/oracles_v35habit.nc
+include scripts/validation/octave/_version_work/oracles_v35habit.log
+global-exclude *.mex
+# Upstream-derived shims and a production-tree copy, ignored by .gitignore and
+# untracked on purpose (no upstream source ships): never in the sdist.
+prune scripts/validation/octave/production_tree
+graft scripts/validation/gdl
+prune scripts/validation/gdl/shims
+
+# Never ship build and tool caches, or the venv.
+global-exclude *.py[cod]
+prune **/__pycache__
+prune .venv
+prune .mypy_cache
+prune .ruff_cache
+
+# ---------------------------------------------------------------------------
+# The thirty test modules that are about the REPOSITORY, not the package.
+#
+# This is the real finding of the first clean-environment run (2026-09-08). The
+# suite is two suites wearing one name. Most of it tests the port -- oracles,
+# fidelity, computed numbers -- and runs anywhere the code and the fixtures are.
+# Thirty modules instead test that this repository's DOCUMENTS agree with
+# each other: that README.md quotes the current test count, that the instruction ledger
+# is internally honest, that docs/ is not stale against docs/, that
+# the paper's registry keys resolve, that the pre-commit ruff pin equals CI's.
+# Those are checks on a working tree. They cannot mean anything inside a
+# tarball, where README.md, the development notes, paper/ and docs/_build/ do not exist and
+# are not going to.
+#
+# Shipping them would hand every recipient a suite that reports two dozen failing
+# modules on a correct install, which is worse than useless: it trains the
+# reader to ignore red. They stay in the repository, where they run on every
+# push and in CI, and they stay out of the tarball.
+#
+# THE LIST IS MEASURED, NOT GUESSED. It is exactly the set that failed when the
+# suite was run from an unpacked sdist against a clean install, after the
+# fixtures, tools, flat shims and docs above were made to travel. Each was then
+# read to confirm the failure was a missing repository document and not a real
+# packaging defect -- which is how the flat shims and docs/ ended up INCLUDED
+# rather than listed here.
+#
+# tests/test_sdist_split_is_honest.py holds this list to its meaning: every name
+# here must exist and must reference something outside the packaged tree, so the
+# list cannot quietly grow to hide a package test that broke.
+exclude tests/test_artifact_registry_names_its_sources.py
+exclude tests/test_changelog.py
+exclude tests/test_docs_index.py
+exclude tests/test_docs_site.py
+exclude tests/test_evidence_classes.py
+exclude tests/test_figure_inputs_are_current.py
+exclude tests/test_instruction_ledger.py
+exclude tests/test_launch_detached.py
+exclude tests/test_license_copies.py
+exclude tests/test_markdown_links.py
+exclude tests/test_mine_instructions.py
+exclude tests/test_paper_no_byline.py
+exclude tests/test_paper_outline_gaps.py
+exclude tests/test_plan_consistency.py
+exclude tests/test_precommit_config.py
+exclude tests/test_production_imgproc_source.py
+exclude tests/test_publish_ready.py
+exclude tests/test_release.py
+exclude tests/test_repo_root_layout.py
+exclude tests/test_report_propagation.py
+exclude tests/test_results_name_their_configuration.py
+exclude tests/test_sdist_split_is_honest.py
+exclude tests/test_status_owed_citations.py
+exclude tests/test_sync_counts.py
+exclude tests/test_track_v_generator_matches_page.py
+exclude tests/test_upstream_scope_classes.py
+exclude tests/test_upstream_tree_is_unmodified.py
+exclude tests/test_validated_flight_totals.py
+exclude tests/test_validation_results_propagate.py
+exclude tests/test_version_anchor.py

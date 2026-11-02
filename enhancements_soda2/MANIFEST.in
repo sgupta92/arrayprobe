@@ -1,0 +1,57 @@
+# What travels in the arrayprobe-soda2-enhancements source distribution.
+#
+# WHY THIS FILE EXISTS (2026-09-21) -- the same finding as
+# `../enhancements_uiops/MANIFEST.in`, whose header carries the reasoning in full.
+# This package likewise owns no fixtures and reaches the port's tracked data by
+# `Path(__file__).resolve().parents[2] / "<port-dir>" / "tests" / "data"`,
+# which in an unpacked `arrayprobe_soda2_enhancements-0.1.0.dev0/` is above the
+# tarball root.
+#
+# MEASURED on 2026-09-21, from the unpacked sdist against a clean install:
+# **113 tests, 0 skipped, 33 errors** -- 32 `FileNotFoundError`, one
+# `ModuleNotFoundError` and one `ImportError` from
+# `sys.path.insert(0, parents[2] / "<port-dir>" / "gdl_oracle")`. This half of
+# the family fails LOUDLY rather than skipping silently, which is better, but a
+# tarball whose suite reports 33 errors on a correct install "trains the reader
+# to ignore red" (the port's own MANIFEST.in header) -- so the same split
+# applies: a test that reaches outside its distribution root stays in the
+# repository.
+#
+# THE LIST BELOW IS DERIVED, NOT TYPED, and
+# `tests/test_sdist_has_no_silent_repo_skips.py` -- which SHIPS -- recomputes it
+# and fails on drift.
+
+graft src
+graft tests
+graft docs
+graft tools
+
+include LICENSE
+include README.md
+include BACKLOG_STATUS.md
+
+# The attribution masters, copied from the repository root 2026-09-21; see
+# ../enhancements_uiops/MANIFEST.in for why they could not travel before.
+include NOTICE.md
+include CITATION.cff
+
+global-exclude *.py[cod]
+global-exclude *.launch.log
+prune **/__pycache__
+prune .venv
+prune .mypy_cache
+prune .ruff_cache
+
+# ---------------------------------------------------------------------------
+# The 11 test modules that reach a path above their own distribution root.
+exclude tests/test_adapter.py
+exclude tests/test_aspr_nan_fix.py
+exclude tests/test_den_clamp_fix.py
+exclude tests/test_double_pi_fix.py
+exclude tests/test_empty_roi_diodegaps_fix.py
+exclude tests/test_hk_probeid_columns.py
+exclude tests/test_no_stuck_diode_fix.py
+exclude tests/test_rejection_tally_fix.py
+exclude tests/test_rollover_modulus_fix.py
+exclude tests/test_run_diagnostics.py
+exclude tests/test_same_time_buffer_fix.py

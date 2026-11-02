@@ -1,0 +1,108 @@
+# What travels in the arrayprobe-enhancements source distribution.
+#
+# WHY THIS FILE EXISTS (2026-09-21). It did not, and the sdist built without it
+# carried `src/`, `tests/`, `LICENSE`, `README.md`, `pyproject.toml` and no
+# fixtures -- because this package has none of its own. Its fixture-guarded
+# tests reach the PORT's tracked data by a repository-relative path:
+#
+#     FIXTURE = Path(__file__).resolve().parents[2] / "<port-dir>" / "tests" / "data" / ...
+#
+# In an unpacked `arrayprobe_enhancements-0.1.0.dev0/`, `parents[2]` is ABOVE
+# the tarball root, so every such path is absent and every guarded test skips.
+#
+# MEASURED, not inferred, on 2026-09-21: the suite run from the unpacked sdist
+# against a clean install reported **749 tests, 134 skipped, 65 errors** -- and
+# the skip reasons were claims about the machine ("tracked dense raw fixture not
+# present", "clean PIP fixture absent") for a reason that is not about the
+# machine. That is the exact 2026-09-08 failure shape the port's own MANIFEST.in
+# header records, and the fifth member of this repository's
+# guards-that-match-nothing family (guards are executed, not read).
+#
+# THE DECISION MADE HERE, and its alternatives. The port's fixtures could have
+# been shipped a second time (19.7 MB duplicated, two copies to keep in step),
+# or the enhancement suites could locate them through the installed `arrayprobe`
+# (which does not ship its own `tests/data` in the WHEEL, so it would work only
+# from an sdist). Both are contracts with a recipient that the author has not
+# chosen -- see the packaging audit, §3.5 and §4(b)3. What is chosen here is the
+# split the port already uses: a test that is ABOUT THE REPOSITORY stays in the
+# repository. A module that reaches outside its own distribution root is such a
+# test, whatever it is checking, because inside the tarball it cannot mean
+# anything.
+#
+# THE LIST BELOW IS DERIVED, NOT TYPED. It is exactly the set of
+# `tests/test_*.py` whose CODE (docstrings blanked) climbs past the root with
+# `parents[N>=2]` / `parent.parent.parent`, names a sibling repository
+# directory in a string literal, or imports a sibling `test_*` module. The
+# first rule alone was tried and MISSED FOUR MODULES -- `ROOT = ENH.parent` on
+# one line and `ROOT / "<port-dir>" / "docs"` on another is a two-hop spelling
+# no single expression catches -- which is why the set is checked against a
+# real run of the unpacked tarball and not just read.
+# `tests/test_sdist_has_no_silent_repo_skips.py` -- which SHIPS -- recomputes it
+# and fails on drift in the repository, and asserts the count is zero inside an
+# unpacked distribution. So the list going stale (audit §3.6, the port's own
+# version of this bug) fails the suite rather than going unnoticed.
+
+graft src
+graft tests
+graft docs
+graft tools
+
+include LICENSE
+include README.md
+include BACKLOG_STATUS.md
+
+# The attribution masters, copied from the repository root 2026-09-21. They
+# live above every project root and setuptools >= 84 refuses to reach up, so
+# until that date they travelled in none of the three distributions. One master
+# at the root, a copy per distribution, and `tests/
+# test_license_copies.py::AttributionCopies` holds the copies byte-identical --
+# the pattern `LICENSE` already uses. NOTICE.md also reaches the WHEEL without
+# being named here (setuptools' default `license-files` globs include
+# `NOTICE*`); CITATION.cff is not a licence file and is not claimed as one.
+include NOTICE.md
+include CITATION.cff
+
+# Never ship build and tool caches, logs, or a venv.
+global-exclude *.py[cod]
+global-exclude *.launch.log
+prune **/__pycache__
+prune .venv
+prune .mypy_cache
+prune .ruff_cache
+
+# ---------------------------------------------------------------------------
+# The 30 test modules that are about the REPOSITORY, not the package:
+# every one reaches a path above its own distribution root. Derived, held to
+# that meaning by tests/test_sdist_has_no_silent_repo_skips.py.
+# A module the release allowlist withholds (test_backlog_status.py) is not named:
+# the built tree never carries it, and naming it fails that test there.
+exclude tests/test_analysis.py
+exclude tests/test_arm_export.py
+exclude tests/test_cf_export.py
+exclude tests/test_dmax_sensitivity.py
+exclude tests/test_effective_density.py
+exclude tests/test_engine_applicability.py
+exclude tests/test_hole_edge_swap.py
+exclude tests/test_intarr_policy.py
+exclude tests/test_mask_presence_fix.py
+exclude tests/test_ml_accept_reject.py
+exclude tests/test_outoffocus_v35.py
+exclude tests/test_overload_accounting_fix.py
+exclude tests/test_partial_image_habit.py
+exclude tests/test_particle_number_all_fix.py
+exclude tests/test_pipeline_adapters.py
+exclude tests/test_pipeline_chain_integrity.py
+exclude tests/test_pipeline_module_timing.py
+exclude tests/test_pipeline_one_copy_per_stage.py
+exclude tests/test_pipeline_provenance.py
+exclude tests/test_pms_c6_routing_fix.py
+exclude tests/test_poisson_uncertainty.py
+exclude tests/test_probe_crossover.py
+exclude tests/test_published_dof.py
+exclude tests/test_reshape_fix.py
+exclude tests/test_run_context_carries_date_and_pressure.py
+exclude tests/test_spec_artefact_filter.py
+exclude tests/test_spot_edge_fix.py
+exclude tests/test_spot_edge_fix_v35_tables.py
+exclude tests/test_tas_grid_fix.py
+exclude tests/test_v35_inputs.py

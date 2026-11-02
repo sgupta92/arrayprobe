@@ -1,0 +1,1 @@
+engine=3.5 profile=stock-v3.5 reject=(rej_zero_area=True,rej_split=True,rej_hollow=True,shadowed_area=25,max_edge_img_ar=6,max_comp_img_ar=5) shadow_diode=none tas_file=demo_flight_v35_aircraft.cdf call=(iRectEllipse=0,iCalcAllDiodeStats=0,iQC=0,iNewHabit=0,tas_ratio=off) software=UIOOPS_v3.5 stray_pixel=on:g8,n2,m9

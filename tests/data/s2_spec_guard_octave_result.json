@@ -1,0 +1,12 @@
+{
+  "fixture": "s2_spec_guard_raw_fixture",
+  "stock": {
+    "status": "OK",
+    "output": "s2_spec_guard_stock_golden.H.cdf"
+  },
+  "oracles_variant": {
+    "status": "ERROR",
+    "message": "error: buf(4097): out of bound 4096 (dimensions are 4096x1)"
+  },
+  "why": "stock guards each image branch with iii+nH-1 <= length(buf) (Finlon, 2017-03-08); the ORACLES lineage predates the guards and indexes past the two-record window"
+}

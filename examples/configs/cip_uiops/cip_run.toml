@@ -1,0 +1,26 @@
+# A CIP recorded in a SEA file, processed end to end on the UIOPS v3.5 engine.
+#
+#     arrayprobe run cip_run.toml
+#
+# Every path below is relative to this file. Copy this directory next to your data, or edit
+# the paths. Read README.md in this directory first: it says what the output is and is not.
+
+[fidelity]
+profile = "stock-v3.5"      # UIOPS v3.5 as released; no campaign-specific threshold edits
+
+[run]
+engine = "3.5"
+preset = "UND_2016_CIP"     # the CIP call: probe CIP, size definition 6, sample area 0
+
+# A SEA file carries several probes (here a CIP and a 2DC). The decode writes one file per
+# probe; the run follows the one named here, which must be the preset's probe.
+probe = "CIP"
+raw = ["data/*.sea"]
+
+# The CIP decode writes no airspeed. Point this at the <stem>.tas.csv files the 2D-S on the
+# same aircraft wrote when it was decoded; they are merged into one per-second series. The
+# series must be in the CIP's clock: see README.md, "Airspeed and the CIP clock".
+tas_from_probe = ["data/*.tas.csv"]
+
+out = "out"
+stages = "234"               # decode, image processing, size distribution

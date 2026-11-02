@@ -1,0 +1,1158 @@
+[
+  {
+    "oracle_shims": [
+      "interpol.pro (GDL's own lib/utilities/interpol.pro, not a shim)",
+      "spec_decompress.pro (+1 line, ISHFT array quirk)",
+      "erode.pro (ERODE_EDGE_RULE, aspect_ratio inside the tail)",
+      "uniq.pro (fillholes.pro:14)",
+      "print_field.pro (generic column-major hex/int printer, unused by this bank's own printed fields but kept for parity with run_soda2_process_2d_bank.py's extra_files set)"
+    ],
+    "determinism": "checked: two full runs, CSV (minus line 3) and netCDF variable digests equal"
+  },
+  {
+    "name": "frame_full",
+    "status": "OK",
+    "note": "both PBP writers on",
+    "fn_csv": "<tmp>/soda2_pbp_p2d_4qcslynj/20160906_064400_2DS_H.pbp.csv",
+    "fn_nc": "<tmp>/soda2_pbp_p2d_4qcslynj/20160906_064400_2DS_H.pbp.nc",
+    "csv_tracked": "gdl_soda2_pbp_driver_frame_full.pbp.csv",
+    "nc_tracked": "gdl_soda2_pbp_driver_frame_full.pbp.nc",
+    "nc_digest": {
+      "dimensions": {
+        "Time": null
+      },
+      "variables": {
+        "time": {
+          "dtype": "float64",
+          "longname": "UTC time",
+          "units": "seconds",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "00000000d0acd74000000000d0acd74000000000d0acd74000000000d0acd74000000000d0acd7400000000010add7400000000010add7400000000010add7400000000010add7400000000010add7400000000010add7400000000010add7400000000010add740"
+        },
+        "probetime": {
+          "dtype": "float64",
+          "longname": "Unadjusted probe particle time",
+          "units": "seconds",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "4414efc5cbacd7409f096b6cccacd740c423a4bfccacd740447ee012cdacd74000000000d0acd7400b55689805add7400b55689805add740f595f3780aadd74056032dcc0aadd74056032dcc0aadd74056032dcc0aadd7402cadf3120dadd7400000000010add740"
+        },
+        "buffertime": {
+          "dtype": "float64",
+          "longname": "Buffer time",
+          "units": "seconds",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "00000000d0acd74000000000d0acd74000000000d0acd74000000000d0acd74000000000d0acd7400000000010add7400000000010add7400000000010add7400000000010add7400000000010add7400000000010add7400000000010add7400000000010add740"
+        },
+        "rawtime": {
+          "dtype": "float64",
+          "longname": "Raw time",
+          "units": "slices or seconds",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "000000000000f0400000000050000841000000000000104100000000000014410000000002002c410000000006002041000000000600204100000000090037410000000000003841000000000000384100000000000038410000000063003f410000008014004441"
+        },
+        "reftime": {
+          "dtype": "float64",
+          "longname": "Reference time for buffer matching",
+          "units": "seconds",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "00000000d0acd74000000000d0acd74000000000d0acd74000000000d0acd74000000000d0acd7400000000010add7400000000010add7400000000010add7400000000010add7400000000010add7400000000010add7400000000010add7400000000010add740"
+        },
+        "inttime": {
+          "dtype": "float32",
+          "longname": "Interarrival time from previous particle",
+          "units": "seconds",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "b578a63bf57b263c3472a63bb578a63be0473b3dce74a6430000000068119c3ddb72a63b0000000000000000aab1113d15433b3d"
+        },
+        "diam": {
+          "dtype": "float32",
+          "longname": "Particle diameter from circle fit. No Poisson spot size corrections applied",
+          "units": "microns",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "000052430000524300005243000052438b0ee1438b0ee1430000c8439e0df0439e0df0438b0ee143000052430000524300005243"
+        },
+        "xsize": {
+          "dtype": "float32",
+          "longname": "X-size (across array). No Poisson spot size corrections applied",
+          "units": "microns",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "000052430000524300005243000052430000e1430000e1430000c8430000f0430000f0430000e143000052430000524300005243"
+        },
+        "ysize": {
+          "dtype": "float32",
+          "longname": "Y-size (along airflow). No Poisson spot size corrections applied",
+          "units": "microns",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "000020410000204100002041000020410000a0410000a041000020410000f0410000f0410000a041000020410000204100002041"
+        },
+        "xextent": {
+          "dtype": "float32",
+          "longname": "Maximum x-size (across array) for a single slice. No Poisson spot size corrections applied",
+          "units": "microns",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "000052430000524300005243000052430000c8430000c8430000c8430000c8430000c8430000c843000052430000524300005243"
+        },
+        "oned": {
+          "dtype": "float32",
+          "longname": "1-D emulation size. Number of latched pixels. No Poisson spot size corrections applied",
+          "units": "microns",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "000034430000344300003443000034430000c8430000c8430000af430000d7430000d7430000c843000034430000344300003443"
+        },
+        "twod": {
+          "dtype": "float32",
+          "longname": "2-D emulation size. Maximum number of shaded pixels on a single slice. No Poisson spot size corrections applied",
+          "units": "microns",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "000034430000344300003443000034430000af430000af430000af430000af430000af430000af43000034430000344300003443"
+        },
+        "areasize": {
+          "dtype": "float32",
+          "longname": "Equivalent area size. No Poisson spot size corrections applied",
+          "units": "microns",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "077e3f42077e3f42077e3f42077e3f42644ba442644ba442fa828542e81fb342e81fb342644ba442077e3f42077e3f42077e3f42"
+        },
+        "arearatio": {
+          "dtype": "float32",
+          "longname": "Area ratio",
+          "units": "unitless",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "68dd543d68dd543d68dd543d68dd543d6b6d083d6b6d083d1e2ae43c258a0e3d258a0e3d6b6d083d68dd543d68dd543d68dd543d"
+        },
+        "arearatiofilled": {
+          "dtype": "float32",
+          "longname": "Area ratio with particle voids filled",
+          "units": "unitless",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "68dd543d68dd543d68dd543d68dd543d6b6d083d6b6d083d1e2ae43c258a0e3d258a0e3d6b6d083d68dd543d68dd543d68dd543d"
+        },
+        "aspectratio": {
+          "dtype": "float32",
+          "longname": "Aspect ratio",
+          "units": "unitless",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "310c433d310c433d310c433d310c433d4dfd543d4dfd543dcdcccc3c32908d3dda4d863d4dfd543d310c433d310c433d310c433d"
+        },
+        "area": {
+          "dtype": "int16",
+          "longname": "Number of shaded pixels",
+          "units": "pixels",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "12001200120012003500350023003f003f003500120012001200"
+        },
+        "areafilled": {
+          "dtype": "int16",
+          "longname": "Number of shaded pixels including voids",
+          "units": "pixels",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "12001200120012003500350023003f003f003500120012001200"
+        },
+        "perimeterarea": {
+          "dtype": "int16",
+          "longname": "Number of shaded pixels on particle perimeter",
+          "units": "pixels",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "12001200120012003500350023003d003d003500120012001200"
+        },
+        "area75": {
+          "dtype": "int16",
+          "longname": "Number of shaded pixels at the 75% (or grey level-3) shading",
+          "units": "pixels",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0000000000000000000000000000000000000000000000000000"
+        },
+        "xpos": {
+          "dtype": "float32",
+          "longname": "X-position of particle center (across array)",
+          "units": "pixels",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "000070410000704100007041000070410000d8410000d8410000ec410000cc410000cc410000d841000070410000704100007041"
+        },
+        "ypos": {
+          "dtype": "float32",
+          "longname": "Y-position of particle center (along airflow)",
+          "units": "pixels",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0000803f0000803f0000803f0000803f0000c03f0000c03f0000803f000020400000c03f0000c03f0000803f0000803f0000803f"
+        },
+        "allin": {
+          "dtype": "int8",
+          "longname": "All-in flag (1=all-in)",
+          "units": "unitless",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "01010101010101010101010101"
+        },
+        "centerin": {
+          "dtype": "int8",
+          "longname": "Center-in flag (1=center-in)",
+          "units": "unitless",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "01010101010101010101010101"
+        },
+        "dofflag": {
+          "dtype": "int8",
+          "longname": "Depth of field flag from probe, if available (1=accepted)",
+          "units": "unitless",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "01010101010101010101010101"
+        },
+        "edgetouch": {
+          "dtype": "int8",
+          "longname": "Edge touch (1=left 2=right 3=both)",
+          "units": "unitless",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "00000000000000000000000000"
+        },
+        "sizecorrection": {
+          "dtype": "float32",
+          "longname": "Size correction factor from Korolev 2007 (D_edge/D0). Use to adjust sizes in this file if necessary",
+          "units": "unitless",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0000803f0000803f0000803f0000803f0000803f0000803f0000803f0000803f0000803f0000803f0000803f0000803f0000803f"
+        },
+        "zd": {
+          "dtype": "float32",
+          "longname": "Z position from Korolev correction",
+          "units": "microns",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+        },
+        "missed": {
+          "dtype": "float32",
+          "longname": "Missed particle count",
+          "units": "number",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+        },
+        "probetas": {
+          "dtype": "float32",
+          "longname": "True air speed for probe clock",
+          "units": "m/s",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "04000143040001430400014304000143040001430400014304000143040001430400014304000143040001430400014304000143"
+        },
+        "aircrafttas": {
+          "dtype": "float32",
+          "longname": "True air speed for aircraft (if available)",
+          "units": "m/s",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+        },
+        "overloadflag": {
+          "dtype": "int8",
+          "longname": "Overload flag",
+          "units": "boolean",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "00000100000000000000000000"
+        },
+        "particlecounter": {
+          "dtype": "int32",
+          "longname": "Particle counter",
+          "units": "number",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "07000000090000000a0000000b0000000e0000000f0000001100000012000000130000001400000015000000160000000f000000"
+        },
+        "orientation": {
+          "dtype": "float32",
+          "longname": "Particle orientation relative to array axis",
+          "units": "degrees",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0000000000000000000000000000000000a6a63f00a6a63f0000000000049c3f00049c3f00a6a6bf000000000000000000000000"
+        },
+        "rejectionflag": {
+          "dtype": "int8",
+          "longname": "Particle rejection code (see soda2_reject.pro for codes)",
+          "units": "unitless",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "01010101010101010101010101"
+        },
+        "numregions": {
+          "dtype": "int8",
+          "longname": "Number of connected regions (blobs) in the particle image, if the KEEP_LARGEST option is enabled",
+          "units": "count",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "00000000000000000000000000"
+        },
+        "diodegaps": {
+          "dtype": "int16",
+          "longname": "Number of unshaded diodes between the first and last shaded diodes",
+          "units": "count",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0300030003000300050005000500050005000500030003000300"
+        }
+      },
+      "global_attrs": {
+        "Source": {
+          "dtype": "str",
+          "value": "SODA-2 OAP Processing Software"
+        },
+        "FlightDate": {
+          "dtype": "str",
+          "value": "09/06/2016"
+        },
+        "TimeInterval": {
+          "dtype": "str",
+          "value": "06:44:00-06:44:10"
+        },
+        "FN": {
+          "dtype": "str",
+          "value": "<repo>/python_port/tests/data/soda2_spec_frame_fixture"
+        },
+        "OUTDIR": {
+          "dtype": "str",
+          "value": "<tmp>/soda2_pbp_p2d_4qcslynj/"
+        },
+        "DATE": {
+          "dtype": "str",
+          "value": "20160906"
+        },
+        "STARTTIME": {
+          "dtype": "float64",
+          "value": 24240.0
+        },
+        "STOPTIME": {
+          "dtype": "float64",
+          "value": 24250.0
+        },
+        "FORMAT": {
+          "dtype": "str",
+          "value": "SPEC"
+        },
+        "SUBFORMAT": {
+          "dtype": "int16",
+          "value": "0"
+        },
+        "PROBETYPE": {
+          "dtype": "str",
+          "value": "2DS"
+        },
+        "SHORTNAME": {
+          "dtype": "str",
+          "value": "2DS"
+        },
+        "RES": {
+          "dtype": "float32",
+          "value": "10.0"
+        },
+        "YRES": {
+          "dtype": "float32",
+          "value": "10.0"
+        },
+        "WAVELENGTH": {
+          "dtype": "float32",
+          "value": "7.85e-07"
+        },
+        "DOFCONST": {
+          "dtype": "float32",
+          "value": "8.12"
+        },
+        "ARMWIDTH": {
+          "dtype": "float32",
+          "value": "6.3"
+        },
+        "NUMDIODES": {
+          "dtype": "int16",
+          "value": "128"
+        },
+        "GREYTHRESH": {
+          "dtype": "int16",
+          "value": "0"
+        },
+        "TAU": {
+          "dtype": "float32",
+          "value": "4.1e-08"
+        },
+        "ENDBINS": {
+          "dtype": "float32",
+          "value": [
+            10.0,
+            50.0,
+            100.0,
+            200.0,
+            500.0
+          ]
+        },
+        "ARENDBINS": {
+          "dtype": "float32",
+          "value": [
+            0.0,
+            0.5,
+            1.0
+          ]
+        },
+        "RATE": {
+          "dtype": "float64",
+          "value": 1.0
+        },
+        "SMETHOD": {
+          "dtype": "str",
+          "value": "xy"
+        },
+        "EAWMETHOD": {
+          "dtype": "str",
+          "value": "centerin"
+        },
+        "PTH": {
+          "dtype": "str",
+          "value": "none"
+        },
+        "PARTICLEFILE": {
+          "dtype": "int16",
+          "value": "1"
+        },
+        "NCDFPARTICLEFILE": {
+          "dtype": "int16",
+          "value": "1"
+        },
+        "ASCIIPSDFILE": {
+          "dtype": "int16",
+          "value": "0"
+        },
+        "SAVFILE": {
+          "dtype": "int16",
+          "value": "1"
+        },
+        "INTTIME_REJECT": {
+          "dtype": "int16",
+          "value": "0"
+        },
+        "RECONSTRUCT": {
+          "dtype": "int16",
+          "value": "1"
+        },
+        "STUCKBITS": {
+          "dtype": "int16",
+          "value": "0"
+        },
+        "WATER": {
+          "dtype": "int16",
+          "value": "0"
+        },
+        "FIXEDTAS": {
+          "dtype": "float32",
+          "value": "0.0"
+        },
+        "PROJECT": {
+          "dtype": "str",
+          "value": "x"
+        },
+        "TIMEOFFSET": {
+          "dtype": "float32",
+          "value": "0.0"
+        },
+        "PROBEID": {
+          "dtype": "str",
+          "value": "H"
+        },
+        "DOFREJECT": {
+          "dtype": "int16",
+          "value": "0"
+        },
+        "STRETCHCORRECT": {
+          "dtype": "int16",
+          "value": "0"
+        },
+        "CLUSTERTHRESH": {
+          "dtype": "float32",
+          "value": "0.0"
+        },
+        "RAKEFIX": {
+          "dtype": "int16",
+          "value": "0"
+        },
+        "KEEPLARGEST": {
+          "dtype": "int16",
+          "value": "0"
+        },
+        "JUELICHFILTER": {
+          "dtype": "int16",
+          "value": "0"
+        },
+        "SEATAG": {
+          "dtype": "int32",
+          "value": [
+            33000,
+            0,
+            0
+          ]
+        },
+        "IGNOREDEADTIME": {
+          "dtype": "int16",
+          "value": "0"
+        },
+        "APPLY_PSC": {
+          "dtype": "int16",
+          "value": "0"
+        },
+        "APPLY_PSC_SIZELIMIT": {
+          "dtype": "int16",
+          "value": "0"
+        },
+        "STRICTCOUNTER": {
+          "dtype": "int16",
+          "value": "0"
+        },
+        "ACTIVETIMEFROMMISSED": {
+          "dtype": "int16",
+          "value": "0"
+        },
+        "DIODERANGE": {
+          "dtype": "int16",
+          "value": [
+            0,
+            127
+          ]
+        },
+        "CUSTOMDOF": {
+          "dtype": "float32",
+          "value": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "FILETAG": {
+          "dtype": "str",
+          "value": "none"
+        }
+      }
+    }
+  },
+  {
+    "name": "frame_csv_only",
+    "status": "OK",
+    "note": "CSV only; sentinel_exit stays on regardless (harmless, no ncdf_* call)",
+    "fn_csv": "<tmp>/soda2_pbp_p2d_raoop8w1/20160906_064400_2DS_H.pbp.csv",
+    "fn_nc": "<tmp>/soda2_pbp_p2d_raoop8w1/20160906_064400_2DS_H.pbp.nc",
+    "csv_tracked": "gdl_soda2_pbp_driver_frame_csv_only.pbp.csv"
+  },
+  {
+    "name": "frame_images",
+    "status": "OK",
+    "note": "PBP netCDF with particle images (ncdfparticlefile=2); soda2_process_2d.pro shim drops CHUNK= at :303 (GDL rejects it), so values are oracle-derived and the on-disk layout is NOT validated",
+    "fn_csv": "<tmp>/soda2_pbp_p2d_uk9vhlga/20160906_064400_2DS_H.pbp.csv",
+    "fn_nc": "<tmp>/soda2_pbp_p2d_uk9vhlga/20160906_064400_2DS_H.pbp.nc",
+    "csv_tracked": "gdl_soda2_pbp_driver_frame_images.pbp.csv",
+    "nc_tracked": "gdl_soda2_pbp_driver_frame_images.pbp.nc",
+    "nc_digest": {
+      "dimensions": {
+        "Time": null,
+        "Diode": null,
+        "Slice": null
+      },
+      "variables": {
+        "time": {
+          "dtype": "float64",
+          "longname": "UTC time",
+          "units": "seconds",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "00000000d0acd74000000000d0acd74000000000d0acd74000000000d0acd74000000000d0acd7400000000010add7400000000010add7400000000010add7400000000010add7400000000010add7400000000010add7400000000010add7400000000010add740"
+        },
+        "probetime": {
+          "dtype": "float64",
+          "longname": "Unadjusted probe particle time",
+          "units": "seconds",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "4414efc5cbacd7409f096b6cccacd740c423a4bfccacd740447ee012cdacd74000000000d0acd7400b55689805add7400b55689805add740f595f3780aadd74056032dcc0aadd74056032dcc0aadd74056032dcc0aadd7402cadf3120dadd7400000000010add740"
+        },
+        "buffertime": {
+          "dtype": "float64",
+          "longname": "Buffer time",
+          "units": "seconds",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "00000000d0acd74000000000d0acd74000000000d0acd74000000000d0acd74000000000d0acd7400000000010add7400000000010add7400000000010add7400000000010add7400000000010add7400000000010add7400000000010add7400000000010add740"
+        },
+        "rawtime": {
+          "dtype": "float64",
+          "longname": "Raw time",
+          "units": "slices or seconds",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "000000000000f0400000000050000841000000000000104100000000000014410000000002002c410000000006002041000000000600204100000000090037410000000000003841000000000000384100000000000038410000000063003f410000008014004441"
+        },
+        "reftime": {
+          "dtype": "float64",
+          "longname": "Reference time for buffer matching",
+          "units": "seconds",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "00000000d0acd74000000000d0acd74000000000d0acd74000000000d0acd74000000000d0acd7400000000010add7400000000010add7400000000010add7400000000010add7400000000010add7400000000010add7400000000010add7400000000010add740"
+        },
+        "inttime": {
+          "dtype": "float32",
+          "longname": "Interarrival time from previous particle",
+          "units": "seconds",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "b578a63bf57b263c3472a63bb578a63be0473b3dce74a6430000000068119c3ddb72a63b0000000000000000aab1113d15433b3d"
+        },
+        "diam": {
+          "dtype": "float32",
+          "longname": "Particle diameter from circle fit. No Poisson spot size corrections applied",
+          "units": "microns",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "000052430000524300005243000052438b0ee1438b0ee1430000c8439e0df0439e0df0438b0ee143000052430000524300005243"
+        },
+        "xsize": {
+          "dtype": "float32",
+          "longname": "X-size (across array). No Poisson spot size corrections applied",
+          "units": "microns",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "000052430000524300005243000052430000e1430000e1430000c8430000f0430000f0430000e143000052430000524300005243"
+        },
+        "ysize": {
+          "dtype": "float32",
+          "longname": "Y-size (along airflow). No Poisson spot size corrections applied",
+          "units": "microns",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "000020410000204100002041000020410000a0410000a041000020410000f0410000f0410000a041000020410000204100002041"
+        },
+        "xextent": {
+          "dtype": "float32",
+          "longname": "Maximum x-size (across array) for a single slice. No Poisson spot size corrections applied",
+          "units": "microns",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "000052430000524300005243000052430000c8430000c8430000c8430000c8430000c8430000c843000052430000524300005243"
+        },
+        "oned": {
+          "dtype": "float32",
+          "longname": "1-D emulation size. Number of latched pixels. No Poisson spot size corrections applied",
+          "units": "microns",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "000034430000344300003443000034430000c8430000c8430000af430000d7430000d7430000c843000034430000344300003443"
+        },
+        "twod": {
+          "dtype": "float32",
+          "longname": "2-D emulation size. Maximum number of shaded pixels on a single slice. No Poisson spot size corrections applied",
+          "units": "microns",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "000034430000344300003443000034430000af430000af430000af430000af430000af430000af43000034430000344300003443"
+        },
+        "areasize": {
+          "dtype": "float32",
+          "longname": "Equivalent area size. No Poisson spot size corrections applied",
+          "units": "microns",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "077e3f42077e3f42077e3f42077e3f42644ba442644ba442fa828542e81fb342e81fb342644ba442077e3f42077e3f42077e3f42"
+        },
+        "arearatio": {
+          "dtype": "float32",
+          "longname": "Area ratio",
+          "units": "unitless",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "68dd543d68dd543d68dd543d68dd543d6b6d083d6b6d083d1e2ae43c258a0e3d258a0e3d6b6d083d68dd543d68dd543d68dd543d"
+        },
+        "arearatiofilled": {
+          "dtype": "float32",
+          "longname": "Area ratio with particle voids filled",
+          "units": "unitless",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "68dd543d68dd543d68dd543d68dd543d6b6d083d6b6d083d1e2ae43c258a0e3d258a0e3d6b6d083d68dd543d68dd543d68dd543d"
+        },
+        "aspectratio": {
+          "dtype": "float32",
+          "longname": "Aspect ratio",
+          "units": "unitless",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "310c433d310c433d310c433d310c433d4dfd543d4dfd543dcdcccc3c32908d3dda4d863d4dfd543d310c433d310c433d310c433d"
+        },
+        "area": {
+          "dtype": "int16",
+          "longname": "Number of shaded pixels",
+          "units": "pixels",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "12001200120012003500350023003f003f003500120012001200"
+        },
+        "areafilled": {
+          "dtype": "int16",
+          "longname": "Number of shaded pixels including voids",
+          "units": "pixels",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "12001200120012003500350023003f003f003500120012001200"
+        },
+        "perimeterarea": {
+          "dtype": "int16",
+          "longname": "Number of shaded pixels on particle perimeter",
+          "units": "pixels",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "12001200120012003500350023003d003d003500120012001200"
+        },
+        "area75": {
+          "dtype": "int16",
+          "longname": "Number of shaded pixels at the 75% (or grey level-3) shading",
+          "units": "pixels",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0000000000000000000000000000000000000000000000000000"
+        },
+        "xpos": {
+          "dtype": "float32",
+          "longname": "X-position of particle center (across array)",
+          "units": "pixels",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "000070410000704100007041000070410000d8410000d8410000ec410000cc410000cc410000d841000070410000704100007041"
+        },
+        "ypos": {
+          "dtype": "float32",
+          "longname": "Y-position of particle center (along airflow)",
+          "units": "pixels",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0000803f0000803f0000803f0000803f0000c03f0000c03f0000803f000020400000c03f0000c03f0000803f0000803f0000803f"
+        },
+        "allin": {
+          "dtype": "int8",
+          "longname": "All-in flag (1=all-in)",
+          "units": "unitless",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "01010101010101010101010101"
+        },
+        "centerin": {
+          "dtype": "int8",
+          "longname": "Center-in flag (1=center-in)",
+          "units": "unitless",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "01010101010101010101010101"
+        },
+        "dofflag": {
+          "dtype": "int8",
+          "longname": "Depth of field flag from probe, if available (1=accepted)",
+          "units": "unitless",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "01010101010101010101010101"
+        },
+        "edgetouch": {
+          "dtype": "int8",
+          "longname": "Edge touch (1=left 2=right 3=both)",
+          "units": "unitless",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "00000000000000000000000000"
+        },
+        "sizecorrection": {
+          "dtype": "float32",
+          "longname": "Size correction factor from Korolev 2007 (D_edge/D0). Use to adjust sizes in this file if necessary",
+          "units": "unitless",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0000803f0000803f0000803f0000803f0000803f0000803f0000803f0000803f0000803f0000803f0000803f0000803f0000803f"
+        },
+        "zd": {
+          "dtype": "float32",
+          "longname": "Z position from Korolev correction",
+          "units": "microns",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+        },
+        "missed": {
+          "dtype": "float32",
+          "longname": "Missed particle count",
+          "units": "number",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+        },
+        "probetas": {
+          "dtype": "float32",
+          "longname": "True air speed for probe clock",
+          "units": "m/s",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "04000143040001430400014304000143040001430400014304000143040001430400014304000143040001430400014304000143"
+        },
+        "aircrafttas": {
+          "dtype": "float32",
+          "longname": "True air speed for aircraft (if available)",
+          "units": "m/s",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+        },
+        "overloadflag": {
+          "dtype": "int8",
+          "longname": "Overload flag",
+          "units": "boolean",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "00000100000000000000000000"
+        },
+        "particlecounter": {
+          "dtype": "int32",
+          "longname": "Particle counter",
+          "units": "number",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "07000000090000000a0000000b0000000e0000000f0000001100000012000000130000001400000015000000160000000f000000"
+        },
+        "orientation": {
+          "dtype": "float32",
+          "longname": "Particle orientation relative to array axis",
+          "units": "degrees",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0000000000000000000000000000000000a6a63f00a6a63f0000000000049c3f00049c3f00a6a6bf000000000000000000000000"
+        },
+        "rejectionflag": {
+          "dtype": "int8",
+          "longname": "Particle rejection code (see soda2_reject.pro for codes)",
+          "units": "unitless",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "01010101010101010101010101"
+        },
+        "numregions": {
+          "dtype": "int8",
+          "longname": "Number of connected regions (blobs) in the particle image, if the KEEP_LARGEST option is enabled",
+          "units": "count",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "00000000000000000000000000"
+        },
+        "diodegaps": {
+          "dtype": "int16",
+          "longname": "Number of unshaded diodes between the first and last shaded diodes",
+          "units": "count",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0300030003000300050005000500050005000500030003000300"
+        },
+        "starty": {
+          "dtype": "uint32",
+          "longname": "Index of start slice (y-position) in image array",
+          "units": "unitless",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "0100000005000000090000000e00000012000000180000001d00000021000000270000002d00000032000000360000003a000000"
+        },
+        "stopy": {
+          "dtype": "uint32",
+          "longname": "Index of stop slice (y-position) in image array",
+          "units": "unitless",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "04000000080000000d00000011000000160000001c00000020000000260000002c0000003100000035000000390000003d000000"
+        },
+        "startx": {
+          "dtype": "uint32",
+          "longname": "Index of start diode (x-position) in image array",
+          "units": "unitless",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+        },
+        "stopx": {
+          "dtype": "uint32",
+          "longname": "Index of stop diode (x-position) in image array",
+          "units": "unitless",
+          "zlib": true,
+          "complevel": 5,
+          "data_hex": "7f0000007f0000007f0000007f0000007f0000007f0000007f0000007f0000007f0000007f0000007f0000007f0000007f000000"
+        },
+        "image": {
+          "dtype": "uint8",
+          "longname": "Particle images",
+          "units": "unitless",
+          "zlib": true,
+          "complevel": 8,
+          "data_hex": "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001010101010101010101000000010101010101010100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000101010101010101010100000001010101010101010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000010101010101010101010000000101010101010101000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000101010101010101010100000001010101010101010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000010101010101010101010000000101010101010101000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000101010101010101010101010101010101010101000000000001010101010101010101010101010100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000010101010101010101010000000101010101010101000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000101010101010101010101010101010101010101000000000001010101010101010101010101010100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000010101010101010101010101010101010101010100000000000101010101010101010101010101010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000010101010101010101010000000101010101010101000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001010101000101010101010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000010101010101010101010101010101010101010100000000000101010101010101010101010101010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000010101010001010101010100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000101010101010101010101010101010101010101000000000001010101010101010101010101010100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000101010101010101010100000001010101010101010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001010101010101010101010101010101010101010000000000010101010101010101010101010101000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001010101010101010101000000010101010101010100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000101010101010101010100000001010101010101010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000010101010101010101010000000101010101010101000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001010101010101010101000000010101010101010100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+        }
+      },
+      "global_attrs": {
+        "Source": {
+          "dtype": "str",
+          "value": "SODA-2 OAP Processing Software"
+        },
+        "FlightDate": {
+          "dtype": "str",
+          "value": "09/06/2016"
+        },
+        "TimeInterval": {
+          "dtype": "str",
+          "value": "06:44:00-06:44:10"
+        },
+        "FN": {
+          "dtype": "str",
+          "value": "<repo>/python_port/tests/data/soda2_spec_frame_fixture"
+        },
+        "OUTDIR": {
+          "dtype": "str",
+          "value": "<tmp>/soda2_pbp_p2d_uk9vhlga/"
+        },
+        "DATE": {
+          "dtype": "str",
+          "value": "20160906"
+        },
+        "STARTTIME": {
+          "dtype": "float64",
+          "value": 24240.0
+        },
+        "STOPTIME": {
+          "dtype": "float64",
+          "value": 24250.0
+        },
+        "FORMAT": {
+          "dtype": "str",
+          "value": "SPEC"
+        },
+        "SUBFORMAT": {
+          "dtype": "int16",
+          "value": "0"
+        },
+        "PROBETYPE": {
+          "dtype": "str",
+          "value": "2DS"
+        },
+        "SHORTNAME": {
+          "dtype": "str",
+          "value": "2DS"
+        },
+        "RES": {
+          "dtype": "float32",
+          "value": "10.0"
+        },
+        "YRES": {
+          "dtype": "float32",
+          "value": "10.0"
+        },
+        "WAVELENGTH": {
+          "dtype": "float32",
+          "value": "7.85e-07"
+        },
+        "DOFCONST": {
+          "dtype": "float32",
+          "value": "8.12"
+        },
+        "ARMWIDTH": {
+          "dtype": "float32",
+          "value": "6.3"
+        },
+        "NUMDIODES": {
+          "dtype": "int16",
+          "value": "128"
+        },
+        "GREYTHRESH": {
+          "dtype": "int16",
+          "value": "0"
+        },
+        "TAU": {
+          "dtype": "float32",
+          "value": "4.1e-08"
+        },
+        "ENDBINS": {
+          "dtype": "float32",
+          "value": [
+            10.0,
+            50.0,
+            100.0,
+            200.0,
+            500.0
+          ]
+        },
+        "ARENDBINS": {
+          "dtype": "float32",
+          "value": [
+            0.0,
+            0.5,
+            1.0
+          ]
+        },
+        "RATE": {
+          "dtype": "float64",
+          "value": 1.0
+        },
+        "SMETHOD": {
+          "dtype": "str",
+          "value": "xy"
+        },
+        "EAWMETHOD": {
+          "dtype": "str",
+          "value": "centerin"
+        },
+        "PTH": {
+          "dtype": "str",
+          "value": "none"
+        },
+        "PARTICLEFILE": {
+          "dtype": "int16",
+          "value": "1"
+        },
+        "NCDFPARTICLEFILE": {
+          "dtype": "int16",
+          "value": "2"
+        },
+        "ASCIIPSDFILE": {
+          "dtype": "int16",
+          "value": "0"
+        },
+        "SAVFILE": {
+          "dtype": "int16",
+          "value": "1"
+        },
+        "INTTIME_REJECT": {
+          "dtype": "int16",
+          "value": "0"
+        },
+        "RECONSTRUCT": {
+          "dtype": "int16",
+          "value": "1"
+        },
+        "STUCKBITS": {
+          "dtype": "int16",
+          "value": "0"
+        },
+        "WATER": {
+          "dtype": "int16",
+          "value": "0"
+        },
+        "FIXEDTAS": {
+          "dtype": "float32",
+          "value": "0.0"
+        },
+        "PROJECT": {
+          "dtype": "str",
+          "value": "x"
+        },
+        "TIMEOFFSET": {
+          "dtype": "float32",
+          "value": "0.0"
+        },
+        "PROBEID": {
+          "dtype": "str",
+          "value": "H"
+        },
+        "DOFREJECT": {
+          "dtype": "int16",
+          "value": "0"
+        },
+        "STRETCHCORRECT": {
+          "dtype": "int16",
+          "value": "0"
+        },
+        "CLUSTERTHRESH": {
+          "dtype": "float32",
+          "value": "0.0"
+        },
+        "RAKEFIX": {
+          "dtype": "int16",
+          "value": "0"
+        },
+        "KEEPLARGEST": {
+          "dtype": "int16",
+          "value": "0"
+        },
+        "JUELICHFILTER": {
+          "dtype": "int16",
+          "value": "0"
+        },
+        "SEATAG": {
+          "dtype": "int32",
+          "value": [
+            33000,
+            0,
+            0
+          ]
+        },
+        "IGNOREDEADTIME": {
+          "dtype": "int16",
+          "value": "0"
+        },
+        "APPLY_PSC": {
+          "dtype": "int16",
+          "value": "0"
+        },
+        "APPLY_PSC_SIZELIMIT": {
+          "dtype": "int16",
+          "value": "0"
+        },
+        "STRICTCOUNTER": {
+          "dtype": "int16",
+          "value": "0"
+        },
+        "ACTIVETIMEFROMMISSED": {
+          "dtype": "int16",
+          "value": "0"
+        },
+        "DIODERANGE": {
+          "dtype": "int16",
+          "value": [
+            0,
+            127
+          ]
+        },
+        "CUSTOMDOF": {
+          "dtype": "float32",
+          "value": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "FILETAG": {
+          "dtype": "str",
+          "value": "none"
+        }
+      }
+    }
+  }
+]

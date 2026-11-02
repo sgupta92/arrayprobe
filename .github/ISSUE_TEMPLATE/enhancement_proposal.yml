@@ -1,0 +1,88 @@
+name: Enhancement proposal
+description: A specific opt-in change inside an engine, with its oracle and measured impact
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        An enhancement here is an opt-in change inside one engine, off by default. It is
+        validated against its own named oracle, shows a measured impact on real data, and is
+        tested to be byte-identical to the stock path when switched off. The stock path stays a
+        faithful reproduction of the original software. For a broader request without a
+        worked-out design, use the feature request form instead. See `CONTRIBUTING.md`.
+  - type: textarea
+    id: what-and-why
+    attributes:
+      label: What it changes, and why
+      description: The behaviour it alters, and the defect or limitation in the stock path it addresses.
+    validations:
+      required: true
+  - type: dropdown
+    id: engine
+    attributes:
+      label: Engine it extends
+      description: An enhancement lives inside one engine; it never adds a package.
+      options:
+        - UIOOPS v3.5
+        - SODA-2
+    validations:
+      required: true
+  - type: textarea
+    id: scope
+    attributes:
+      label: Probe(s)
+      description: e.g. "2D-S and HVPS" or "CIP".
+    validations:
+      required: true
+  - type: dropdown
+    id: written-bytes
+    attributes:
+      label: Does it change any written byte?
+      description: >-
+        A byte-identical change (for example a speed-up) can sit in the engine itself; one
+        that changes any output byte must be opt-in and off by default.
+      options:
+        - "No: output is byte-identical, and a test will assert it"
+        - "Yes: it changes written output"
+    validations:
+      required: true
+  - type: input
+    id: flag
+    attributes:
+      label: Opt-in flag name
+      description: The configuration-file key or command-line flag that switches it on.
+      placeholder: e.g. hollow_fix_v35
+    validations:
+      required: true
+  - type: textarea
+    id: oracle
+    attributes:
+      label: The oracle that validates it
+      description: >-
+        What the enhanced output is checked against: a hand computation, an upstream function
+        run under Octave, a published reference, an independent product.
+    validations:
+      required: true
+  - type: textarea
+    id: impact
+    attributes:
+      label: Measured impact on real data
+      description: The data, the variable and the size of the change, or how it will be measured if not yet.
+    validations:
+      required: true
+  - type: checkboxes
+    id: off-by-default
+    attributes:
+      label: Off by default
+      options:
+        - label: It is opt-in and off by default, selectable per run from the configuration file.
+          required: true
+        - label: When off, the output is byte-identical to the stock path, and a test will assert it.
+          required: true
+  - type: textarea
+    id: references
+    attributes:
+      label: References
+      description: Papers, upstream source (`file:line`), related issues.
+    validations:
+      required: false

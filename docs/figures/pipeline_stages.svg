@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 300" width="100%" role="img" aria-labelledby="t d" font-family="system-ui, -apple-system, Segoe UI, Roboto, sans-serif">
+  <!-- source: README.md "Process a flight" pipeline mermaid block; the development notes' overview, "The whole thing in one picture" (stage 3 is ~80% of a run) -->
+  <title id="t">The four stages and the file each writes</title>
+  <desc id="d">A raw .2DS or .HVPS file passes through four stages, each a subcommand. read-binary decodes it and writes the image netCDF, flight.ch.cdf. imgproc frames and measures particles and writes proc.flight.ch.nc. sizedist computes one-second size distributions and writes sd.flight.ch.nc. combine stitches a flight's files and writes flight.combined.ch.cdf. Every output has a .call sidecar recording how the stage was called. Stage 3, imgproc, takes about 80 percent of a run.</desc>
+  <rect id="figure-background" x="0" y="0" width="960" height="300" fill="#ffffff"/>
+  <defs>
+    <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#5B6B7C"/>
+    </marker>
+  </defs>
+  <g font-family="ui-monospace, SFMono-Regular, Consolas, monospace" font-size="12" fill="#4A6FA5" text-anchor="middle">
+    <text x="195" y="40">&lt;flight&gt;.&lt;ch&gt;.cdf</text>
+    <text x="405" y="40">proc.&lt;flight&gt;.&lt;ch&gt;.nc</text>
+    <text x="615" y="40">sd.&lt;flight&gt;.&lt;ch&gt;.nc</text>
+    <text x="825" y="40">&lt;flight&gt;.combined.&lt;ch&gt;.cdf</text>
+  </g>
+  <g font-size="12" fill="#5B6B7C" text-anchor="middle" font-style="italic">
+    <text x="195" y="22">image netCDF</text>
+    <text x="405" y="22">framed, measured particles</text>
+    <text x="615" y="22">1-second distributions</text>
+    <text x="825" y="22">flight product</text>
+  </g>
+  <g stroke="#5B6B7C" stroke-width="1.5" marker-end="url(#ah)">
+    <line x1="195" y1="100" x2="195" y2="52"/>
+    <line x1="405" y1="100" x2="405" y2="52"/>
+    <line x1="615" y1="100" x2="615" y2="52"/>
+    <line x1="825" y1="100" x2="825" y2="52"/>
+  </g>
+
+  <!-- raw input -->
+  <rect x="16" y="102" width="80" height="64" rx="6" fill="#F3E9D8" stroke="#A5764A" stroke-width="1.5"/>
+  <text x="56" y="130" text-anchor="middle" font-size="13" fill="#1F2D3D">raw</text>
+  <text x="56" y="148" text-anchor="middle" font-size="12" fill="#1F2D3D" font-family="ui-monospace, SFMono-Regular, Consolas, monospace">.2DS .HVPS</text>
+
+  <!-- stages -->
+  <g fill="#E8EEF7" stroke="#4A6FA5" stroke-width="1.5">
+    <rect x="120" y="102" width="150" height="64" rx="6"/>
+    <rect x="330" y="102" width="150" height="64" rx="6" stroke-width="2.5"/>
+    <rect x="540" y="102" width="150" height="64" rx="6"/>
+    <rect x="750" y="102" width="150" height="64" rx="6"/>
+  </g>
+  <g font-size="14" font-weight="600" fill="#1F2D3D" text-anchor="middle">
+    <text x="195" y="140">decode</text>
+    <text x="405" y="140">frame &amp; measure</text>
+    <text x="615" y="140">size distribution</text>
+    <text x="825" y="140">combine</text>
+  </g>
+  <g stroke="#5B6B7C" stroke-width="1.5" marker-end="url(#ah)">
+    <line x1="96" y1="134" x2="118" y2="134"/>
+    <line x1="270" y1="134" x2="328" y2="134"/>
+    <line x1="480" y1="134" x2="538" y2="134"/>
+    <line x1="690" y1="134" x2="748" y2="134"/>
+  </g>
+
+  <!-- commands -->
+  <g font-family="ui-monospace, SFMono-Regular, Consolas, monospace" font-size="13" fill="#4A6FA5" text-anchor="middle">
+    <text x="195" y="190">read-binary</text>
+    <text x="405" y="190">imgproc</text>
+    <text x="615" y="190">sizedist</text>
+    <text x="825" y="190">combine</text>
+  </g>
+  <!-- .call sidecar tags -->
+  <g fill="#FFFFFF" fill-opacity="0" stroke="#5B6B7C" stroke-width="1">
+    <rect x="150" y="200" width="90" height="20" rx="10"/>
+    <rect x="360" y="200" width="90" height="20" rx="10"/>
+    <rect x="570" y="200" width="90" height="20" rx="10"/>
+    <rect x="780" y="200" width="90" height="20" rx="10"/>
+  </g>
+  <g font-size="12" fill="#5B6B7C" text-anchor="middle">
+    <text x="195" y="214">.call sidecar</text>
+    <text x="405" y="214">.call sidecar</text>
+    <text x="615" y="214">.call sidecar</text>
+    <text x="825" y="214">.call sidecar</text>
+  </g>
+
+  <!-- share of run time: stage 3 ~80% -->
+  <rect x="120" y="248" width="780" height="14" rx="3" fill="none" stroke="#5B6B7C" stroke-width="1"/>
+  <rect x="120" y="248" width="624" height="14" rx="3" fill="#4A6FA5" fill-opacity="0.55"/>
+  <text x="120" y="284" font-size="13" fill="#4A6FA5">S3 imgproc ≈ 80 % of one measured 2D-S run (v3.5)</text>
+  <text x="900" y="284" text-anchor="end" font-size="12" fill="#5B6B7C">share of a run's time</text>
+</svg>

@@ -1,0 +1,49 @@
+# Python build, cache and environment files
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+/build/
+/dist/
+.venv/
+.venv-*/
+venv/
+.ruff_cache/
+.pytest_cache/
+.mypy_cache/
+.coverage
+coverage.json
+htmlcov/
+
+# Editors and operating systems
+.vscode/
+.idea/
+*.swp
+*~
+.DS_Store
+Thumbs.db
+
+# Probe data and processing outputs: raw files, netCDF products and run logs are never committed
+*.2DS
+*.2ds
+*.HVPS
+*.hvps
+*.cdf
+*.nc
+*.zip
+*withShatters.mat
+*noShatters.mat
+diode.*.mat
+_decoded/
+**/images/
+run_logs/
+*.launch.log
+examples/start_here/output/
+paper/*.pdf
+paper/figures/*.pdf
+paper/figures/*.png
+
+# The test fixtures the suite reads stay tracked
+!tests/data/**/*.cdf
+!tests/data/**/*.nc
+!tests/data/**/*.2DS

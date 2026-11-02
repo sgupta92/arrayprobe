@@ -1,0 +1,100 @@
+{
+ "gpm_2ds": {
+  "probe": "2DS",
+  "project": "GPM",
+  "ia_thresh_type": 2,
+  "input": "tests/data/v35_sizedist_synthetic.proc.nc",
+  "times": [
+   120001.0,
+   120002.0,
+   120003.0,
+   120004.0,
+   120005.0,
+   120006.0
+  ],
+  "tas": [
+   170.0,
+   170.0,
+   180.0,
+   170.0,
+   170.0,
+   170.0
+  ],
+  "pres": 900000.0,
+  "temp": 15.0,
+  "ddate": "20151205 120002",
+  "status": "ERROR",
+  "function": "sizeDist",
+  "line": 1320,
+  "message": "'intar_threshold' undefined near line 1320, column 22"
+ },
+ "impacts_2ds": {
+  "probe": "2DS",
+  "project": "IMPACTS",
+  "ia_thresh_type": 2,
+  "input": "tests/data/v35_sizedist_synthetic.proc.nc",
+  "times": [
+   120001.0,
+   120002.0,
+   120003.0,
+   120004.0,
+   120005.0,
+   120006.0
+  ],
+  "tas": [
+   170.0,
+   170.0,
+   180.0,
+   170.0,
+   170.0,
+   170.0
+  ],
+  "pres": 900000.0,
+  "temp": 15.0,
+  "ddate": "20151205 120002",
+  "status": "ERROR",
+  "function": "sizeDist",
+  "line": 1320,
+  "message": "'intar_threshold' undefined near line 1320, column 22"
+ },
+ "gpm_cip": {
+  "probe": "CIP",
+  "project": "GPM",
+  "ia_thresh_type": 2,
+  "input": "tests/data/s7a_pip_octave_golden.nc",
+  "times": [
+   30000.0,
+   30001.0,
+   30002.0,
+   30003.0,
+   30004.0,
+   30005.0,
+   30006.0,
+   30007.0,
+   30008.0,
+   30009.0,
+   30010.0,
+   30011.0
+  ],
+  "tas": [
+   95.0,
+   95.0,
+   95.0,
+   95.0,
+   95.0,
+   95.0,
+   95.0,
+   95.0,
+   95.0,
+   95.0,
+   95.0,
+   95.0
+  ],
+  "pres": 900000.0,
+  "temp": -10.0,
+  "ddate": "20150620 030000",
+  "status": "OK",
+  "golden": "gpm_cip.sd.nc"
+ },
+ "_octave": "GNU Octave (x86_64-w64-mingw32) version 11.3.0"
+}
