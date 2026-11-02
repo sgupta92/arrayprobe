@@ -199,6 +199,9 @@ jobs:
           cd /tmp/unpacked/arrayprobe-*
           /tmp/clean/bin/python -c "import tomllib; print('\n'.join(tomllib.load(open('pyproject.toml', 'rb'))['project']['optional-dependencies']['pinned']))" > /tmp/pinned.txt
           /tmp/clean/bin/python -m pip install -r /tmp/pinned.txt
+          # The suite tests the installed packages, as tests.yml's sdist legs do: with src/ moved
+          # away, the check that first-party packages import from this tree has nothing to compare.
+          if [ -d src ]; then mv src src_moved_away; fi
           /tmp/clean/bin/python -c "import arrayprobe, pathlib, inspect; print('imported from', pathlib.Path(inspect.getfile(arrayprobe)).parent)"
           /tmp/clean/bin/python -m unittest discover -s tests -p "test_*.py"
 
